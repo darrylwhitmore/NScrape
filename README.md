@@ -4,6 +4,12 @@
 
 NScrape is a framework that helps with much of the grunt work involved in web scraping, leaving you to concentrate on the scraping itself. NScrape recommends and supports scraping via the [HTML Agility Pack](https://htmlagilitypack.codeplex.com/), but if you'd like to use string functions or regular expressions, feel free! 
 
+##Installation
+Install the NScrape [nuget package](https://www.nuget.org/packages/NScrape/): `Install-Package NScrape`
+
+##Reference
+The NScrape API reference is available in a CHM help file. Download the latest version from the [release](https://github.com/darrylwhitmore/NScrape/releases) page.
+
 ## Tutorial
 We'll use the US National Weather Service page at http://www.weather.gov/ for our example. This page has a simple search form that will allow us to look up the weather for a given location. Try it out: enter a location and click the button to submit the form. In the resulting page, identify the *condition* and *temperature* values; this is what we're going to scrape. View the source using your browser's developer tools. We'll use *class* attributes to identify these values.
 

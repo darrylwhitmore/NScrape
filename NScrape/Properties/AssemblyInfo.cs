@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle( "NScrape" )]
-[assembly: AssemblyDescription( "" )]
+[assembly: AssemblyDescription( "A web scraping framework for .Net" )]
 [assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "Tahoma Software" )]
 [assembly: AssemblyProduct( "NScrape Web Scraping Framework" )]
