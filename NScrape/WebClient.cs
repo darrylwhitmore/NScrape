@@ -452,6 +452,10 @@ namespace NScrape {
 
 								response = new JavaScriptWebResponse( true, webResponse.ResponseUri, text, encoding );
 							}
+                            else if ( contentType.StartsWith( "application/json", StringComparison.OrdinalIgnoreCase ) ) {
+								var text = ReadResponseText( webResponse, encoding );
+                                response = new JsonWebResponse(true, webResponse.ResponseUri, text, encoding);
+                            }
 							else {
 								response = new UnsupportedWebResponse( contentType, webResponse.ResponseUri );
 							}
