@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -148,7 +149,14 @@ namespace NScrape {
 			var s = response.GetResponseStream();
 
 			if ( s != null ) {
-				var sr = new StreamReader( s, encoding );
+                StreamReader sr;
+
+                if(response.ContentEncoding == "gzip") {
+                    sr = new StreamReader( new GZipStream(s, CompressionMode.Decompress), encoding );
+                }
+                else { 
+				    sr = new StreamReader( s, encoding );
+                }
 
 				var content = sr.ReadToEnd();
 
