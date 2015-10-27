@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -148,7 +149,14 @@ namespace NScrape {
 			var s = response.GetResponseStream();
 
 			if ( s != null ) {
-				var sr = new StreamReader( s, encoding );
+                StreamReader sr;
+
+                if(response.ContentEncoding == "gzip") {
+                    sr = new StreamReader( new GZipStream(s, CompressionMode.Decompress), encoding );
+                }
+                else { 
+				    sr = new StreamReader( s, encoding );
+                }
 
 				var content = sr.ReadToEnd();
 
@@ -435,7 +443,8 @@ namespace NScrape {
 									response = new HtmlWebResponse( true, webResponse.ResponseUri, html, encoding );
 								}
 							}
-							else if ( contentType.StartsWith( "text/xml", StringComparison.OrdinalIgnoreCase ) ) {
+							else if ( contentType.StartsWith( "text/xml", StringComparison.OrdinalIgnoreCase)
+                                || contentType.StartsWith("application/xml", StringComparison.OrdinalIgnoreCase)) {
 								var xml = ReadResponseText( webResponse, encoding );
 
 								response = new XmlWebResponse( true, webResponse.ResponseUri, xml, encoding );
@@ -452,6 +461,10 @@ namespace NScrape {
 
 								response = new JavaScriptWebResponse( true, webResponse.ResponseUri, text, encoding );
 							}
+                            else if ( contentType.StartsWith( "application/json", StringComparison.OrdinalIgnoreCase ) ) {
+								var text = ReadResponseText( webResponse, encoding );
+                                response = new JsonWebResponse(true, webResponse.ResponseUri, text, encoding);
+                            }
 							else {
 								response = new UnsupportedWebResponse( contentType, webResponse.ResponseUri );
 							}
