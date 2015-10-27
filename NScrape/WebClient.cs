@@ -443,7 +443,8 @@ namespace NScrape {
 									response = new HtmlWebResponse( true, webResponse.ResponseUri, html, encoding );
 								}
 							}
-							else if ( contentType.StartsWith( "text/xml", StringComparison.OrdinalIgnoreCase ) ) {
+							else if ( contentType.StartsWith( "text/xml", StringComparison.OrdinalIgnoreCase)
+                                || contentType.StartsWith("application/xml", StringComparison.OrdinalIgnoreCase)) {
 								var xml = ReadResponseText( webResponse, encoding );
 
 								response = new XmlWebResponse( true, webResponse.ResponseUri, xml, encoding );
