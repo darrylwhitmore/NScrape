@@ -64,5 +64,16 @@ namespace NScrape.Forms {
 		/// Gets or sets the value of the control.
 		/// </summary>
 		public string Value { get; set; }
-	}
+
+        /// <summary>
+        /// Gets a <see cref="string"/> that represents the current <see cref="InputHtmlFormControl"/>
+        /// </summary>
+        /// <returns>
+        /// A <see cref="string"/> that represents the current <see cref="InputHtmlFormControl"/>.
+        /// </returns>
+        public override string ToString()
+        {
+            return $"{this.Name}: {this.Value} ({this.ControlType})";
+        }
+    }
 }

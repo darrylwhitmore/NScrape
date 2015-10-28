@@ -105,7 +105,7 @@ namespace NScrape.Forms {
 			PopulateForm( formDefinition );
 		}
 
-		private Uri ActionUrl {
+		protected Uri ActionUrl {
 			get {
 				if ( Attributes.ContainsKey( "action" ) ) {
 					if ( Uri.IsWellFormedUriString( Attributes["action"], UriKind.Absolute ) ) {
@@ -134,7 +134,7 @@ namespace NScrape.Forms {
 		/// <summary>
 		/// Gets the URL of the page where the form is located.
 		/// </summary>
-		public Uri FormUrl { get; private set; }
+		public Uri FormUrl { get; protected set; }
 
 		/// <summary>
 		/// Gets the HTML text of the page containing the form.
@@ -403,9 +403,11 @@ namespace NScrape.Forms {
 
 			request.IsXmlHttpRequest = SubmitAsXmlHttpRequest;
 
-			request.Headers.Add( CommonHeaders.Referer, FormUrl.ToString() );
+            if (FormUrl != null) {
+                request.Headers.Add(CommonHeaders.Referer, FormUrl.ToString());
+            }
 
 			return WebResponseValidator.ValidateResponse( WebClient.SendRequest( request ), validTypes, string.Format( CultureInfo.CurrentCulture, NScrapeResources.UnexpectedResponseOnFormSubmission, request.Destination ) );
 		}
-	}
+    }
 }
