@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -20,10 +21,12 @@ namespace NScrape
         {
             SupportedContentTypes.Add("image/", CreateImageResponse);
             SupportedContentTypes.Add("text/xml", CreateXmlResponse);
+            SupportedContentTypes.Add("application/xml", CreateXmlResponse);
             SupportedContentTypes.Add("text/plain", CreateTextResponse);
             SupportedContentTypes.Add("text/javascript", CreateJavaScriptResponse);
             SupportedContentTypes.Add("application/javascript ", CreateJavaScriptResponse);
             SupportedContentTypes.Add("application/x-javascript", CreateJavaScriptResponse);
+            SupportedContentTypes.Add("application/json", CreateJsonResponse);
         }
 
         /// <summary>
@@ -109,6 +112,22 @@ namespace NScrape
         }
 
         /// <summary>
+        /// Creates a <see cref="CreateJsonResponse"/>.
+        /// </summary>
+        /// <param name="webResponse">
+        /// The original <see cref="HttpWebResponse"/>.
+        /// </param>
+        /// <returns>
+        /// A new <see cref="CreateJsonResponse"/>.
+        /// </returns>
+        public static WebResponse CreateJsonResponse(HttpWebResponse webResponse)
+        {
+            var encoding = GetEncoding(webResponse);
+            var text = ReadResponseText(webResponse, encoding);
+            return new JsonWebResponse(true, webResponse.ResponseUri, text, encoding);
+        }
+
+        /// <summary>
         /// Creates a <see cref="WebResponse"/> for a <see cref="HttpWebResponse"/>, based on its
         /// content type. If the content type is not registered with the <see cref="WebResponseFactory"/>,
         /// returns <see langword="null"/>.
@@ -130,11 +149,13 @@ namespace NScrape
             var key = SupportedContentTypes.Keys.SingleOrDefault(k => contentType.StartsWith(k, StringComparison.OrdinalIgnoreCase));
 
             // We don't support this content type
-            if( key == null ) {
+            if (key == null)
+            {
                 return null;
             }
-            else {
-                return SupportedContentTypes[key]( webResponse );
+            else
+            {
+                return SupportedContentTypes[key](webResponse);
             }
         }
 
@@ -191,7 +212,16 @@ namespace NScrape
 
             if (s != null)
             {
-                var sr = new StreamReader(s, encoding);
+                StreamReader sr;
+
+                if (webResponse.ContentEncoding == "gzip")
+                {
+                    sr = new StreamReader(new GZipStream(s, CompressionMode.Decompress), encoding);
+                }
+                else
+                {
+                    sr = new StreamReader(s, encoding);
+                }
 
                 var content = sr.ReadToEnd();
 
