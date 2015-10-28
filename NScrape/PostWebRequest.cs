@@ -111,5 +111,16 @@ namespace NScrape {
         /// Gets or sets the request data.
         /// </summary>
         public string RequestData { get { return requestData; } set { requestData = value; } }
+
+        /// <summary>
+        /// Gets a <see cref="string"/> that represents the current <see cref="PostWebRequest"/>.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="string"/> that represents the current <see cref="PostWebRequest"/>.
+        /// </returns>
+        public override string ToString()
+        {
+            return $"POST {this.Destination}";
+        }
     }
 }
