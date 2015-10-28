@@ -130,6 +130,7 @@
     <Compile Include="WebRequest.cs" />
     <Compile Include="WebRequestType.cs" />
     <Compile Include="WebResponse.cs" />
+    <Compile Include="WebResponseFactory.cs" />
     <Compile Include="WebResponseType.cs" />
     <Compile Include="WebResponseValidator.cs" />
     <Compile Include="XmlWebResponse.cs" />
