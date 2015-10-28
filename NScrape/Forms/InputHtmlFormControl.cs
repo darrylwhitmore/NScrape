@@ -9,7 +9,25 @@ namespace NScrape.Forms {
 	/// </summary>
 	public class InputHtmlFormControl : HtmlFormControl {
 
-		internal InputHtmlFormControl( string html ) {
+        /// <summary>
+        /// Initialzes a new instance of the <see cref="InputHtmlFormControl"/> class.
+        /// </summary>
+        /// <param name="type">
+        /// The control type to create.
+        /// </param>
+        /// <param name="name">
+        /// The name of the control.
+        /// </param>
+        /// <param name="value">
+        /// The control value.
+        /// </param>
+        public InputHtmlFormControl( InputHtmlFormControlType type, string name, string value ) {
+            ControlType = type;
+            AddAttribute("name", name);
+            AddAttribute("value", value);
+        }
+
+        internal InputHtmlFormControl( string html ) {
 			var match = RegexCache.Instance.Regex( RegexLibrary.ParseInput, RegexLibrary.ParseInputOptions ).Match( html );
 
 			if ( match.Success ) {
