@@ -91,6 +91,7 @@
     <Compile Include="Forms\BasicForm.cs" />
     <Compile Include="Forms\BasicHtmlForm.cs" />
     <Compile Include="Forms\TextAreaHtmlFormControl.cs" />
+    <Compile Include="IWebClient.cs" />
     <Compile Include="JavaScriptWebResponse.cs" />
     <Compile Include="NScrapeUtility.cs" />
     <Compile Include="RegexCache.cs" />
@@ -143,6 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IWebClient.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

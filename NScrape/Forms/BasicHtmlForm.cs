@@ -11,7 +11,7 @@
 		/// Initializes a new instance of the <see cref="BasicHtmlForm"/> class.
 		/// </summary>
 		/// <param name="webClient">Contains the web client to be used to request and submit the form.</param>
-		public BasicHtmlForm( WebClient webClient )
+		public BasicHtmlForm( IWebClient webClient )
 			: base( webClient ) {
 		}
 
