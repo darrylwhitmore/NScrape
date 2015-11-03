@@ -162,9 +162,6 @@
   <data name="UnsupportedResponseType" xml:space="preserve">
     <value>Unsupported response type: '{0}'</value>
   </data>
-  <data name="CanNotPostBack" xml:space="preserve">
-    <value>This form does not support post back.</value>
-  </data>
   <data name="NotASelectHtmlControlOption" xml:space="preserve">
     <value>HTML is not a SELECT OPTION: '{0}'</value>
   </data>

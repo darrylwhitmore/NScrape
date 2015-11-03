@@ -61,15 +61,6 @@ namespace NScrape {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This form does not support post back..
-        /// </summary>
-        internal static string CanNotPostBack {
-            get {
-                return ResourceManager.GetString("CanNotPostBack", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to  NScrape/{0} (+https://github.com/darrylwhitmore/NScrape).
         /// </summary>
         internal static string DefaultUserAgent {
