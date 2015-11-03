@@ -66,7 +66,7 @@ Finally, we instantiate our scraper with the HTML from the response, and call it
 	var webClient = new WebClient();
 
 	var form = new BasicHtmlForm( webClient );
-	form.Load( new Uri( "http://www.weather.gov/" ), "name", "getForecast" );
+	form.Load( new Uri( "http://www.weather.gov/" ), new KeyValuePair<string, string>( "name", "getForecast" ) );
 	form.InputControls.Single( c => c.Name == "inputstring" ).Value = "fairbanks, ak";
 
 	var response = form.Submit();
