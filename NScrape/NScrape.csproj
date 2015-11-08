@@ -91,6 +91,7 @@
     <Compile Include="Forms\BasicHtmlForm.cs" />
     <Compile Include="Forms\TextAreaHtmlFormControl.cs" />
     <Compile Include="JavaScriptWebResponse.cs" />
+    <Compile Include="JsonWebResponse.cs" />
     <Compile Include="NScrapeUtility.cs" />
     <Compile Include="RegexCache.cs" />
     <Compile Include="ScrapeException.cs" />
