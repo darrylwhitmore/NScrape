@@ -1,5 +1,5 @@
 namespace NScrape {
-	internal static class WebResponseValidator {
+	public static class WebResponseValidator {
 
 		public static HtmlWebResponse ValidateHtmlResponse( WebResponse response, string message ) {
 			return ValidateResponse( response, WebResponseType.Html, message ) as HtmlWebResponse;
