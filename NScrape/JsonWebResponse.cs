@@ -3,6 +3,9 @@ using System.Text;
 
 namespace NScrape
 {
+    /// <summary>
+    /// Represents a web response for a request that returned JSON.
+    /// </summary>
     public class JsonWebResponse : TextWebResponse
     {
         internal JsonWebResponse(bool success, Uri url, string text, Encoding encoding)

@@ -390,28 +390,12 @@ namespace NScrape {
 						// We have a regular response.
 
 						var contentType = webResponse.Headers[CommonHeaders.ContentType];
+                        response = WebResponseFactory.CreateResponse(webResponse, contentType);
 
-						if ( contentType.StartsWith( "image/", StringComparison.OrdinalIgnoreCase ) ) {
-							var image = new Bitmap( 0, 0 );
-
-							var s = webResponse.GetResponseStream();
-
-							if ( s != null ) {
-								image = new Bitmap( s );
-							}
-
-							response = new ImageWebResponse( true, webResponse.ResponseUri, image );
-						}
-						else {
-							// If a character set is not specified, RFC2616 section 3.7.1 says to use ISO-8859-1, per the page below.
-							// The page says this is more or less useless, but I did find that Chrome and Firefox behaved this way
-							// for javascript files that I tested.
-							// http://www.w3.org/TR/html4/charset.html#h-5.2.2
-							var characterSet = ( !string.IsNullOrEmpty( webResponse.CharacterSet ) ? webResponse.CharacterSet : "iso-8859-1" );
-							var encoding = Encoding.GetEncoding( characterSet );
-
+                        if(response == null) {
 							if ( contentType.StartsWith( "text/html", StringComparison.OrdinalIgnoreCase ) ) {
-								var html = ReadResponseText( webResponse, encoding );
+                                var encoding = WebResponseFactory.GetEncoding( webResponse );
+								var html = WebResponseFactory.ReadResponseText( webResponse, encoding );
 
 								var haveRefresh = false;
 
@@ -443,28 +427,6 @@ namespace NScrape {
 									response = new HtmlWebResponse( true, webResponse.ResponseUri, html, encoding );
 								}
 							}
-							else if ( contentType.StartsWith( "text/xml", StringComparison.OrdinalIgnoreCase)
-                                || contentType.StartsWith("application/xml", StringComparison.OrdinalIgnoreCase)) {
-								var xml = ReadResponseText( webResponse, encoding );
-
-								response = new XmlWebResponse( true, webResponse.ResponseUri, xml, encoding );
-							}
-							else if ( contentType.StartsWith( "text/plain", StringComparison.OrdinalIgnoreCase ) ) {
-								var text = ReadResponseText( webResponse, encoding );
-
-								response = new PlainTextWebResponse( true, webResponse.ResponseUri, text, encoding );
-							}
-							// Javascript might be specified in a few ways
-							// http://stackoverflow.com/a/1998417
-							else if ( contentType.Contains( "javascript" ) ) {
-								var text = ReadResponseText( webResponse, encoding );
-
-								response = new JavaScriptWebResponse( true, webResponse.ResponseUri, text, encoding );
-							}
-                            else if ( contentType.StartsWith( "application/json", StringComparison.OrdinalIgnoreCase ) ) {
-								var text = ReadResponseText( webResponse, encoding );
-                                response = new JsonWebResponse(true, webResponse.ResponseUri, text, encoding);
-                            }
 							else {
 								response = new UnsupportedWebResponse( contentType, webResponse.ResponseUri );
 							}
