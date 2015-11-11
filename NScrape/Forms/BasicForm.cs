@@ -24,7 +24,7 @@ namespace NScrape.Forms {
 		/// Initializes a new instance of the <see cref="BasicForm"/> class.
 		/// </summary>
 		/// <param name="webClient">Contains the web client to be used to request and submit the form.</param>
-		protected BasicForm( WebClient webClient )
+		protected BasicForm( IWebClient webClient )
 			: base( webClient ) {
 		}
 

@@ -8,7 +8,7 @@ namespace NScrape {
     public class ImageWebResponse : WebResponse {
         private readonly Bitmap image;
 
-        internal ImageWebResponse( bool success, Uri url, Bitmap image )
+        public ImageWebResponse( bool success, Uri url, Bitmap image )
             : base( url, WebResponseType.Image, success ) {
             this.image = image;
         }

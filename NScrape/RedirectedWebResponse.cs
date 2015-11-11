@@ -9,7 +9,7 @@ namespace NScrape {
         private readonly WebRequest request;
         private readonly Uri redirectUrl;
 
-        internal RedirectedWebResponse( Uri url, WebRequest request, Uri redirectUrl )
+        public RedirectedWebResponse( Uri url, WebRequest request, Uri redirectUrl )
             : base( url, WebResponseType.Redirect, true ) {
             this.request = request;
             this.redirectUrl = redirectUrl;

@@ -8,7 +8,7 @@ namespace NScrape {
     public class ExceptionWebResponse : WebResponse {
         private readonly WebException exception;
 
-        internal ExceptionWebResponse( WebException exception, Uri url )
+        public ExceptionWebResponse( WebException exception, Uri url )
             : base( url, WebResponseType.Exception, false ) {
             this.exception = exception;
         }

@@ -31,5 +31,16 @@ namespace NScrape {
             : this( destination ) {
             AutoRedirect = autoRedirect;
         }
+
+        /// <summary>
+        /// Gets a <see cref="string"/> that represents the current <see cref="GetWebRequest"/>.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="string"/> that represents the current <see cref="GetWebRequest"/>.
+        /// </returns>
+        public override string ToString()
+        {
+            return $"GET {this.Destination}";
+        }
     }
 }

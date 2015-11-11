@@ -17,7 +17,7 @@ namespace NScrape {
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
 		/// <param name="text">The text of the response.</param>
         /// <param name="encoding">The encoding of the text.</param>
-        protected TextWebResponse( Uri responseUrl, WebResponseType responseType, bool success, string text, Encoding encoding )
+        public TextWebResponse( Uri responseUrl, WebResponseType responseType, bool success, string text, Encoding encoding )
             : base( responseUrl, responseType, success ) {
             this.text = text;
             this.encoding = encoding;
