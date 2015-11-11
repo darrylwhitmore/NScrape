@@ -27,6 +27,8 @@ namespace NScrape
             SupportedContentTypes.Add("application/javascript ", CreateJavaScriptResponse);
             SupportedContentTypes.Add("application/x-javascript", CreateJavaScriptResponse);
             SupportedContentTypes.Add("application/json", CreateJsonResponse);
+
+            SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, WebResponse>>();
         }
 
         /// <summary>
@@ -37,8 +39,10 @@ namespace NScrape
         /// object with the given content type and returns a <see cref="WebResponse"/>. The return value
         /// is usually a subclass of the <see cref="WebResponse"/> class.
         /// </summary>
-        public static Dictionary<string, Func<HttpWebResponse, WebResponse>> SupportedContentTypes
-        { get; } = new Dictionary<string, Func<HttpWebResponse, WebResponse>>();
+        public static Dictionary<string, Func<HttpWebResponse, WebResponse>> SupportedContentTypes {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Creates a <see cref="ImageWebResponse"/>.
