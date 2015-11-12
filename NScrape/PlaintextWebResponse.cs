@@ -7,7 +7,7 @@ namespace NScrape {
 	/// </summary>
     public class PlainTextWebResponse : TextWebResponse {
 
-        internal PlainTextWebResponse( bool success, Uri url, string text, Encoding encoding )
+        public PlainTextWebResponse( bool success, Uri url, string text, Encoding encoding )
             : base( url, WebResponseType.PlainText, success, text, encoding ) {
         }
 

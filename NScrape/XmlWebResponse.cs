@@ -8,7 +8,7 @@ namespace NScrape {
 	/// </summary>
 	public class XmlWebResponse : TextWebResponse {
 
-		internal XmlWebResponse( bool success, Uri url, string xml, Encoding encoding )
+		public XmlWebResponse( bool success, Uri url, string xml, Encoding encoding )
 			: base( url, WebResponseType.Xml, success, xml, encoding ) {
 			XDocument = XDocument.Parse( xml );
 		}

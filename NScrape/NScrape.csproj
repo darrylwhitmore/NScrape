@@ -27,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\NScrape.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -90,6 +91,7 @@
     <Compile Include="Forms\BasicForm.cs" />
     <Compile Include="Forms\BasicHtmlForm.cs" />
     <Compile Include="Forms\TextAreaHtmlFormControl.cs" />
+    <Compile Include="IWebClient.cs" />
     <Compile Include="JavaScriptWebResponse.cs" />
     <Compile Include="JsonWebResponse.cs" />
     <Compile Include="NScrapeUtility.cs" />
@@ -130,6 +132,7 @@
     <Compile Include="WebRequest.cs" />
     <Compile Include="WebRequestType.cs" />
     <Compile Include="WebResponse.cs" />
+    <Compile Include="WebResponseFactory.cs" />
     <Compile Include="WebResponseType.cs" />
     <Compile Include="WebResponseValidator.cs" />
     <Compile Include="XmlWebResponse.cs" />
@@ -144,6 +147,9 @@
   <ItemGroup>
     <None Include="nscrape.snk" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IWebClient.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

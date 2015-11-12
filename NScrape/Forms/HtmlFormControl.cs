@@ -26,15 +26,29 @@ namespace NScrape.Forms {
 
 			// http://www.w3.org/TR/html4/interact/forms.html#h-17.12.1
 			Disabled = ( Attributes.ContainsKey( "disabled" ) );
-		}
+        }
 
-		/// <summary>
-		/// Gets or sets whether or not the control is disabled.
-		/// </summary>
-		/// <remarks>
-		/// Disabled controls are omitted by <see cref="HtmlForm.BuildRequest"/>.
-		/// </remarks>
-		public bool Disabled { get; set; }
+        /// <summary>
+        /// Adds an individual attribute to the control HTML.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the attribute to add.
+        /// </param>
+        /// <param name="value">
+        /// The attribute value.
+        /// </param>
+        protected void AddAttribute(string name, string value)
+        {
+            attributes.Add(name, value);
+        }
+
+        /// <summary>
+        /// Gets or sets whether or not the control is disabled.
+        /// </summary>
+        /// <remarks>
+        /// Disabled controls are omitted by <see cref="HtmlForm.BuildRequest"/>.
+        /// </remarks>
+        public bool Disabled { get; set; }
 
 		/// <summary>
 		/// Gets the value of the control's <b>id</b> attribute.
@@ -56,5 +70,5 @@ namespace NScrape.Forms {
 		/// Gets the value of the control in <b>application/x-www-form-urlencoded</b> format.
 		/// </summary>
 		public abstract string EncodedData { get; }
-	}
+    }
 }

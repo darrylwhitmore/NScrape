@@ -7,7 +7,7 @@ namespace NScrape {
     public class UnsupportedWebResponse : WebResponse {
         private readonly string contentType;
 
-        internal UnsupportedWebResponse( string contentType, Uri responseUrl )
+        public UnsupportedWebResponse( string contentType, Uri responseUrl )
             : base( responseUrl, WebResponseType.Unsupported, false ) {
             this.contentType = contentType;
         }

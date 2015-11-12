@@ -17,7 +17,7 @@ namespace NScrape.Forms {
 		/// Initializes a new instance of the <see cref="HtmlForm"/> class.
 		/// </summary>
 		/// <param name="webClient">Contains the web client to be used to request and submit the form.</param>
-		protected HtmlForm( WebClient webClient ) {
+		protected HtmlForm( IWebClient webClient ) {
 			WebClient = webClient;
 
 			Attributes = new Dictionary<string, string>( StringComparer.OrdinalIgnoreCase );
@@ -105,7 +105,7 @@ namespace NScrape.Forms {
 			PopulateForm( formDefinition );
 		}
 
-		private Uri ActionUrl {
+		protected Uri ActionUrl {
 			get {
 				if ( Attributes.ContainsKey( "action" ) ) {
 					if ( Uri.IsWellFormedUriString( Attributes["action"], UriKind.Absolute ) ) {
@@ -134,7 +134,7 @@ namespace NScrape.Forms {
 		/// <summary>
 		/// Gets the URL of the page where the form is located.
 		/// </summary>
-		public Uri FormUrl { get; private set; }
+		public Uri FormUrl { get; protected set; }
 
 		/// <summary>
 		/// Gets the HTML text of the page containing the form.
@@ -144,7 +144,7 @@ namespace NScrape.Forms {
 		/// <summary>
 		/// Gets the web client used to request and submit the form.
 		/// </summary>
-		protected WebClient WebClient { get; private set; }
+		protected IWebClient WebClient { get; private set; }
 
 		/// <summary>
 		/// Builds the request data to be used to submit an ASPX form.
@@ -403,9 +403,11 @@ namespace NScrape.Forms {
 
 			request.IsXmlHttpRequest = SubmitAsXmlHttpRequest;
 
-			request.Headers.Add( CommonHeaders.Referer, FormUrl.ToString() );
+            if (FormUrl != null) {
+                request.Headers.Add(CommonHeaders.Referer, FormUrl.ToString());
+            }
 
 			return WebResponseValidator.ValidateResponse( WebClient.SendRequest( request ), validTypes, string.Format( CultureInfo.CurrentCulture, NScrapeResources.UnexpectedResponseOnFormSubmission, request.Destination ) );
 		}
-	}
+    }
 }

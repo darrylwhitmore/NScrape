@@ -12,28 +12,12 @@ namespace NScrape {
 	/// <summary>
 	/// Represents a web client that handles cookies and redirection.
 	/// </summary>
-	public class WebClient {
-        /// <summary>
-		/// Occurs when a cookie is added to the <see cref="CookieJar"/>.
-        /// </summary>
-        /// <remarks>
-		/// As the <see cref="WebClient"/> executes requests and receives cookies from the server in response, it stores
-		/// them in its cookie jar (a <see cref="CookieContainer"/>) and sends them along on subsequent requests.
-		/// </remarks>
-		/// <seealso cref="CookieJar"/>
-		/// <seealso cref="OnAddingCookie"/>
-		/// <seealso cref="AddingCookieEventArgs"/>
+	public class WebClient : IWebClient {
+        /// <include file='IWebClient.xml' path='/IWebClient/AddingCookie'/>
 		public event EventHandler<AddingCookieEventArgs> AddingCookie;
 
-		/// <summary>
-		/// Occurs when a request is being sent.
-		/// </summary>
-		/// <remarks>
-		/// Use this event to be notified when the <see cref="WebClient"/> sends a request.
-		/// </remarks>
-		/// <seealso cref="OnSendingRequest"/>
-		/// <seealso cref="SendingRequestEventArgs"/>
-		public event EventHandler<SendingRequestEventArgs> SendingRequest;
+        /// <include file='IWebClient.xml' path='/IWebClient/SendingRequest'/>
+        public event EventHandler<SendingRequestEventArgs> SendingRequest;
 
 	    private readonly HttpStatusCode[] redirectionStatusCodes = {
 		    HttpStatusCode.Moved,				// 301
@@ -104,17 +88,8 @@ namespace NScrape {
 			}
 		}
 
-		/// <summary>
-		/// Gets the cookies that have been collected by the <see cref="WebClient"/> in the course of executing requests.
-		/// </summary>
-		/// <remarks>
-		/// As the <see cref="WebClient"/> executes requests and receives cookies from the server in response, it stores
-		/// them in its cookie jar (a <see cref="CookieContainer"/>) and sends them along on subsequent requests.
-		/// <br/><br/>
-		/// To be notified when a cookie is added to the jar, subscribe to the <see cref="AddingCookie"/> event.
-		/// </remarks>
-		/// <seealso cref="AddingCookie"/>
-		public CookieContainer CookieJar { get { return cookieJar; } }
+        /// <include file='IWebClient.xml' path='/IWebClient/CookieJar'/>
+        public CookieContainer CookieJar { get { return cookieJar; } }
 
 		/// <summary>
 		/// Raises the <see cref="AddingCookie"/> event.
@@ -168,125 +143,28 @@ namespace NScrape {
 			return null;
 		}
 
-        /// <summary>
-        /// Sends a GET request.
-        /// </summary>
-        /// <param name="destination">Specifies the destination of the request.</param>
-        /// <remarks>
-        /// Sends a GET request that shall be automatically redirected if applicable. 
-        /// </remarks>
-        /// <returns>The response from the server.</returns>
-		/// <example>
-		/// <code>
-		///	var webClient = new WebClient();
-		/// 
-		///	var uri = new Uri( "http://www.foo.com" );
-		///
-		///	var response = webClient.SendRequest( uri );
-		/// </code>
-		/// </example>
-		/// <seealso cref="WebResponse"/>
-		public WebResponse SendRequest( Uri destination ) {
+        /// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri'/>
+        public WebResponse SendRequest( Uri destination ) {
             return SendRequest( new GetWebRequest( destination ) );
         }
 
-        /// <summary>
-		/// Sends a GET request, specifying redirection.
-		/// </summary>
-		/// <param name="destination">Specifies the destination of the request.</param>
-		/// <param name="autoRedirect"><b>true</b> if the request should be automatically redirected; <b>false</b> otherwise.</param>
-		/// <remarks>
-		/// Sends a GET request, specifying whether the request shall be automatically redirected if applicable. 
-		/// </remarks>
-		/// <returns>The response from the server.</returns>
-		/// <example>
-		/// <code>
-		///	var webClient = new WebClient();
-		/// 
-		///	var uri = new Uri( "http://www.foo.com" );
-		///
-		///	var response = webClient.SendRequest( uri, false );
-		/// </code>
-		/// </example>
-		/// <seealso cref="WebResponse"/>
-		public WebResponse SendRequest( Uri destination, bool autoRedirect ) {
+        /// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_bool'/>
+        public WebResponse SendRequest( Uri destination, bool autoRedirect ) {
             return SendRequest( new GetWebRequest( destination, autoRedirect ) );
         }
 
-        /// <summary>
-		/// Sends a POST request.
-		/// </summary>
-		/// <param name="destination">Specifies the destination of the request.</param>
-		/// <param name="requestData">Contains the request data in <b>application/x-www-form-urlencoded</b> format.</param>
-		/// <remarks>
-		/// Sends a POST request that shall be automatically redirected if applicable.
-		/// </remarks>
-		/// <returns>The response from the server.</returns>
-		/// <example>
-		/// <code>
-		/// var webClient = new WebClient();
-		/// 
-		/// var uri = new Uri( "http://www.foo.com" );
-		/// var data = "step=confirmation&amp;rt=L&amp;rp=%2Flogin%2Fhome&amp;p=0&amp;inputEmailHandle=foo&amp;inputPassword=bar";
-		/// 
-		/// var response = webClient.SendRequest( uri, data );
-		/// </code>
-		/// </example>
-		/// <returns>The response from the server.</returns>
-		/// <seealso cref="WebResponse"/>
-		public WebResponse SendRequest( Uri destination, string requestData ) {
+        /// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string'/>
+        public WebResponse SendRequest( Uri destination, string requestData ) {
             return SendRequest( new PostWebRequest( destination, requestData ) );
         }
 
-		/// <summary>
-		/// Sends a POST request, specifying redirection.
-		/// </summary>
-		/// <param name="destination">Specifies the destination of the request.</param>
-		/// <param name="requestData">Contains the request data in <b>application/x-www-form-urlencoded</b> format.</param>
-		/// <param name="autoRedirect"><b>true</b> if the request should be automatically redirected; <b>false</b> otherwise.</param>
-		/// <remarks>
-		/// Sends a POST request, specifying whether the request shall be automatically redirected if applicable. 
-		/// </remarks>
-		/// <returns>The response from the server.</returns>
-		/// <example>
-		/// <code>
-		/// var webClient = new WebClient();
-		/// 
-		/// var uri = new Uri( "http://www.foo.com" );
-		/// var data = "step=confirmation&amp;rt=L&amp;rp=%2Flogin%2Fhome&amp;p=0&amp;inputEmailHandle=foo&amp;inputPassword=bar";
-		/// 
-		/// var response = webClient.SendRequest( uri, data, false );
-		/// </code>
-		/// </example>
-		/// <returns>The response from the server.</returns>
-		/// <seealso cref="WebResponse"/>
-		public WebResponse SendRequest( Uri destination, string requestData, bool autoRedirect ) {
+        /// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string_bool'/>
+        public WebResponse SendRequest( Uri destination, string requestData, bool autoRedirect ) {
             return SendRequest( new PostWebRequest( destination, requestData, autoRedirect ) );
         }
 
-        /// <summary>
-		/// Sends a GET or POST request.
-		/// </summary>
-        /// <param name="webRequest">The request to send.</param>
-		/// <remarks>
-		/// Sends a GET or POST request. 
-		/// </remarks>
-		/// <returns>The response from the server.</returns>
-		/// <example>
-		/// <code>
-		///	var webClient = new WebClient();
-		///	
-		///	var request = new PostWebRequest() {
-		///		Destination = new Uri( "http://www.foo.com" ),
-		///		RequestData = "step=confirmation&amp;rt=L&amp;rp=%2Flogin%2Fhome&amp;p=0&amp;inputEmailHandle=foo&amp;inputPassword=bar"
-		///	};
-		///
-		///	var response = webClient.SendRequest( request );
-		/// </code>
-		/// </example>
-		/// <seealso cref="WebRequest"/>
-		/// <seealso cref="WebResponse"/>
-		public WebResponse SendRequest( WebRequest webRequest ) {
+        /// <include file='IWebClient.xml' path='/IWebClient/SendRequest_WebRequest'/>
+        public WebResponse SendRequest( WebRequest webRequest ) {
             var httpWebRequest = (HttpWebRequest)System.Net.WebRequest.Create( webRequest.Destination );
 
 			httpWebRequest.Method = webRequest.Type.ToString().ToUpperInvariant();
@@ -390,28 +268,12 @@ namespace NScrape {
 						// We have a regular response.
 
 						var contentType = webResponse.Headers[CommonHeaders.ContentType];
+                        response = WebResponseFactory.CreateResponse(webResponse, contentType);
 
-						if ( contentType.StartsWith( "image/", StringComparison.OrdinalIgnoreCase ) ) {
-							var image = new Bitmap( 0, 0 );
-
-							var s = webResponse.GetResponseStream();
-
-							if ( s != null ) {
-								image = new Bitmap( s );
-							}
-
-							response = new ImageWebResponse( true, webResponse.ResponseUri, image );
-						}
-						else {
-							// If a character set is not specified, RFC2616 section 3.7.1 says to use ISO-8859-1, per the page below.
-							// The page says this is more or less useless, but I did find that Chrome and Firefox behaved this way
-							// for javascript files that I tested.
-							// http://www.w3.org/TR/html4/charset.html#h-5.2.2
-							var characterSet = ( !string.IsNullOrEmpty( webResponse.CharacterSet ) ? webResponse.CharacterSet : "iso-8859-1" );
-							var encoding = Encoding.GetEncoding( characterSet );
-
+                        if(response == null) {
 							if ( contentType.StartsWith( "text/html", StringComparison.OrdinalIgnoreCase ) ) {
-								var html = ReadResponseText( webResponse, encoding );
+                                var encoding = WebResponseFactory.GetEncoding( webResponse );
+								var html = WebResponseFactory.ReadResponseText( webResponse, encoding );
 
 								var haveRefresh = false;
 
@@ -443,28 +305,6 @@ namespace NScrape {
 									response = new HtmlWebResponse( true, webResponse.ResponseUri, html, encoding );
 								}
 							}
-							else if ( contentType.StartsWith( "text/xml", StringComparison.OrdinalIgnoreCase)
-                                || contentType.StartsWith("application/xml", StringComparison.OrdinalIgnoreCase)) {
-								var xml = ReadResponseText( webResponse, encoding );
-
-								response = new XmlWebResponse( true, webResponse.ResponseUri, xml, encoding );
-							}
-							else if ( contentType.StartsWith( "text/plain", StringComparison.OrdinalIgnoreCase ) ) {
-								var text = ReadResponseText( webResponse, encoding );
-
-								response = new PlainTextWebResponse( true, webResponse.ResponseUri, text, encoding );
-							}
-							// Javascript might be specified in a few ways
-							// http://stackoverflow.com/a/1998417
-							else if ( contentType.Contains( "javascript" ) ) {
-								var text = ReadResponseText( webResponse, encoding );
-
-								response = new JavaScriptWebResponse( true, webResponse.ResponseUri, text, encoding );
-							}
-                            else if ( contentType.StartsWith( "application/json", StringComparison.OrdinalIgnoreCase ) ) {
-								var text = ReadResponseText( webResponse, encoding );
-                                response = new JsonWebResponse(true, webResponse.ResponseUri, text, encoding);
-                            }
 							else {
 								response = new UnsupportedWebResponse( contentType, webResponse.ResponseUri );
 							}
@@ -484,19 +324,7 @@ namespace NScrape {
             return response;
         }
 
-	    /// <summary>
-		/// Gets or sets the user agent for requests made by a <see cref="WebClient"/>.
-	    /// </summary>
-	    /// <remarks>
-		/// If the user agent is not explicitly set, it defaults to a string of the form: <code>NScrape/[version] (+https://github.com/darrylwhitmore/NScrape)</code>
-	    /// </remarks>
-	    /// <example>
-	    /// <code>
-	    ///	var webClient = new WebClient {
-		///		UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko"
-		/// };
-	    /// </code>
-	    /// </example>
-		public string UserAgent { get; set; }
+        /// <include file='IWebClient.xml' path='/IWebClient/UserAgent'/>
+        public string UserAgent { get; set; }
 	}
 }

@@ -11,7 +11,7 @@
 		/// Initializes a new instance of the <see cref="BasicAspxForm"/> class.
 		/// </summary>
 		/// <param name="webClient">Contains the web client to be used to request and submit the form.</param>
-		public BasicAspxForm( WebClient webClient )
+		public BasicAspxForm( IWebClient webClient )
 			: base( webClient ) {
 		}
 
