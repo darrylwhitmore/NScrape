@@ -118,9 +118,8 @@ namespace NScrape {
         /// <returns>
         /// A <see cref="string"/> that represents the current <see cref="PostWebRequest"/>.
         /// </returns>
-        public override string ToString()
-        {
-            return $"POST {this.Destination}";
+        public override string ToString() {
+	        return string.Format( "POST {0}", Destination );
         }
     }
 }

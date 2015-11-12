@@ -89,9 +89,8 @@ namespace NScrape.Forms {
         /// <returns>
         /// A <see cref="string"/> that represents the current <see cref="InputHtmlFormControl"/>.
         /// </returns>
-        public override string ToString()
-        {
-            return $"{this.Name}: {this.Value} ({this.ControlType})";
+        public override string ToString() {
+	        return string.Format( "{0}='{1}' ({2})", Name, Value, ControlType );
         }
     }
 }

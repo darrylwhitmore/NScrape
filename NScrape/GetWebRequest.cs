@@ -38,9 +38,8 @@ namespace NScrape {
         /// <returns>
         /// A <see cref="string"/> that represents the current <see cref="GetWebRequest"/>.
         /// </returns>
-        public override string ToString()
-        {
-            return $"GET {this.Destination}";
+        public override string ToString() {
+	        return string.Format( "GET {0}", Destination );
         }
     }
 }
