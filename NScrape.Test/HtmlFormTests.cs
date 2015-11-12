@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 using NScrape.Forms;
@@ -35,7 +36,7 @@ namespace NScrape.Test {
 			var webClient = new WebClient();
 
 			var form = new BasicHtmlForm( webClient );
-			form.Load( new Uri( "http://www.weather.gov/" ), "name", "getForecast" );
+			form.Load( new Uri( "http://www.weather.gov/" ), new KeyValuePair<string, string>( "name", "getForecast" ) );
 			form.InputControls.Single( c => c.Name == "inputstring" ).Value = "fairbanks, ak";
 
 			var response = form.Submit();
@@ -104,16 +105,25 @@ namespace NScrape.Test {
 			var webClient = new WebClient();
 
 			var form = new BasicAspxForm( webClient );
-			form.Load( new Uri( "http://architectfinder.aia.org/frmSearch.aspx" ), "name", "aspnetForm" );
+			form.Load( new Uri( "http://architectfinder.aia.org/frmSearch.aspx" ), new KeyValuePair<string, string>( "name", "aspnetForm" ) );
 			form.InputControls.Single( c => c.Name == "ctl00$ContentPlaceHolder1$txtCity" ).Value = "Boston";
 
 			form.SelectControls.Single( c => c.Name == "ctl00$ContentPlaceHolder1$drpState" ).UnselectAll();
 			var options = form.SelectControls.Single( c => c.Name == "ctl00$ContentPlaceHolder1$drpState" ).Options;
 			options.Single( o => o.Option == "Massachusetts" ).Selected = true;
 
-			// TODO: need to find another site to test; this site seems to be adding the __EVENTTARGET & __EVENTARGUMENT via JavaScript, it is not
-			// in the HTML.
 			var response = form.Submit( "ctl00$ContentPlaceHolder1$btnSearch" );
+		}
+
+		[Fact]
+		public void BasicAspxTest2() {
+			var webClient = new WebClient();
+
+			var form = new BasicAspxForm( webClient );
+			form.Load( new Uri( "http://www.chilis.com/EN/Pages/locationsearch.aspx" ), new KeyValuePair<string, string>( "name", "aspnetForm" ) );
+			form.InputControls.Single( c => c.Name == "ctl00$PlaceHolderMain$LocationSearchBar$txtChilisLocator" ).Value = "Chicago, IL";
+
+			var response = form.Submit( "ctl00$PlaceHolderMain$LocationSearchBar$ibtnChilisLocator" );
 		}
 	}
 }

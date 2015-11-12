@@ -49,12 +49,26 @@ namespace NScrape.Forms {
 		/// <remarks>
 		/// The form identified by the specified attribute/value shall be loaded.
 		/// </remarks>
+		[Obsolete( "Load( Uri, string, string ) is deprecated, please use Load( Uri, KeyValuePair<string, string> ) instead." )]
 		public void Load( Uri formUrl, string attribute, string attributeValue ) {
 			FormUrl = formUrl;
 
 			Html = DownloadFormHtml();
 
-			Initialize( attribute, attributeValue );
+			Initialize( new KeyValuePair<string, string>( attribute, attributeValue ) );
+		}
+
+		/// <summary>
+		/// Loads the form specified by identifying attribute on the page at the specified URL.
+		/// </summary>
+		/// <param name="formUrl">Contains the URL of the page containing the form.</param>
+		/// <param name="identifyingAttribute">Contains the form attribute/value to be used to identify the form to load.</param>
+		public void Load( Uri formUrl, KeyValuePair<string, string> identifyingAttribute ) {
+			FormUrl = formUrl;
+
+			Html = DownloadFormHtml();
+
+			Initialize( identifyingAttribute );
 		}
 
 		/// <summary>
@@ -84,14 +98,32 @@ namespace NScrape.Forms {
 		/// <remarks>
 		/// The form identified by the specified attribute/value in the provided HTML text shall be loaded.
 		/// </remarks>
+		[Obsolete( "Load( Uri, string, string, string ) is deprecated, please use Load( Uri, string, KeyValuePair<string, string> ) instead." )]
 		public void Load( Uri formUrl, string formHtml, string attribute, string attributeValue ) {
 			FormUrl = formUrl;
 
 			Html = formHtml;
 
-			Initialize( attribute, attributeValue );
+			Initialize( new KeyValuePair<string, string>( attribute, attributeValue ) );
 		}
 
+		/// <summary>
+		/// Loads the form specified by identifying attribute in the provided HTML.
+		/// </summary>
+		/// <param name="formUrl">Contains the URL where the page containing the form resides.</param>
+		/// <param name="formHtml">Contains the HTML text containing the form.</param>
+		/// <param name="identifyingAttribute">Contains the form attribute/value to be used to identify the form to load.</param>
+		/// <remarks>
+		/// The form identified by the specified attribute/value in the provided HTML text shall be loaded.
+		/// </remarks>
+		public void Load( Uri formUrl, string formHtml, KeyValuePair<string, string> identifyingAttribute ) {
+			FormUrl = formUrl;
+
+			Html = formHtml;
+
+			Initialize( identifyingAttribute );
+		}
+		
 		/// <summary>
 		/// Loads the form specified by the provided form definition.
 		/// </summary>
@@ -152,19 +184,22 @@ namespace NScrape.Forms {
 		/// <param name="eventTargetValue">Contains the value for <b>__EVENTTARGET</b>, the control doing the submission.</param>
 		/// <param name="eventArgumentValue">Contains the value for <b>__EVENTARGUMENT</b>, any additional information.</param>
 		/// <returns>The request data in <b>application/x-www-form-urlencoded</b> format.</returns>
-		/// <exception cref="InvalidOperationException">The form does not contain an <b>__EVENTTARGET</b> or <b>__EVENTARGUMENT</b> control.</exception>
 		/// <remarks>
 		/// See <see href="http://www.evagoras.com/2011/02/10/how-postback-works-in-asp-net/">How postback works in ASP.NET</see> for a good overview on the topic.
 		/// </remarks>
 		protected string BuildAspxPostBackRequest( string eventTargetValue, string eventArgumentValue ) {
 			var eventTarget = Controls.SingleOrDefault( c => c.Name == EventTargetName ) as InputHtmlFormControl;
 			if ( eventTarget == null ) {
-				throw new InvalidOperationException( NScrapeResources.CanNotPostBack );
+				// If __EVENTTARGET is not in the HTML (injected via JavaScript?), add it manually.
+				eventTarget = new InputHtmlFormControl( "<input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" />" );
+				Controls.Add( eventTarget );
 			}
 
 			var eventArgument = Controls.SingleOrDefault( c => c.Name == EventArgumentName ) as InputHtmlFormControl;
 			if ( eventArgument == null ) {
-				throw new InvalidOperationException( NScrapeResources.CanNotPostBack );
+				// If __EVENTARGUMENT is not in the HTML (injected via JavaScript?), add it manually.
+				eventArgument = new InputHtmlFormControl( "<input type=\"hidden\" name=\"__EVENTARGUMENT\" id=\"__EVENTARGUMENT\" value=\"\" />" );
+				Controls.Add( eventArgument );
 			}
 
 			// Most __doPostBack() examples found via Googling unescaped the event target parameter,
@@ -280,13 +315,13 @@ namespace NScrape.Forms {
 			PopulateForm( formDefinitions.ElementAt( formOrdinal ) );
 		}
 
-		private void Initialize( string attribute, string attributeValue ) {
+		private void Initialize( KeyValuePair<string, string> identifyingAttribute ) {
 			var formDefinitions = HtmlFormDefinition.Parse( Html ).ToList();
 
-			var formDefinition = formDefinitions.FirstOrDefault( d => d.Attributes.ContainsKey( attribute ) && d.Attributes[attribute] == attributeValue );
+			var formDefinition = formDefinitions.FirstOrDefault( d => d.Attributes.ContainsKey( identifyingAttribute.Key ) && d.Attributes[identifyingAttribute.Key] == identifyingAttribute.Value );
 
 			if ( formDefinition == null ) {
-				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.InvalidFormId, attribute.ToUpperInvariant(), attributeValue ) );
+				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.InvalidFormId, identifyingAttribute.Key.ToUpperInvariant(), identifyingAttribute.Value ) );
 			}
 
 			PopulateForm( formDefinition );
