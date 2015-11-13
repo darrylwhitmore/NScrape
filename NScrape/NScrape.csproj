@@ -98,6 +98,7 @@
     <Compile Include="RegexCache.cs" />
     <Compile Include="ScrapeException.cs" />
     <Compile Include="Scraper.cs" />
+    <Compile Include="ResponseReceivedEventArgs.cs" />
     <Compile Include="SendingRequestEventArgs.cs" />
     <Compile Include="Forms\InputCheckBoxHtmlFormControl.cs" />
     <Compile Include="Forms\InputHtmlFormControlType.cs" />

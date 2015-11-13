@@ -14,6 +14,9 @@ namespace NScrape
         /// <include file='IWebClient.xml' path='/IWebClient/SendingRequest'/>
         event EventHandler<SendingRequestEventArgs> SendingRequest;
 
+        /// <include file='IWebClient.xml' path='/IWebClient/ResponseReceived'/>
+        event EventHandler<ResponseReceivedEventArgs> ResponseReceived;
+
         /// <include file='IWebClient.xml' path='/IWebClient/CookieJar'/>
         CookieContainer CookieJar { get; }
 

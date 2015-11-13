@@ -19,6 +19,8 @@ namespace NScrape
         /// </summary>
         static WebResponseFactory()
         {
+            SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, WebResponse>>();
+
             SupportedContentTypes.Add("image/", CreateImageResponse);
             SupportedContentTypes.Add("text/xml", CreateXmlResponse);
             SupportedContentTypes.Add("application/xml", CreateXmlResponse);
@@ -27,8 +29,6 @@ namespace NScrape
             SupportedContentTypes.Add("application/javascript ", CreateJavaScriptResponse);
             SupportedContentTypes.Add("application/x-javascript", CreateJavaScriptResponse);
             SupportedContentTypes.Add("application/json", CreateJsonResponse);
-
-            SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, WebResponse>>();
         }
 
         /// <summary>
