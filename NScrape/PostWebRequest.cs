@@ -120,7 +120,7 @@ namespace NScrape {
         /// </returns>
         public override string ToString()
         {
-            return $"POST {this.Destination}";
+            return string.Format("POST {0}", this.Destination);
         }
     }
 }
