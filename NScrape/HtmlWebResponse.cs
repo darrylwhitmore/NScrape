@@ -7,8 +7,15 @@ namespace NScrape {
 	/// </summary>
     public class HtmlWebResponse : TextWebResponse {
 
-        public HtmlWebResponse( bool success, Uri url, string html, Encoding encoding )
-            : base( url, WebResponseType.Html, success, html, encoding ) {
+		/// <summary>
+		/// Initializes a new instance of the <see cref="HtmlWebResponse"/> class.
+		/// </summary>
+		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
+		/// <param name="responseUrl">The URL of the response.</param>
+		/// <param name="html">The HTML text of the response.</param>
+		/// <param name="encoding">The encoding of the HTML text.</param>
+		public HtmlWebResponse( bool success, Uri responseUrl, string html, Encoding encoding )
+            : base( responseUrl, WebResponseType.Html, success, html, encoding ) {
         }
 
         /// <summary>

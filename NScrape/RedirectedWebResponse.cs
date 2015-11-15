@@ -9,8 +9,14 @@ namespace NScrape {
         private readonly WebRequest request;
         private readonly Uri redirectUrl;
 
-        public RedirectedWebResponse( Uri url, WebRequest request, Uri redirectUrl )
-            : base( url, WebResponseType.Redirect, true ) {
+        /// <summary>
+		/// Initializes a new instance of the <see cref="RedirectedWebResponse"/> class.
+        /// </summary>
+		/// <param name="responseUrl">The URL of the response.</param>
+        /// <param name="request">The original web request.</param>
+		/// <param name="redirectUrl">The redirect URL of the response.</param>
+        public RedirectedWebResponse( Uri responseUrl, WebRequest request, Uri redirectUrl )
+            : base( responseUrl, WebResponseType.Redirect, true ) {
             this.request = request;
             this.redirectUrl = redirectUrl;
         }
