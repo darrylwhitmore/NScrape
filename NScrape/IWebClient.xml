@@ -21,14 +21,14 @@
     <seealso cref="SendingRequestEventArgs"/>
   </SendingRequest>
 
-  <ResponseReceived>
+  <ProcessingResponse>
     <summary>
       Occurs when a response has been received.
     </summary>
     <remarks>
       Use this event to be notified when the <see cref="IWebClient"/> receives a response.
     </remarks>
-  </ResponseReceived>
+  </ProcessingResponse>
   
   <CookieJar>
     <summary>
