@@ -40,7 +40,7 @@ namespace NScrape {
         /// </returns>
         public override string ToString()
         {
-            return $"GET {this.Destination}";
+            return string.Format("GET {0}", this.Destination);
         }
     }
 }

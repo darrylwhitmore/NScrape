@@ -21,6 +21,15 @@
     <seealso cref="SendingRequestEventArgs"/>
   </SendingRequest>
 
+  <ProcessingResponse>
+    <summary>
+      Occurs when a response has been received.
+    </summary>
+    <remarks>
+      Use this event to be notified when the <see cref="IWebClient"/> receives a response.
+    </remarks>
+  </ProcessingResponse>
+  
   <CookieJar>
     <summary>
       Gets the cookies that have been collected by the <see cref="WebClient"/> in the course of executing requests.

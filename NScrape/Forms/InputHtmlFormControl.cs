@@ -91,7 +91,7 @@ namespace NScrape.Forms {
         /// </returns>
         public override string ToString()
         {
-            return $"{this.Name}: {this.Value} ({this.ControlType})";
+            return string.Format("{0}: {1} ({2})", this.Name, this.Value, this.ControlType);
         }
     }
 }
