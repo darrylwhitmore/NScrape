@@ -13,10 +13,10 @@ namespace NScrape {
 	/// Represents a web client that handles cookies and redirection.
 	/// </summary>
 	public class WebClient : IWebClient {
-        /// <include file='IWebClient.xml' path='/IWebClient/AddingCookie'/>
+        /// <include file='IWebClient.xml' path='/IWebClient/AddingCookie/*'/>
 		public event EventHandler<AddingCookieEventArgs> AddingCookie;
 
-        /// <include file='IWebClient.xml' path='/IWebClient/SendingRequest'/>
+		/// <include file='IWebClient.xml' path='/IWebClient/SendingRequest/*'/>
         public event EventHandler<SendingRequestEventArgs> SendingRequest;
 
 	    private readonly HttpStatusCode[] redirectionStatusCodes = {
@@ -88,7 +88,7 @@ namespace NScrape {
 			}
 		}
 
-        /// <include file='IWebClient.xml' path='/IWebClient/CookieJar'/>
+		/// <include file='IWebClient.xml' path='/IWebClient/CookieJar/*'/>
         public CookieContainer CookieJar { get { return cookieJar; } }
 
 		/// <summary>
@@ -143,27 +143,27 @@ namespace NScrape {
 			return null;
 		}
 
-        /// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri'/>
+		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri/*'/>
         public WebResponse SendRequest( Uri destination ) {
             return SendRequest( new GetWebRequest( destination ) );
         }
 
-        /// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_bool'/>
+		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_bool/*'/>
         public WebResponse SendRequest( Uri destination, bool autoRedirect ) {
             return SendRequest( new GetWebRequest( destination, autoRedirect ) );
         }
 
-        /// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string'/>
+		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string/*'/>
         public WebResponse SendRequest( Uri destination, string requestData ) {
             return SendRequest( new PostWebRequest( destination, requestData ) );
         }
 
-        /// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string_bool'/>
+		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string_bool/*'/>
         public WebResponse SendRequest( Uri destination, string requestData, bool autoRedirect ) {
             return SendRequest( new PostWebRequest( destination, requestData, autoRedirect ) );
         }
 
-        /// <include file='IWebClient.xml' path='/IWebClient/SendRequest_WebRequest'/>
+		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_WebRequest/*'/>
         public WebResponse SendRequest( WebRequest webRequest ) {
             var httpWebRequest = (HttpWebRequest)System.Net.WebRequest.Create( webRequest.Destination );
 
@@ -324,7 +324,7 @@ namespace NScrape {
             return response;
         }
 
-        /// <include file='IWebClient.xml' path='/IWebClient/UserAgent'/>
+		/// <include file='IWebClient.xml' path='/IWebClient/UserAgent/*'/>
         public string UserAgent { get; set; }
 	}
 }

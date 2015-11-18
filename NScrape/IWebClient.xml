@@ -1,4 +1,5 @@
-﻿<IWebClient>
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<IWebClient>
   <AddingCookie>
     <summary>
       Occurs when a cookie is added to the <see cref="CookieJar"/>.
@@ -148,8 +149,8 @@
         var webClient = new WebClient();
 
         var request = new PostWebRequest() {
-        Destination = new Uri( "http://www.foo.com" ),
-        RequestData = "step=confirmation&amp;rt=L&amp;rp=%2Flogin%2Fhome&amp;p=0&amp;inputEmailHandle=foo&amp;inputPassword=bar"
+            Destination = new Uri( "http://www.foo.com" ),
+            RequestData = "step=confirmation&amp;rt=L&amp;rp=%2Flogin%2Fhome&amp;p=0&amp;inputEmailHandle=foo&amp;inputPassword=bar"
         };
 
         var response = webClient.SendRequest( request );
@@ -169,7 +170,7 @@
     <example>
       <code>
         var webClient = new WebClient {
-        UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko"
+            UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko"
         };
       </code>
     </example>
