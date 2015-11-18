@@ -1,8 +1,6 @@
 using System;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -118,29 +116,6 @@ namespace NScrape {
 			if ( SendingRequest != null ) {
 				SendingRequest( this, args );
 			}
-		}
-
-		private static string ReadResponseText( HttpWebResponse response, Encoding encoding ) {
-			var s = response.GetResponseStream();
-
-			if ( s != null ) {
-                StreamReader sr;
-
-                if(response.ContentEncoding == "gzip") {
-                    sr = new StreamReader( new GZipStream(s, CompressionMode.Decompress), encoding );
-                }
-                else { 
-				    sr = new StreamReader( s, encoding );
-                }
-
-				var content = sr.ReadToEnd();
-
-				sr.Close();
-
-				return content;
-			}
-
-			return null;
 		}
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri/*'/>
