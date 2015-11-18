@@ -137,6 +137,13 @@ namespace NScrape.Forms {
 			PopulateForm( formDefinition );
 		}
 
+		/// <summary>
+		/// Gets the action URL of the form.
+		/// </summary>
+		/// <remarks>
+		/// The action URL is URL to which the form shall be submitted. If the form does not specify an action URL,
+		/// the form URL shall be used.
+		/// </remarks>
 		protected Uri ActionUrl {
 			get {
 				if ( Attributes.ContainsKey( "action" ) ) {
