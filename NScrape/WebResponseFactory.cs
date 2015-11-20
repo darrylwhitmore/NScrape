@@ -105,9 +105,10 @@ namespace NScrape
             byte[] data = null;
 
             using (var s = webResponse.GetResponseStream())
-            using (BinaryReader reader = new BinaryReader(s))
+            using (MemoryStream memoryStream = new MemoryStream())
             {
-                reader.ReadBytes((int)s.Length);
+                s.CopyTo(memoryStream);
+                data = memoryStream.ToArray();
             }
 
             return new BinaryWebResponse(true, webResponse.ResponseUri, data);
