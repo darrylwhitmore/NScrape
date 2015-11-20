@@ -24,6 +24,11 @@
 		JavaScript,
 
 		/// <summary>
+		/// A JSON reponse.
+		/// </summary>
+		Json,
+
+		/// <summary>
 		/// A redirect reponse.
 		/// </summary>
 		Redirect,
