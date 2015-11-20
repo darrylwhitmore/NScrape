@@ -100,6 +100,15 @@ namespace NScrape
             return new XmlWebResponse(true, webResponse.ResponseUri, xml, encoding);
         }
 
+        /// <summary>
+        /// Creates a <see cref="BinaryWebResponse"/>.
+        /// </summary>
+        /// <param name="webResponse">
+        /// The original <see cref="HttpWebResponse"/>.
+        /// </param>
+        /// <returns>
+        /// A new <see cref="BinaryWebResponse"/>.
+        /// </returns>
         public static WebResponse CreateBinaryResponse(HttpWebResponse webResponse)
         {
             byte[] data = null;
