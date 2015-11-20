@@ -19,6 +19,9 @@ namespace NScrape {
         /// <include file='IWebClient.xml' path='/IWebClient/SendingRequest'/>
         public event EventHandler<SendingRequestEventArgs> SendingRequest;
 
+        /// <include file='IWebClient.xml' path='/IWebClient/ResponseReceived'/>
+        public event EventHandler<ProcessingResponseEventArgs> ProcessingResponse;
+
 	    private readonly HttpStatusCode[] redirectionStatusCodes = {
 		    HttpStatusCode.Moved,				// 301
 		    HttpStatusCode.MovedPermanently,	// 301
@@ -120,7 +123,23 @@ namespace NScrape {
 			}
 		}
 
-		private static string ReadResponseText( HttpWebResponse response, Encoding encoding ) {
+        /// <summary>
+        /// Raises the <see cref="ProcessingResponse"/> event.
+        /// </summary>
+        /// <remarks>
+        /// Called when a response has been received.
+        /// </remarks>
+        /// <param name="args">A <see cref="ProcessingResponseEventArgs"/> that contains the event data.</param>
+        /// <seealso cref="SendingRequest"/>
+        protected virtual void OnProcessingResponse(ProcessingResponseEventArgs args)
+        {
+            if (ProcessingResponse != null)
+            {
+                ProcessingResponse(this, args);
+            }
+        }
+
+        private static string ReadResponseText( HttpWebResponse response, Encoding encoding ) {
 			var s = response.GetResponseStream();
 
 			if ( s != null ) {
@@ -215,6 +234,8 @@ namespace NScrape {
 
             try {
                 var webResponse = ( HttpWebResponse )httpWebRequest.GetResponse();
+
+                OnProcessingResponse( new ProcessingResponseEventArgs (webResponse ) );
 
                 if ( httpWebRequest.HaveResponse ) {
                     // Handle cookies that are offered
