@@ -41,6 +41,11 @@
 		/// <summary>
 		/// An XML reponse.
 		/// </summary>
-		Xml
+		Xml,
+
+		/// <summary>
+		/// An binary reponse.
+		/// </summary>
+		Binary
 	}
 }

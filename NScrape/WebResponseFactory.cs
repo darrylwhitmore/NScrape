@@ -29,6 +29,7 @@ namespace NScrape
             SupportedContentTypes.Add("application/javascript ", CreateJavaScriptResponse);
             SupportedContentTypes.Add("application/x-javascript", CreateJavaScriptResponse);
             SupportedContentTypes.Add("application/json", CreateJsonResponse);
+            SupportedContentTypes.Add("application/octet-stream", CreateBinaryResponse);
         }
 
         /// <summary>
@@ -97,6 +98,29 @@ namespace NScrape
             var encoding = GetEncoding(webResponse);
             var xml = ReadResponseText(webResponse, encoding);
             return new XmlWebResponse(true, webResponse.ResponseUri, xml, encoding);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="BinaryWebResponse"/>.
+        /// </summary>
+        /// <param name="webResponse">
+        /// The original <see cref="HttpWebResponse"/>.
+        /// </param>
+        /// <returns>
+        /// A new <see cref="BinaryWebResponse"/>.
+        /// </returns>
+        public static WebResponse CreateBinaryResponse(HttpWebResponse webResponse)
+        {
+            byte[] data = null;
+
+            using (var s = webResponse.GetResponseStream())
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                s.CopyTo(memoryStream);
+                data = memoryStream.ToArray();
+            }
+
+            return new BinaryWebResponse(true, webResponse.ResponseUri, data);
         }
 
         /// <summary>
