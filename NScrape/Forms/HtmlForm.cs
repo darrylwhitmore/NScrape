@@ -315,7 +315,7 @@ namespace NScrape.Forms {
 		private void Initialize( int formOrdinal ) {
 			var formDefinitions = HtmlFormDefinition.Parse( Html ).ToList();
 
-			if ( formOrdinal < 0 || formOrdinal >= formDefinitions.Count() ) {
+			if ( formOrdinal < 0 || formOrdinal >= formDefinitions.Count ) {
 				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.InvalidFormOrdinal, formOrdinal ) );
 			}
 

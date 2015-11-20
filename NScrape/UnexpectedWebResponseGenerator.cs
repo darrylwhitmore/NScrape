@@ -12,7 +12,7 @@ namespace NScrape {
             switch ( response.ResponseType ) {
 
 				case WebResponseType.Exception:
-                    var exceptionResponse = response as ExceptionWebResponse;
+                    var exceptionResponse = (ExceptionWebResponse)response;
 
                     exception = exceptionResponse.Exception;
                     break;
@@ -26,7 +26,7 @@ namespace NScrape {
                     break;
 
 				case WebResponseType.Unsupported:
-                    var unsupportedResponse = response as UnsupportedWebResponse;
+                    var unsupportedResponse = (UnsupportedWebResponse)response;
 
                     exception = new WebException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.UnsupportedResponseContentType, unsupportedResponse.ContentType ) );
                     break;
