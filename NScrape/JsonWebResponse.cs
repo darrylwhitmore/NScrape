@@ -1,21 +1,26 @@
 ﻿using System;
 using System.Text;
 
-namespace NScrape
-{
-    /// <summary>
-    /// Represents a web response for a request that returned JSON.
-    /// </summary>
-    public class JsonWebResponse : TextWebResponse
-    {
-        internal JsonWebResponse(bool success, Uri url, string text, Encoding encoding)
-            : base(url, WebResponseType.JavaScript, success, text, encoding)
-        {
-        }
+namespace NScrape {
+	/// <summary>
+	/// Represents a web response for a request that returned JSON.
+	/// </summary>
+	public class JsonWebResponse : TextWebResponse {
 
-        /// <summary>
-        /// Gets the JSON data.
-        /// </summary>
-        public string Json { get { return Text; } }
-    }
+		/// <summary>
+		/// Initializes a new instance of the <see cref="JsonWebResponse"/> class.
+		/// </summary>
+		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
+		/// <param name="responseUrl">The URL of the response.</param>
+		/// <param name="text">The JSON text of the response.</param>
+		/// <param name="encoding">The encoding of the JSON text.</param>
+		public JsonWebResponse( bool success, Uri responseUrl, string text, Encoding encoding )
+			: base( responseUrl, WebResponseType.Json, success, text, encoding ) {
+		}
+
+		/// <summary>
+		/// Gets the JSON data.
+		/// </summary>
+		public string Json { get { return Text; } }
+	}
 }
