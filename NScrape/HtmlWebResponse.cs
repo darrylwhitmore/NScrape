@@ -12,10 +12,10 @@ namespace NScrape {
 		/// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
 		/// <param name="responseUrl">The URL of the response.</param>
-		/// <param name="html">The HTML text of the response.</param>
+		/// <param name="htmlText">The HTML text of the response.</param>
 		/// <param name="encoding">The encoding of the HTML text.</param>
-		public HtmlWebResponse( bool success, Uri responseUrl, string html, Encoding encoding )
-            : base( responseUrl, WebResponseType.Html, success, html, encoding ) {
+		public HtmlWebResponse( bool success, Uri responseUrl, string htmlText, Encoding encoding )
+            : base( success, responseUrl, WebResponseType.Html, htmlText, encoding ) {
         }
 
         /// <summary>

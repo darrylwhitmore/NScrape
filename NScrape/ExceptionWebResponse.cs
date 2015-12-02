@@ -8,13 +8,13 @@ namespace NScrape {
     public class ExceptionWebResponse : WebResponse {
         private readonly WebException exception;
 
-        /// <summary>
-		/// Initializes a new instance of the <see cref="ExceptionWebResponse"/> class.
-        /// </summary>
-        /// <param name="exception">The exception of the response.</param>
-		/// <param name="responseUrl">The URL of the response.</param>
-        public ExceptionWebResponse( WebException exception, Uri responseUrl )
-            : base( responseUrl, WebResponseType.Exception, false ) {
+	    /// <summary>
+	    /// Initializes a new instance of the <see cref="ExceptionWebResponse"/> class.
+	    /// </summary>
+	    /// <param name="responseUrl">The URL of the response.</param>
+	    /// <param name="exception">The exception of the response.</param>
+	    public ExceptionWebResponse( Uri responseUrl, WebException exception )
+            : base( false, responseUrl, WebResponseType.Exception ) {
             this.exception = exception;
         }
 

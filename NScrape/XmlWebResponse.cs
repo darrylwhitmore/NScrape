@@ -13,11 +13,11 @@ namespace NScrape {
 		/// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
 		/// <param name="responseUrl">The URL of the response.</param>
-		/// <param name="xml">The XML text of the response.</param>
+		/// <param name="xmlText">The XML text of the response.</param>
 		/// <param name="encoding">The encoding of the XML text.</param>
-		public XmlWebResponse( bool success, Uri responseUrl, string xml, Encoding encoding )
-			: base( responseUrl, WebResponseType.Xml, success, xml, encoding ) {
-			XDocument = XDocument.Parse( xml );
+		public XmlWebResponse( bool success, Uri responseUrl, string xmlText, Encoding encoding )
+			: base( success, responseUrl, WebResponseType.Xml, xmlText, encoding ) {
+			XDocument = XDocument.Parse( xmlText );
 		}
 
 		/// <summary>

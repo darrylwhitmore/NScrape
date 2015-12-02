@@ -12,10 +12,10 @@ namespace NScrape {
 		/// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
 		/// <param name="responseUrl">The URL of the response.</param>
-		/// <param name="text">The JavaScript text of the response.</param>
+		/// <param name="javaScriptText">The JavaScript text of the response.</param>
 		/// <param name="encoding">The encoding of the JavaScript text.</param>
-		public JavaScriptWebResponse( bool success, Uri responseUrl, string text, Encoding encoding )
-            : base( responseUrl, WebResponseType.JavaScript, success, text, encoding ) {
+		public JavaScriptWebResponse( bool success, Uri responseUrl, string javaScriptText, Encoding encoding )
+            : base( success, responseUrl, WebResponseType.JavaScript, javaScriptText, encoding ) {
         }
 
 		/// <summary>
