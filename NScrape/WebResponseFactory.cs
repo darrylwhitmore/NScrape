@@ -16,17 +16,17 @@ namespace NScrape {
 		/// Initializes static members of the <see cref="WebResponseFactory"/> class.
 		/// </summary>
 		static WebResponseFactory() {
-			SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, WebResponse>>();
-
-			SupportedContentTypes.Add( "image/", CreateImageResponse );
-			SupportedContentTypes.Add( "text/xml", CreateXmlResponse );
-			SupportedContentTypes.Add( "application/xml", CreateXmlResponse );
-			SupportedContentTypes.Add( "text/plain", CreateTextResponse );
-			SupportedContentTypes.Add( "text/javascript", CreateJavaScriptResponse );
-			SupportedContentTypes.Add( "application/javascript ", CreateJavaScriptResponse );
-			SupportedContentTypes.Add( "application/x-javascript", CreateJavaScriptResponse );
-			SupportedContentTypes.Add( "application/json", CreateJsonResponse );
-			SupportedContentTypes.Add( "application/octet-stream", CreateBinaryResponse );
+			SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, WebResponse>> {
+				{ "image/", CreateImageResponse },
+				{ "text/xml", CreateXmlResponse },
+				{ "application/xml", CreateXmlResponse },
+				{ "text/plain", CreateTextResponse },
+				{ "text/javascript", CreateJavaScriptResponse },
+				{ "application/javascript ", CreateJavaScriptResponse },
+				{ "application/x-javascript", CreateJavaScriptResponse },
+				{ "application/json", CreateJsonResponse },
+				{ "application/octet-stream", CreateBinaryResponse }
+			};
 		}
 
 		/// <summary>
@@ -100,12 +100,14 @@ namespace NScrape {
 		/// A new <see cref="BinaryWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateBinaryResponse( HttpWebResponse webResponse ) {
-			byte[] data;
+			byte[] data = {};
 
 			using ( var s = webResponse.GetResponseStream() ) {
-				using ( var memoryStream = new MemoryStream() ) {
-					s.CopyTo( memoryStream );
-					data = memoryStream.ToArray();
+				if ( s != null ) {
+					using ( var memoryStream = new MemoryStream() ) {
+						s.CopyTo( memoryStream );
+						data = memoryStream.ToArray();
+					}
 				}
 			}
 
