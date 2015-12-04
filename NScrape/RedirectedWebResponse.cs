@@ -15,7 +15,7 @@ namespace NScrape {
         /// <param name="request">The original web request.</param>
 		/// <param name="redirectUrl">The redirect URL of the response.</param>
         public RedirectedWebResponse( Uri responseUrl, WebRequest request, Uri redirectUrl )
-            : base( responseUrl, WebResponseType.Redirect, true ) {
+            : base( true, responseUrl, WebResponseType.Redirect ) {
             this.request = request;
             this.redirectUrl = redirectUrl;
         }

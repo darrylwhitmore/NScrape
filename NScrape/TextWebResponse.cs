@@ -9,16 +9,16 @@ namespace NScrape {
         private readonly string text;
         private readonly Encoding encoding;
 
-        /// <summary>
-		/// Initializes a new instance of the <see cref="TextWebResponse"/> class.
-		/// </summary>
-		/// <param name="responseUrl">The URL of the response.</param>
-		/// <param name="responseType">The type of response.</param>
-		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
-		/// <param name="text">The text of the response.</param>
-        /// <param name="encoding">The encoding of the text.</param>
-        protected TextWebResponse( Uri responseUrl, WebResponseType responseType, bool success, string text, Encoding encoding )
-            : base( responseUrl, responseType, success ) {
+	    /// <summary>
+	    /// Initializes a new instance of the <see cref="TextWebResponse"/> class.
+	    /// </summary>
+	    /// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
+	    /// <param name="responseUrl">The URL of the response.</param>
+	    /// <param name="responseType">The type of response.</param>
+	    /// <param name="text">The text of the response.</param>
+	    /// <param name="encoding">The encoding of the text.</param>
+	    protected TextWebResponse( bool success, Uri responseUrl, WebResponseType responseType, string text, Encoding encoding )
+            : base( success, responseUrl, responseType ) {
             this.text = text;
             this.encoding = encoding;
         }

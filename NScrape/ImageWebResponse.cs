@@ -8,14 +8,14 @@ namespace NScrape {
     public class ImageWebResponse : WebResponse {
         private readonly Bitmap image;
 
-        /// <summary>
-		/// Initializes a new instance of the <see cref="ImageWebResponse"/> class.
-        /// </summary>
-		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
-		/// <param name="responseUrl">The URL of the response.</param>
-		/// <param name="image">The image of the response.</param>
-        public ImageWebResponse( bool success, Uri responseUrl, Bitmap image )
-            : base( responseUrl, WebResponseType.Image, success ) {
+	    /// <summary>
+	    /// Initializes a new instance of the <see cref="ImageWebResponse"/> class.
+	    /// </summary>
+	    /// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
+	    /// <param name="responseUrl">The URL of the response.</param>
+	    /// <param name="image">The image of the response.</param>
+	    public ImageWebResponse( bool success, Uri responseUrl, Bitmap image )
+            : base( success, responseUrl, WebResponseType.Image ) {
             this.image = image;
         }
 

@@ -12,10 +12,10 @@ namespace NScrape {
 		/// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
 		/// <param name="responseUrl">The URL of the response.</param>
-		/// <param name="text">The JSON text of the response.</param>
+		/// <param name="jsonText">The JSON text of the response.</param>
 		/// <param name="encoding">The encoding of the JSON text.</param>
-		public JsonWebResponse( bool success, Uri responseUrl, string text, Encoding encoding )
-			: base( responseUrl, WebResponseType.Json, success, text, encoding ) {
+		public JsonWebResponse( bool success, Uri responseUrl, string jsonText, Encoding encoding )
+			: base( success, responseUrl, WebResponseType.Json, jsonText, encoding ) {
 		}
 
 		/// <summary>

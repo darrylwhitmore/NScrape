@@ -302,7 +302,7 @@ namespace NScrape {
 								}
 							}
 							else {
-								response = new UnsupportedWebResponse( contentType, webResponse.ResponseUri );
+								response = new UnsupportedWebResponse( webResponse.ResponseUri, contentType );
 							}
 						}
                     }
@@ -310,11 +310,11 @@ namespace NScrape {
                     webResponse.Close(); // also closes stream opened via GetResponseStream()
                 }
                 else {
-                    response = new ExceptionWebResponse( new WebException( NScrapeResources.NoResponse ), webRequest.Destination );
+                    response = new ExceptionWebResponse( webRequest.Destination, new WebException( NScrapeResources.NoResponse ) );
                 }
             }
             catch ( WebException ex ) {
-                response = new ExceptionWebResponse( ex, webRequest.Destination );
+                response = new ExceptionWebResponse( webRequest.Destination, ex );
             }
 
             return response;
