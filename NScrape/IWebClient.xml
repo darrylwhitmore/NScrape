@@ -169,6 +169,19 @@
     <seealso cref="WebResponse"/>
   </SendRequest_WebRequest>
 
+  <GetHttpWebResponse>
+    <summary>
+      Sends a GET or POST request, reads the response, extracts the cookies (if any) and returns
+      a <see cref="HttpWebResponse"/> that represents the response.
+    </summary>
+    <param name="webRequest">The request to send.</param>
+    <returns>The native response from the server.</returns>
+    <remarks>
+      Only use this method if you want to parse the raw response received by the server. In most
+      cases, <see cref="SendRequest"/> is the preferred option.
+    </remarks>
+  </GetHttpWebResponse>
+  
   <UserAgent>
     <summary>
       Gets or sets the user agent for requests made by a <see cref="WebClient"/>.

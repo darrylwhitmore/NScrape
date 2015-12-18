@@ -32,6 +32,9 @@ namespace NScrape {
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_WebRequest/*'/>
 		WebResponse SendRequest( WebRequest webRequest );
 
+        /// <include file='IWebClient.xml' path='/IWebClient/GetHttpWebResponse/*'/>
+        HttpWebResponse GetHttpWebResponse (WebRequest webRequest);
+
 		/// <include file='IWebClient.xml' path='/IWebClient/UserAgent/*'/>
 		string UserAgent { get; set; }
 	}
