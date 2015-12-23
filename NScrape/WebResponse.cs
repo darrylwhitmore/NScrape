@@ -1,10 +1,12 @@
 using System;
+using System.Runtime.CompilerServices;
 
 namespace NScrape {
 	/// <summary>
 	/// Provides the base implementation for classes which represent web responses.
 	/// </summary>
-	public abstract class WebResponse {
+	public abstract class WebResponse : IDisposable {
+		private bool isDisposed;
 		private readonly WebResponseType responseType;
 		private readonly Uri responseUrl;
 		private readonly bool success;
@@ -19,6 +21,54 @@ namespace NScrape {
 			this.responseUrl = responseUrl;
 			this.responseType = responseType;
 			this.success = success;
+		}
+
+		/// <summary>
+		/// Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+		/// </summary>
+		~WebResponse() {
+			Dispose( false );
+		}
+
+		/// <summary>
+		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+		/// </summary>
+		/// <filterpriority>2</filterpriority>
+		[MethodImpl( MethodImplOptions.Synchronized )]
+		public void Dispose() {
+			Dispose( true );
+			GC.SuppressFinalize( this );
+		}
+
+		private void Dispose( bool isDisposing ) {
+			if ( isDisposed ) {
+				return;
+			}
+
+			if ( isDisposing ) {
+				DisposeManagedRessources();
+			}
+
+			DisposeUnmanagedRessources();
+			isDisposed = true;
+		}
+
+		/// <summary>
+		/// Handles disposal of managed resources.
+		/// </summary>
+		/// <remarks>
+		/// Inheriting classes owning managed resources should override this method and use it to dispose of them.
+		/// </remarks>
+		protected virtual void DisposeManagedRessources() {
+		}
+
+		/// <summary>
+		/// Handles disposal of unmanaged resources.
+		/// </summary>
+		/// <remarks>
+		/// Inheriting classes owning unmanaged resources should override this method and use it to dispose of them.
+		/// </remarks>
+		protected virtual void DisposeUnmanagedRessources() {
 		}
 
 		/// <summary>

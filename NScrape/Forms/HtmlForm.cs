@@ -303,13 +303,13 @@ namespace NScrape.Forms {
 		}
 
 		private string DownloadFormHtml() {
-			var response = WebClient.SendRequest( new GetWebRequest( FormUrl ) );
+			using ( var response = WebClient.SendRequest( new GetWebRequest( FormUrl ) ) ) {
+				var htmlResponse = WebResponseValidator.ValidateHtmlResponse( response, string.Format( CultureInfo.CurrentCulture, NScrapeResources.UnexpectedResponseOnFormPageRequest, FormUrl ) );
 
-			var htmlResponse = WebResponseValidator.ValidateHtmlResponse( response, string.Format( CultureInfo.CurrentCulture, NScrapeResources.UnexpectedResponseOnFormPageRequest, FormUrl ) );
+				FormUrl = htmlResponse.ResponseUrl;
 
-			FormUrl = htmlResponse.ResponseUrl;
-
-			return htmlResponse.Html;
+				return htmlResponse.Html;
+			}
 		}
 
 		private void Initialize( int formOrdinal ) {

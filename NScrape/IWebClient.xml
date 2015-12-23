@@ -59,7 +59,9 @@
 
         var uri = new Uri( "http://www.foo.com" );
 
-        var response = webClient.SendRequest( uri );
+        using ( var response = webClient.SendRequest( uri ) ) {
+
+        }
       </code>
     </example>
     <seealso cref="WebResponse"/>
@@ -83,7 +85,9 @@
 
         var uri = new Uri( "http://www.foo.com" );
 
-        var response = webClient.SendRequest( uri, false );
+        using ( var response = webClient.SendRequest( uri, false ) ) {
+
+        }
       </code>
     </example>
     <seealso cref="WebResponse"/>
@@ -108,7 +112,9 @@
         var uri = new Uri( "http://www.foo.com" );
         var data = "step=confirmation&amp;rt=L&amp;rp=%2Flogin%2Fhome&amp;p=0&amp;inputEmailHandle=foo&amp;inputPassword=bar";
 
-        var response = webClient.SendRequest( uri, data );
+        using ( var response = webClient.SendRequest( uri, data ) ) {
+
+        }
       </code>
     </example>
     <returns>The response from the server.</returns>
@@ -137,7 +143,9 @@
         var uri = new Uri( "http://www.foo.com" );
         var data = "step=confirmation&amp;rt=L&amp;rp=%2Flogin%2Fhome&amp;p=0&amp;inputEmailHandle=foo&amp;inputPassword=bar";
 
-        var response = webClient.SendRequest( uri, data, false );
+        using ( var response = webClient.SendRequest( uri, data, false ) ) {
+
+        }
       </code>
     </example>
     <returns>The response from the server.</returns>
@@ -162,7 +170,9 @@
             RequestData = "step=confirmation&amp;rt=L&amp;rp=%2Flogin%2Fhome&amp;p=0&amp;inputEmailHandle=foo&amp;inputPassword=bar"
         };
 
-        var response = webClient.SendRequest( request );
+        using ( var response = webClient.SendRequest( request ) ) {
+
+        }
       </code>
     </example>
     <seealso cref="WebRequest"/>
