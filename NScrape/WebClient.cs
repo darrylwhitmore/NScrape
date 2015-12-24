@@ -236,14 +236,12 @@ namespace NScrape {
                     }
 
 					if ( redirectionStatusCodes.Contains( webResponse.StatusCode ) ) {
-						// We have a redirected response.
-
-						// Get the new location.
-                        Uri redirectUri;
+						// We have a redirected response, so get the new location.
                         var location = webResponse.Headers[CommonHeaders.Location];
 
 						// Locations should always be absolute, per the RFC (http://tools.ietf.org/html/rfc2616#section-14.30), but
 						// that won't always be the case.
+						Uri redirectUri;
 						if ( Uri.IsWellFormedUriString( location, UriKind.Absolute ) ) {
 							redirectUri = new Uri( location );
 						}
@@ -262,11 +260,11 @@ namespace NScrape {
                     }
                     else {
 						// We have a regular response.
-
-						var contentType = webResponse.Headers[CommonHeaders.ContentType];
-                        response = WebResponseFactory.CreateResponse(webResponse, contentType);
+						response = WebResponseFactory.CreateResponse( webResponse );
 
                         if(response == null) {
+							var contentType = webResponse.Headers[CommonHeaders.ContentType];
+
 							if ( contentType.StartsWith( "text/html", StringComparison.OrdinalIgnoreCase ) ) {
                                 var encoding = WebResponseFactory.GetEncoding( webResponse );
 								var html = WebResponseFactory.ReadResponseText( webResponse, encoding );
