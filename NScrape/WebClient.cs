@@ -306,8 +306,6 @@ namespace NScrape {
 							}
 						}
                     }
-
-                    webResponse.Close(); // also closes stream opened via GetResponseStream()
                 }
                 else {
                     response = new ExceptionWebResponse( webRequest.Destination, new WebException( NScrapeResources.NoResponse ) );

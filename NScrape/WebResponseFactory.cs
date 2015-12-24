@@ -17,15 +17,17 @@ namespace NScrape {
 		/// </summary>
 		static WebResponseFactory() {
 			SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, WebResponse>> {
-				{ "image/", CreateImageResponse },
-				{ "text/xml", CreateXmlResponse },
-				{ "application/xml", CreateXmlResponse },
-				{ "text/plain", CreateTextResponse },
-				{ "text/javascript", CreateJavaScriptResponse },
 				{ "application/javascript ", CreateJavaScriptResponse },
-				{ "application/x-javascript", CreateJavaScriptResponse },
 				{ "application/json", CreateJsonResponse },
-				{ "application/octet-stream", CreateBinaryResponse }
+				{ "application/octet-stream", CreateBinaryResponse },
+				{ "application/x-dosexec", CreateBinaryResponse },
+				{ "application/x-javascript", CreateJavaScriptResponse },
+				{ "application/x-msdos-program", CreateBinaryResponse },
+				{ "application/xml", CreateXmlResponse },
+				{ "image/", CreateImageResponse },
+				{ "text/javascript", CreateJavaScriptResponse },
+				{ "text/plain", CreateTextResponse },
+				{ "text/xml", CreateXmlResponse }
 			};
 		}
 
@@ -100,18 +102,7 @@ namespace NScrape {
 		/// A new <see cref="BinaryWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateBinaryResponse( HttpWebResponse webResponse ) {
-			byte[] data = {};
-
-			using ( var s = webResponse.GetResponseStream() ) {
-				if ( s != null ) {
-					using ( var memoryStream = new MemoryStream() ) {
-						s.CopyTo( memoryStream );
-						data = memoryStream.ToArray();
-					}
-				}
-			}
-
-			return new BinaryWebResponse( true, webResponse.ResponseUri, data );
+			return new BinaryWebResponse( webResponse );
 		}
 
 		/// <summary>
