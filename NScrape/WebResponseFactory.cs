@@ -107,7 +107,7 @@ namespace NScrape {
 		/// A new <see cref="BinaryWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateBinaryResponse( HttpWebResponse webResponse ) {
-			return new BinaryWebResponse( webResponse );
+			return new BinaryWebResponse( true, webResponse );
 		}
 
 		/// <summary>

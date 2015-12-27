@@ -29,9 +29,10 @@ namespace NScrape {
 	    /// <summary>
 	    /// Initializes a new instance of the <see cref="BinaryWebResponse"/> class.
 	    /// </summary>
-	    /// <param name="webResponse">The web response object.</param>
-	    public BinaryWebResponse( HttpWebResponse webResponse )
-			: base( true, webResponse.ResponseUri, WebResponseType.Binary ) {
+		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
+		/// <param name="webResponse">The web response object.</param>
+	    public BinaryWebResponse( bool success, HttpWebResponse webResponse )
+			: base( success, webResponse.ResponseUri, WebResponseType.Binary ) {
 			this.webResponse = webResponse;
 		}
 
