@@ -49,7 +49,7 @@
 		Xml,
 
 		/// <summary>
-		/// An binary reponse.
+		/// A binary reponse.
 		/// </summary>
 		Binary
 	}

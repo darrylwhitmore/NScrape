@@ -69,13 +69,13 @@ Finally, we instantiate our scraper with the HTML from the response, and call it
 	form.Load( new Uri( "http://www.weather.gov/" ), new KeyValuePair<string, string>( "name", "getForecast" ) );
 	form.InputControls.Single( c => c.Name == "inputstring" ).Value = "fairbanks, ak";
 
-	var response = form.Submit();
-
-	if ( response.ResponseType == WebResponseType.Html ) {
-		var scraper = new TestScraper( ( ( HtmlWebResponse )response ).Html );
-
-		var conditions = scraper.GetConditions();
-
-		var temperature = scraper.GetTemperature();
+	using ( var response = form.Submit() ) {
+		if ( response.ResponseType == WebResponseType.Html ) {
+			var scraper = new TestScraper( ( ( HtmlWebResponse )response ).Html );
+	
+			var conditions = scraper.GetConditions();
+	
+			var temperature = scraper.GetTemperature();
+		}
 	}
 ```

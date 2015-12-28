@@ -9,7 +9,7 @@ using System.Text;
 
 namespace NScrape {
 	/// <summary>
-	/// Creates a <see cref="WebResponse"/> object based on a <see cref="HttpWebResponse"/> object.
+	/// Creates a <see cref="WebResponse"/> object based on an <see cref="HttpWebResponse"/> object.
 	/// </summary>
 	public class WebResponseFactory {
 		/// <summary>
@@ -17,26 +17,33 @@ namespace NScrape {
 		/// </summary>
 		static WebResponseFactory() {
 			SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, WebResponse>> {
-				{ "image/", CreateImageResponse },
-				{ "text/xml", CreateXmlResponse },
-				{ "application/xml", CreateXmlResponse },
-				{ "text/plain", CreateTextResponse },
-				{ "text/javascript", CreateJavaScriptResponse },
 				{ "application/javascript ", CreateJavaScriptResponse },
-				{ "application/x-javascript", CreateJavaScriptResponse },
 				{ "application/json", CreateJsonResponse },
-				{ "application/octet-stream", CreateBinaryResponse }
+				{ "application/octet-stream", CreateBinaryResponse },
+				{ "application/x-dosexec", CreateBinaryResponse },
+				{ "application/x-javascript", CreateJavaScriptResponse },
+				{ "application/x-msdos-program", CreateBinaryResponse },
+				{ "application/xml", CreateXmlResponse },
+				{ "image/", CreateImageResponse },
+				{ "text/javascript", CreateJavaScriptResponse },
+				{ "text/plain", CreateTextResponse },
+				{ "text/xml", CreateXmlResponse }
 			};
 		}
 
 		/// <summary>
-		/// Gets a dictionary that contains all content types that are currently suported by the
-		/// <see cref="WebResponseFactory"/>. The key of the dictionary is the text the content type
-		/// must start with (but not necessarily the full text of the content type); the value is a
-		/// <see cref="Func{HttpWebResponse, WebResponse}"/> that takes a <see cref="HttpWebResponse"/>
+		/// Gets a dictionary containing all content types currently suported by the
+		/// <see cref="WebResponseFactory"/>.
+		/// </summary>
+		/// <remarks>
+		/// The key of the dictionary is the text the content type
+		/// must start with (but not necessarily the full text of the content type).
+		/// <br/><br/>
+		/// The value is a
+		/// <see cref="Func{HttpWebResponse, WebResponse}"/> that takes an <see cref="HttpWebResponse"/>
 		/// object with the given content type and returns a <see cref="WebResponse"/>. The return value
 		/// is usually a subclass of the <see cref="WebResponse"/> class.
-		/// </summary>
+		/// </remarks>
 		public static Dictionary<string, Func<HttpWebResponse, WebResponse>> SupportedContentTypes { get; private set; }
 
 		/// <summary>
@@ -49,7 +56,7 @@ namespace NScrape {
 		/// A new <see cref="ImageWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateImageResponse( HttpWebResponse webResponse ) {
-			var image = new Bitmap( 0, 0 );
+			Bitmap image = null;
 
 			var s = webResponse.GetResponseStream();
 
@@ -76,7 +83,7 @@ namespace NScrape {
 		}
 
 		/// <summary>
-		/// Creates a <see cref="XmlWebResponse"/>.
+		/// Creates an <see cref="XmlWebResponse"/>.
 		/// </summary>
 		/// <param name="webResponse">
 		/// The original <see cref="HttpWebResponse"/>.
@@ -100,18 +107,7 @@ namespace NScrape {
 		/// A new <see cref="BinaryWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateBinaryResponse( HttpWebResponse webResponse ) {
-			byte[] data = {};
-
-			using ( var s = webResponse.GetResponseStream() ) {
-				if ( s != null ) {
-					using ( var memoryStream = new MemoryStream() ) {
-						s.CopyTo( memoryStream );
-						data = memoryStream.ToArray();
-					}
-				}
-			}
-
-			return new BinaryWebResponse( true, webResponse.ResponseUri, data );
+			return new BinaryWebResponse( true, webResponse );
 		}
 
 		/// <summary>
@@ -130,13 +126,13 @@ namespace NScrape {
 		}
 
 		/// <summary>
-		/// Creates a <see cref="CreateJsonResponse"/>.
+		/// Creates a <see cref="JsonWebResponse"/>.
 		/// </summary>
 		/// <param name="webResponse">
 		/// The original <see cref="HttpWebResponse"/>.
 		/// </param>
 		/// <returns>
-		/// A new <see cref="CreateJsonResponse"/>.
+		/// A new <see cref="JsonWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateJsonResponse( HttpWebResponse webResponse ) {
 			var encoding = GetEncoding( webResponse );
@@ -145,21 +141,19 @@ namespace NScrape {
 		}
 
 		/// <summary>
-		/// Creates a <see cref="WebResponse"/> for a <see cref="HttpWebResponse"/>, based on its
-		/// content type. If the content type is not registered with the <see cref="WebResponseFactory"/>,
-		/// returns <see langword="null"/>.
+		/// Creates a <see cref="WebResponse"/> for an <see cref="HttpWebResponse"/>, based on its
+		/// content type.
 		/// </summary>
 		/// <param name="webResponse">
 		/// The <see cref="HttpWebResponse"/> to parse.
 		/// </param>
-		/// <param name="contentType">
-		/// The content type of the web response.
-		/// </param>
 		/// <returns>
 		/// If the content type is registered with the <see cref="WebResponseFactory"/>, a new
-		/// <see cref="WebResponse"/> object. Else, <see langword="null"/>.
+		/// <see cref="WebResponse"/> object, otherwise, <see langword="null"/>.
 		/// </returns>
-		public static WebResponse CreateResponse( HttpWebResponse webResponse, string contentType ) {
+		public static WebResponse CreateResponse( HttpWebResponse webResponse ) {
+			var contentType = webResponse.Headers[CommonHeaders.ContentType];
+
 			// The keys in the SupportedContentTypes indicate the text the contentType
 			// must start with. Find that key
 			var key = SupportedContentTypes.Keys.SingleOrDefault( k => contentType.StartsWith( k, StringComparison.OrdinalIgnoreCase ) );
@@ -173,7 +167,7 @@ namespace NScrape {
 		}
 
 		/// <summary>
-		/// Gets the encoding used by a <see cref="HttpWebResponse"/>. Falls back to the <c>iso-8859-1</c>
+		/// Gets the encoding used by an <see cref="HttpWebResponse"/>. Falls back to the <c>iso-8859-1</c>
 		/// character set if no encoding was specified.
 		/// </summary>
 		/// <param name="webResponse">
@@ -192,13 +186,13 @@ namespace NScrape {
 		}
 
 		/// <summary>
-		/// Reads a <see cref="HttpWebResponse"/> as plain text.
+		/// Reads an <see cref="HttpWebResponse"/> as plain text.
 		/// </summary>
 		/// <param name="webResponse">
 		/// The <see cref="HttpWebResponse"/> to read.
 		/// </param>
 		/// <returns>
-		/// A <see cref="string"/> that represents the text of a <see cref="HttpWebResponse"/>.
+		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
 		/// </returns>
 		public static string ReadResponseText( HttpWebResponse webResponse ) {
 			var encoding = GetEncoding( webResponse );
@@ -206,7 +200,7 @@ namespace NScrape {
 		}
 
 		/// <summary>
-		/// Reads a <see cref="HttpWebResponse"/> as plain text.
+		/// Reads an <see cref="HttpWebResponse"/> as plain text.
 		/// </summary>
 		/// <param name="webResponse">
 		/// The <see cref="HttpWebResponse"/> to read.
@@ -215,7 +209,7 @@ namespace NScrape {
 		/// The encoding used.
 		/// </param>
 		/// <returns>
-		/// A <see cref="string"/> that represents the text of a <see cref="HttpWebResponse"/>.
+		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
 		/// </returns>
 		public static string ReadResponseText( HttpWebResponse webResponse, Encoding encoding ) {
 			var s = webResponse.GetResponseStream();
