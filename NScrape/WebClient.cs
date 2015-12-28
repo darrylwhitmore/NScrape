@@ -159,81 +159,13 @@ namespace NScrape {
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_WebRequest/*'/>
         public WebResponse SendRequest( WebRequest webRequest ) {
-            var httpWebRequest = (HttpWebRequest)System.Net.WebRequest.Create( webRequest.Destination );
-
-			httpWebRequest.Method = webRequest.Type.ToString().ToUpperInvariant();
-
-			// We shall handle redirects by hand so that we may capture cookies and properly
-			// handle login forms.
-			//
-			// Automating Web Login With HttpWebRequest
-			// https://www.stevefenton.co.uk/Content/Blog/Date/201210/Blog/Automating-Web-Login-With-HttpWebRequest/
-			httpWebRequest.AllowAutoRedirect = false;
-
-			// Default headers.
-			httpWebRequest.Accept = "*/*";
-			httpWebRequest.UserAgent = UserAgent;
-
-			// Set and/or override any provided headers.
-	        foreach ( var headerName in webRequest.Headers.AllKeys ) {
-				ConfigureHeader( httpWebRequest, headerName, webRequest.Headers[headerName] );
-	        }
-
-            httpWebRequest.CookieContainer = new CookieContainer();
-            httpWebRequest.CookieContainer.Add( cookieJar.GetCookies( webRequest.Destination ) );
-            
-			if ( webRequest.Type == WebRequestType.Post ) {
-                var postRequest = (PostWebRequest)webRequest;
-
-                var requestDataBytes = Encoding.UTF8.GetBytes( postRequest.RequestData );
-                Stream requestStream = null;
-
-                httpWebRequest.ContentLength = requestDataBytes.Length;
-                httpWebRequest.ContentType = postRequest.ContentType;
-                httpWebRequest.ServicePoint.Expect100Continue = false;
-
-                try {
-                    requestStream = httpWebRequest.GetRequestStream();
-                    requestStream.Write( requestDataBytes, 0, requestDataBytes.Length );
-                }
-                finally {
-                    if ( requestStream != null ) {
-                        requestStream.Close();
-                    }
-                }
-            }
-
-			OnSendingRequest( new SendingRequestEventArgs( webRequest ) );
 
             WebResponse response;
-
             try {
-                var webResponse = ( HttpWebResponse )httpWebRequest.GetResponse();
+                // Will return null if no response is available.
+                var webResponse = GetHttpWebResponse(webRequest);
 
-                OnProcessingResponse( new ProcessingResponseEventArgs (webResponse ) );
-
-                if ( httpWebRequest.HaveResponse ) {
-                    // Handle cookies that are offered
-                    foreach ( Cookie responseCookie in webResponse.Cookies ) {
-                        var cookieFound = false;
-
-                        foreach ( Cookie existingCookie in cookieJar.GetCookies( webRequest.Destination ) ) {
-                            if ( responseCookie.Name.Equals( existingCookie.Name ) ) {
-                                existingCookie.Value = responseCookie.Value;
-                                cookieFound = true;
-                            }
-                        }
-
-                        if ( !cookieFound ) {
-                            var args = new AddingCookieEventArgs( responseCookie );
-
-                            OnAddingCookie( args );
-
-                            if ( !args.Cancel ) {
-                                cookieJar.Add( responseCookie );
-                            }
-                        }
-                    }
+                if ( webResponse != null ) {
 
 					if ( redirectionStatusCodes.Contains( webResponse.StatusCode ) ) {
 						// We have a redirected response, so get the new location.
@@ -286,8 +218,9 @@ namespace NScrape {
 									var redirectUri = new Uri( webResponse.ResponseUri, match.Groups[RegexLibrary.ParseMetaRefreshUrlGroup].Value );
 
 									if ( webRequest.AutoRedirect ) {
-										// We are auto redirecting, so make a recursive call to perform the redirect
-										response = SendRequest( new GetWebRequest( redirectUri, httpWebRequest.AllowAutoRedirect ) );
+                                        // We are auto redirecting, so make a recursive call to perform the redirect
+                                        // It appears httpWebRequest.AllowAutoRedirect = false was always set to false
+                                        response = SendRequest( new GetWebRequest( redirectUri, false ) );
 									}
 									else {
 										// We are not auto redirecting, so send the caller a redirect response
@@ -318,5 +251,99 @@ namespace NScrape {
 
 		/// <include file='IWebClient.xml' path='/IWebClient/UserAgent/*'/>
         public string UserAgent { get; set; }
-	}
+
+        /// <include file='IWebClient.xml' path='/IWebClient/GetHttpWebResponse/*'/>
+        public HttpWebResponse GetHttpWebResponse (WebRequest webRequest)
+        {
+            var httpWebRequest = (HttpWebRequest)System.Net.WebRequest.Create(webRequest.Destination);
+            httpWebRequest.Method = webRequest.Type.ToString().ToUpperInvariant();
+
+            // We shall handle redirects by hand so that we may capture cookies and properly
+            // handle login forms.
+            //
+            // Automating Web Login With HttpWebRequest
+            // https://www.stevefenton.co.uk/Content/Blog/Date/201210/Blog/Automating-Web-Login-With-HttpWebRequest/
+            httpWebRequest.AllowAutoRedirect = false;
+
+            // Default headers.
+            httpWebRequest.Accept = "*/*";
+            httpWebRequest.UserAgent = UserAgent;
+
+            // Set and/or override any provided headers.
+            foreach (var headerName in webRequest.Headers.AllKeys)
+            {
+                ConfigureHeader(httpWebRequest, headerName, webRequest.Headers[headerName]);
+            }
+
+            httpWebRequest.CookieContainer = new CookieContainer();
+            httpWebRequest.CookieContainer.Add(cookieJar.GetCookies(webRequest.Destination));
+
+            if (webRequest.Type == WebRequestType.Post)
+            {
+                var postRequest = (PostWebRequest)webRequest;
+
+                var requestDataBytes = Encoding.UTF8.GetBytes(postRequest.RequestData);
+                Stream requestStream = null;
+
+                httpWebRequest.ContentLength = requestDataBytes.Length;
+                httpWebRequest.ContentType = postRequest.ContentType;
+                httpWebRequest.ServicePoint.Expect100Continue = false;
+
+                try
+                {
+                    requestStream = httpWebRequest.GetRequestStream();
+                    requestStream.Write(requestDataBytes, 0, requestDataBytes.Length);
+                }
+                finally
+                {
+                    if (requestStream != null)
+                    {
+                        requestStream.Close();
+                    }
+                }
+            }
+
+            OnSendingRequest(new SendingRequestEventArgs(webRequest));
+
+            var webResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
+            OnProcessingResponse(new ProcessingResponseEventArgs(webResponse));
+
+            if (httpWebRequest.HaveResponse)
+            {
+                // Handle cookies that are offered
+                foreach (Cookie responseCookie in webResponse.Cookies)
+                {
+                    var cookieFound = false;
+
+                    foreach (Cookie existingCookie in cookieJar.GetCookies(webRequest.Destination))
+                    {
+                        if (responseCookie.Name.Equals(existingCookie.Name))
+                        {
+                            existingCookie.Value = responseCookie.Value;
+                            cookieFound = true;
+                        }
+                    }
+
+                    if (!cookieFound)
+                    {
+                        var args = new AddingCookieEventArgs(responseCookie);
+
+                        OnAddingCookie(args);
+
+                        if (!args.Cancel)
+                        {
+                            cookieJar.Add(responseCookie);
+                        }
+                    }
+                }
+
+                return webResponse;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
 }
