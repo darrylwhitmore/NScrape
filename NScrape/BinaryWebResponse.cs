@@ -66,12 +66,16 @@ namespace NScrape {
 				if ( data == null ) {
 					// Backwards compatibility. 
 					using ( var s = GetResponseStream() ) {
-						if ( s != null ) {
-							using ( var ms = new MemoryStream() ) {
-								s.CopyTo( ms );
+						// Skeet says a null is unlikely, but check to make Resharper happy.
+						// http://stackoverflow.com/questions/16911056/can-webresponse-getresponsestream-return-a-null
+						if ( s == null ) {
+							throw new IOException( "HttpWebResponse.GetResponseStream() has returned null" );
+						}
 
-								data = ms.ToArray();
-							}
+						using ( var ms = new MemoryStream() ) {
+							s.CopyTo( ms );
+
+							data = ms.ToArray();
 						}
 					}
 				}
@@ -89,8 +93,10 @@ namespace NScrape {
 	    protected override void DisposeManagedRessources() {
 		    base.DisposeManagedRessources();
 
-		    Close();
-	    }
+			if ( webResponse != null ) {
+				webResponse.Dispose();
+			}
+		}
 
 	    /// <summary>
 		/// Gets the stream that is used to read the binary response.

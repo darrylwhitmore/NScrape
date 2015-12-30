@@ -12,9 +12,10 @@ namespace NScrape.Test {
 			var uri = new Uri( "http://sites.psu.edu/siowfa15/wp-content/uploads/sites/29639/2015/10/cat.jpg" );
 
 			using ( var response = webClient.SendRequest( uri ) ) {
-				Assert.True( response.Success );
 				Assert.NotNull( response );
+				Assert.True( response.Success );
 				Assert.Equal( WebResponseType.Image, response.ResponseType );
+				Assert.Equal( uri, response.ResponseUrl );
 
 				var imageResponse = response as ImageWebResponse;
 				Assert.NotNull( imageResponse );
@@ -30,9 +31,10 @@ namespace NScrape.Test {
 			var uri = new Uri( "https://download-cdn.getsync.com/stable/windows64/BitTorrent-Sync_x64.exe" );
 
 			using ( var response = webClient.SendRequest( uri ) ) {
-				Assert.True( response.Success ); 
 				Assert.NotNull( response );
+				Assert.True( response.Success ); 
 				Assert.Equal( WebResponseType.Binary, response.ResponseType );
+				Assert.Equal( uri, response.ResponseUrl );
 
 				var binaryResponse = response as BinaryWebResponse;
 				Assert.NotNull( binaryResponse );
@@ -59,9 +61,10 @@ namespace NScrape.Test {
 			var uri = new Uri( "https://download-cdn.getsync.com/stable/windows64/BitTorrent-Sync_x64.exe" );
 
 			using ( var response = webClient.SendRequest( uri ) ) {
-				Assert.True( response.Success );
 				Assert.NotNull( response );
+				Assert.True( response.Success );
 				Assert.Equal( WebResponseType.Binary, response.ResponseType );
+				Assert.Equal( uri, response.ResponseUrl );
 
 				var binaryResponse = response as BinaryWebResponse;
 				Assert.NotNull( binaryResponse );

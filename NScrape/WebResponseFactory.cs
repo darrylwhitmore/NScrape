@@ -56,15 +56,7 @@ namespace NScrape {
 		/// A new <see cref="ImageWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateImageResponse( HttpWebResponse webResponse ) {
-			Bitmap image = null;
-
-			var s = webResponse.GetResponseStream();
-
-			if ( s != null ) {
-				image = new Bitmap( s );
-			}
-
-			return new ImageWebResponse( true, webResponse.ResponseUri, image );
+			return new ImageWebResponse( true, webResponse );
 		}
 
 		/// <summary>
