@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NScrapeExtensionTests.cs" />
     <Compile Include="WebResponseTests.cs" />
     <Compile Include="NScrapeUtilityTests.cs" />
     <Compile Include="HtmlFormTests.cs" />

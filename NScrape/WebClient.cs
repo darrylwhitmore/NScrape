@@ -266,8 +266,8 @@ namespace NScrape {
 							var contentType = webResponse.Headers[CommonHeaders.ContentType];
 
 							if ( contentType.StartsWith( "text/html", StringComparison.OrdinalIgnoreCase ) ) {
-                                var encoding = WebResponseFactory.GetEncoding( webResponse );
-								var html = WebResponseFactory.ReadResponseText( webResponse, encoding );
+								var encoding = webResponse.GetEncoding();
+								var html = webResponse.GetResponseText( encoding );
 
 								var haveRefresh = false;
 

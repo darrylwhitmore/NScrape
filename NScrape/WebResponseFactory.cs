@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -69,8 +66,8 @@ namespace NScrape {
 		/// A new <see cref="PlainTextWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateTextResponse( HttpWebResponse webResponse ) {
-			var encoding = GetEncoding( webResponse );
-			var text = ReadResponseText( webResponse, encoding );
+			var encoding = webResponse.GetEncoding();
+			var text = webResponse.GetResponseText( encoding );
 			return new PlainTextWebResponse( true, webResponse.ResponseUri, text, encoding );
 		}
 
@@ -84,8 +81,8 @@ namespace NScrape {
 		/// A new <see cref="XmlWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateXmlResponse( HttpWebResponse webResponse ) {
-			var encoding = GetEncoding( webResponse );
-			var xml = ReadResponseText( webResponse, encoding );
+			var encoding = webResponse.GetEncoding();
+			var xml = webResponse.GetResponseText( encoding );
 			return new XmlWebResponse( true, webResponse.ResponseUri, xml, encoding );
 		}
 
@@ -112,8 +109,8 @@ namespace NScrape {
 		/// A new <see cref="JavaScriptWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateJavaScriptResponse( HttpWebResponse webResponse ) {
-			var encoding = GetEncoding( webResponse );
-			var javaScript = ReadResponseText( webResponse, encoding );
+			var encoding = webResponse.GetEncoding();
+			var javaScript = webResponse.GetResponseText( encoding );
 			return new JavaScriptWebResponse( true, webResponse.ResponseUri, javaScript, encoding );
 		}
 
@@ -127,8 +124,8 @@ namespace NScrape {
 		/// A new <see cref="JsonWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateJsonResponse( HttpWebResponse webResponse ) {
-			var encoding = GetEncoding( webResponse );
-			var text = ReadResponseText( webResponse, encoding );
+			var encoding = webResponse.GetEncoding();
+			var text = webResponse.GetResponseText( encoding );
 			return new JsonWebResponse( true, webResponse.ResponseUri, text, encoding );
 		}
 
@@ -168,13 +165,9 @@ namespace NScrape {
 		/// <returns>
 		/// The content type used by the <see cref="HttpWebResponse"/>.
 		/// </returns>
+		[Obsolete( "WebResponseFactory.GetEncoding() is deprecated, please use HttpWebResponse.GetEncoding() instead." )]
 		public static Encoding GetEncoding( HttpWebResponse webResponse ) {
-			// If a character set is not specified, RFC2616 section 3.7.1 says to use ISO-8859-1, per the page below.
-			// The page says this is more or less useless, but I did find that Chrome and Firefox behaved this way
-			// for javascript files that I tested.
-			// http://www.w3.org/TR/html4/charset.html#h-5.2.2
-			var characterSet = ( !string.IsNullOrEmpty( webResponse.CharacterSet ) ? webResponse.CharacterSet : "iso-8859-1" );
-			return Encoding.GetEncoding( characterSet );
+			return webResponse.GetEncoding();
 		}
 
 		/// <summary>
@@ -186,9 +179,9 @@ namespace NScrape {
 		/// <returns>
 		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
 		/// </returns>
+		[Obsolete( "WebResponseFactory.ReadResponseText( HttpWebResponse ) is deprecated, please use HttpWebResponse.GetResponseText() instead." )]
 		public static string ReadResponseText( HttpWebResponse webResponse ) {
-			var encoding = GetEncoding( webResponse );
-			return ReadResponseText( webResponse, encoding );
+			return webResponse.GetResponseText();
 		}
 
 		/// <summary>
@@ -203,27 +196,9 @@ namespace NScrape {
 		/// <returns>
 		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
 		/// </returns>
+		[Obsolete( "WebResponseFactory.ReadResponseText( HttpWebResponse, Encoding ) is deprecated, please use HttpWebResponse.GetResponseText( Encoding ) instead." )]
 		public static string ReadResponseText( HttpWebResponse webResponse, Encoding encoding ) {
-			var s = webResponse.GetResponseStream();
-
-			if ( s != null ) {
-				StreamReader sr;
-
-				if ( webResponse.ContentEncoding == "gzip" ) {
-					sr = new StreamReader( new GZipStream( s, CompressionMode.Decompress ), encoding );
-				}
-				else {
-					sr = new StreamReader( s, encoding );
-				}
-
-				var content = sr.ReadToEnd();
-
-				sr.Close();
-
-				return content;
-			}
-
-			return null;
+			return webResponse.GetResponseText( encoding );
 		}
 	}
 }
