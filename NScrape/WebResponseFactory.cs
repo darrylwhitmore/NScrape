@@ -23,7 +23,7 @@ namespace NScrape {
 				{ "application/xml", CreateXmlResponse },
 				{ "image/", CreateImageResponse },
 				{ "text/javascript", CreateJavaScriptResponse },
-				{ "text/plain", CreateTextResponse },
+				{ "text/plain", CreatePlainTextResponse },
 				{ "text/xml", CreateXmlResponse }
 			};
 		}
@@ -65,10 +65,22 @@ namespace NScrape {
 		/// <returns>
 		/// A new <see cref="PlainTextWebResponse"/>.
 		/// </returns>
+		public static WebResponse CreatePlainTextResponse( HttpWebResponse webResponse ) {
+			return new PlainTextWebResponse( true, webResponse );
+		}
+
+		/// <summary>
+		/// Creates a <see cref="PlainTextWebResponse"/>.
+		/// </summary>
+		/// <param name="webResponse">
+		/// The original <see cref="HttpWebResponse"/>.
+		/// </param>
+		/// <returns>
+		/// A new <see cref="PlainTextWebResponse"/>.
+		/// </returns>
+		[Obsolete( "WebResponseFactory.CreateTextResponse( HttpWebResponse ) is deprecated, please use HttpWebResponse.CreatePlainTextResponse( HttpWebResponse ) instead." )]
 		public static WebResponse CreateTextResponse( HttpWebResponse webResponse ) {
-			var encoding = webResponse.GetEncoding();
-			var text = webResponse.GetResponseText( encoding );
-			return new PlainTextWebResponse( true, webResponse.ResponseUri, text, encoding );
+			return CreatePlainTextResponse( webResponse );
 		}
 
 		/// <summary>

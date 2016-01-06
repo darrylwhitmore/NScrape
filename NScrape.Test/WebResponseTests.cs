@@ -1,9 +1,30 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using Xunit;
 
 namespace NScrape.Test {
 	public class WebResponseTests {
+
+		[Fact]
+		public void PlainTextWebResponseTest() {
+			var webClient = new WebClient();
+
+			var uri = new Uri( "https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt" );
+
+			using ( var response = webClient.SendRequest( uri ) ) {
+				Assert.NotNull( response );
+				Assert.True( response.Success );
+				Assert.Equal( WebResponseType.PlainText, response.ResponseType );
+				Assert.Equal( uri, response.ResponseUrl );
+
+				var plainTextResponse = response as PlainTextWebResponse;
+				Assert.NotNull( plainTextResponse );
+
+				Assert.NotNull( plainTextResponse.PlainText );
+				Assert.Contains( "∮ E⋅da = Q,  n → ∞, ∑ f(i) = ∏ g(i)", plainTextResponse.PlainText );
+			}
+		}
 
 		[Fact]
 		public void ImageWebResponseTest() {

@@ -9,12 +9,14 @@ namespace NScrape {
 	/// </summary>
 	public static class NScrapeExtensions {
 		/// <summary>
-		/// Gets the encoding used by an <see cref="HttpWebResponse"/>. Falls back to the <c>iso-8859-1</c>
-		/// character set if no encoding was specified.
+		/// Gets the encoding used by an <see cref="HttpWebResponse"/>.
 		/// </summary>
 		/// <param name="webResponse">
 		/// The <see cref="HttpWebResponse"/> for which to determine the content type.
 		/// </param>
+		/// <remarks>
+		/// If no encoding was specified, the <c>ISO-8859-1</c> character set is assumed.
+		/// </remarks>
 		/// <returns>
 		/// The content type used by the <see cref="HttpWebResponse"/>.
 		/// </returns>
@@ -33,27 +35,17 @@ namespace NScrape {
 		/// <param name="webResponse">
 		/// The <see cref="HttpWebResponse"/> to read.
 		/// </param>
-		/// <returns>
-		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
-		/// </returns>
-		public static string GetResponseText( this HttpWebResponse webResponse ) {
-			var encoding = webResponse.GetEncoding();
-			return GetResponseText( webResponse, encoding );
-		}
-
-		/// <summary>
-		/// Reads an <see cref="HttpWebResponse"/> as plain text.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The <see cref="HttpWebResponse"/> to read.
-		/// </param>
 		/// <param name="encoding">
-		/// The encoding used.
+		/// The encoding to be used. If omitted, the encoding specified in the web response shall be used.
 		/// </param>
 		/// <returns>
 		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
 		/// </returns>
-		public static string GetResponseText( this HttpWebResponse webResponse, Encoding encoding ) {
+		public static string GetResponseText( this HttpWebResponse webResponse, Encoding encoding = null ) {
+			if ( encoding == null ) {
+				encoding = webResponse.GetEncoding();
+			}
+
 			var s = webResponse.GetResponseStream();
 
 			if ( s != null ) {
