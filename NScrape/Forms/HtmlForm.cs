@@ -47,9 +47,9 @@ namespace NScrape.Forms {
 		/// <param name="attribute">Contains the form attribute to be used to identify the form to load.</param>
 		/// <param name="attributeValue">Contains the form attribute value to be used to identify the form to load.</param>
 		/// <remarks>
-		/// The form identified by the specified attribute/value shall be loaded.
+		/// Deprecated; please use <see cref="Load( Uri, KeyValuePair&lt;string, string&gt; )"/> instead.
 		/// </remarks>
-		[Obsolete( "Load( Uri, string, string ) is deprecated, please use Load( Uri, KeyValuePair<string, string> ) instead." )]
+		[Obsolete( "Please use Load( Uri, KeyValuePair<string, string> ) instead." )]
 		public void Load( Uri formUrl, string attribute, string attributeValue ) {
 			FormUrl = formUrl;
 
@@ -96,9 +96,9 @@ namespace NScrape.Forms {
 		/// <param name="attribute">Contains the form attribute to be used to identify the form to load.</param>
 		/// <param name="attributeValue">Contains the form attribute value to be used to identify the form to load.</param>
 		/// <remarks>
-		/// The form identified by the specified attribute/value in the provided HTML text shall be loaded.
+		/// Deprecated; please use <see cref="Load( Uri, string, KeyValuePair&lt;string, string&gt; )"/> instead.
 		/// </remarks>
-		[Obsolete( "Load( Uri, string, string, string ) is deprecated, please use Load( Uri, string, KeyValuePair<string, string> ) instead." )]
+		[Obsolete( "Please use Load( Uri, string, KeyValuePair<string, string> ) instead." )]
 		public void Load( Uri formUrl, string formHtml, string attribute, string attributeValue ) {
 			FormUrl = formUrl;
 

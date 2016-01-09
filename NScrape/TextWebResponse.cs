@@ -19,7 +19,10 @@ namespace NScrape {
 	    /// <param name="responseType">The type of response.</param>
 	    /// <param name="text">The text of the response.</param>
 	    /// <param name="encoding">The encoding of the text.</param>
-		[Obsolete( "TextWebResponse( bool, Uri, WebResponseType, string, Encoding ) is deprecated, please use TextWebResponse( bool, WebResponseType, HttpWebResponse ) instead." )]
+		/// <remarks>
+		/// Deprecated; please use <see cref="TextWebResponse( bool, WebResponseType, HttpWebResponse )"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use TextWebResponse( bool, WebResponseType, HttpWebResponse ) instead." )]
 		protected TextWebResponse( bool success, Uri responseUrl, WebResponseType responseType, string text, Encoding encoding )
             : base( success, responseUrl, responseType ) {
             this.text = text;

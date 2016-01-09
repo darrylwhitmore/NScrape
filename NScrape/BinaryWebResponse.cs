@@ -16,7 +16,10 @@ namespace NScrape {
 	    /// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
 	    /// <param name="responseUrl">The URL of the response.</param>
 	    /// <param name="data">The data that was returned by the web server.</param>
-		[Obsolete( "BinaryWebResponse( bool, Uri, byte[] ) is deprecated, please use BinaryWebResponse( bool, HttpWebResponse ) instead." )]
+	    /// <remarks>
+		/// Deprecated; please use <see cref="BinaryWebResponse( bool, HttpWebResponse )"/> instead.
+	    /// </remarks>
+		[Obsolete( "Please use BinaryWebResponse( bool, HttpWebResponse ) instead." )]
 		public BinaryWebResponse( bool success, Uri responseUrl, byte[] data )
             : base( success, responseUrl, WebResponseType.Binary ) {
             this.data = data;
@@ -52,7 +55,10 @@ namespace NScrape {
 	    /// <summary>
 		/// Gets the binary data.
 		/// </summary>
-		[Obsolete( "BinaryWebResponse.Data is deprecated, please use BinaryWebResponse.GetResponseStream() instead." )]
+		/// <remarks>
+		/// Deprecated; please use <see cref="BinaryWebResponse.GetResponseStream()"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use BinaryWebResponse.GetResponseStream() instead." )]
 		public byte[] Data {
 			get {
 				if ( data == null ) {

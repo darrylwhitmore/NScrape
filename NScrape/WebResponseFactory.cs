@@ -78,7 +78,10 @@ namespace NScrape {
 		/// <returns>
 		/// A new <see cref="PlainTextWebResponse"/>.
 		/// </returns>
-		[Obsolete( "WebResponseFactory.CreateTextResponse( HttpWebResponse ) is deprecated, please use HttpWebResponse.CreatePlainTextResponse( HttpWebResponse ) instead." )]
+		/// <remarks>
+		/// Deprecated; please use <see cref="CreatePlainTextResponse( HttpWebResponse )"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use CreatePlainTextResponse( HttpWebResponse ) instead." )]
 		public static WebResponse CreateTextResponse( HttpWebResponse webResponse ) {
 			return CreatePlainTextResponse( webResponse );
 		}
@@ -93,9 +96,7 @@ namespace NScrape {
 		/// A new <see cref="XmlWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateXmlResponse( HttpWebResponse webResponse ) {
-			var encoding = webResponse.GetEncoding();
-			var xml = webResponse.GetResponseText( encoding );
-			return new XmlWebResponse( true, webResponse.ResponseUri, xml, encoding );
+			return new XmlWebResponse( true, webResponse );
 		}
 
 		/// <summary>
@@ -168,8 +169,7 @@ namespace NScrape {
 		}
 
 		/// <summary>
-		/// Gets the encoding used by an <see cref="HttpWebResponse"/>. Falls back to the <c>iso-8859-1</c>
-		/// character set if no encoding was specified.
+		/// Gets the encoding used by an <see cref="HttpWebResponse"/>.
 		/// </summary>
 		/// <param name="webResponse">
 		/// The <see cref="HttpWebResponse"/> for which to determine the content type.
@@ -177,7 +177,10 @@ namespace NScrape {
 		/// <returns>
 		/// The content type used by the <see cref="HttpWebResponse"/>.
 		/// </returns>
-		[Obsolete( "WebResponseFactory.GetEncoding() is deprecated, please use HttpWebResponse.GetEncoding() instead." )]
+		/// <remarks>
+		/// Deprecated; please use <see cref="NScrapeExtensions.GetEncoding( HttpWebResponse )"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use NScrapeExtensions.GetEncoding( HttpWebResponse ) instead." )]
 		public static Encoding GetEncoding( HttpWebResponse webResponse ) {
 			return webResponse.GetEncoding();
 		}
@@ -191,7 +194,10 @@ namespace NScrape {
 		/// <returns>
 		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
 		/// </returns>
-		[Obsolete( "WebResponseFactory.ReadResponseText( HttpWebResponse ) is deprecated, please use HttpWebResponse.GetResponseText() instead." )]
+		/// <remarks>
+		/// Deprecated; please use <see cref="NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding )"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use NScrapeExtensions.GetResponseText( HttpWebResponse ) instead." )]
 		public static string ReadResponseText( HttpWebResponse webResponse ) {
 			return webResponse.GetResponseText();
 		}
@@ -208,7 +214,10 @@ namespace NScrape {
 		/// <returns>
 		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
 		/// </returns>
-		[Obsolete( "WebResponseFactory.ReadResponseText( HttpWebResponse, Encoding ) is deprecated, please use HttpWebResponse.GetResponseText( Encoding ) instead." )]
+		/// <remarks>
+		/// Deprecated; please use <see cref="NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding )"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding ) instead." )]
 		public static string ReadResponseText( HttpWebResponse webResponse, Encoding encoding ) {
 			return webResponse.GetResponseText( encoding );
 		}

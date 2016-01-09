@@ -17,7 +17,10 @@ namespace NScrape {
 	    /// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
 	    /// <param name="responseUrl">The URL of the response.</param>
 	    /// <param name="image">The image of the response.</param>
-		[Obsolete( "ImageWebResponse( bool, Uri, Bitmap ) is deprecated, please use ImageWebResponse( bool, HttpWebResponse ) instead." )]
+		/// <remarks>
+		/// Deprecated; please use <see cref="ImageWebResponse( bool, HttpWebResponse )"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use ImageWebResponse( bool, HttpWebResponse ) instead." )]
 		public ImageWebResponse( bool success, Uri responseUrl, Bitmap image )
             : base( success, responseUrl, WebResponseType.Image ) {
             this.image = image;

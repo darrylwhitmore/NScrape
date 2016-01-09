@@ -15,7 +15,10 @@ namespace NScrape {
 		/// <param name="responseUrl">The URL of the response.</param>
 		/// <param name="plainText">The plain text of the response.</param>
 		/// <param name="encoding">The encoding of the plain text.</param>
-		[Obsolete( "PlainTextWebResponse( bool, Uri, string, Encoding ) is deprecated, please use PlainTextWebResponse( bool, HttpWebResponse ) instead." )]
+		/// <remarks>
+		/// Deprecated; please use <see cref="PlainTextWebResponse( bool, HttpWebResponse )"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use PlainTextWebResponse( bool, HttpWebResponse ) instead." )]
 		public PlainTextWebResponse( bool success, Uri responseUrl, string plainText, Encoding encoding )
             : base( success, responseUrl, WebResponseType.PlainText, plainText, encoding ) {
         }

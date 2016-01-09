@@ -1,10 +1,34 @@
 ﻿using System;
 using System.IO;
-using System.Text;
+using System.Linq;
 using Xunit;
 
 namespace NScrape.Test {
 	public class WebResponseTests {
+
+		[Fact]
+		public void XmlWebResponseTest() {
+			var webClient = new WebClient();
+
+			var uri = new Uri( "http://www.xmlfiles.com/examples/cd_catalog.xml" );
+
+			using ( var response = webClient.SendRequest( uri ) ) {
+				Assert.NotNull( response );
+				Assert.True( response.Success );
+				Assert.Equal( WebResponseType.Xml, response.ResponseType );
+				Assert.Equal( uri, response.ResponseUrl );
+
+				var xmlResponse = response as XmlWebResponse;
+				Assert.NotNull( xmlResponse );
+
+				Assert.NotNull( xmlResponse.XDocument );
+				var catalog = xmlResponse.XDocument.Element( "CATALOG" );
+				Assert.NotNull( catalog );
+				var cds = catalog.Elements( "CD" );
+				Assert.NotNull( cds );
+				Assert.Equal( 26, cds.Count() );
+			}
+		}
 
 		[Fact]
 		public void PlainTextWebResponseTest() {
