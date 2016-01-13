@@ -14,7 +14,7 @@ namespace NScrape {
 		/// </summary>
 		static WebResponseFactory() {
 			SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, WebResponse>> {
-				{ "application/javascript ", CreateJavaScriptResponse },
+				{ "application/javascript", CreateJavaScriptResponse },
 				{ "application/json", CreateJsonResponse },
 				{ "application/octet-stream", CreateBinaryResponse },
 				{ "application/x-dosexec", CreateBinaryResponse },
@@ -122,9 +122,7 @@ namespace NScrape {
 		/// A new <see cref="JavaScriptWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateJavaScriptResponse( HttpWebResponse webResponse ) {
-			var encoding = webResponse.GetEncoding();
-			var javaScript = webResponse.GetResponseText( encoding );
-			return new JavaScriptWebResponse( true, webResponse.ResponseUri, javaScript, encoding );
+			return new JavaScriptWebResponse( true, webResponse );
 		}
 
 		/// <summary>

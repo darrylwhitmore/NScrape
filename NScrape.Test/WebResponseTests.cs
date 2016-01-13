@@ -7,6 +7,26 @@ namespace NScrape.Test {
 	public class WebResponseTests {
 
 		[Fact]
+		public void JavaScriptWebResponseTest() {
+			var webClient = new WebClient();
+
+			var uri = new Uri( "http://www.javascriptkit.com/script/script2/offcanvasmenu.js" );
+
+			using ( var response = webClient.SendRequest( uri ) ) {
+				Assert.NotNull( response );
+				Assert.True( response.Success );
+				Assert.Equal( WebResponseType.JavaScript, response.ResponseType );
+				Assert.Equal( uri, response.ResponseUrl );
+
+				var javaScriptWebResponse = response as JavaScriptWebResponse;
+				Assert.NotNull( javaScriptWebResponse );
+
+				Assert.NotNull( javaScriptWebResponse.JavaScript );
+				Assert.Contains( "var offcanvasmenu = (function($){", javaScriptWebResponse.JavaScript );
+			}
+		}
+	
+		[Fact]
 		public void XmlWebResponseTest() {
 			var webClient = new WebClient();
 
