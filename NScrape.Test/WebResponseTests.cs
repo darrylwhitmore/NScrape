@@ -7,6 +7,26 @@ namespace NScrape.Test {
 	public class WebResponseTests {
 
 		[Fact]
+		public void JsonWebResponseTest() {
+			var webClient = new WebClient();
+
+			var uri = new Uri( "http://jsonplaceholder.typicode.com/posts/1/comments" );
+
+			using ( var response = webClient.SendRequest( uri ) ) {
+				Assert.NotNull( response );
+				Assert.True( response.Success );
+				Assert.Equal( WebResponseType.Json, response.ResponseType );
+				Assert.Equal( uri, response.ResponseUrl );
+
+				var jsonWebResponse = response as JsonWebResponse;
+				Assert.NotNull( jsonWebResponse );
+
+				Assert.NotNull( jsonWebResponse.Json );
+				Assert.Contains( "\"email\": \"Eliseo@gardner.biz\",", jsonWebResponse.Json );
+			}
+		}
+
+		[Fact]
 		public void JavaScriptWebResponseTest() {
 			var webClient = new WebClient();
 

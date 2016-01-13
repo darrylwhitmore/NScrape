@@ -135,9 +135,7 @@ namespace NScrape {
 		/// A new <see cref="JsonWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateJsonResponse( HttpWebResponse webResponse ) {
-			var encoding = webResponse.GetEncoding();
-			var text = webResponse.GetResponseText( encoding );
-			return new JsonWebResponse( true, webResponse.ResponseUri, text, encoding );
+			return new JsonWebResponse( true, webResponse );
 		}
 
 		/// <summary>
