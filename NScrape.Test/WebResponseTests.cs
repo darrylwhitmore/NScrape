@@ -7,6 +7,112 @@ namespace NScrape.Test {
 	public class WebResponseTests {
 
 		[Fact]
+		public void RedirectWebResponseNoAutoRedirectTest() {
+			var webClient = new WebClient();
+
+			var uri = new Uri( "https://jigsaw.w3.org/HTTP/300/301.html" );
+			var redirectUri = new Uri( "https://jigsaw.w3.org/HTTP/300/Overview.html" );
+
+			using ( var response = webClient.SendRequest( uri, false ) ) {
+				Assert.NotNull( response );
+				Assert.True( response.Success );
+				Assert.Equal( WebResponseType.Redirect, response.ResponseType );
+
+				var redirectedWebResponse = response as RedirectedWebResponse;
+				Assert.NotNull( redirectedWebResponse );
+				Assert.Equal( redirectUri, redirectedWebResponse.RedirectUrl );
+
+				Assert.NotNull( redirectedWebResponse.WebRequest );
+				Assert.Equal( uri, redirectedWebResponse.ResponseUrl );
+				Assert.Equal( uri, redirectedWebResponse.WebRequest.Destination );
+			}
+		}
+
+		[Fact]
+		public void RedirectWebResponseAutoRedirectTest() {
+			var webClient = new WebClient();
+
+			var uri = new Uri( "https://jigsaw.w3.org/HTTP/300/301.html" );
+			var redirectUri = new Uri( "https://jigsaw.w3.org/HTTP/300/Overview.html" );
+
+			using ( var response = webClient.SendRequest( uri ) ) {
+				Assert.NotNull( response );
+				Assert.True( response.Success );
+				Assert.Equal( WebResponseType.Html, response.ResponseType );
+				Assert.Equal( redirectUri, response.ResponseUrl );
+
+				var htmlWebResponse = response as HtmlWebResponse;
+				Assert.NotNull( htmlWebResponse );
+
+				Assert.NotNull( htmlWebResponse.Html );
+				Assert.Contains( "A set of HTTP/1.1 redirect codes", htmlWebResponse.Html );
+			}
+		}
+
+		[Fact]
+		public void HtmlWebResponseMetaFreshTagNoAutoRedirectTest() {
+			var webClient = new WebClient();
+
+			var uri = new Uri( "http://www.pageresource.com/html/refex1.htm" );
+			var redirectUri = new Uri( "http://www.pageresource.com/html/refex2.htm" );
+
+			using ( var response = webClient.SendRequest( uri, false ) ) {
+				Assert.NotNull( response );
+				Assert.True( response.Success );
+				Assert.Equal( WebResponseType.Redirect, response.ResponseType );
+
+				var redirectedWebResponse = response as RedirectedWebResponse;
+				Assert.NotNull( redirectedWebResponse );
+				Assert.Equal( redirectUri, redirectedWebResponse.RedirectUrl );
+
+				Assert.NotNull( redirectedWebResponse.WebRequest );
+				Assert.Equal( uri, redirectedWebResponse.ResponseUrl );
+				Assert.Equal( uri, redirectedWebResponse.WebRequest.Destination );
+			}
+		}
+
+		[Fact]
+		public void HtmlWebResponseMetaFreshTagAutoRedirectTest() {
+			var webClient = new WebClient();
+
+			var uri = new Uri( "http://www.pageresource.com/html/refex1.htm" );
+			var redirectUri = new Uri( "http://www.pageresource.com/html/refex2.htm" );
+
+			using ( var response = webClient.SendRequest( uri ) ) {
+				Assert.NotNull( response );
+				Assert.True( response.Success );
+				Assert.Equal( WebResponseType.Html, response.ResponseType );
+				Assert.Equal( redirectUri, response.ResponseUrl );
+
+				var htmlWebResponse = response as HtmlWebResponse;
+				Assert.NotNull( htmlWebResponse );
+
+				Assert.NotNull( htmlWebResponse.Html );
+				Assert.Contains( "The New Page!", htmlWebResponse.Html );
+			}
+		}
+
+		[Fact]
+		public void HtmlWebResponseTest() {
+			var webClient = new WebClient();
+
+			var uri = new Uri( "https://github.com/darrylwhitmore/NScrape" );
+
+			using ( var response = webClient.SendRequest( uri ) ) {
+				Assert.NotNull( response );
+				Assert.True( response.Success );
+				Assert.Equal( WebResponseType.Html, response.ResponseType );
+				Assert.Equal( uri, response.ResponseUrl );
+
+				var htmlWebResponse = response as HtmlWebResponse;
+				Assert.NotNull( htmlWebResponse );
+
+				Assert.NotNull( htmlWebResponse.Html );
+				Assert.Contains( "<meta content=\"darrylwhitmore/NScrape\" property=\"og:title\" />", htmlWebResponse.Html );
+			}
+		}
+
+		[Fact]
 		public void JsonWebResponseTest() {
 			var webClient = new WebClient();
 

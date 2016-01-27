@@ -22,6 +22,7 @@ namespace NScrape {
 				{ "application/x-msdos-program", CreateBinaryResponse },
 				{ "application/xml", CreateXmlResponse },
 				{ "image/", CreateImageResponse },
+				{ "text/html", CreateHtmlResponse },
 				{ "text/javascript", CreateJavaScriptResponse },
 				{ "text/plain", CreatePlainTextResponse },
 				{ "text/xml", CreateXmlResponse }
@@ -42,6 +43,19 @@ namespace NScrape {
 		/// is usually a subclass of the <see cref="WebResponse"/> class.
 		/// </remarks>
 		public static Dictionary<string, Func<HttpWebResponse, WebResponse>> SupportedContentTypes { get; private set; }
+
+		/// <summary>
+		/// Creates an <see cref="HtmlWebResponse"/>.
+		/// </summary>
+		/// <param name="webResponse">
+		/// The original <see cref="HttpWebResponse"/>.
+		/// </param>
+		/// <returns>
+		/// A new <see cref="HtmlWebResponse"/>.
+		/// </returns>
+		public static WebResponse CreateHtmlResponse( HttpWebResponse webResponse ) {
+			return new HtmlWebResponse( true, webResponse );
+		}
 
 		/// <summary>
 		/// Creates a <see cref="ImageWebResponse"/>.
@@ -146,8 +160,8 @@ namespace NScrape {
 		/// The <see cref="HttpWebResponse"/> to parse.
 		/// </param>
 		/// <returns>
-		/// If the content type is registered with the <see cref="WebResponseFactory"/>, a new
-		/// <see cref="WebResponse"/> object, otherwise, <see langword="null"/>.
+		/// If the content type is registered with the <see cref="WebResponseFactory"/>, the corresponding
+		/// <see cref="WebResponse"/> object; otherwise, an <see cref="UnsupportedWebResponse"/> object.
 		/// </returns>
 		public static WebResponse CreateResponse( HttpWebResponse webResponse ) {
 			var contentType = webResponse.Headers[CommonHeaders.ContentType];
@@ -158,7 +172,7 @@ namespace NScrape {
 
 			// We don't support this content type
 			if ( key == null ) {
-				return null;
+				return new UnsupportedWebResponse( webResponse.ResponseUri, contentType );
 			}
 
 			return SupportedContentTypes[key]( webResponse );

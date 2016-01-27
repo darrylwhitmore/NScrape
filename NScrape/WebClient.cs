@@ -206,11 +206,12 @@ namespace NScrape {
 			OnSendingRequest( new SendingRequestEventArgs( webRequest ) );
 
             WebResponse response;
+			HttpWebResponse webResponse = null;
 
             try {
-                var webResponse = ( HttpWebResponse )httpWebRequest.GetResponse();
+                webResponse = ( HttpWebResponse )httpWebRequest.GetResponse();
 
-                OnProcessingResponse( new ProcessingResponseEventArgs (webResponse ) );
+	            OnProcessingResponse( new ProcessingResponseEventArgs( webResponse ) );
 
                 if ( httpWebRequest.HaveResponse ) {
                     // Handle cookies that are offered
@@ -257,60 +258,65 @@ namespace NScrape {
 							// We are not auto redirecting, so send the caller a redirect response.
 							response = new RedirectedWebResponse( webResponse.ResponseUri, webRequest, redirectUri );
 						}
+
+						webResponse.Dispose();
                     }
-                    else {
+					else {
 						// We have a regular response.
-						response = WebResponseFactory.CreateResponse( webResponse );
+						var workResponse = WebResponseFactory.CreateResponse( webResponse );
 
-                        if(response == null) {
-							var contentType = webResponse.Headers[CommonHeaders.ContentType];
+						// If an HTML response, check for an old school Meta refresh tag
+						var htmlResponse = workResponse as HtmlWebResponse;
+						if ( htmlResponse != null ) {
+							var hasMetaRefresh = false;
 
-							if ( contentType.StartsWith( "text/html", StringComparison.OrdinalIgnoreCase ) ) {
-								var encoding = webResponse.GetEncoding();
-								var html = webResponse.GetResponseText( encoding );
+							var match = RegexCache.Instance.Regex( RegexLibrary.ParseMetaRefresh, RegexLibrary.ParseMetaRefreshOptions ).Match( htmlResponse.Html );
 
-								var haveRefresh = false;
-
-								// Check for an old school Meta refresh tag
-								var match = RegexCache.Instance.Regex( RegexLibrary.ParseMetaRefresh, RegexLibrary.ParseMetaRefreshOptions ).Match( html );
-
-								if ( match.Success ) {
-									// If the Meta refresh is not within a NOSCRIPT block, we'll use it
-									if ( match.Groups[RegexLibrary.ParseMetaRefreshStartNoScriptGroup].Value.Length == 0 && match.Groups[RegexLibrary.ParseMetaRefreshEndNoScriptGroup].Value.Length == 0 ) {
-										haveRefresh = true;
-									}
+							if ( match.Success ) {
+								// If the Meta refresh is not within a NOSCRIPT block, we'll use it
+								if ( match.Groups[RegexLibrary.ParseMetaRefreshStartNoScriptGroup].Value.Length == 0 && match.Groups[RegexLibrary.ParseMetaRefreshEndNoScriptGroup].Value.Length == 0 ) {
+									hasMetaRefresh = true;
 								}
+							}
 
-								if ( haveRefresh ) {
-									// The page has a Meta refresh tag, so build the redirect Url
-									var redirectUri = new Uri( webResponse.ResponseUri, match.Groups[RegexLibrary.ParseMetaRefreshUrlGroup].Value );
+							if ( hasMetaRefresh ) {
+								// The page has a Meta refresh tag, so build the redirect Url
+								var redirectUri = new Uri( webResponse.ResponseUri, match.Groups[RegexLibrary.ParseMetaRefreshUrlGroup].Value );
 
-									if ( webRequest.AutoRedirect ) {
-										// We are auto redirecting, so make a recursive call to perform the redirect
-										response = SendRequest( new GetWebRequest( redirectUri, httpWebRequest.AllowAutoRedirect ) );
-									}
-									else {
-										// We are not auto redirecting, so send the caller a redirect response
-										response = new RedirectedWebResponse( webResponse.ResponseUri, webRequest, redirectUri );
-									}
+								if ( webRequest.AutoRedirect ) {
+									// We are auto redirecting, so make a recursive call to perform the redirect
+									response = SendRequest( new GetWebRequest( redirectUri, httpWebRequest.AllowAutoRedirect ) );
 								}
 								else {
-									// Just a regular Html page
-									response = new HtmlWebResponse( true, webResponse.ResponseUri, html, encoding );
+									// We are not auto redirecting, so send the caller a redirect response
+									response = new RedirectedWebResponse( webResponse.ResponseUri, webRequest, redirectUri );
 								}
+
+								workResponse.Dispose();
 							}
 							else {
-								response = new UnsupportedWebResponse( webResponse.ResponseUri, contentType );
+								// HTML response without Meta refresh tag.
+								response = workResponse;
 							}
 						}
-                    }
-                }
+						else {
+							// Non-HTML response.
+							response = workResponse;
+						}
+					}
+				}
                 else {
                     response = new ExceptionWebResponse( webRequest.Destination, new WebException( NScrapeResources.NoResponse ) );
+
+					webResponse.Dispose();
                 }
             }
             catch ( WebException ex ) {
                 response = new ExceptionWebResponse( webRequest.Destination, ex );
+
+				if ( webResponse != null ) {
+					webResponse.Dispose();
+				}
             }
 
             return response;
