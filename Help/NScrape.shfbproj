@@ -26,7 +26,7 @@
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
     <HelpTitle>NScrape Web Scraping Framework</HelpTitle>
-    <CopyrightText>Copyright &amp;#169%3b Darryl G. Whitmore 2008-2015</CopyrightText>
+    <CopyrightText>Copyright &amp;#169%3b Darryl G. Whitmore 2008-2016</CopyrightText>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\NScrape\bin\Debug\NScrape.dll" xmlns="" />

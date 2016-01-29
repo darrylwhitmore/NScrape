@@ -39,48 +39,48 @@ namespace NScrape {
 
 		private static void ConfigureHeader( HttpWebRequest webRequest, string headerName, string headerValue ) {
 			// If the header in question corresponds to an HttpWebRequest property, set it.
-			if ( String.Compare( headerName, CommonHeaders.Accept, StringComparison.OrdinalIgnoreCase ) == 0) {
+			if ( string.Compare( headerName, CommonHeaders.Accept, StringComparison.OrdinalIgnoreCase ) == 0) {
 				webRequest.Accept = headerValue;
 			}
-			else if ( String.Compare( headerName, CommonHeaders.Connection, StringComparison.OrdinalIgnoreCase ) == 0) {
+			else if ( string.Compare( headerName, CommonHeaders.Connection, StringComparison.OrdinalIgnoreCase ) == 0) {
 				webRequest.Connection = headerValue;
 			}
-			else if ( String.Compare( headerName, CommonHeaders.ContentLength, StringComparison.OrdinalIgnoreCase ) == 0) {
+			else if ( string.Compare( headerName, CommonHeaders.ContentLength, StringComparison.OrdinalIgnoreCase ) == 0) {
 				webRequest.ContentLength = Convert.ToInt64( headerValue );
 			}
-			else if ( String.Compare( headerName, CommonHeaders.ContentType, StringComparison.OrdinalIgnoreCase ) == 0) {
+			else if ( string.Compare( headerName, CommonHeaders.ContentType, StringComparison.OrdinalIgnoreCase ) == 0) {
 				webRequest.ContentType = headerValue;
 			}
-			else if ( String.Compare( headerName, CommonHeaders.Date, StringComparison.OrdinalIgnoreCase ) == 0) {
+			else if ( string.Compare( headerName, CommonHeaders.Date, StringComparison.OrdinalIgnoreCase ) == 0) {
 				DateTime parsedDateTime;
 
 				if ( NScrapeUtility.TryParseHttpDate( headerValue, out parsedDateTime ) ) {
 					webRequest.Date = parsedDateTime;
 				}
 			}
-			else if ( String.Compare( headerName, CommonHeaders.Expect, StringComparison.OrdinalIgnoreCase ) == 0) {
+			else if ( string.Compare( headerName, CommonHeaders.Expect, StringComparison.OrdinalIgnoreCase ) == 0) {
 				webRequest.Expect = headerValue;
 			}
-			else if ( String.Compare( headerName, CommonHeaders.Host, StringComparison.OrdinalIgnoreCase ) == 0) {
+			else if ( string.Compare( headerName, CommonHeaders.Host, StringComparison.OrdinalIgnoreCase ) == 0) {
 				webRequest.Host = headerValue;
 			}
-			else if ( String.Compare( headerName, CommonHeaders.IfModifiedSince, StringComparison.OrdinalIgnoreCase ) == 0) {
+			else if ( string.Compare( headerName, CommonHeaders.IfModifiedSince, StringComparison.OrdinalIgnoreCase ) == 0) {
 				DateTime parsedDateTime;
 
 				if ( NScrapeUtility.TryParseHttpDate( headerValue, out parsedDateTime ) ) {
 					webRequest.IfModifiedSince = parsedDateTime;
 				}
 			}
-			else if ( String.Compare( headerName, CommonHeaders.Range, StringComparison.OrdinalIgnoreCase ) == 0) {
+			else if ( string.Compare( headerName, CommonHeaders.Range, StringComparison.OrdinalIgnoreCase ) == 0) {
 				// TODO: To support, we'd need to parse the provided range specification (which can include multiple ranges) and
 				// make one or more calls to HttpWebRequest.AddRange(String, Int64, Int64). 
 				// http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
 				throw new NotSupportedException( "The Range header is not currently supported." );
 			}
-			else if ( String.Compare( headerName, CommonHeaders.Referer, StringComparison.OrdinalIgnoreCase ) == 0) {
+			else if ( string.Compare( headerName, CommonHeaders.Referer, StringComparison.OrdinalIgnoreCase ) == 0) {
 				webRequest.Referer = headerValue;
 			}
-			else if ( String.Compare( headerName, CommonHeaders.TransferEncoding, StringComparison.OrdinalIgnoreCase ) == 0) {
+			else if ( string.Compare( headerName, CommonHeaders.TransferEncoding, StringComparison.OrdinalIgnoreCase ) == 0) {
 				throw new NotSupportedException( "The Transfer-Encoding header is not currently supported." );
 			}
 			else {
@@ -91,6 +91,22 @@ namespace NScrape {
 
 		/// <include file='IWebClient.xml' path='/IWebClient/CookieJar/*'/>
         public CookieContainer CookieJar { get { return cookieJar; } }
+
+		private string GetMetaRefreshUrl( string html ) {
+			// Look for a Meta refresh.
+			var match = RegexCache.Instance.Regex( RegexLibrary.ParseMetaRefresh, RegexLibrary.ParseMetaRefreshOptions ).Match( html );
+
+			if ( !match.Success ) {
+				return null;
+			}
+
+			// If the Meta refresh is not within a NOSCRIPT block, we'll use it
+			if ( match.Groups[RegexLibrary.ParseMetaRefreshStartNoScriptGroup].Value.Length == 0 && match.Groups[RegexLibrary.ParseMetaRefreshEndNoScriptGroup].Value.Length == 0 ) {
+				return match.Groups[RegexLibrary.ParseMetaRefreshUrlGroup].Value;
+			}
+
+			return null;
+		}
 
 		/// <summary>
 		/// Raises the <see cref="AddingCookie"/> event.
@@ -206,11 +222,12 @@ namespace NScrape {
 			OnSendingRequest( new SendingRequestEventArgs( webRequest ) );
 
             WebResponse response;
+			HttpWebResponse webResponse = null;
 
             try {
-                var webResponse = ( HttpWebResponse )httpWebRequest.GetResponse();
+                webResponse = ( HttpWebResponse )httpWebRequest.GetResponse();
 
-                OnProcessingResponse( new ProcessingResponseEventArgs (webResponse ) );
+	            OnProcessingResponse( new ProcessingResponseEventArgs( webResponse ) );
 
                 if ( httpWebRequest.HaveResponse ) {
                     // Handle cookies that are offered
@@ -257,60 +274,51 @@ namespace NScrape {
 							// We are not auto redirecting, so send the caller a redirect response.
 							response = new RedirectedWebResponse( webResponse.ResponseUri, webRequest, redirectUri );
 						}
+
+						webResponse.Dispose();
                     }
-                    else {
-						// We have a regular response.
+					else {
+						// We have a non-redirected response.
 						response = WebResponseFactory.CreateResponse( webResponse );
 
-                        if(response == null) {
-							var contentType = webResponse.Headers[CommonHeaders.ContentType];
+						if ( response.ResponseType == WebResponseType.Html ) {
+							// We have an HTML response, so check for an old school Meta refresh tag
+							var metaRefreshUrl = GetMetaRefreshUrl( ( ( HtmlWebResponse )response ).Html );
 
-							if ( contentType.StartsWith( "text/html", StringComparison.OrdinalIgnoreCase ) ) {
-                                var encoding = WebResponseFactory.GetEncoding( webResponse );
-								var html = WebResponseFactory.ReadResponseText( webResponse, encoding );
+							if ( !string.IsNullOrWhiteSpace( metaRefreshUrl ) ) {
+								// The page has a Meta refresh tag, so build the redirect Url
+								var redirectUri = new Uri( response.ResponseUrl, metaRefreshUrl );
 
-								var haveRefresh = false;
+								if ( webRequest.AutoRedirect ) {
+									response.Dispose();
 
-								// Check for an old school Meta refresh tag
-								var match = RegexCache.Instance.Regex( RegexLibrary.ParseMetaRefresh, RegexLibrary.ParseMetaRefreshOptions ).Match( html );
-
-								if ( match.Success ) {
-									// If the Meta refresh is not within a NOSCRIPT block, we'll use it
-									if ( match.Groups[RegexLibrary.ParseMetaRefreshStartNoScriptGroup].Value.Length == 0 && match.Groups[RegexLibrary.ParseMetaRefreshEndNoScriptGroup].Value.Length == 0 ) {
-										haveRefresh = true;
-									}
-								}
-
-								if ( haveRefresh ) {
-									// The page has a Meta refresh tag, so build the redirect Url
-									var redirectUri = new Uri( webResponse.ResponseUri, match.Groups[RegexLibrary.ParseMetaRefreshUrlGroup].Value );
-
-									if ( webRequest.AutoRedirect ) {
-										// We are auto redirecting, so make a recursive call to perform the redirect
-										response = SendRequest( new GetWebRequest( redirectUri, httpWebRequest.AllowAutoRedirect ) );
-									}
-									else {
-										// We are not auto redirecting, so send the caller a redirect response
-										response = new RedirectedWebResponse( webResponse.ResponseUri, webRequest, redirectUri );
-									}
+									// We are auto redirecting, so make a recursive call to perform the redirect
+									response = SendRequest( new GetWebRequest( redirectUri, httpWebRequest.AllowAutoRedirect ) );
 								}
 								else {
-									// Just a regular Html page
-									response = new HtmlWebResponse( true, webResponse.ResponseUri, html, encoding );
+									var responseUrl = response.ResponseUrl;
+
+									response.Dispose();
+
+									// We are not auto redirecting, so send the caller a redirect response
+									response = new RedirectedWebResponse( responseUrl, webRequest, redirectUri );
 								}
 							}
-							else {
-								response = new UnsupportedWebResponse( webResponse.ResponseUri, contentType );
-							}
 						}
-                    }
-                }
-                else {
-                    response = new ExceptionWebResponse( webRequest.Destination, new WebException( NScrapeResources.NoResponse ) );
-                }
+					}
+				}
+				else {
+					response = new ExceptionWebResponse( webRequest.Destination, new WebException( NScrapeResources.NoResponse ) );
+
+					webResponse.Dispose();
+				}
             }
             catch ( WebException ex ) {
                 response = new ExceptionWebResponse( webRequest.Destination, ex );
+
+				if ( webResponse != null ) {
+					webResponse.Dispose();
+				}
             }
 
             return response;

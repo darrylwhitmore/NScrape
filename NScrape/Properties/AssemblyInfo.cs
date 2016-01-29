@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "Tahoma Software" )]
 [assembly: AssemblyProduct( "NScrape Web Scraping Framework" )]
-[assembly: AssemblyCopyright( "Copyright © Darryl G. Whitmore 2008-2015" )]
+[assembly: AssemblyCopyright( "Copyright © Darryl G. Whitmore 2008-2016" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 [assembly: System.CLSCompliant( true )]

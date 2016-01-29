@@ -16,11 +16,10 @@ namespace NScrape {
 	    /// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
 	    /// <param name="responseUrl">The URL of the response.</param>
 	    /// <param name="data">The data that was returned by the web server.</param>
-		/// <remarks>
-		/// Although still functional, this constructor has been deprecated. Please refactor
-		/// your code to use an alternate constructor, because this one will be removed in a future release.
-		/// </remarks>
-		[Obsolete( "BinaryWebResponse( bool, Uri, byte[] ) is deprecated, please use BinaryWebResponse( bool, HttpWebResponse ) instead." )]
+	    /// <remarks>
+		/// Deprecated; please use <see cref="BinaryWebResponse( bool, HttpWebResponse )"/> instead.
+	    /// </remarks>
+		[Obsolete( "Please use BinaryWebResponse( bool, HttpWebResponse ) instead." )]
 		public BinaryWebResponse( bool success, Uri responseUrl, byte[] data )
             : base( success, responseUrl, WebResponseType.Binary ) {
             this.data = data;
@@ -57,21 +56,24 @@ namespace NScrape {
 		/// Gets the binary data.
 		/// </summary>
 		/// <remarks>
-		/// Although still functional, this property has been deprecated in favor of exposing the binary response stream via <see cref="GetResponseStream"/>. Please refactor
-		/// your code to move to that functionality, because this property will be removed in a future release.
+		/// Deprecated; please use <see cref="BinaryWebResponse.GetResponseStream()"/> instead.
 		/// </remarks>
-		[Obsolete( "The Data property is deprecated, please use GetResponseStream() instead." )]
+		[Obsolete( "Please use BinaryWebResponse.GetResponseStream() instead." )]
 		public byte[] Data {
 			get {
 				if ( data == null ) {
 					// Backwards compatibility. 
 					using ( var s = GetResponseStream() ) {
-						if ( s != null ) {
-							using ( var ms = new MemoryStream() ) {
-								s.CopyTo( ms );
+						// Skeet says a null is unlikely, but check to make Resharper happy.
+						// http://stackoverflow.com/questions/16911056/can-webresponse-getresponsestream-return-a-null
+						if ( s == null ) {
+							throw new IOException( "HttpWebResponse.GetResponseStream() has returned null" );
+						}
 
-								data = ms.ToArray();
-							}
+						using ( var ms = new MemoryStream() ) {
+							s.CopyTo( ms );
+
+							data = ms.ToArray();
 						}
 					}
 				}
@@ -89,8 +91,10 @@ namespace NScrape {
 	    protected override void DisposeManagedRessources() {
 		    base.DisposeManagedRessources();
 
-		    Close();
-	    }
+			if ( webResponse != null ) {
+				webResponse.Dispose();
+			}
+		}
 
 	    /// <summary>
 		/// Gets the stream that is used to read the binary response.

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Text;
 using Xunit;
 
 namespace NScrape.Test {
@@ -73,29 +74,6 @@ namespace NScrape.Test {
 			Assert.True( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
 			Assert.Equal( DateTimeKind.Utc, parsedDate.Kind );
 			Assert.Equal( httpDate, parsedDate.ToString( "r" ) );
-		}
-
-		[Fact]
-		public void TestTest() {
-			// Create a New 'HttpWebRequest' object .
-			HttpWebRequest myHttpWebRequest1 = ( HttpWebRequest )System.Net.WebRequest.Create( "http://www.contoso.com" );
-			//myHttpWebRequest1.AddRange( 1000 );
-			//myHttpWebRequest1.AddRange( "foo", 1000 );
-			//Console.WriteLine( "Call AddRange(1000)" );
-
-			myHttpWebRequest1.IfModifiedSince = DateTime.Now;
-
-			Console.Write( "Resulting Headers: " );
-			Console.WriteLine( myHttpWebRequest1.Headers.ToString() );
-
-			//// Create a New 'HttpWebRequest' object .
-			//HttpWebRequest myHttpWebRequest2 = ( HttpWebRequest )System.Net.WebRequest.Create( "http://www.contoso.com" );
-			////myHttpWebRequest2.AddRange( -1000 );
-			//myHttpWebRequest2.AddRange("boo", 123, 456 );
-			//myHttpWebRequest2.AddRange("boo",  789 );
-			//Console.WriteLine( "Call AddRange(-1000)" );
-			//Console.Write( "Resulting Headers: " );
-			//Console.WriteLine( myHttpWebRequest2.Headers.ToString() );
 		}
 	}
 }

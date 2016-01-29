@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -17,7 +14,7 @@ namespace NScrape {
 		/// </summary>
 		static WebResponseFactory() {
 			SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, WebResponse>> {
-				{ "application/javascript ", CreateJavaScriptResponse },
+				{ "application/javascript", CreateJavaScriptResponse },
 				{ "application/json", CreateJsonResponse },
 				{ "application/octet-stream", CreateBinaryResponse },
 				{ "application/x-dosexec", CreateBinaryResponse },
@@ -25,8 +22,9 @@ namespace NScrape {
 				{ "application/x-msdos-program", CreateBinaryResponse },
 				{ "application/xml", CreateXmlResponse },
 				{ "image/", CreateImageResponse },
+				{ "text/html", CreateHtmlResponse },
 				{ "text/javascript", CreateJavaScriptResponse },
-				{ "text/plain", CreateTextResponse },
+				{ "text/plain", CreatePlainTextResponse },
 				{ "text/xml", CreateXmlResponse }
 			};
 		}
@@ -47,6 +45,19 @@ namespace NScrape {
 		public static Dictionary<string, Func<HttpWebResponse, WebResponse>> SupportedContentTypes { get; private set; }
 
 		/// <summary>
+		/// Creates an <see cref="HtmlWebResponse"/>.
+		/// </summary>
+		/// <param name="webResponse">
+		/// The original <see cref="HttpWebResponse"/>.
+		/// </param>
+		/// <returns>
+		/// A new <see cref="HtmlWebResponse"/>.
+		/// </returns>
+		public static WebResponse CreateHtmlResponse( HttpWebResponse webResponse ) {
+			return new HtmlWebResponse( true, webResponse );
+		}
+
+		/// <summary>
 		/// Creates a <see cref="ImageWebResponse"/>.
 		/// </summary>
 		/// <param name="webResponse">
@@ -56,15 +67,7 @@ namespace NScrape {
 		/// A new <see cref="ImageWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateImageResponse( HttpWebResponse webResponse ) {
-			Bitmap image = null;
-
-			var s = webResponse.GetResponseStream();
-
-			if ( s != null ) {
-				image = new Bitmap( s );
-			}
-
-			return new ImageWebResponse( true, webResponse.ResponseUri, image );
+			return new ImageWebResponse( true, webResponse );
 		}
 
 		/// <summary>
@@ -76,10 +79,25 @@ namespace NScrape {
 		/// <returns>
 		/// A new <see cref="PlainTextWebResponse"/>.
 		/// </returns>
+		public static WebResponse CreatePlainTextResponse( HttpWebResponse webResponse ) {
+			return new PlainTextWebResponse( true, webResponse );
+		}
+
+		/// <summary>
+		/// Creates a <see cref="PlainTextWebResponse"/>.
+		/// </summary>
+		/// <param name="webResponse">
+		/// The original <see cref="HttpWebResponse"/>.
+		/// </param>
+		/// <returns>
+		/// A new <see cref="PlainTextWebResponse"/>.
+		/// </returns>
+		/// <remarks>
+		/// Deprecated; please use <see cref="CreatePlainTextResponse( HttpWebResponse )"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use CreatePlainTextResponse( HttpWebResponse ) instead." )]
 		public static WebResponse CreateTextResponse( HttpWebResponse webResponse ) {
-			var encoding = GetEncoding( webResponse );
-			var text = ReadResponseText( webResponse, encoding );
-			return new PlainTextWebResponse( true, webResponse.ResponseUri, text, encoding );
+			return CreatePlainTextResponse( webResponse );
 		}
 
 		/// <summary>
@@ -92,9 +110,7 @@ namespace NScrape {
 		/// A new <see cref="XmlWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateXmlResponse( HttpWebResponse webResponse ) {
-			var encoding = GetEncoding( webResponse );
-			var xml = ReadResponseText( webResponse, encoding );
-			return new XmlWebResponse( true, webResponse.ResponseUri, xml, encoding );
+			return new XmlWebResponse( true, webResponse );
 		}
 
 		/// <summary>
@@ -120,9 +136,7 @@ namespace NScrape {
 		/// A new <see cref="JavaScriptWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateJavaScriptResponse( HttpWebResponse webResponse ) {
-			var encoding = GetEncoding( webResponse );
-			var javaScript = ReadResponseText( webResponse, encoding );
-			return new JavaScriptWebResponse( true, webResponse.ResponseUri, javaScript, encoding );
+			return new JavaScriptWebResponse( true, webResponse );
 		}
 
 		/// <summary>
@@ -135,9 +149,7 @@ namespace NScrape {
 		/// A new <see cref="JsonWebResponse"/>.
 		/// </returns>
 		public static WebResponse CreateJsonResponse( HttpWebResponse webResponse ) {
-			var encoding = GetEncoding( webResponse );
-			var text = ReadResponseText( webResponse, encoding );
-			return new JsonWebResponse( true, webResponse.ResponseUri, text, encoding );
+			return new JsonWebResponse( true, webResponse );
 		}
 
 		/// <summary>
@@ -148,8 +160,8 @@ namespace NScrape {
 		/// The <see cref="HttpWebResponse"/> to parse.
 		/// </param>
 		/// <returns>
-		/// If the content type is registered with the <see cref="WebResponseFactory"/>, a new
-		/// <see cref="WebResponse"/> object, otherwise, <see langword="null"/>.
+		/// If the content type is registered with the <see cref="WebResponseFactory"/>, the corresponding
+		/// <see cref="WebResponse"/> object; otherwise, an <see cref="UnsupportedWebResponse"/> object.
 		/// </returns>
 		public static WebResponse CreateResponse( HttpWebResponse webResponse ) {
 			var contentType = webResponse.Headers[CommonHeaders.ContentType];
@@ -160,15 +172,14 @@ namespace NScrape {
 
 			// We don't support this content type
 			if ( key == null ) {
-				return null;
+				return new UnsupportedWebResponse( webResponse.ResponseUri, contentType );
 			}
 
 			return SupportedContentTypes[key]( webResponse );
 		}
 
 		/// <summary>
-		/// Gets the encoding used by an <see cref="HttpWebResponse"/>. Falls back to the <c>iso-8859-1</c>
-		/// character set if no encoding was specified.
+		/// Gets the encoding used by an <see cref="HttpWebResponse"/>.
 		/// </summary>
 		/// <param name="webResponse">
 		/// The <see cref="HttpWebResponse"/> for which to determine the content type.
@@ -176,13 +187,12 @@ namespace NScrape {
 		/// <returns>
 		/// The content type used by the <see cref="HttpWebResponse"/>.
 		/// </returns>
+		/// <remarks>
+		/// Deprecated; please use <see cref="NScrapeExtensions.GetEncoding( HttpWebResponse )"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use NScrapeExtensions.GetEncoding( HttpWebResponse ) instead." )]
 		public static Encoding GetEncoding( HttpWebResponse webResponse ) {
-			// If a character set is not specified, RFC2616 section 3.7.1 says to use ISO-8859-1, per the page below.
-			// The page says this is more or less useless, but I did find that Chrome and Firefox behaved this way
-			// for javascript files that I tested.
-			// http://www.w3.org/TR/html4/charset.html#h-5.2.2
-			var characterSet = ( !string.IsNullOrEmpty( webResponse.CharacterSet ) ? webResponse.CharacterSet : "iso-8859-1" );
-			return Encoding.GetEncoding( characterSet );
+			return webResponse.GetEncoding();
 		}
 
 		/// <summary>
@@ -194,9 +204,12 @@ namespace NScrape {
 		/// <returns>
 		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
 		/// </returns>
+		/// <remarks>
+		/// Deprecated; please use <see cref="NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding )"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use NScrapeExtensions.GetResponseText( HttpWebResponse ) instead." )]
 		public static string ReadResponseText( HttpWebResponse webResponse ) {
-			var encoding = GetEncoding( webResponse );
-			return ReadResponseText( webResponse, encoding );
+			return webResponse.GetResponseText();
 		}
 
 		/// <summary>
@@ -211,27 +224,12 @@ namespace NScrape {
 		/// <returns>
 		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
 		/// </returns>
+		/// <remarks>
+		/// Deprecated; please use <see cref="NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding )"/> instead.
+		/// </remarks>
+		[Obsolete( "Please use NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding ) instead." )]
 		public static string ReadResponseText( HttpWebResponse webResponse, Encoding encoding ) {
-			var s = webResponse.GetResponseStream();
-
-			if ( s != null ) {
-				StreamReader sr;
-
-				if ( webResponse.ContentEncoding == "gzip" ) {
-					sr = new StreamReader( new GZipStream( s, CompressionMode.Decompress ), encoding );
-				}
-				else {
-					sr = new StreamReader( s, encoding );
-				}
-
-				var content = sr.ReadToEnd();
-
-				sr.Close();
-
-				return content;
-			}
-
-			return null;
+			return webResponse.GetResponseText( encoding );
 		}
 	}
 }
