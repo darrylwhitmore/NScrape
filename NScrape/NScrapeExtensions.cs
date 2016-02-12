@@ -25,7 +25,7 @@ namespace NScrape {
 			// The page says this is more or less useless, but I did find that Chrome and Firefox behaved this way
 			// for javascript files that I tested.
 			// http://www.w3.org/TR/html4/charset.html#h-5.2.2
-			var characterSet = ( !string.IsNullOrEmpty( webResponse.CharacterSet ) ? webResponse.CharacterSet : "iso-8859-1" );
+			var characterSet = !string.IsNullOrEmpty( webResponse.CharacterSet ) ? webResponse.CharacterSet : "iso-8859-1";
 			return Encoding.GetEncoding( characterSet );
 		}
 

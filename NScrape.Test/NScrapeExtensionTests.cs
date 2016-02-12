@@ -21,7 +21,9 @@ namespace NScrape.Test {
 			var httpWebResponse = response as HttpWebResponse;
 
 			Assert.NotNull( httpWebResponse );
+#pragma warning disable 618
 			Assert.Equal( Encoding.GetEncoding( "ISO-8859-1" ), WebResponseFactory.GetEncoding( httpWebResponse ) );
+#pragma warning restore 618
 		}
 
 		[Fact]
@@ -53,7 +55,9 @@ namespace NScrape.Test {
 			var response = request.GetResponse();
 			var httpWebResponse = response as HttpWebResponse;
 			Assert.NotNull( httpWebResponse );
+#pragma warning disable 618
 			var html = WebResponseFactory.ReadResponseText( httpWebResponse );
+#pragma warning restore 618
 			Assert.NotNull( html );
 			Assert.Contains( testText, html );
 
@@ -61,7 +65,9 @@ namespace NScrape.Test {
 			response = request.GetResponse();
 			httpWebResponse = response as HttpWebResponse;
 			Assert.NotNull( httpWebResponse );
+#pragma warning disable 618
 			html = WebResponseFactory.ReadResponseText( httpWebResponse, Encoding.GetEncoding( "ISO-8859-1" ) );
+#pragma warning restore 618
 			Assert.NotNull( html );
 			Assert.Contains( testText, html );
 		}

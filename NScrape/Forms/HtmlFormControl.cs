@@ -25,7 +25,7 @@ namespace NScrape.Forms {
 			}
 
 			// http://www.w3.org/TR/html4/interact/forms.html#h-17.12.1
-			Disabled = ( Attributes.ContainsKey( "disabled" ) );
+			Disabled = Attributes.ContainsKey( "disabled" );
         }
 
         /// <summary>

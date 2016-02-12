@@ -260,7 +260,9 @@ namespace NScrape.Test {
 				var binaryResponse = response as BinaryWebResponse;
 				Assert.NotNull( binaryResponse );
 
+#pragma warning disable 618
 				var data = binaryResponse.Data;
+#pragma warning restore 618
 				Assert.NotNull( data );
 			}
 		}

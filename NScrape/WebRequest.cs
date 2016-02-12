@@ -69,7 +69,7 @@ namespace NScrape {
 			get {
 				var value = Headers[CommonHeaders.XRequestedWith];
 
-				return ( value != null && value == XmlHttpRequestValue );
+				return value != null && value == XmlHttpRequestValue;
 			}
 			set {
 				if ( value ) {
