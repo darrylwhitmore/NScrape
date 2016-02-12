@@ -7,7 +7,7 @@
 		internal InputCheckableHtmlFormControl( string html )
 			: base( html ) {
 
-			Checked = ( Attributes.ContainsKey( "checked" ) );
+			Checked = Attributes.ContainsKey( "checked" );
 		}
 
 		/// <summary>

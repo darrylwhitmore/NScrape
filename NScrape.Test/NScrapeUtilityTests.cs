@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Text;
 using Xunit;
 
 namespace NScrape.Test {
@@ -11,10 +9,9 @@ namespace NScrape.Test {
 			const string preferredFormatHttpDate = "Sun, 06 Nov 1994 08:49:37 GMT";
 
 			DateTime parsedDate;
-			string httpDate;
 
-			// Preferred format
-			httpDate = preferredFormatHttpDate;
+		    // Preferred format
+			var httpDate = preferredFormatHttpDate;
 			Assert.True( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
 			Assert.Equal( DateTimeKind.Utc, parsedDate.Kind );
 			Assert.Equal( preferredFormatHttpDate, parsedDate.ToString( "r" ) );
@@ -35,9 +32,8 @@ namespace NScrape.Test {
 		[Fact]
 		public void TestInvalidHttpDateFormats() {
 			DateTime parsedDate;
-			string httpDate;
 
-			httpDate = null;
+		    string httpDate = null;
 			Assert.False( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
 
 			httpDate = string.Empty;
@@ -53,9 +49,8 @@ namespace NScrape.Test {
 		[Fact]
 		public void TestValidHttpDateFormats() {
 			DateTime parsedDate;
-			string httpDate;
 
-			httpDate = "Fri, 23 Jan 2015 23:55:58 GMT";
+		    var httpDate = "Fri, 23 Jan 2015 23:55:58 GMT";
 			Assert.True( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
 			Assert.Equal( DateTimeKind.Utc, parsedDate.Kind );
 			Assert.Equal( httpDate, parsedDate.ToString( "r" ) );
