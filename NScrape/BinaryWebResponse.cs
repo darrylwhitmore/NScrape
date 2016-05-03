@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 
 namespace NScrape {
@@ -34,6 +35,17 @@ namespace NScrape {
 			: base( success, webResponse.ResponseUri, WebResponseType.Binary ) {
 			this.webResponse = webResponse;
 		}
+
+        /// <summary>
+        /// Gets the length of the content returned by the request.
+        /// </summary>
+        public long ContentLength
+        {
+            get
+            {
+                return this.webResponse.ContentLength;
+            }
+        }
 
 		/// <summary>
 		/// Closes the binary response stream.
