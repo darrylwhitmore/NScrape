@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="BinaryWebResponse.cs" />
     <Compile Include="CommonHeaders.cs" />
+    <Compile Include="CookieParser.cs" />
     <Compile Include="Forms\HtmlFormDefinition.cs" />
     <Compile Include="Forms\InputCheckableHtmlFormControl.cs" />
     <Compile Include="Forms\BasicAspxForm.cs" />
