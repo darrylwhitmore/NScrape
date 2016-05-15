@@ -243,16 +243,7 @@ namespace NScrape {
 
                     if (webResponse.Headers.AllKeys.Contains("Set-Cookie"))
                     {
-                        var alternateCookies = CookieParser.GetAllCookiesFromHeader(webResponse.Headers["Set-Cookie"], httpWebRequest.Host);
-
-                        foreach (Cookie alternateCookie in alternateCookies)
-                        {
-                            // Match cookies by name, and only add the cookie if it was not found previously
-                            if (!cookies.OfType<Cookie>().Any(c => c.Name == alternateCookie.Name))
-                            {
-                                cookies.Add(alternateCookie);
-                            }
-                        }
+                        cookies.Parse(webResponse.Headers["Set-Cookie"], httpWebRequest.Host);
                     }
 
                     foreach ( Cookie responseCookie in cookies ) {

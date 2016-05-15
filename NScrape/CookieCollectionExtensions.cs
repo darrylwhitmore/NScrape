@@ -10,11 +10,14 @@ namespace NScrape
     /// this class tries to correct that.
     /// </summary>
     /// <seealso href="http://stackoverflow.com/questions/15103513/httpwebresponse-cookies-empty-despite-set-cookie-header-no-redirect"/>
-    public static class CookieParser
+    public static class CookieCollectionExtensions
     {
         /// <summary>
-        /// Extracts a <see cref="CookieCollection"/> from a <c>Set-Cookie</c> header.
+        /// Adds cookies extracted from a <c>Set-Cookie</c> header to a <see cref="CookieCollection"/>.
         /// </summary>
+        /// <param name="cookies">
+        /// The <see cref="CookieCollection"/> to which to add the extracted cookies.
+        /// </param>
         /// <param name="setCookieHeader">
         /// The value of the <c>Set-Cookie</c> header.
         /// </param>
@@ -22,74 +25,9 @@ namespace NScrape
         /// The host name of the server to which the request was sent. Cookies will be scoped to this host name, unless otherwise
         /// specified in the <c>Set-Cookie</c> declaration.
         /// </param>
-        /// <returns>
-        /// A <see cref="CookieCollection"/> which represents the list of cookies which have been extracted.
-        /// </returns>
-        public static CookieCollection GetAllCookiesFromHeader(string setCookieHeader, string hostName)
+        public static void Parse(this CookieCollection cookies, string setCookieHeader, string hostName)
         {
-            CookieCollection cookies = new CookieCollection();
-
-            if (setCookieHeader != string.Empty)
-            {
-                var cookieLines = ExtractCookieDeclarations(setCookieHeader);
-                cookies = ConvertCookieDeclarationsToCookieCollection(cookieLines, hostName);
-            }
-
-            return cookies;
-        }
-
-
-        /// <summary>
-        /// Splits the <c>Set-Cookie</c> hierder into the individual strings that define a cookie. Corrects for lines that contain an expiry
-        /// date which include a <c>,</c> in the expires value - such as <c>Expires=Tue, 03 May 2016 14:35:28 GMT</c>
-        /// </summary>
-        /// <param name="setCookieHeader"></param>
-        /// <returns></returns>
-        public static Collection<string> ExtractCookieDeclarations(string setCookieHeader)
-        {
-            // Remove any new line character
-            setCookieHeader = setCookieHeader.Replace("\r", "");
-            setCookieHeader = setCookieHeader.Replace("\n", "");
-
-            // Split on the ',' sign
-            string[] setCookieParts = setCookieHeader.Split(',');
-
-            Collection<string> cookieLines = new Collection<string>();
-            int i = 0;
-            int n = setCookieParts.Length;
-
-            while (i < n)
-            {
-                // Correct for the expires field, which can include a comma
-                if (setCookieParts[i].IndexOf("expires=", StringComparison.OrdinalIgnoreCase) > 0)
-                {
-                    cookieLines.Add(setCookieParts[i] + "," + setCookieParts[i + 1]);
-                    i++;
-                }
-                else
-                {
-                    cookieLines.Add(setCookieParts[i]);
-                }
-                i++;
-            }
-
-            return cookieLines;
-        }
-
-        /// <summary>
-        /// Converts a set of cookie declarations to a <see cref="CookieCollection"/>.
-        /// </summary>
-        /// <param name="cookieDeclarations">
-        /// The cookie declarations to parse.
-        /// </param>
-        /// <param name="hostName">
-        /// The hostname of the server which issued the cookies.
-        /// </param>
-        /// <returns>
-        /// A new <see cref="CookieCollection"/></returns>
-        public static CookieCollection ConvertCookieDeclarationsToCookieCollection(Collection<string> cookieDeclarations, string hostName)
-        {
-            CookieCollection cookieCollection = new CookieCollection();
+            var cookieDeclarations = ExtractCookieDeclarations(setCookieHeader);
 
             foreach (var cookieDeclaration in cookieDeclarations)
             {
@@ -168,10 +106,49 @@ namespace NScrape
                     }
                 }
 
-                cookieCollection.Add(cookie);
+                // Match cookies by name, and only add the cookie if it was not found previously
+                if (!cookies.OfType<Cookie>().Any(c => c.Name == cookie.Name))
+                {
+                    cookies.Add(cookie);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Splits the <c>Set-Cookie</c> hierder into the individual strings that define a cookie. Corrects for lines that contain an expiry
+        /// date which include a <c>,</c> in the expires value - such as <c>Expires=Tue, 03 May 2016 14:35:28 GMT</c>
+        /// </summary>
+        /// <param name="setCookieHeader"></param>
+        /// <returns></returns>
+        private static Collection<string> ExtractCookieDeclarations(string setCookieHeader)
+        {
+            // Remove any new line character
+            setCookieHeader = setCookieHeader.Replace("\r", "");
+            setCookieHeader = setCookieHeader.Replace("\n", "");
+
+            // Split on the ',' sign
+            string[] setCookieParts = setCookieHeader.Split(',');
+
+            Collection<string> cookieLines = new Collection<string>();
+            int i = 0;
+            int n = setCookieParts.Length;
+
+            while (i < n)
+            {
+                // Correct for the expires field, which can include a comma
+                if (setCookieParts[i].IndexOf("expires=", StringComparison.OrdinalIgnoreCase) > 0)
+                {
+                    cookieLines.Add(setCookieParts[i] + "," + setCookieParts[i + 1]);
+                    i++;
+                }
+                else
+                {
+                    cookieLines.Add(setCookieParts[i]);
+                }
+                i++;
             }
 
-            return cookieCollection;
+            return cookieLines;
         }
     }
 }
