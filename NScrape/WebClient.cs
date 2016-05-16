@@ -230,8 +230,23 @@ namespace NScrape {
 	            OnProcessingResponse( new ProcessingResponseEventArgs( webResponse ) );
 
                 if ( httpWebRequest.HaveResponse ) {
+                    // Process cookies that the .NET client 'forgot' to include,
+                    // see http://stackoverflow.com/questions/15103513/httpwebresponse-cookies-empty-despite-set-cookie-header-no-redirect
+                    // for more details;
+                    // an example cookie which is not parsed is this one:
+                    //
+                    // Set-Cookie:ADCDownloadAuth=[long token];Version=1;Comment=;Domain=apple.com;Path=/;Max-Age=108000;HttpOnly;Expires=Tue, 03 May 2016 13:30:57 GMT
+
                     // Handle cookies that are offered
-                    foreach ( Cookie responseCookie in webResponse.Cookies ) {
+                    CookieCollection cookies = new CookieCollection();
+                    cookies.Add(webResponse.Cookies);
+
+                    if (webResponse.Headers.AllKeys.Contains("Set-Cookie"))
+                    {
+                        cookies.Parse(webResponse.Headers["Set-Cookie"], httpWebRequest.Host);
+                    }
+
+                    foreach ( Cookie responseCookie in cookies ) {
                         var cookieFound = false;
 
                         foreach ( Cookie existingCookie in cookieJar.GetCookies( webRequest.Destination ) ) {
