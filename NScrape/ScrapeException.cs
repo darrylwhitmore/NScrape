@@ -5,7 +5,9 @@ namespace NScrape {
 	/// <summary>
 	/// The exception that is thrown when a web scraping operation fails.
 	/// </summary>
+#if !NETSTANDARD1_5
 	[Serializable]
+#endif
 	public class ScrapeException : Exception {
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ScrapeException"/> class.
@@ -31,6 +33,7 @@ namespace NScrape {
 			Html = html;
 		}
 
+#if !NETSTANDARD1_5
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ScrapeException"/> class with serialized data.
 		/// </summary>
@@ -39,6 +42,7 @@ namespace NScrape {
 		protected ScrapeException( SerializationInfo info, StreamingContext context )
 			: base( info, context ) {
 		}
+#endif
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ScrapeException"/> class with a specified error message, the HTML in question and a reference to the inner exception that is the cause of this exception.
@@ -60,6 +64,7 @@ namespace NScrape {
 			: base( message, innerException ) {
 		}
 
+#if !NETSTANDARD1_5
 		/// <summary>
 		/// When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with information about the exception.
 		/// </summary>
@@ -69,6 +74,7 @@ namespace NScrape {
 
 			info.AddValue( "Html", Html );
 		}
+#endif
 
 		/// <summary>
 		/// Gets the HTML text that could not be scraped.

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace NScrape.Forms {
 	/// <summary>
@@ -60,7 +61,7 @@ namespace NScrape.Forms {
 		public IEnumerable<InputHtmlFormControl> InputControls {
 			get {
 				if ( inputControls == null ) {
-					inputControls = Controls.Where( c => c.GetType().IsAssignableFrom( typeof ( InputHtmlFormControl ) ) ).Cast<InputHtmlFormControl>().ToList();
+					inputControls = Controls.Where( c => c.GetType().GetTypeInfo().IsAssignableFrom( typeof ( InputHtmlFormControl ) ) ).Cast<InputHtmlFormControl>().ToList();
 				}
 
 				return inputControls; 

@@ -34,7 +34,7 @@ namespace NScrape {
         /// Initializes a new instance of the <see cref="WebClient"/> class.
         /// </summary>
 		public WebClient() {
-	        UserAgent = string.Format( CultureInfo.InvariantCulture, NScrapeResources.DefaultUserAgent, Assembly.GetExecutingAssembly().GetName().Version );
+	        UserAgent = string.Format( CultureInfo.InvariantCulture, NScrapeResources.DefaultUserAgent, typeof(WebClient).GetTypeInfo().Assembly.GetName().Version );
         }
 
 		private static void ConfigureHeader( HttpWebRequest webRequest, string headerName, string headerValue ) {
@@ -43,10 +43,10 @@ namespace NScrape {
 				webRequest.Accept = headerValue;
 			}
 			else if ( string.Compare( headerName, CommonHeaders.Connection, StringComparison.OrdinalIgnoreCase ) == 0) {
-				webRequest.Connection = headerValue;
+				webRequest.Headers[HttpRequestHeader.Connection] = headerValue;
 			}
 			else if ( string.Compare( headerName, CommonHeaders.ContentLength, StringComparison.OrdinalIgnoreCase ) == 0) {
-				webRequest.ContentLength = Convert.ToInt64( headerValue );
+				webRequest.Headers[HttpRequestHeader.ContentLength] = headerValue;
 			}
 			else if ( string.Compare( headerName, CommonHeaders.ContentType, StringComparison.OrdinalIgnoreCase ) == 0) {
 				webRequest.ContentType = headerValue;
@@ -55,20 +55,20 @@ namespace NScrape {
 				DateTime parsedDateTime;
 
 				if ( NScrapeUtility.TryParseHttpDate( headerValue, out parsedDateTime ) ) {
-					webRequest.Date = parsedDateTime;
+					webRequest.Headers[HttpRequestHeader.Date] = headerValue;
 				}
 			}
 			else if ( string.Compare( headerName, CommonHeaders.Expect, StringComparison.OrdinalIgnoreCase ) == 0) {
-				webRequest.Expect = headerValue;
+				webRequest.Headers[HttpRequestHeader.Expect] = headerValue;
 			}
 			else if ( string.Compare( headerName, CommonHeaders.Host, StringComparison.OrdinalIgnoreCase ) == 0) {
-				webRequest.Host = headerValue;
+				webRequest.Headers[HttpRequestHeader.Host] = headerValue;
 			}
 			else if ( string.Compare( headerName, CommonHeaders.IfModifiedSince, StringComparison.OrdinalIgnoreCase ) == 0) {
 				DateTime parsedDateTime;
 
 				if ( NScrapeUtility.TryParseHttpDate( headerValue, out parsedDateTime ) ) {
-					webRequest.IfModifiedSince = parsedDateTime;
+					webRequest.Headers[HttpRequestHeader.IfModifiedSince] = headerValue;
 				}
 			}
 			else if ( string.Compare( headerName, CommonHeaders.Range, StringComparison.OrdinalIgnoreCase ) == 0) {
@@ -78,14 +78,14 @@ namespace NScrape {
 				throw new NotSupportedException( "The Range header is not currently supported." );
 			}
 			else if ( string.Compare( headerName, CommonHeaders.Referer, StringComparison.OrdinalIgnoreCase ) == 0) {
-				webRequest.Referer = headerValue;
+				webRequest.Headers[HttpRequestHeader.Referer] = headerValue;
 			}
 			else if ( string.Compare( headerName, CommonHeaders.TransferEncoding, StringComparison.OrdinalIgnoreCase ) == 0) {
 				throw new NotSupportedException( "The Transfer-Encoding header is not currently supported." );
 			}
 			else {
 				// A header for which there is no property.
-				webRequest.Headers.Add( headerName, headerValue );
+				webRequest.Headers[headerName] = headerValue;
 			}
 		}
 
@@ -176,11 +176,13 @@ namespace NScrape {
 			//
 			// Automating Web Login With HttpWebRequest
 			// https://www.stevefenton.co.uk/Content/Blog/Date/201210/Blog/Automating-Web-Login-With-HttpWebRequest/
+#if !NETSTANDARD1_5
 			httpWebRequest.AllowAutoRedirect = false;
+#endif
 
 			// Default headers.
 			httpWebRequest.Accept = "*/*";
-			httpWebRequest.UserAgent = UserAgent;
+			httpWebRequest.Headers[HttpRequestHeader.UserAgent] = UserAgent;
 
 			// Set and/or override any provided headers.
 	        foreach ( var headerName in webRequest.Headers.AllKeys ) {
@@ -188,7 +190,7 @@ namespace NScrape {
 	        }
 
             httpWebRequest.CookieContainer = new CookieContainer();
-            httpWebRequest.CookieContainer.Add( cookieJar.GetCookies( webRequest.Destination ) );
+            httpWebRequest.CookieContainer.Add( webRequest.Destination, cookieJar.GetCookies( webRequest.Destination ) );
             
 			if ( webRequest.Type == WebRequestType.Post ) {
                 var postRequest = (PostWebRequest)webRequest;
@@ -196,16 +198,18 @@ namespace NScrape {
                 var requestDataBytes = Encoding.UTF8.GetBytes( postRequest.RequestData );
                 Stream requestStream = null;
 
-                httpWebRequest.ContentLength = requestDataBytes.Length;
+                httpWebRequest.Headers[HttpRequestHeader.ContentLength] = requestDataBytes.Length.ToString();
                 httpWebRequest.ContentType = postRequest.ContentType;
+#if !NETSTANDARD1_5
                 httpWebRequest.ServicePoint.Expect100Continue = false;
+#endif
 
                 try {
-                    requestStream = httpWebRequest.GetRequestStream();
+                    requestStream = httpWebRequest.GetRequestStreamAsync().Result;
                     requestStream.Write( requestDataBytes, 0, requestDataBytes.Length );
                 }
                 finally {
-	                requestStream?.Close();
+	                requestStream?.Dispose();
                 }
 			}
 
@@ -215,7 +219,7 @@ namespace NScrape {
 			HttpWebResponse webResponse = null;
 
             try {
-                webResponse = ( HttpWebResponse )httpWebRequest.GetResponse();
+                webResponse = ( HttpWebResponse )httpWebRequest.GetResponseAsync().Result;
 
 	            OnProcessingResponse( new ProcessingResponseEventArgs( webResponse ) );
 
@@ -232,7 +236,12 @@ namespace NScrape {
 					if ( webResponse.Headers.AllKeys.Contains( CommonHeaders.SetCookie ) ) {
 						var responseCookieList = responseCookies.OfType<Cookie>().ToList();
 
-						var cookies = NScrapeUtility.ParseSetCookieHeader( webResponse.Headers[CommonHeaders.SetCookie], httpWebRequest.Host );
+#if !NETSTANDARD1_5
+                        var host = httpWebRequest.Host;
+#else
+                        var host = webRequest.Destination.Host;
+#endif
+                        var cookies = NScrapeUtility.ParseSetCookieHeader( webResponse.Headers[CommonHeaders.SetCookie], host );
 
 						foreach ( var cookie in cookies ) {
 							if ( responseCookieList.All( c => c.Name != cookie.Name ) ) {
@@ -258,7 +267,18 @@ namespace NScrape {
                             OnAddingCookie( args );
 
                             if ( !args.Cancel ) {
-                                cookieJar.Add( responseCookie );
+                                // .NET Core seems to enfore the fact that the cookie domain _must_ start with a dot,
+                                // so let's make sure that's the case.
+                                if(!string.IsNullOrEmpty(responseCookie.Domain) && !responseCookie.Domain.StartsWith("."))
+                                {
+                                    responseCookie.Domain = "." + responseCookie.Domain;
+                                }
+
+                                string url = responseCookie.Secure ? "https://" : "http://";
+                                url += responseCookie.Domain.Substring(1);
+
+                                var uri = new Uri(url);
+                                cookieJar.Add (uri, responseCookie );
                             }
                         }
                     }
@@ -304,7 +324,11 @@ namespace NScrape {
 									response.Dispose();
 
 									// We are auto redirecting, so make a recursive call to perform the redirect
+#if !NETSTANDARD1_5
 									response = SendRequest( new GetWebRequest( redirectUri, httpWebRequest.AllowAutoRedirect ) );
+#else
+									response = SendRequest( new GetWebRequest( redirectUri ) );
+#endif
 								}
 								else {
 									var responseUrl = response.ResponseUrl;

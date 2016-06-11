@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Web;
 
 namespace NScrape.Forms {
 	/// <summary>
@@ -28,7 +27,7 @@ namespace NScrape.Forms {
 		public override string EncodedData {
 			get {
 				if ( Name.Length > 0 ) {
-					return string.Format( CultureInfo.InvariantCulture, "{0}={1}", HttpUtility.UrlEncode( Name ), HttpUtility.UrlEncode( Text ) );
+					return string.Format( CultureInfo.InvariantCulture, "{0}={1}", NScrapeUtility.UrlEncode( Name ), NScrapeUtility.UrlEncode( Text ) );
 				}
 
 				return string.Empty;

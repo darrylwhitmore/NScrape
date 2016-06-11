@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+#if !NETSTANDARD1_5
+using System.Web;
+#else
 using System.Net;
+#endif
 using NScrape.Cookies;
 using Sprache;
 
@@ -126,6 +130,23 @@ namespace NScrape {
 			}
 
 			return result;
+		}
+
+		/// <summary>
+		/// Encodes a URL string
+		/// </summary>
+		/// <param name="str">
+		/// The URL string to encode
+		/// </param>
+		/// <returns>
+		/// The encoded URL string</returns>
+		public static string UrlEncode( string str )
+		{
+#if !NETSTANDARD1_5
+			return HttpUtility.UrlEncode( str );
+#else
+			return WebUtility.UrlEncode( str );
+#endif
 		}
 	}
 }
