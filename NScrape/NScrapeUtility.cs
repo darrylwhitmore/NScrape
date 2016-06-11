@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 #if !NETSTANDARD1_5
 using System.Web;
-#else
-using System.Net;
 #endif
+using System.Net;
 using NScrape.Cookies;
 using Sprache;
 

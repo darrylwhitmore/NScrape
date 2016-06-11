@@ -1,5 +1,7 @@
 ﻿using System;
+#if !NETSTANDARD1_5
 using System.Runtime.Serialization;
+#endif
 
 namespace NScrape {
 	/// <summary>
