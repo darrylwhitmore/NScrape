@@ -103,6 +103,7 @@ namespace NScrape.Test {
 			//}
 		}
 
+		// TODO: redo aspx pages using this site?  http://independencecorps.org/Home.aspx
 		[Fact]
 		public void BasicAspxTest() {
 			var webClient = new WebClient();

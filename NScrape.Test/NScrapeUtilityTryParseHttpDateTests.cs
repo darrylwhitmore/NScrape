@@ -2,7 +2,7 @@
 using Xunit;
 
 namespace NScrape.Test {
-	public class NScrapeUtilityTests {
+	public class NScrapeUtilityTryParseHttpDateTests {
 		[Fact]
 		// http://tools.ietf.org/html/rfc7231#section-7.1.1.1
 		public void TestPreferredAndObsoleteHttpDateFormats() {
@@ -34,16 +34,48 @@ namespace NScrape.Test {
 			DateTime parsedDate;
 
 		    string httpDate = null;
+			// ReSharper disable once ExpressionIsAlwaysNull
 			Assert.False( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
+			Assert.Equal( new DateTime(), parsedDate );
 
 			httpDate = string.Empty;
 			Assert.False( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
+			Assert.Equal( new DateTime(), parsedDate );
+
+			httpDate = "Xxx, 00-Xxx-00 00:00:00 GMT";
+			Assert.False( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
+			Assert.Equal( new DateTime(), parsedDate );
 
 			httpDate = "ks alkdjf alkd falk flka flakf";
 			Assert.False( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
+			Assert.Equal( new DateTime(), parsedDate );
+		}
 
-			httpDate = "Sunday, November 6, 1994 8:49:37am";
-			Assert.False( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
+		[Fact]
+		public void TestInvalidButParseableHttpDateFormats() {
+			const string preferredFormatHttpDate = "Sun, 02 Jul 2017 22:07:33 GMT";
+
+			DateTime parsedDate;
+
+			var httpDate = "Sun, 02-Jul-17 22:07:33 GMT";
+			Assert.True( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
+			Assert.Equal( DateTimeKind.Utc, parsedDate.Kind );
+			Assert.Equal( preferredFormatHttpDate, parsedDate.ToString( "r" ) );
+
+			httpDate = "Sunday, July 2, 2017 10:07:33pm";
+			Assert.True( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
+			Assert.Equal( DateTimeKind.Utc, parsedDate.Kind );
+			Assert.Equal( preferredFormatHttpDate, parsedDate.ToString( "r" ) );
+
+			httpDate = "Sun, 02 Jul 2017 22:07:33 -0000";
+			Assert.True( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
+			Assert.Equal( DateTimeKind.Utc, parsedDate.Kind );
+			Assert.Equal( preferredFormatHttpDate, parsedDate.ToString( "r" ) );
+
+			httpDate = "Sun, 02 Jul 2017 22:07:33 +0000";
+			Assert.True( NScrapeUtility.TryParseHttpDate( httpDate, out parsedDate ) );
+			Assert.Equal( DateTimeKind.Utc, parsedDate.Kind );
+			Assert.Equal( preferredFormatHttpDate, parsedDate.ToString( "r" ) );
 		}
 
 		[Fact]

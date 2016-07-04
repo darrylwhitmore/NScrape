@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Net;
 
 namespace NScrape {
@@ -39,15 +38,9 @@ namespace NScrape {
         /// <summary>
         /// Gets the length of the content returned by the request.
         /// </summary>
-        public long ContentLength
-        {
-            get
-            {
-                return this.webResponse.ContentLength;
-            }
-        }
+        public long ContentLength => webResponse.ContentLength;
 
-		/// <summary>
+	    /// <summary>
 		/// Closes the binary response stream.
 		/// </summary>
 		/// <remarks>
@@ -59,10 +52,8 @@ namespace NScrape {
 		/// </remarks>
 		/// <seealso cref="GetResponseStream"/>
 		public void Close() {
-			if ( webResponse != null ) {
-				webResponse.Close();
-			}
-		}
+		    webResponse?.Close();
+	    }
 
 	    /// <summary>
 		/// Gets the binary data.
@@ -103,10 +94,8 @@ namespace NScrape {
 	    protected override void DisposeManagedRessources() {
 		    base.DisposeManagedRessources();
 
-			if ( webResponse != null ) {
-				webResponse.Dispose();
-			}
-		}
+		    webResponse?.Dispose();
+	    }
 
 	    /// <summary>
 		/// Gets the stream that is used to read the binary response.

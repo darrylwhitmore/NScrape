@@ -11,6 +11,7 @@ namespace NScrape {
 		public const string Location = "Location";
 		public const string Range = "Range";
 		public const string Referer = "Referer";
+		public const string SetCookie = "Set-Cookie";
 		public const string TransferEncoding = "Transfer-Encoding";
 		public const string XRequestedWith = "X-Requested-With";
 	}

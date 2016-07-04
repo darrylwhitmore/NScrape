@@ -90,7 +90,7 @@ namespace NScrape {
 		}
 
 		/// <include file='IWebClient.xml' path='/IWebClient/CookieJar/*'/>
-        public CookieContainer CookieJar { get { return cookieJar; } }
+        public CookieContainer CookieJar => cookieJar;
 
 		private string GetMetaRefreshUrl( string html ) {
 			// Look for a Meta refresh.
@@ -118,9 +118,7 @@ namespace NScrape {
 		/// <seealso cref="AddingCookie"/>
 		/// <seealso cref="AddingCookieEventArgs"/>
 		protected virtual void OnAddingCookie( AddingCookieEventArgs args ) {
-			if ( AddingCookie != null ) {
-				AddingCookie( this, args );
-			}
+			AddingCookie?.Invoke( this, args );
 		}
 
 		/// <summary>
@@ -132,12 +130,10 @@ namespace NScrape {
 		/// <param name="args">A <see cref="SendingRequestEventArgs"/> that contains the event data.</param>
 		/// <seealso cref="SendingRequest"/>
 		protected virtual void OnSendingRequest( SendingRequestEventArgs args ) {
-			if ( SendingRequest != null ) {
-				SendingRequest( this, args );
-			}
+			SendingRequest?.Invoke( this, args );
 		}
 
-        /// <summary>
+		/// <summary>
         /// Raises the <see cref="ProcessingResponse"/> event.
         /// </summary>
         /// <remarks>
@@ -145,13 +141,9 @@ namespace NScrape {
         /// </remarks>
         /// <param name="args">A <see cref="ProcessingResponseEventArgs"/> that contains the event data.</param>
         /// <seealso cref="SendingRequest"/>
-        protected virtual void OnProcessingResponse(ProcessingResponseEventArgs args)
-        {
-            if (ProcessingResponse != null)
-            {
-                ProcessingResponse(this, args);
-            }
-        }
+        protected virtual void OnProcessingResponse(ProcessingResponseEventArgs args) {
+			ProcessingResponse?.Invoke(this, args);
+		}
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri/*'/>
         public WebResponse SendRequest( Uri destination ) {
@@ -213,11 +205,9 @@ namespace NScrape {
                     requestStream.Write( requestDataBytes, 0, requestDataBytes.Length );
                 }
                 finally {
-                    if ( requestStream != null ) {
-                        requestStream.Close();
-                    }
+	                requestStream?.Close();
                 }
-            }
+			}
 
 			OnSendingRequest( new SendingRequestEventArgs( webRequest ) );
 
@@ -230,23 +220,27 @@ namespace NScrape {
 	            OnProcessingResponse( new ProcessingResponseEventArgs( webResponse ) );
 
                 if ( httpWebRequest.HaveResponse ) {
-                    // Process cookies that the .NET client 'forgot' to include,
-                    // see http://stackoverflow.com/questions/15103513/httpwebresponse-cookies-empty-despite-set-cookie-header-no-redirect
-                    // for more details;
-                    // an example cookie which is not parsed is this one:
-                    //
-                    // Set-Cookie:ADCDownloadAuth=[long token];Version=1;Comment=;Domain=apple.com;Path=/;Max-Age=108000;HttpOnly;Expires=Tue, 03 May 2016 13:30:57 GMT
+					var responseCookies = new CookieCollection { webResponse.Cookies };
 
-                    // Handle cookies that are offered
-                    CookieCollection cookies = new CookieCollection();
-                    cookies.Add(webResponse.Cookies);
+					// Some cookies in the Set-Cookie header can be omitted from the response's CookieCollection. For example:
+					//	Set-Cookie:ADCDownloadAuth=[long token];Version=1;Comment=;Domain=apple.com;Path=/;Max-Age=108000;HttpOnly;Expires=Tue, 03 May 2016 13:30:57 GMT
+					// 
+					// See also:
+					// http://stackoverflow.com/questions/15103513/httpwebresponse-cookies-empty-despite-set-cookie-header-no-redirect
+					//
+					// To catch these, we parse the header manually and add any cookie that is missing.
+					if ( webResponse.Headers.AllKeys.Contains( CommonHeaders.SetCookie ) ) {
+						var parsedCookies = NScrapeUtility.ParseSetCookieHeader( webResponse.Headers[CommonHeaders.SetCookie], httpWebRequest.Host );
 
-                    if (webResponse.Headers.AllKeys.Contains("Set-Cookie"))
-                    {
-                        cookies.Parse(webResponse.Headers["Set-Cookie"], httpWebRequest.Host);
-                    }
+						foreach ( var parsedCookie in parsedCookies ) {
+							if ( responseCookies.OfType<Cookie>().All( c => c.Name != parsedCookie.Name ) ) {
+								responseCookies.Add( parsedCookie );
+							}
+						}
+					}
 
-                    foreach ( Cookie responseCookie in cookies ) {
+					// Handle cookies that are offered
+					foreach ( Cookie responseCookie in responseCookies ) {
                         var cookieFound = false;
 
                         foreach ( Cookie existingCookie in cookieJar.GetCookies( webRequest.Destination ) ) {
