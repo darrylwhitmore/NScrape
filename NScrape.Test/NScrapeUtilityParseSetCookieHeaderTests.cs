@@ -14,6 +14,10 @@ namespace NScrape.Test {
 		private const string CookieFrederik = "ADCDownloadAuth=[long token];Version=1;Comment=;Domain=apple.com;Path=/;Max-Age=108000;HttpOnly;Expires=Tue, 03 May 2016 13:30:57 GMT";
 		private const string CookieOddExpiresDate1 = "__cfduid=d9de9c2173f6f46cc6a9457aada153ace1467497253; expires=Sun 02-Jul-17 22:07:33 GMT; path=/; domain=.typicode.com; HttpOnly";
 		private const string CookieOddExpiresDate2 = "__cfduid=d9de9c2173f6f46cc6a9457aada153ace1467497253; expires=Sun, 02-Jul-17 22:07:33 GMT; path=/; domain=.typicode.com; HttpOnly";
+		private const string CookieOddExpiresDate3 = "__cfduid=d9de9c2173f6f46cc6a9457aada153ace1467497253; expires=Sun, 02-Jul-17, 22:07:33, GMT; path=/; domain=.typicode.com; HttpOnly";
+		private const string CookieOddExpiresDateAnsiCasctime = "__cfduid=d9de9c2173f6f46cc6a9457aada153ace1467497253; expires=Sun Jul  2 22:07:33 2017; path=/; domain=.typicode.com; HttpOnly";
+		private const string CookieOddExpiresDateRfc850 = "__cfduid=d9de9c2173f6f46cc6a9457aada153ace1467497253; expires=Sunday, 02-Jul-17 22:07:33 GMT; path=/; domain=.typicode.com; HttpOnly";
+
 
 		[Fact]
 		public void NullAndEmptyArgumentsCornerCaseTests() {
@@ -69,7 +73,24 @@ namespace NScrape.Test {
 
 		[Fact]
 		public void BadExpiresDateTest() {
-			Assert.Throws<FormatException>( () => NScrapeUtility.ParseSetCookieHeader( "foo=bar; expires=Xxx, 00-Xxx-00 00:00:00 GMT; path=/", DefaultDomain ) );
+			var cookies = NScrapeUtility.ParseSetCookieHeader( "foo=bar; expires=Xxx, 00-Xxx-00 00:00:00 GMT; path=/", DefaultDomain ).ToList();
+			Assert.Equal( 1, cookies.Count );
+			var cookie = cookies[0];
+			Assert.Equal( string.Empty, cookie.Comment );
+			Assert.Null( cookie.CommentUri );
+			Assert.False( cookie.Discard );
+			Assert.Equal( DefaultDomain, cookie.Domain );
+			Assert.False( cookie.Expired );
+			Assert.Equal( new DateTime( 1, 1, 1, 0, 0, 0 ), cookie.Expires );
+			Assert.False( cookie.HttpOnly );
+			Assert.Equal( "foo", cookie.Name );
+			Assert.Equal( "/", cookie.Path );
+			Assert.Equal( string.Empty, cookie.Port );
+			Assert.False( cookie.Secure );
+			var timeStamp = DateTime.Now;
+			Assert.True( timeStamp.Subtract( cookie.TimeStamp ).TotalSeconds < 1.0 ); // just a few milliseconds between parse and test
+			Assert.Equal( "bar", cookie.Value );
+			Assert.Equal( 0, cookie.Version );
 		}
 
 		[Fact]
@@ -96,7 +117,7 @@ namespace NScrape.Test {
 		}
 
 		[Fact]
-		public void OddExpiresDateCookieTests() {
+		public void OddExpiresDateTests() {
 			var cookies = NScrapeUtility.ParseSetCookieHeader( CookieOddExpiresDate1, DefaultDomain ).ToList();
 			Assert.Equal( 1, cookies.Count );
 			CookieOddExpiresDateTest( cookies[0] );
@@ -105,8 +126,23 @@ namespace NScrape.Test {
 			Assert.Equal( 1, cookies.Count );
 			CookieOddExpiresDateTest( cookies[0] );
 
+			cookies = NScrapeUtility.ParseSetCookieHeader( CookieOddExpiresDateAnsiCasctime, DefaultDomain ).ToList();
+			Assert.Equal( 1, cookies.Count );
+			CookieOddExpiresDateTest( cookies[0] );
+
+			cookies = NScrapeUtility.ParseSetCookieHeader( CookieOddExpiresDateRfc850, DefaultDomain ).ToList();
+			Assert.Equal( 1, cookies.Count );
+			CookieOddExpiresDateTest( cookies[0] );
+		}
+
+		[Fact]
+		public void OddExpiresDateFailingTests() {
 			// BUG: Tests below fail; code assumes expires must have one and only 1 comma; better parsing needed...regex?
-			cookies = NScrapeUtility.ParseSetCookieHeader( string.Join( ",", CookieOddExpiresDate1, CookieOddExpiresDate2 ), DefaultDomain ).ToList(); 
+			var cookies = NScrapeUtility.ParseSetCookieHeader( CookieOddExpiresDate3, DefaultDomain ).ToList();
+			Assert.Equal( 1, cookies.Count );
+			CookieOddExpiresDateTest( cookies[0] );
+
+			cookies = NScrapeUtility.ParseSetCookieHeader( string.Join( ",", CookieOddExpiresDate1, CookieOddExpiresDate2 ), DefaultDomain ).ToList();
 			Assert.Equal( 2, cookies.Count );
 			CookieOddExpiresDateTest( cookies[0] );
 			CookieOddExpiresDateTest( cookies[1] );

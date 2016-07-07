@@ -111,13 +111,10 @@ namespace NScrape {
 								}
 								else if ( !hasMaxAge && string.Equals( pair[0], "expires", StringComparison.OrdinalIgnoreCase ) ) {
 									// max-age takes precedence over "expires"
-
 									DateTime parsedDate;
+
 									if ( TryParseHttpDate( pair[1], out parsedDate ) ) {
 										cookie.Expires = parsedDate.ToLocalTime();
-									}
-									else {
-										throw new FormatException( $"Invalid date in 'expires' attribute value: '{pair[1]}'" );
 									}
 								}
 								else if ( string.Equals( pair[0], "version", StringComparison.OrdinalIgnoreCase ) ) {
