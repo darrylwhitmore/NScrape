@@ -19,7 +19,7 @@ namespace NScrape.Cookies {
 
 		public static readonly Parser<string> Name = Parse.AnyChar.Except( EqualsOrSemiColonOrCommaSeparator ).AtLeastOnce().Text().Token();
 
-		public static readonly Parser<string> Value = Parse.AnyChar.Except( SemiColonSeparator ).Many().Text().Token();
+		public static readonly Parser<string> Value = Parse.AnyChar.Except( SemiColonOrCommaSeparator ).Many().Text().Token();
 
 		public static readonly Parser<string> DateValue =
 			from beforeComma in Parse.Letter.Many()

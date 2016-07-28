@@ -18,7 +18,7 @@ namespace NScrape {
 		/// specified in the <c>Set-Cookie</c> declaration.
 		/// </param>
 		/// <returns>An enumeration of <see cref="Cookie"/>.</returns>
-		public static IEnumerable<Cookie> ParseSetCookieHeader( string setCookieHeader, string hostName ) {
+		internal static IEnumerable<Cookie> ParseSetCookieHeader( string setCookieHeader, string hostName ) {
 			if ( string.IsNullOrWhiteSpace( hostName ) ) {
 				throw new ArgumentException( "A host name is required.", nameof( hostName ) );
 			}
