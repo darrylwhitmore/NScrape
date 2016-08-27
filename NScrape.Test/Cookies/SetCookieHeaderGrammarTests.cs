@@ -257,13 +257,11 @@ namespace NScrape.Test.Cookies {
 		public void CookieTests() {
 			// Nothing to parse
 			var test = string.Empty;
-			var parsedCookie = SetCookieHeaderGrammar.Cookie.Parse( test );
-			Assert.NotNull( parsedCookie );
-			Assert.Equal( 0, parsedCookie.CookieNameValuePairs.Count() );
+			Assert.Throws<ParseException>( () => SetCookieHeaderGrammar.Cookie.Parse( test ) );
 
 			// Basic
 			test = "aaa=bbb";
-			parsedCookie = SetCookieHeaderGrammar.Cookie.Parse( test );
+			var parsedCookie = SetCookieHeaderGrammar.Cookie.Parse( test );
 			Assert.NotNull( parsedCookie );
 			Assert.Equal( 1, parsedCookie.CookieNameValuePairs.Count() );
 			Assert.Equal( "aaa", parsedCookie.CookieNameValuePairs.ElementAt( 0 ).Name );
