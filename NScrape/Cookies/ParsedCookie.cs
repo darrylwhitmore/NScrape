@@ -2,10 +2,13 @@
 
 namespace NScrape.Cookies {
 	internal class ParsedCookie {
-		public ParsedCookie( IEnumerable<CookieNameValuePair> cookieNameValuePairs ) {
-			CookieNameValuePairs = cookieNameValuePairs;
+		public ParsedCookie( CookieNameValuePair cookiePair, IEnumerable<CookieNameValuePair> attributePairs ) {
+			CookiePair = cookiePair;
+			AttributePairs = attributePairs;
 		}
 
-		public IEnumerable<CookieNameValuePair> CookieNameValuePairs { get; private set; }
+		public CookieNameValuePair CookiePair { get; set; }
+
+		public IEnumerable<CookieNameValuePair> AttributePairs { get; private set; }
 	}
 }

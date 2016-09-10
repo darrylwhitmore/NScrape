@@ -49,7 +49,7 @@ namespace NScrape {
 	    /// <remarks>
 	    /// Headers may be sent with the request by adding them to the headers collection.
 	    /// </remarks>
-	    public NameValueCollection Headers { get; private set; }
+	    public NameValueCollection Headers { get; }
 
 	    /// <summary>
 	    /// Gets the type of the request.

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Sprache;
+﻿using Sprache;
 
 namespace NScrape.Cookies {
 	// Building an External DSL in C#
@@ -50,10 +48,10 @@ namespace NScrape.Cookies {
 			select new CookieNameValuePair( name );
 
 		public static readonly Parser<ParsedCookie> Cookie =
-			from cookiePair in NameValue.Once()
+			from cookiePair in NameValue
 			from cookieAttributes in ExpiresNameValue.Or( NameValue.Or( NameOnly ) ).Many()
 			from delimiter in CommaSeparator.Optional()
-			select new ParsedCookie( cookiePair.Union( cookieAttributes ) );
+			select new ParsedCookie( cookiePair, cookieAttributes );
 
 		public static readonly Parser<ParsedSetCookieHeader> SetCookieHeader =
 			from cookies in Cookie.Many()

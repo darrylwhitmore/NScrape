@@ -35,67 +35,64 @@ namespace NScrape {
 
 			foreach ( var parsedCookie in header.ParsedCookies ) {
 				var cookie = new Cookie {
+					Name = parsedCookie.CookiePair.Name,
+					Value = parsedCookie.CookiePair.Value,
 					Path = "/",
 					Domain = hostName
 				};
 
 				var hasMaxAge = false;
 
-				if ( parsedCookie.CookieNameValuePairs.Any() ) {
-					cookie.Name = parsedCookie.CookieNameValuePairs.ElementAt( 0 ).Name;
-					cookie.Value = parsedCookie.CookieNameValuePairs.ElementAt( 0 ).Value;
+				foreach ( var nameValuePair in parsedCookie.AttributePairs ) {
+					if ( string.Equals( nameValuePair.Name, "httponly", StringComparison.OrdinalIgnoreCase ) ) {
+						cookie.HttpOnly = true;
+					}
+					else if ( string.Equals( nameValuePair.Name, "secure", StringComparison.OrdinalIgnoreCase ) ) {
+						cookie.Secure = true;
+					}
+					else if ( string.Equals( nameValuePair.Name, "path", StringComparison.OrdinalIgnoreCase ) ) {
+						if ( nameValuePair.Value != string.Empty ) {
+							cookie.Path = nameValuePair.Value;
+						}
+						else {
+							cookie.Path = "/";
+						}
+					}
+					else if ( string.Equals( nameValuePair.Name, "domain", StringComparison.OrdinalIgnoreCase ) ) {
+						if ( nameValuePair.Value != string.Empty ) {
+							cookie.Domain = nameValuePair.Value;
+						}
+						else {
+							cookie.Domain = hostName;
+						}
+					}
+					else if ( string.Equals( nameValuePair.Name, "max-age", StringComparison.OrdinalIgnoreCase ) ) {
+						var maxAge = int.Parse( nameValuePair.Value );
+						cookie.Expires = DateTime.Now.AddSeconds( maxAge );
 
-					foreach ( var nameValuePair in parsedCookie.CookieNameValuePairs.Skip( 1 ) ) {
-						if ( string.Equals( nameValuePair.Name, "httponly", StringComparison.OrdinalIgnoreCase ) ) {
-							cookie.HttpOnly = true;
-						}
-						else if ( string.Equals( nameValuePair.Name, "secure", StringComparison.OrdinalIgnoreCase ) ) {
-							cookie.Secure = true;
-						}
-						else if ( string.Equals( nameValuePair.Name, "path", StringComparison.OrdinalIgnoreCase ) ) {
-							if ( nameValuePair.Value != string.Empty ) {
-								cookie.Path = nameValuePair.Value;
-							}
-							else {
-								cookie.Path = "/";
-							}
-						}
-						else if ( string.Equals( nameValuePair.Name, "domain", StringComparison.OrdinalIgnoreCase ) ) {
-							if ( nameValuePair.Value != string.Empty ) {
-								cookie.Domain = nameValuePair.Value;
-							}
-							else {
-								cookie.Domain = hostName;
-							}
-						}
-						else if ( string.Equals( nameValuePair.Name, "max-age", StringComparison.OrdinalIgnoreCase ) ) {
-							var maxAge = int.Parse( nameValuePair.Value );
-							cookie.Expires = DateTime.Now.AddSeconds( maxAge );
+						// Prevent the 'expires' value from overriding the value that was determined using max-age
+						hasMaxAge = true;
+					}
+					else if ( !hasMaxAge && string.Equals( nameValuePair.Name, "expires", StringComparison.OrdinalIgnoreCase ) ) {
+						// max-age takes precedence over "expires"
+						DateTime parsedDate;
 
-							// Prevent the 'expires' value from overriding the value that was determined using max-age
-							hasMaxAge = true;
+						if ( TryParseHttpDate( nameValuePair.Value, out parsedDate ) ) {
+							cookie.Expires = parsedDate.ToLocalTime();
 						}
-						else if ( !hasMaxAge && string.Equals( nameValuePair.Name, "expires", StringComparison.OrdinalIgnoreCase ) ) {
-							// max-age takes precedence over "expires"
-							DateTime parsedDate;
+					}
+					else if ( string.Equals( nameValuePair.Name, "version", StringComparison.OrdinalIgnoreCase ) ) {
+						if ( nameValuePair.Value != string.Empty ) {
+							int version;
 
-							if ( TryParseHttpDate( nameValuePair.Value, out parsedDate ) ) {
-								cookie.Expires = parsedDate.ToLocalTime();
-							}
-						}
-						else if ( string.Equals( nameValuePair.Name, "version", StringComparison.OrdinalIgnoreCase ) ) {
-							if ( nameValuePair.Value != string.Empty ) {
-								int version;
-
-								if ( int.TryParse( nameValuePair.Value, out version ) ) {
-									cookie.Version = version;
-								}
+							if ( int.TryParse( nameValuePair.Value, out version ) ) {
+								cookie.Version = version;
 							}
 						}
 					}
-
-					cookies.Add( cookie );
 				}
+
+				cookies.Add( cookie );
 			}
 
 			return cookies;
