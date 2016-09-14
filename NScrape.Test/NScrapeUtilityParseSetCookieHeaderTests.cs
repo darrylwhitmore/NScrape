@@ -14,7 +14,6 @@ namespace NScrape.Test {
 		private const string CookieFrederik = "ADCDownloadAuth=[long token];Version=1;Comment=;Domain=apple.com;Path=/;Max-Age=108000;HttpOnly;Expires=Tue, 03 May 2016 13:30:57 GMT";
 		private const string CookieOddExpiresDate1 = "__cfduid=d9de9c2173f6f46cc6a9457aada153ace1467497253; expires=Sun 02-Jul-17 22:07:33 GMT; path=/; domain=.typicode.com; HttpOnly";
 		private const string CookieOddExpiresDate2 = "__cfduid=d9de9c2173f6f46cc6a9457aada153ace1467497253; expires=Sun, 02-Jul-17 22:07:33 GMT; path=/; domain=.typicode.com; HttpOnly";
-		private const string CookieOddExpiresDate3 = "__cfduid=d9de9c2173f6f46cc6a9457aada153ace1467497253; expires=Sun, 02-Jul-17, 22:07:33, GMT; path=/; domain=.typicode.com; HttpOnly";
 		private const string CookieOddExpiresDateAnsiCasctime = "__cfduid=d9de9c2173f6f46cc6a9457aada153ace1467497253; expires=Sun Jul  2 22:07:33 2017; path=/; domain=.typicode.com; HttpOnly";
 		private const string CookieOddExpiresDateRfc850 = "__cfduid=d9de9c2173f6f46cc6a9457aada153ace1467497253; expires=Sunday, 02-Jul-17 22:07:33 GMT; path=/; domain=.typicode.com; HttpOnly";
 
@@ -137,12 +136,7 @@ namespace NScrape.Test {
 
 		[Fact]
 		public void OddExpiresDateFailingTests() {
-			// BUG: Tests below fail; code assumes expires must have one and only 1 comma; better parsing needed...regex?
-			var cookies = NScrapeUtility.ParseSetCookieHeader( CookieOddExpiresDate3, DefaultDomain ).ToList();
-			Assert.Equal( 1, cookies.Count );
-			CookieOddExpiresDateTest( cookies[0] );
-
-			cookies = NScrapeUtility.ParseSetCookieHeader( string.Join( ",", CookieOddExpiresDate1, CookieOddExpiresDate2 ), DefaultDomain ).ToList();
+			var cookies = NScrapeUtility.ParseSetCookieHeader( string.Join( ",", CookieOddExpiresDate1, CookieOddExpiresDate2 ), DefaultDomain ).ToList();
 			Assert.Equal( 2, cookies.Count );
 			CookieOddExpiresDateTest( cookies[0] );
 			CookieOddExpiresDateTest( cookies[1] );

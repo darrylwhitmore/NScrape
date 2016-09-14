@@ -230,11 +230,13 @@ namespace NScrape {
 					//
 					// To catch these, we parse the header manually and add any cookie that is missing.
 					if ( webResponse.Headers.AllKeys.Contains( CommonHeaders.SetCookie ) ) {
-						var parsedCookies = NScrapeUtility.ParseSetCookieHeader( webResponse.Headers[CommonHeaders.SetCookie], httpWebRequest.Host );
+						var responseCookieList = responseCookies.OfType<Cookie>().ToList();
 
-						foreach ( var parsedCookie in parsedCookies ) {
-							if ( responseCookies.OfType<Cookie>().All( c => c.Name != parsedCookie.Name ) ) {
-								responseCookies.Add( parsedCookie );
+						var cookies = NScrapeUtility.ParseSetCookieHeader( webResponse.Headers[CommonHeaders.SetCookie], httpWebRequest.Host );
+
+						foreach ( var cookie in cookies ) {
+							if ( responseCookieList.All( c => c.Name != cookie.Name ) ) {
+								responseCookies.Add( cookie );
 							}
 						}
 					}
@@ -325,9 +327,7 @@ namespace NScrape {
             catch ( WebException ex ) {
                 response = new ExceptionWebResponse( webRequest.Destination, ex );
 
-				if ( webResponse != null ) {
-					webResponse.Dispose();
-				}
+	            webResponse?.Dispose();
             }
 
             return response;
