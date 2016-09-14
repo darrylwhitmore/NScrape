@@ -4,7 +4,7 @@ namespace NScrape.Cookies {
 	// Building an External DSL in C#
 	// http://nblumhardt.com/2010/01/building-an-external-dsl-in-c/
 	//
-	// sprache/Sprache
+	// Sprache
 	// https://github.com/sprache/Sprache
 	internal static class SetCookieHeaderGrammar {
 		public static readonly Parser<char> EqualsSeparator = Parse.Char( '=' );

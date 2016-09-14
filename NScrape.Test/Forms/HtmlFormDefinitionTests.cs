@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using Xunit;
 using NScrape.Forms;
+using Xunit;
 
-namespace NScrape.Test {
+namespace NScrape.Test.Forms {
 	public class HtmlFormDefinitionTests {
 		[Fact]
 		public void TestSingleFormTextsAndDropdown() {

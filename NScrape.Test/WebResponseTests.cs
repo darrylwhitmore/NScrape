@@ -219,7 +219,7 @@ namespace NScrape.Test {
 		public void BinaryWebResponseTest() {
 			var webClient = new WebClient();
 
-			var uri = new Uri( "https://download-cdn.getsync.com/stable/windows64/BitTorrent-Sync_x64.exe" );
+			var uri = new Uri( "https://download-cdn.getsync.com/stable/windows64/Resilio-Sync_x64.exe" );
 
 			using ( var response = webClient.SendRequest( uri ) ) {
 				Assert.NotNull( response );
@@ -249,7 +249,7 @@ namespace NScrape.Test {
 		public void BinaryWebResponseDataPropertyBackwardsCompatibilityTest() {
 			var webClient = new WebClient();
 
-			var uri = new Uri( "https://download-cdn.getsync.com/stable/windows64/BitTorrent-Sync_x64.exe" );
+			var uri = new Uri( "https://download-cdn.getsync.com/stable/windows64/Resilio-Sync_x64.exe" );
 
 			using ( var response = webClient.SendRequest( uri ) ) {
 				Assert.NotNull( response );

@@ -327,9 +327,7 @@ namespace NScrape {
             catch ( WebException ex ) {
                 response = new ExceptionWebResponse( webRequest.Destination, ex );
 
-				if ( webResponse != null ) {
-					webResponse.Dispose();
-				}
+	            webResponse?.Dispose();
             }
 
             return response;
