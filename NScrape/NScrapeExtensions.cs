@@ -21,12 +21,17 @@ namespace NScrape {
 		/// The content type used by the <see cref="HttpWebResponse"/>.
 		/// </returns>
 		public static Encoding GetEncoding( this HttpWebResponse webResponse ) {
+#if !NETSTANDARD1_5
 			// If a character set is not specified, RFC2616 section 3.7.1 says to use ISO-8859-1, per the page below.
 			// The page says this is more or less useless, but I did find that Chrome and Firefox behaved this way
 			// for javascript files that I tested.
 			// http://www.w3.org/TR/html4/charset.html#h-5.2.2
 			var characterSet = !string.IsNullOrEmpty( webResponse.CharacterSet ) ? webResponse.CharacterSet : "iso-8859-1";
 			return Encoding.GetEncoding( characterSet );
+#else
+			// .NET Core does not support the CharacterSet property
+			return Encoding.GetEncoding( "iso-8859-1" );
+#endif
 		}
 
 		/// <summary>
@@ -51,7 +56,7 @@ namespace NScrape {
 			if ( s != null ) {
 				StreamReader sr;
 
-				if ( webResponse.ContentEncoding == "gzip" ) {
+				if ( webResponse.Headers[HttpResponseHeader.ContentEncoding] == "gzip" ) {
 					sr = new StreamReader( new GZipStream( s, CompressionMode.Decompress ), encoding );
 				}
 				else {
@@ -60,7 +65,7 @@ namespace NScrape {
 
 				var content = sr.ReadToEnd();
 
-				sr.Close();
+				sr.Dispose();
 
 				return content;
 			}

@@ -34,7 +34,9 @@ namespace NScrape {
 		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
 		/// </summary>
 		/// <filterpriority>2</filterpriority>
+#if !NETSTANDARD1_5
 		[MethodImpl( MethodImplOptions.Synchronized )]
+#endif
 		public void Dispose() {
 			Dispose( true );
 			GC.SuppressFinalize( this );
