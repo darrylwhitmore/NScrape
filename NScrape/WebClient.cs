@@ -297,16 +297,20 @@ namespace NScrape {
 							redirectUri = new Uri( webRequest.Destination, new Uri( location, UriKind.Relative ) );
 						}
 
+						//Dispose webResponse before auto redirect otherwise the connection will not be closed until all the auto redirect finished
+						//The code to handle old school Meta refresh tag below is correct
+						//http://www.wadewegner.com/2007/08/systemnetwebexception-when-issuing-more-than-two-concurrent-webrequests/
 						if ( webRequest.AutoRedirect ) {
 							// We are auto redirecting, so make a recursive call to perform the redirect by hand.
+							webResponse.Dispose();
 							response = SendRequest( new GetWebRequest( redirectUri ) );
 						}
 						else {
+							var responseUri=webResponse.ResponseUri;
+							webResponse.Dispose();
 							// We are not auto redirecting, so send the caller a redirect response.
-							response = new RedirectedWebResponse( webResponse.ResponseUri, webRequest, redirectUri );
+							response = new RedirectedWebResponse( responseUri, webRequest, redirectUri );
 						}
-
-						webResponse.Dispose();
                     }
 					else {
 						// We have a non-redirected response.
