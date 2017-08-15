@@ -5,7 +5,6 @@
     <TargetFrameworks>netstandard1.5;net45</TargetFrameworks>
     <AssemblyName>CoreCompat.NScrape</AssemblyName>
     <PackageId>CoreCompat.NScrape</PackageId>
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.5' ">$(PackageTargetFallback);portable-net45</PackageTargetFallback>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     
     <!-- NuGet package properties -->
@@ -24,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.4.9" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.5.1" />
     <PackageReference Include="Sprache" Version="2.1.0" />
   </ItemGroup>
 
