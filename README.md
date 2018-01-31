@@ -1,13 +1,13 @@
 # NScrape
 ##### A web scraping framework for .Net
-=======
+-------
 
 NScrape is a framework that helps with much of the grunt work involved in web scraping, leaving you to concentrate on the scraping itself. NScrape recommends and supports scraping via the [HTML Agility Pack](https://htmlagilitypack.codeplex.com/), but if you'd like to use string functions or regular expressions, feel free! 
 
-##Installation
+## Installation
 Install the NScrape [nuget package](https://www.nuget.org/packages/NScrape/): `Install-Package NScrape`
 
-##Reference
+## Reference
 The NScrape API reference is available in a CHM help file. Download the latest version from the [release](https://github.com/darrylwhitmore/NScrape/releases) page.
 
 ## Tutorial
