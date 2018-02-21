@@ -276,7 +276,7 @@ namespace NScrape.Test {
 			Assert.Null( cookie.CommentUri );
 			Assert.False( cookie.Discard );
 			Assert.Equal( ".typicode.com", cookie.Domain );
-			Assert.False( cookie.Expired );
+			Assert.True( cookie.Expired );
 			Assert.Equal( new DateTime( 2017, 7, 2, 17, 7, 33 ), cookie.Expires );
 			Assert.True( cookie.HttpOnly );
 			Assert.Equal( "__cfduid", cookie.Name );
