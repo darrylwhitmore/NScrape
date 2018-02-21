@@ -50,11 +50,11 @@ namespace NScrape.Test {
 		}
 
 		[Fact]
-		public void HtmlWebResponseMetaFreshTagNoAutoRedirectTest() {
+		public void HtmlWebResponseMetaRefreshTagNoAutoRedirectTest() {
 			var webClient = new WebClient();
 
-			var uri = new Uri( "http://www.pageresource.com/html/refex1.htm" );
-			var redirectUri = new Uri( "http://www.pageresource.com/html/refex2.htm" );
+			var uri = new Uri( "https://www.rapidtables.com/web/dev/redirect/html-redirect-test.html" );
+			var redirectUri = new Uri( "https://www.rapidtables.com/web/dev/html-redirect.html" );
 
 			using ( var response = webClient.SendRequest( uri, false ) ) {
 				Assert.NotNull( response );
@@ -72,11 +72,11 @@ namespace NScrape.Test {
 		}
 
 		[Fact]
-		public void HtmlWebResponseMetaFreshTagAutoRedirectTest() {
+		public void HtmlWebResponseMetaRefreshTagAutoRedirectTest() {
 			var webClient = new WebClient();
 
-			var uri = new Uri( "http://www.pageresource.com/html/refex1.htm" );
-			var redirectUri = new Uri( "http://www.pageresource.com/html/refex2.htm" );
+			var uri = new Uri( "https://www.rapidtables.com/web/dev/redirect/html-redirect-test.html" );
+			var redirectUri = new Uri( "https://www.rapidtables.com/web/dev/html-redirect.html" );
 
 			using ( var response = webClient.SendRequest( uri ) ) {
 				Assert.NotNull( response );
@@ -88,7 +88,9 @@ namespace NScrape.Test {
 				Assert.NotNull( htmlWebResponse );
 
 				Assert.NotNull( htmlWebResponse.Html );
-				Assert.Contains( "The New Page!", htmlWebResponse.Html );
+				Assert.Contains( "Press this link to redirect from", htmlWebResponse.Html );
+				Assert.Contains( "<em>html-redirect-test.htm</em>", htmlWebResponse.Html );
+				Assert.Contains( "back to this page:", htmlWebResponse.Html );
 			}
 		}
 
@@ -156,7 +158,7 @@ namespace NScrape.Test {
 		public void XmlWebResponseTest() {
 			var webClient = new WebClient();
 
-			var uri = new Uri( "http://www.xmlfiles.com/examples/cd_catalog.xml" );
+			var uri = new Uri( "https://www.w3schools.com/js/cd_catalog.xml" );
 
 			using ( var response = webClient.SendRequest( uri ) ) {
 				Assert.NotNull( response );
