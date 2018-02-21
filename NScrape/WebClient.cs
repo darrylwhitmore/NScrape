@@ -182,10 +182,14 @@ namespace NScrape {
 
 			// Default headers.
 			httpWebRequest.Accept = "*/*";
+#if !NETSTANDARD1_5
+			httpWebRequest.UserAgent = UserAgent;
+#else
 			httpWebRequest.Headers[HttpRequestHeader.UserAgent] = UserAgent;
+#endif
 
 			// Set and/or override any provided headers.
-	        foreach ( var headerName in webRequest.Headers.AllKeys ) {
+			foreach ( var headerName in webRequest.Headers.AllKeys ) {
 				ConfigureHeader( httpWebRequest, headerName, webRequest.Headers[headerName] );
 	        }
 
