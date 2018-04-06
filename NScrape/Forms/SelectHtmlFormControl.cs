@@ -21,7 +21,7 @@ namespace NScrape.Forms {
 				Options = BuildOptionList( match.Groups[RegexLibrary.ParseSelectOptionsGroup].Value );
 			}
 			else {
-				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.NotASelectHtmlControl, html ) );
+				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.NotASelectHtmlControl, html ) );
 			}
 		}
 

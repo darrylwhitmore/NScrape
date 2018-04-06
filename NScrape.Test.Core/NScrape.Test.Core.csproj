@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <RootNamespace>NScrape.Test</RootNamespace>
+
+    <SignAssembly>true</SignAssembly>
+
+    <AssemblyOriginatorKeyFile>nscrape.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\NScrape.Test.Common\Cookies\SetCookieHeaderGrammarTests.cs" Link="Cookies\SetCookieHeaderGrammarTests.cs" />
+    <Compile Include="..\NScrape.Test.Common\Forms\HtmlFormDefinitionTests.cs" Link="Forms\HtmlFormDefinitionTests.cs" />
+    <Compile Include="..\NScrape.Test.Common\Forms\HtmlFormTests.cs" Link="Forms\HtmlFormTests.cs" />
+    <Compile Include="..\NScrape.Test.Common\NScrapeExtensionTests.cs" Link="NScrapeExtensionTests.cs" />
+    <Compile Include="..\NScrape.Test.Common\NScrapeUtilityParseSetCookieHeaderTests.cs" Link="NScrapeUtilityParseSetCookieHeaderTests.cs" />
+    <Compile Include="..\NScrape.Test.Common\NScrapeUtilityTryParseHttpDateTests.cs" Link="NScrapeUtilityTryParseHttpDateTests.cs" />
+    <Compile Include="..\NScrape.Test.Common\WebResponseTests.cs" Link="WebResponseTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.6.1" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.0-preview1-26216-02" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NScrape\NScrape.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Forms\" />
+    <Folder Include="Cookies\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

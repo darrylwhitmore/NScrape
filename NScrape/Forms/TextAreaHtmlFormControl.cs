@@ -17,7 +17,7 @@ namespace NScrape.Forms {
 				Text = match.Groups[RegexLibrary.ParseTextAreaTextGroup].Value;
 			}
 			else {
-				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.NotATextAreaHtmlControl, html ) );
+				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.NotATextAreaHtmlControl, html ) );
 			}
 		}
 

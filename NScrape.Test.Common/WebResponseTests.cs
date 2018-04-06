@@ -110,7 +110,7 @@ namespace NScrape.Test {
 				Assert.NotNull( htmlWebResponse );
 
 				Assert.NotNull( htmlWebResponse.Html );
-				Assert.Contains( "<meta content=\"darrylwhitmore/NScrape\" property=\"og:title\" />", htmlWebResponse.Html );
+				Assert.Contains( "\"NScrape - A web scraping framework for .Net\"", htmlWebResponse.Html );
 			}
 		}
 
@@ -262,9 +262,15 @@ namespace NScrape.Test {
 				var binaryResponse = response as BinaryWebResponse;
 				Assert.NotNull( binaryResponse );
 
-#pragma warning disable 618
-				var data = binaryResponse.Data;
-#pragma warning restore 618
+				byte[] data;
+				using ( var s = binaryResponse.GetResponseStream() ) {
+					using ( var ms = new MemoryStream() ) {
+						s.CopyTo( ms );
+
+						data = ms.ToArray();
+					}
+				}
+
 				Assert.NotNull( data );
 			}
 		}

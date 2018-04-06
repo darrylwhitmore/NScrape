@@ -34,7 +34,14 @@ namespace NScrape {
         /// Initializes a new instance of the <see cref="WebClient"/> class.
         /// </summary>
 		public WebClient() {
-	        UserAgent = string.Format( CultureInfo.InvariantCulture, NScrapeResources.DefaultUserAgent, typeof(WebClient).GetTypeInfo().Assembly.GetName().Version );
+	        // The request was aborted: Could not create SSL/TLS secure channel.
+	        // https://github.com/google/google-api-dotnet-client/issues/911
+			//
+			// The request was aborted: Could not create SSL/TLS secure channel
+			// https://stackoverflow.com/a/2904963/83861
+			ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+			UserAgent = string.Format( CultureInfo.InvariantCulture, Properties.Resources.DefaultUserAgent, typeof(WebClient).GetTypeInfo().Assembly.GetName().Version );
         }
 
 		private static void ConfigureHeader( HttpWebRequest webRequest, string headerName, string headerValue ) {
@@ -45,16 +52,16 @@ namespace NScrape {
 			else if ( string.Compare( headerName, CommonHeaders.Connection, StringComparison.OrdinalIgnoreCase ) == 0) {
 				webRequest.Headers[HttpRequestHeader.Connection] = headerValue;
 			}
-			else if ( string.Compare( headerName, CommonHeaders.ContentLength, StringComparison.OrdinalIgnoreCase ) == 0) {
-				webRequest.Headers[HttpRequestHeader.ContentLength] = headerValue;
+			else if ( string.Compare( headerName, CommonHeaders.ContentLength, StringComparison.OrdinalIgnoreCase ) == 0 ) {
+				if ( long.TryParse( headerValue, out var contentLength ) ) {
+					webRequest.ContentLength = contentLength;
+				}
 			}
 			else if ( string.Compare( headerName, CommonHeaders.ContentType, StringComparison.OrdinalIgnoreCase ) == 0) {
 				webRequest.ContentType = headerValue;
 			}
 			else if ( string.Compare( headerName, CommonHeaders.Date, StringComparison.OrdinalIgnoreCase ) == 0) {
-				DateTime parsedDateTime;
-
-				if ( NScrapeUtility.TryParseHttpDate( headerValue, out parsedDateTime ) ) {
+				if ( NScrapeUtility.TryParseHttpDate( headerValue, out DateTime _ ) ) {
 					webRequest.Headers[HttpRequestHeader.Date] = headerValue;
 				}
 			}
@@ -65,9 +72,7 @@ namespace NScrape {
 				webRequest.Headers[HttpRequestHeader.Host] = headerValue;
 			}
 			else if ( string.Compare( headerName, CommonHeaders.IfModifiedSince, StringComparison.OrdinalIgnoreCase ) == 0) {
-				DateTime parsedDateTime;
-
-				if ( NScrapeUtility.TryParseHttpDate( headerValue, out parsedDateTime ) ) {
+				if ( NScrapeUtility.TryParseHttpDate( headerValue, out DateTime _ ) ) {
 					webRequest.Headers[HttpRequestHeader.IfModifiedSince] = headerValue;
 				}
 			}
@@ -78,7 +83,7 @@ namespace NScrape {
 				throw new NotSupportedException( "The Range header is not currently supported." );
 			}
 			else if ( string.Compare( headerName, CommonHeaders.Referer, StringComparison.OrdinalIgnoreCase ) == 0) {
-				webRequest.Headers[HttpRequestHeader.Referer] = headerValue;
+				webRequest.Referer = headerValue;
 			}
 			else if ( string.Compare( headerName, CommonHeaders.TransferEncoding, StringComparison.OrdinalIgnoreCase ) == 0) {
 				throw new NotSupportedException( "The Transfer-Encoding header is not currently supported." );
@@ -176,17 +181,11 @@ namespace NScrape {
 			//
 			// Automating Web Login With HttpWebRequest
 			// https://www.stevefenton.co.uk/Content/Blog/Date/201210/Blog/Automating-Web-Login-With-HttpWebRequest/
-#if !NETSTANDARD1_5
 			httpWebRequest.AllowAutoRedirect = false;
-#endif
 
 			// Default headers.
 			httpWebRequest.Accept = "*/*";
-#if !NETSTANDARD1_5
 			httpWebRequest.UserAgent = UserAgent;
-#else
-			httpWebRequest.Headers[HttpRequestHeader.UserAgent] = UserAgent;
-#endif
 
 			// Set and/or override any provided headers.
 			foreach ( var headerName in webRequest.Headers.AllKeys ) {
@@ -202,13 +201,10 @@ namespace NScrape {
                 var requestDataBytes = Encoding.UTF8.GetBytes( postRequest.RequestData );
                 Stream requestStream = null;
 
-                httpWebRequest.Headers[HttpRequestHeader.ContentLength] = requestDataBytes.Length.ToString();
-                httpWebRequest.ContentType = postRequest.ContentType;
-#if !NETSTANDARD1_5
-                httpWebRequest.ServicePoint.Expect100Continue = false;
-#endif
+				httpWebRequest.ContentLength = requestDataBytes.Length;
+				httpWebRequest.ContentType = postRequest.ContentType;
 
-                try {
+				try {
                     requestStream = httpWebRequest.GetRequestStreamAsync().Result;
                     requestStream.Write( requestDataBytes, 0, requestDataBytes.Length );
                 }
@@ -223,7 +219,32 @@ namespace NScrape {
 			HttpWebResponse webResponse = null;
 
             try {
-                webResponse = ( HttpWebResponse )httpWebRequest.GetResponseAsync().Result;
+				try {
+					webResponse = ( HttpWebResponse )httpWebRequest.GetResponseAsync().Result;
+				}
+				catch ( AggregateException ex ) {
+					// While the line above executes without exception under the .Net Framework, under
+					// .Net Core, it will throw an exception for non-successful (non-200) status codes.
+					// However, the response we need is buried within the exception, so pull it out and
+					// continue.
+					//
+					// See thread on the following page, notably the comment from davidsh on Sep 6, 2017:
+					//
+					// HttpWebRequest in .NET Core 2.0 throwing 301 Moved Permanently #23422
+					// https://github.com/dotnet/corefx/issues/23422
+					if ( ex.InnerExceptions.Count == 1 ) {
+						if ( ex.InnerExceptions[0] is WebException webException ) {
+							if ( webException.Response is HttpWebResponse httpWebResponse ) {
+								webResponse = httpWebResponse;
+							}
+						}
+					}
+
+					if ( webResponse == null ) {
+						// The exception was not as expected so we can't process it.
+						throw;
+					}
+				}
 
 	            OnProcessingResponse( new ProcessingResponseEventArgs( webResponse ) );
 
@@ -240,12 +261,8 @@ namespace NScrape {
 					if ( webResponse.Headers.AllKeys.Contains( CommonHeaders.SetCookie ) ) {
 						var responseCookieList = responseCookies.OfType<Cookie>().ToList();
 
-#if !NETSTANDARD1_5
-                        var host = httpWebRequest.Host;
-#else
-                        var host = webRequest.Destination.Host;
-#endif
-                        var cookies = NScrapeUtility.ParseSetCookieHeader( webResponse.Headers[CommonHeaders.SetCookie], host );
+						var host = httpWebRequest.Host;
+						var cookies = NScrapeUtility.ParseSetCookieHeader( webResponse.Headers[CommonHeaders.SetCookie], host );
 
 						foreach ( var cookie in cookies ) {
 							if ( responseCookieList.All( c => c.Name != cookie.Name ) ) {
@@ -335,11 +352,7 @@ namespace NScrape {
 									response.Dispose();
 
 									// We are auto redirecting, so make a recursive call to perform the redirect
-#if !NETSTANDARD1_5
 									response = SendRequest( new GetWebRequest( redirectUri, httpWebRequest.AllowAutoRedirect ) );
-#else
-									response = SendRequest( new GetWebRequest( redirectUri ) );
-#endif
 								}
 								else {
 									var responseUrl = response.ResponseUrl;
@@ -354,7 +367,7 @@ namespace NScrape {
 					}
 				}
 				else {
-					response = new ExceptionWebResponse( webRequest.Destination, new WebException( NScrapeResources.NoResponse ) );
+					response = new ExceptionWebResponse( webRequest.Destination, new WebException( Properties.Resources.NoResponse ) );
 
 					webResponse.Dispose();
 				}
