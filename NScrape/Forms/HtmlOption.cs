@@ -30,7 +30,7 @@ namespace NScrape.Forms {
 				}
 			}
 			else {
-				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.NotASelectHtmlControlOption, html ) );
+				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.NotASelectHtmlControlOption, html ) );
 			}
 		}
 

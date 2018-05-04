@@ -18,33 +18,33 @@ namespace NScrape {
                     break;
 
 				case WebResponseType.Html:
-                    exception = new InvalidOperationException( NScrapeResources.UnexpectedHtmlPage );
+                    exception = new InvalidOperationException( Properties.Resources.UnexpectedHtmlPage );
                     break;
 
 				case WebResponseType.Image:
-                    exception = new InvalidOperationException( NScrapeResources.UnexpectedImage );
+                    exception = new InvalidOperationException( Properties.Resources.UnexpectedImage );
                     break;
 
 				case WebResponseType.Unsupported:
                     var unsupportedResponse = (UnsupportedWebResponse)response;
 
-                    exception = new WebException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.UnsupportedResponseContentType, unsupportedResponse.ContentType ) );
+                    exception = new WebException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.UnsupportedResponseContentType, unsupportedResponse.ContentType ) );
                     break;
 
 				case WebResponseType.Redirect:
-                    exception = new InvalidOperationException( NScrapeResources.UnexpectedRedirect );
+                    exception = new InvalidOperationException( Properties.Resources.UnexpectedRedirect );
                     break;
 
 				case WebResponseType.PlainText:
-                    exception = new InvalidOperationException( NScrapeResources.UnexpectedPlainText );
+                    exception = new InvalidOperationException( Properties.Resources.UnexpectedPlainText );
                     break;
 
 				case WebResponseType.Xml:
-                    exception = new InvalidOperationException( NScrapeResources.UnexpectedXml );
+                    exception = new InvalidOperationException( Properties.Resources.UnexpectedXml );
                     break;
 
                 default:
-                    exception = new WebException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.UnsupportedResponseType, response.ResponseType ) );
+                    exception = new WebException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.UnsupportedResponseType, response.ResponseType ) );
                     break;
             }
 

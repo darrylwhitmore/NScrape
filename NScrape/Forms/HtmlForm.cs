@@ -304,7 +304,7 @@ namespace NScrape.Forms {
 
 		private string DownloadFormHtml() {
 			using ( var response = WebClient.SendRequest( new GetWebRequest( FormUrl ) ) ) {
-				var htmlResponse = WebResponseValidator.ValidateHtmlResponse( response, string.Format( CultureInfo.CurrentCulture, NScrapeResources.UnexpectedResponseOnFormPageRequest, FormUrl ) );
+				var htmlResponse = WebResponseValidator.ValidateHtmlResponse( response, string.Format( CultureInfo.CurrentCulture, Properties.Resources.UnexpectedResponseOnFormPageRequest, FormUrl ) );
 
 				FormUrl = htmlResponse.ResponseUrl;
 
@@ -316,7 +316,7 @@ namespace NScrape.Forms {
 			var formDefinitions = HtmlFormDefinition.Parse( Html ).ToList();
 
 			if ( formOrdinal < 0 || formOrdinal >= formDefinitions.Count ) {
-				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.InvalidFormOrdinal, formOrdinal ) );
+				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.InvalidFormOrdinal, formOrdinal ) );
 			}
 
 			PopulateForm( formDefinitions.ElementAt( formOrdinal ) );
@@ -328,7 +328,7 @@ namespace NScrape.Forms {
 			var formDefinition = formDefinitions.FirstOrDefault( d => d.Attributes.ContainsKey( identifyingAttribute.Key ) && d.Attributes[identifyingAttribute.Key] == identifyingAttribute.Value );
 
 			if ( formDefinition == null ) {
-				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.InvalidFormId, identifyingAttribute.Key.ToUpperInvariant(), identifyingAttribute.Value ) );
+				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.InvalidFormId, identifyingAttribute.Key.ToUpperInvariant(), identifyingAttribute.Value ) );
 			}
 
 			PopulateForm( formDefinition );
@@ -449,7 +449,7 @@ namespace NScrape.Forms {
                 request.Headers.Add(CommonHeaders.Referer, FormUrl.ToString());
             }
 
-			return WebResponseValidator.ValidateResponse( WebClient.SendRequest( request ), validTypes, string.Format( CultureInfo.CurrentCulture, NScrapeResources.UnexpectedResponseOnFormSubmission, request.Destination ) );
+			return WebResponseValidator.ValidateResponse( WebClient.SendRequest( request ), validTypes, string.Format( CultureInfo.CurrentCulture, Properties.Resources.UnexpectedResponseOnFormSubmission, request.Destination ) );
 		}
     }
 }

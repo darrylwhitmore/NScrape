@@ -55,7 +55,7 @@ namespace NScrape.Forms {
 				}
 			}
 			else {
-				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.NotAnInputHtmlControl, html ) );
+				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.NotAnInputHtmlControl, html ) );
 			}
 		}
 

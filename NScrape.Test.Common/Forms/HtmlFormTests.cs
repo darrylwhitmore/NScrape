@@ -125,10 +125,10 @@ namespace NScrape.Test.Forms {
 			var webClient = new WebClient();
 
 			var form = new BasicAspxForm( webClient );
-			form.Load( new Uri( "http://www.chilis.com/EN/Pages/locationsearch.aspx" ), new KeyValuePair<string, string>( "name", "aspnetForm" ) );
-			form.InputControls.Single( c => c.Name == "ctl00$PlaceHolderMain$LocationSearchBar$txtChilisLocator" ).Value = "Chicago, IL";
+			form.Load( new Uri( "http://www.ncsc.org/information-and-resources/browse-by-state/state-court-websites.aspx" ), new KeyValuePair<string, string>( "name", "ctl01" ) );
+			form.InputControls.Single( c => c.Name == "header_0$ctl02$txtSearch" ).Value = "fubar";
 
-			using ( var response = form.Submit( "ctl00$PlaceHolderMain$LocationSearchBar$ibtnChilisLocator" ) ) {
+			using ( var response = form.Submit( "header_0$ctl02$btnSearch" ) ) {
 			}
 		}
 	}
