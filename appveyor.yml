@@ -1,8 +1,0 @@
-build_script:
-  - cmd: cd NScrape
-  - cmd: dotnet restore NScrape.Core.csproj
-  - cmd: dotnet build NScrape.Core.csproj
-  - cmd: dotnet pack NScrape.Core.csproj --version-suffix r%APPVEYOR_BUILD_NUMBER%
-  - ps: Push-AppveyorArtifact "bin\Debug\CoreCompat.NScrape.0.4.0-r$($env:APPVEYOR_BUILD_NUMBER).nupkg"
-
-test: off

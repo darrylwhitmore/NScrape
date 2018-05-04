@@ -7,9 +7,10 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>nscrape.snk</AssemblyOriginatorKeyFile>
     <PackageId>NScrape</PackageId>
+	<title>NScrape Web Scraping Framework</title>
     <Version>0.4.0.0</Version>
     <Authors>Darryl G. Whitmore</Authors>
-    <Company />
+    <Company>Darryl G. Whitmore</Company>
     <Description>A web scraping framework for .Net</Description>
     <Copyright>2008-2018</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/darrylwhitmore/NScrape/master/LICENSE</PackageLicenseUrl>
