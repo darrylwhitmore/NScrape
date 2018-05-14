@@ -1,0 +1,3 @@
+# Tell Linguist to ignore HTML files and say that we are a C# project
+NScrape/NScrape.Test.Common/TestData/*  linguist-vendored
+NScrape/NScrape.Test.Framework/Resources/*  linguist-vendored
