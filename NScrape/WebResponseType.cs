@@ -4,52 +4,52 @@
 	/// </summary>
 	public enum WebResponseType {
 		/// <summary>
-		/// An exception reponse.
+		/// An exception response.
 		/// </summary>
 		Exception,
 
 		/// <summary>
-		/// An HTML reponse.
+		/// An HTML response.
 		/// </summary>
 		Html,
 
 		/// <summary>
-		/// An image reponse.
+		/// An image response.
 		/// </summary>
 		Image,
 
 		/// <summary>
-		/// A JavaScript reponse.
+		/// A JavaScript response.
 		/// </summary>
 		JavaScript,
 
 		/// <summary>
-		/// A JSON reponse.
+		/// A JSON response.
 		/// </summary>
 		Json,
 
 		/// <summary>
-		/// A redirect reponse.
+		/// A redirect response.
 		/// </summary>
 		Redirect,
 
 		/// <summary>
-		/// A plain text reponse.
+		/// A plain text response.
 		/// </summary>
 		PlainText,
 
 		/// <summary>
-		/// An unsupported reponse.
+		/// An unsupported response.
 		/// </summary>
 		Unsupported,
 
 		/// <summary>
-		/// An XML reponse.
+		/// An XML response.
 		/// </summary>
 		Xml,
 
 		/// <summary>
-		/// A binary reponse.
+		/// A binary response.
 		/// </summary>
 		Binary
 	}

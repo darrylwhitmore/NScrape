@@ -9,7 +9,7 @@ namespace NScrape.Forms {
 	public class InputHtmlFormControl : HtmlFormControl {
 
         /// <summary>
-        /// Initialzes a new instance of the <see cref="InputHtmlFormControl"/> class.
+        /// Initializes a new instance of the <see cref="InputHtmlFormControl"/> class.
         /// </summary>
         /// <param name="type">
         /// The control type to create.

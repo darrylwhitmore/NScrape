@@ -288,7 +288,7 @@ namespace NScrape {
                             OnAddingCookie( args );
 
                             if ( !args.Cancel ) {
-                                // .NET Core seems to enfore the fact that the cookie domain _must_ start with a dot,
+                                // .NET Core seems to enforce the fact that the cookie domain _must_ start with a dot,
                                 // so let's make sure that's the case.
                                 if(!string.IsNullOrEmpty(responseCookie.Domain) && !responseCookie.Domain.StartsWith("."))
                                 {
@@ -343,7 +343,7 @@ namespace NScrape {
 							var metaRefreshUrl = GetMetaRefreshUrl( ( ( HtmlWebResponse )response ).Html );
 
 							if ( !string.IsNullOrWhiteSpace( metaRefreshUrl ) ) {
-								// The page has a Meta refresh tag, so build the redirect Url
+								// The page has a Meta refresh tag, so build the redirect URL
 								var redirectUri = new Uri( response.ResponseUrl, metaRefreshUrl );
 
 								if ( webRequest.AutoRedirect ) {
