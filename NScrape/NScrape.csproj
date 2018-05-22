@@ -20,6 +20,14 @@
     <Product>NScrape Web Scraping Framework</Product>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\NScrape.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\NScrape.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="nscrape.publickey" />
   </ItemGroup>

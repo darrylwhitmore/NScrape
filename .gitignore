@@ -6,6 +6,9 @@
 # VS hidden folder
 .vs/
 
+# Help build folder
+Help/Help/
+
 # Help files
 *.chm
 
