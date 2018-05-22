@@ -1,0 +1,2 @@
+# Tell Linguist to ignore HTML files and say that we are a C# project
+*.html  linguist-vendored
