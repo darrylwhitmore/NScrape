@@ -22,10 +22,10 @@ namespace NScrape {
 		}
 
 		/// <summary>
-		/// Gets an <see href="https://htmlagilitypack.codeplex.com/">Html Agility Pack</see>&#160;<b>HtmlDocument</b> loaded with the target HTML text.
+		/// Gets an <see href="http://html-agility-pack.net/">Html Agility Pack</see>&#160;<b>HtmlDocument</b> loaded with the target HTML text.
 		/// </summary>
 		/// <remarks>
-		/// Using the <see href="https://htmlagilitypack.codeplex.com/">Html Agility Pack</see> to scrape is recommended, but if you prefer, you can
+		/// Using the <see href="http://html-agility-pack.net/">Html Agility Pack</see> to scrape is recommended, but if you prefer, you can
 		/// scrape using regular expressions or standard string functions by accessing the <see cref="Html"/> property.
 		/// </remarks>
 		protected HtmlDocument HtmlDocument { get; private set; }

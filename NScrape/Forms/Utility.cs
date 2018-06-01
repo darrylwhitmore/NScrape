@@ -15,7 +15,7 @@ namespace NScrape.Forms {
 				// Normalize the attribute name to lowercase
 				var attributeName = match.Groups[RegexLibrary.ParseAttributesNameGroup].Value.ToLowerInvariant();
 
-				// In the case of duplciate attributes, take the first one.
+				// In the case of duplicate attributes, take the first one.
 				if ( !attributes.ContainsKey( attributeName ) ) {
 					attributes.Add( attributeName, match.Groups[RegexLibrary.ParseAttributesValueGroup].Value );
 				}

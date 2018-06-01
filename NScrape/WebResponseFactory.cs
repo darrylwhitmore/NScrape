@@ -30,7 +30,7 @@ namespace NScrape {
 		}
 
 		/// <summary>
-		/// Gets a dictionary containing all content types currently suported by the
+		/// Gets a dictionary containing all content types currently supported by the
 		/// <see cref="WebResponseFactory"/>.
 		/// </summary>
 		/// <remarks>

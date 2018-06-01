@@ -13,7 +13,7 @@ namespace NScrape.Forms {
 			if ( match.Success ) {
 				AddAttributes( match.Groups[RegexLibrary.ParseTextAreaAttributesGroup].Value );
 
-				// Initalize text if default provided
+				// Initialize text if default provided
 				Text = match.Groups[RegexLibrary.ParseTextAreaTextGroup].Value;
 			}
 			else {

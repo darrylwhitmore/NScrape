@@ -12,7 +12,7 @@ namespace NScrape {
 	/// </summary>
 	public static class NScrapeUtility {
 		/// <summary>
-		/// Parse cookies from from a <c>Set-Cookie</c> header.
+		/// Parse cookies from a <c>Set-Cookie</c> header.
 		/// </summary>
 		/// <param name="setCookieHeader">The <c>Set-Cookie</c> header.</param>
 		/// <param name="hostName">
