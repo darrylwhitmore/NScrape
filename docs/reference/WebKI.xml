@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="ActionUrl property" Url="html/P_NScrape_Forms_HtmlForm_ActionUrl.htm" />
+  <HelpKINode Title="AddAttribute method" Url="html/M_NScrape_Forms_HtmlFormControl_AddAttribute.htm" />
+  <HelpKINode Title="AddAttributes method" Url="html/M_NScrape_Forms_HtmlFormControl_AddAttributes.htm" />
+  <HelpKINode Title="AddingCookie event">
+    <HelpKINode Title="IWebClient.AddingCookie Event" Url="html/E_NScrape_IWebClient_AddingCookie.htm" />
+    <HelpKINode Title="WebClient.AddingCookie Event" Url="html/E_NScrape_WebClient_AddingCookie.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AddingCookieEventArgs class">
+    <HelpKINode Title="AddingCookieEventArgs Class" Url="html/T_NScrape_AddingCookieEventArgs.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_AddingCookieEventArgs.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_AddingCookieEventArgs.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AddingCookieEventArgs.Cookie property" Url="html/P_NScrape_AddingCookieEventArgs_Cookie.htm" />
+  <HelpKINode Title="AllControls property" Url="html/P_NScrape_Forms_BasicForm_AllControls.htm" />
+  <HelpKINode Title="Attributes property">
+    <HelpKINode Title="HtmlForm.Attributes Property " Url="html/P_NScrape_Forms_HtmlForm_Attributes.htm" />
+    <HelpKINode Title="HtmlFormControl.Attributes Property " Url="html/P_NScrape_Forms_HtmlFormControl_Attributes.htm" />
+    <HelpKINode Title="HtmlFormDefinition.Attributes Property " Url="html/P_NScrape_Forms_HtmlFormDefinition_Attributes.htm" />
+    <HelpKINode Title="HtmlOption.Attributes Property " Url="html/P_NScrape_Forms_HtmlOption_Attributes.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AutoRedirect property" Url="html/P_NScrape_WebRequest_AutoRedirect.htm" />
+  <HelpKINode Title="BasicAspxForm class">
+    <HelpKINode Title="BasicAspxForm Class" Url="html/T_NScrape_Forms_BasicAspxForm.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_Forms_BasicAspxForm__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_BasicAspxForm.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_BasicAspxForm.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BasicAspxForm.BasicAspxForm constructor" Url="html/M_NScrape_Forms_BasicAspxForm__ctor.htm" />
+  <HelpKINode Title="BasicAspxForm.Submit method" Url="html/M_NScrape_Forms_BasicAspxForm_Submit.htm" />
+  <HelpKINode Title="BasicForm class">
+    <HelpKINode Title="BasicForm Class" Url="html/T_NScrape_Forms_BasicForm.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_Forms_BasicForm__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_BasicForm.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_BasicForm.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BasicForm.AllControls property" Url="html/P_NScrape_Forms_BasicForm_AllControls.htm" />
+  <HelpKINode Title="BasicForm.BasicForm constructor" Url="html/M_NScrape_Forms_BasicForm__ctor.htm" />
+  <HelpKINode Title="BasicForm.CheckBoxControls property" Url="html/P_NScrape_Forms_BasicForm_CheckBoxControls.htm" />
+  <HelpKINode Title="BasicForm.InputControls property" Url="html/P_NScrape_Forms_BasicForm_InputControls.htm" />
+  <HelpKINode Title="BasicForm.RadioControls property" Url="html/P_NScrape_Forms_BasicForm_RadioControls.htm" />
+  <HelpKINode Title="BasicForm.SelectControls property" Url="html/P_NScrape_Forms_BasicForm_SelectControls.htm" />
+  <HelpKINode Title="BasicForm.TextAreaControls property" Url="html/P_NScrape_Forms_BasicForm_TextAreaControls.htm" />
+  <HelpKINode Title="BasicHtmlForm class">
+    <HelpKINode Title="BasicHtmlForm Class" Url="html/T_NScrape_Forms_BasicHtmlForm.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_Forms_BasicHtmlForm__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_BasicHtmlForm.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_BasicHtmlForm.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BasicHtmlForm.BasicHtmlForm constructor" Url="html/M_NScrape_Forms_BasicHtmlForm__ctor.htm" />
+  <HelpKINode Title="BasicHtmlForm.Submit method" Url="html/M_NScrape_Forms_BasicHtmlForm_Submit.htm" />
+  <HelpKINode Title="Binary enumeration member" Url="html/T_NScrape_WebResponseType.htm" />
+  <HelpKINode Title="BinaryWebResponse class">
+    <HelpKINode Title="BinaryWebResponse Class" Url="html/T_NScrape_BinaryWebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_BinaryWebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_BinaryWebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_BinaryWebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BinaryWebResponse.BinaryWebResponse constructor" Url="html/Overload_NScrape_BinaryWebResponse__ctor.htm" />
+  <HelpKINode Title="BinaryWebResponse.Close method" Url="html/M_NScrape_BinaryWebResponse_Close.htm" />
+  <HelpKINode Title="BinaryWebResponse.ContentLength property" Url="html/P_NScrape_BinaryWebResponse_ContentLength.htm" />
+  <HelpKINode Title="BinaryWebResponse.Data property" Url="html/P_NScrape_BinaryWebResponse_Data.htm" />
+  <HelpKINode Title="BinaryWebResponse.DisposeManagedRessources method" Url="html/M_NScrape_BinaryWebResponse_DisposeManagedRessources.htm" />
+  <HelpKINode Title="BinaryWebResponse.GetResponseStream method" Url="html/M_NScrape_BinaryWebResponse_GetResponseStream.htm" />
+  <HelpKINode Title="BuildAspxPostBackRequest method" Url="html/M_NScrape_Forms_HtmlForm_BuildAspxPostBackRequest.htm" />
+  <HelpKINode Title="BuildRequest method" Url="html/M_NScrape_Forms_HtmlForm_BuildRequest.htm" />
+  <HelpKINode Title="Button enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="CheckBox enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="CheckBoxControls property" Url="html/P_NScrape_Forms_BasicForm_CheckBoxControls.htm" />
+  <HelpKINode Title="Checked property" Url="html/P_NScrape_Forms_InputCheckableHtmlFormControl_Checked.htm" />
+  <HelpKINode Title="Close method" Url="html/M_NScrape_BinaryWebResponse_Close.htm" />
+  <HelpKINode Title="Color enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="ContentLength property" Url="html/P_NScrape_BinaryWebResponse_ContentLength.htm" />
+  <HelpKINode Title="ContentType property">
+    <HelpKINode Title="PostWebRequest.ContentType Property " Url="html/P_NScrape_PostWebRequest_ContentType.htm" />
+    <HelpKINode Title="UnsupportedWebResponse.ContentType Property " Url="html/P_NScrape_UnsupportedWebResponse_ContentType.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Controls property">
+    <HelpKINode Title="HtmlForm.Controls Property " Url="html/P_NScrape_Forms_HtmlForm_Controls.htm" />
+    <HelpKINode Title="HtmlFormDefinition.Controls Property " Url="html/P_NScrape_Forms_HtmlFormDefinition_Controls.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ControlType property" Url="html/P_NScrape_Forms_InputHtmlFormControl_ControlType.htm" />
+  <HelpKINode Title="Cookie property" Url="html/P_NScrape_AddingCookieEventArgs_Cookie.htm" />
+  <HelpKINode Title="CookieJar property">
+    <HelpKINode Title="IWebClient.CookieJar Property " Url="html/P_NScrape_IWebClient_CookieJar.htm" />
+    <HelpKINode Title="WebClient.CookieJar Property " Url="html/P_NScrape_WebClient_CookieJar.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CreateBinaryResponse method" Url="html/M_NScrape_WebResponseFactory_CreateBinaryResponse.htm" />
+  <HelpKINode Title="CreateHtmlResponse method" Url="html/M_NScrape_WebResponseFactory_CreateHtmlResponse.htm" />
+  <HelpKINode Title="CreateImageResponse method" Url="html/M_NScrape_WebResponseFactory_CreateImageResponse.htm" />
+  <HelpKINode Title="CreateJavaScriptResponse method" Url="html/M_NScrape_WebResponseFactory_CreateJavaScriptResponse.htm" />
+  <HelpKINode Title="CreateJsonResponse method" Url="html/M_NScrape_WebResponseFactory_CreateJsonResponse.htm" />
+  <HelpKINode Title="CreatePlainTextResponse method" Url="html/M_NScrape_WebResponseFactory_CreatePlainTextResponse.htm" />
+  <HelpKINode Title="CreateResponse method" Url="html/M_NScrape_WebResponseFactory_CreateResponse.htm" />
+  <HelpKINode Title="CreateTextResponse method" Url="html/M_NScrape_WebResponseFactory_CreateTextResponse.htm" />
+  <HelpKINode Title="CreateXmlResponse method" Url="html/M_NScrape_WebResponseFactory_CreateXmlResponse.htm" />
+  <HelpKINode Title="Data property" Url="html/P_NScrape_BinaryWebResponse_Data.htm" />
+  <HelpKINode Title="Date enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="DateTime enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="DateTimeLocal enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="Destination property" Url="html/P_NScrape_WebRequest_Destination.htm" />
+  <HelpKINode Title="Disabled property" Url="html/P_NScrape_Forms_HtmlFormControl_Disabled.htm" />
+  <HelpKINode Title="Dispose method" Url="html/M_NScrape_WebResponse_Dispose.htm" />
+  <HelpKINode Title="DisposeManagedRessources method">
+    <HelpKINode Title="BinaryWebResponse.DisposeManagedRessources Method " Url="html/M_NScrape_BinaryWebResponse_DisposeManagedRessources.htm" />
+    <HelpKINode Title="ImageWebResponse.DisposeManagedRessources Method " Url="html/M_NScrape_ImageWebResponse_DisposeManagedRessources.htm" />
+    <HelpKINode Title="TextWebResponse.DisposeManagedRessources Method " Url="html/M_NScrape_TextWebResponse_DisposeManagedRessources.htm" />
+    <HelpKINode Title="WebResponse.DisposeManagedRessources Method " Url="html/M_NScrape_WebResponse_DisposeManagedRessources.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DisposeUnmanagedRessources method" Url="html/M_NScrape_WebResponse_DisposeUnmanagedRessources.htm" />
+  <HelpKINode Title="Email enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="EncodedData property">
+    <HelpKINode Title="HtmlFormControl.EncodedData Property " Url="html/P_NScrape_Forms_HtmlFormControl_EncodedData.htm" />
+    <HelpKINode Title="InputHtmlFormControl.EncodedData Property " Url="html/P_NScrape_Forms_InputHtmlFormControl_EncodedData.htm" />
+    <HelpKINode Title="SelectHtmlFormControl.EncodedData Property " Url="html/P_NScrape_Forms_SelectHtmlFormControl_EncodedData.htm" />
+    <HelpKINode Title="TextAreaHtmlFormControl.EncodedData Property " Url="html/P_NScrape_Forms_TextAreaHtmlFormControl_EncodedData.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Encoding property" Url="html/P_NScrape_TextWebResponse_Encoding.htm" />
+  <HelpKINode Title="Exception enumeration member" Url="html/T_NScrape_WebResponseType.htm" />
+  <HelpKINode Title="Exception property" Url="html/P_NScrape_ExceptionWebResponse_Exception.htm" />
+  <HelpKINode Title="ExceptionWebResponse class">
+    <HelpKINode Title="ExceptionWebResponse Class" Url="html/T_NScrape_ExceptionWebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_ExceptionWebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_ExceptionWebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_ExceptionWebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExceptionWebResponse.Exception property" Url="html/P_NScrape_ExceptionWebResponse_Exception.htm" />
+  <HelpKINode Title="ExceptionWebResponse.ExceptionWebResponse constructor" Url="html/M_NScrape_ExceptionWebResponse__ctor.htm" />
+  <HelpKINode Title="File enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="Finalize method" Url="html/M_NScrape_WebResponse_Finalize.htm" />
+  <HelpKINode Title="FormUrl property" Url="html/P_NScrape_Forms_HtmlForm_FormUrl.htm" />
+  <HelpKINode Title="Get enumeration member" Url="html/T_NScrape_WebRequestType.htm" />
+  <HelpKINode Title="GetEncoding method">
+    <HelpKINode Title="NScrapeExtensions.GetEncoding Method " Url="html/M_NScrape_NScrapeExtensions_GetEncoding.htm" />
+    <HelpKINode Title="WebResponseFactory.GetEncoding Method " Url="html/M_NScrape_WebResponseFactory_GetEncoding.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetObjectData method" Url="html/M_NScrape_ScrapeException_GetObjectData.htm" />
+  <HelpKINode Title="GetResponseStream method" Url="html/M_NScrape_BinaryWebResponse_GetResponseStream.htm" />
+  <HelpKINode Title="GetResponseText method" Url="html/M_NScrape_NScrapeExtensions_GetResponseText.htm" />
+  <HelpKINode Title="GetWebRequest class">
+    <HelpKINode Title="GetWebRequest Class" Url="html/T_NScrape_GetWebRequest.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_GetWebRequest__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_GetWebRequest.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_GetWebRequest.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetWebRequest.GetWebRequest constructor" Url="html/Overload_NScrape_GetWebRequest__ctor.htm" />
+  <HelpKINode Title="GetWebRequest.ToString method" Url="html/M_NScrape_GetWebRequest_ToString.htm" />
+  <HelpKINode Title="Headers property" Url="html/P_NScrape_WebRequest_Headers.htm" />
+  <HelpKINode Title="Hidden enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="Html enumeration member" Url="html/T_NScrape_WebResponseType.htm" />
+  <HelpKINode Title="Html property">
+    <HelpKINode Title="HtmlForm.Html Property " Url="html/P_NScrape_Forms_HtmlForm_Html.htm" />
+    <HelpKINode Title="HtmlWebResponse.Html Property " Url="html/P_NScrape_HtmlWebResponse_Html.htm" />
+    <HelpKINode Title="ScrapeException.Html Property " Url="html/P_NScrape_ScrapeException_Html.htm" />
+    <HelpKINode Title="Scraper.Html Property " Url="html/P_NScrape_Scraper_Html.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HtmlDocument property" Url="html/P_NScrape_Scraper_HtmlDocument.htm" />
+  <HelpKINode Title="HtmlForm class">
+    <HelpKINode Title="HtmlForm Class" Url="html/T_NScrape_Forms_HtmlForm.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_Forms_HtmlForm__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_HtmlForm.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_HtmlForm.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HtmlForm.ActionUrl property" Url="html/P_NScrape_Forms_HtmlForm_ActionUrl.htm" />
+  <HelpKINode Title="HtmlForm.Attributes property" Url="html/P_NScrape_Forms_HtmlForm_Attributes.htm" />
+  <HelpKINode Title="HtmlForm.BuildAspxPostBackRequest method" Url="html/M_NScrape_Forms_HtmlForm_BuildAspxPostBackRequest.htm" />
+  <HelpKINode Title="HtmlForm.BuildRequest method" Url="html/M_NScrape_Forms_HtmlForm_BuildRequest.htm" />
+  <HelpKINode Title="HtmlForm.Controls property" Url="html/P_NScrape_Forms_HtmlForm_Controls.htm" />
+  <HelpKINode Title="HtmlForm.FormUrl property" Url="html/P_NScrape_Forms_HtmlForm_FormUrl.htm" />
+  <HelpKINode Title="HtmlForm.Html property" Url="html/P_NScrape_Forms_HtmlForm_Html.htm" />
+  <HelpKINode Title="HtmlForm.HtmlForm constructor" Url="html/M_NScrape_Forms_HtmlForm__ctor.htm" />
+  <HelpKINode Title="HtmlForm.Load method" Url="html/Overload_NScrape_Forms_HtmlForm_Load.htm" />
+  <HelpKINode Title="HtmlForm.SubmitAsXmlHttpRequest property" Url="html/P_NScrape_Forms_HtmlForm_SubmitAsXmlHttpRequest.htm" />
+  <HelpKINode Title="HtmlForm.SubmitHtmlRequest method" Url="html/M_NScrape_Forms_HtmlForm_SubmitHtmlRequest.htm" />
+  <HelpKINode Title="HtmlForm.SubmitRedirectRequest method" Url="html/M_NScrape_Forms_HtmlForm_SubmitRedirectRequest.htm" />
+  <HelpKINode Title="HtmlForm.SubmitRequest method" Url="html/Overload_NScrape_Forms_HtmlForm_SubmitRequest.htm" />
+  <HelpKINode Title="HtmlForm.WebClient property" Url="html/P_NScrape_Forms_HtmlForm_WebClient.htm" />
+  <HelpKINode Title="HtmlFormControl class">
+    <HelpKINode Title="HtmlFormControl Class" Url="html/T_NScrape_Forms_HtmlFormControl.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_Forms_HtmlFormControl__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_HtmlFormControl.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_HtmlFormControl.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HtmlFormControl.AddAttribute method" Url="html/M_NScrape_Forms_HtmlFormControl_AddAttribute.htm" />
+  <HelpKINode Title="HtmlFormControl.AddAttributes method" Url="html/M_NScrape_Forms_HtmlFormControl_AddAttributes.htm" />
+  <HelpKINode Title="HtmlFormControl.Attributes property" Url="html/P_NScrape_Forms_HtmlFormControl_Attributes.htm" />
+  <HelpKINode Title="HtmlFormControl.Disabled property" Url="html/P_NScrape_Forms_HtmlFormControl_Disabled.htm" />
+  <HelpKINode Title="HtmlFormControl.EncodedData property" Url="html/P_NScrape_Forms_HtmlFormControl_EncodedData.htm" />
+  <HelpKINode Title="HtmlFormControl.HtmlFormControl constructor" Url="html/M_NScrape_Forms_HtmlFormControl__ctor.htm" />
+  <HelpKINode Title="HtmlFormControl.Id property" Url="html/P_NScrape_Forms_HtmlFormControl_Id.htm" />
+  <HelpKINode Title="HtmlFormControl.Name property" Url="html/P_NScrape_Forms_HtmlFormControl_Name.htm" />
+  <HelpKINode Title="HtmlFormDefinition class">
+    <HelpKINode Title="HtmlFormDefinition Class" Url="html/T_NScrape_Forms_HtmlFormDefinition.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_HtmlFormDefinition.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_HtmlFormDefinition.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HtmlFormDefinition.Attributes property" Url="html/P_NScrape_Forms_HtmlFormDefinition_Attributes.htm" />
+  <HelpKINode Title="HtmlFormDefinition.Controls property" Url="html/P_NScrape_Forms_HtmlFormDefinition_Controls.htm" />
+  <HelpKINode Title="HtmlFormDefinition.Id property" Url="html/P_NScrape_Forms_HtmlFormDefinition_Id.htm" />
+  <HelpKINode Title="HtmlFormDefinition.PageHtml property" Url="html/P_NScrape_Forms_HtmlFormDefinition_PageHtml.htm" />
+  <HelpKINode Title="HtmlFormDefinition.Parse method" Url="html/M_NScrape_Forms_HtmlFormDefinition_Parse.htm" />
+  <HelpKINode Title="HtmlOption class">
+    <HelpKINode Title="HtmlOption Class" Url="html/T_NScrape_Forms_HtmlOption.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_HtmlOption.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_HtmlOption.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HtmlOption.Attributes property" Url="html/P_NScrape_Forms_HtmlOption_Attributes.htm" />
+  <HelpKINode Title="HtmlOption.Option property" Url="html/P_NScrape_Forms_HtmlOption_Option.htm" />
+  <HelpKINode Title="HtmlOption.Selected property" Url="html/P_NScrape_Forms_HtmlOption_Selected.htm" />
+  <HelpKINode Title="HtmlOption.Value property" Url="html/P_NScrape_Forms_HtmlOption_Value.htm" />
+  <HelpKINode Title="HtmlWebResponse class">
+    <HelpKINode Title="HtmlWebResponse Class" Url="html/T_NScrape_HtmlWebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_HtmlWebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_HtmlWebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_HtmlWebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HtmlWebResponse.Html property" Url="html/P_NScrape_HtmlWebResponse_Html.htm" />
+  <HelpKINode Title="HtmlWebResponse.HtmlWebResponse constructor" Url="html/Overload_NScrape_HtmlWebResponse__ctor.htm" />
+  <HelpKINode Title="Id property">
+    <HelpKINode Title="HtmlFormControl.Id Property " Url="html/P_NScrape_Forms_HtmlFormControl_Id.htm" />
+    <HelpKINode Title="HtmlFormDefinition.Id Property " Url="html/P_NScrape_Forms_HtmlFormDefinition_Id.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Image enumeration member">
+    <HelpKINode Title="InputHtmlFormControlType Enumeration" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+    <HelpKINode Title="WebResponseType Enumeration" Url="html/T_NScrape_WebResponseType.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Image property" Url="html/P_NScrape_ImageWebResponse_Image.htm" />
+  <HelpKINode Title="ImageWebResponse class">
+    <HelpKINode Title="ImageWebResponse Class" Url="html/T_NScrape_ImageWebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_ImageWebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_ImageWebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_ImageWebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ImageWebResponse.DisposeManagedRessources method" Url="html/M_NScrape_ImageWebResponse_DisposeManagedRessources.htm" />
+  <HelpKINode Title="ImageWebResponse.Image property" Url="html/P_NScrape_ImageWebResponse_Image.htm" />
+  <HelpKINode Title="ImageWebResponse.ImageWebResponse constructor" Url="html/Overload_NScrape_ImageWebResponse__ctor.htm" />
+  <HelpKINode Title="InputCheckableHtmlFormControl class">
+    <HelpKINode Title="InputCheckableHtmlFormControl Class" Url="html/T_NScrape_Forms_InputCheckableHtmlFormControl.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_InputCheckableHtmlFormControl.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_InputCheckableHtmlFormControl.htm" />
+  </HelpKINode>
+  <HelpKINode Title="InputCheckableHtmlFormControl.Checked property" Url="html/P_NScrape_Forms_InputCheckableHtmlFormControl_Checked.htm" />
+  <HelpKINode Title="InputCheckableHtmlFormControl.Value property" Url="html/P_NScrape_Forms_InputCheckableHtmlFormControl_Value.htm" />
+  <HelpKINode Title="InputCheckBoxHtmlFormControl class">
+    <HelpKINode Title="InputCheckBoxHtmlFormControl Class" Url="html/T_NScrape_Forms_InputCheckBoxHtmlFormControl.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_Forms_InputCheckBoxHtmlFormControl__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_InputCheckBoxHtmlFormControl.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_InputCheckBoxHtmlFormControl.htm" />
+  </HelpKINode>
+  <HelpKINode Title="InputCheckBoxHtmlFormControl.InputCheckBoxHtmlFormControl constructor" Url="html/M_NScrape_Forms_InputCheckBoxHtmlFormControl__ctor.htm" />
+  <HelpKINode Title="InputControls property" Url="html/P_NScrape_Forms_BasicForm_InputControls.htm" />
+  <HelpKINode Title="InputHtmlFormControl class">
+    <HelpKINode Title="InputHtmlFormControl Class" Url="html/T_NScrape_Forms_InputHtmlFormControl.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_Forms_InputHtmlFormControl__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_InputHtmlFormControl.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_InputHtmlFormControl.htm" />
+  </HelpKINode>
+  <HelpKINode Title="InputHtmlFormControl.ControlType property" Url="html/P_NScrape_Forms_InputHtmlFormControl_ControlType.htm" />
+  <HelpKINode Title="InputHtmlFormControl.EncodedData property" Url="html/P_NScrape_Forms_InputHtmlFormControl_EncodedData.htm" />
+  <HelpKINode Title="InputHtmlFormControl.InputHtmlFormControl constructor" Url="html/M_NScrape_Forms_InputHtmlFormControl__ctor.htm" />
+  <HelpKINode Title="InputHtmlFormControl.ToString method" Url="html/M_NScrape_Forms_InputHtmlFormControl_ToString.htm" />
+  <HelpKINode Title="InputHtmlFormControl.Value property" Url="html/P_NScrape_Forms_InputHtmlFormControl_Value.htm" />
+  <HelpKINode Title="InputHtmlFormControlType enumeration" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="InputRadioHtmlFormControl class">
+    <HelpKINode Title="InputRadioHtmlFormControl Class" Url="html/T_NScrape_Forms_InputRadioHtmlFormControl.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_Forms_InputRadioHtmlFormControl__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_InputRadioHtmlFormControl.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_InputRadioHtmlFormControl.htm" />
+  </HelpKINode>
+  <HelpKINode Title="InputRadioHtmlFormControl.InputRadioHtmlFormControl constructor" Url="html/M_NScrape_Forms_InputRadioHtmlFormControl__ctor.htm" />
+  <HelpKINode Title="IsXmlHttpRequest property" Url="html/P_NScrape_WebRequest_IsXmlHttpRequest.htm" />
+  <HelpKINode Title="IWebClient interface">
+    <HelpKINode Title="IWebClient Interface" Url="html/T_NScrape_IWebClient.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_NScrape_IWebClient.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_IWebClient.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_IWebClient.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IWebClient.AddingCookie event" Url="html/E_NScrape_IWebClient_AddingCookie.htm" />
+  <HelpKINode Title="IWebClient.CookieJar property" Url="html/P_NScrape_IWebClient_CookieJar.htm" />
+  <HelpKINode Title="IWebClient.ProcessingResponse event" Url="html/E_NScrape_IWebClient_ProcessingResponse.htm" />
+  <HelpKINode Title="IWebClient.SendingRequest event" Url="html/E_NScrape_IWebClient_SendingRequest.htm" />
+  <HelpKINode Title="IWebClient.SendRequest method" Url="html/Overload_NScrape_IWebClient_SendRequest.htm" />
+  <HelpKINode Title="IWebClient.UserAgent property" Url="html/P_NScrape_IWebClient_UserAgent.htm" />
+  <HelpKINode Title="JavaScript enumeration member" Url="html/T_NScrape_WebResponseType.htm" />
+  <HelpKINode Title="JavaScript property" Url="html/P_NScrape_JavaScriptWebResponse_JavaScript.htm" />
+  <HelpKINode Title="JavaScriptWebResponse class">
+    <HelpKINode Title="JavaScriptWebResponse Class" Url="html/T_NScrape_JavaScriptWebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_JavaScriptWebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_JavaScriptWebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_JavaScriptWebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="JavaScriptWebResponse.JavaScript property" Url="html/P_NScrape_JavaScriptWebResponse_JavaScript.htm" />
+  <HelpKINode Title="JavaScriptWebResponse.JavaScriptWebResponse constructor" Url="html/Overload_NScrape_JavaScriptWebResponse__ctor.htm" />
+  <HelpKINode Title="Json enumeration member" Url="html/T_NScrape_WebResponseType.htm" />
+  <HelpKINode Title="Json property" Url="html/P_NScrape_JsonWebResponse_Json.htm" />
+  <HelpKINode Title="JsonWebResponse class">
+    <HelpKINode Title="JsonWebResponse Class" Url="html/T_NScrape_JsonWebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_JsonWebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_JsonWebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_JsonWebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="JsonWebResponse.Json property" Url="html/P_NScrape_JsonWebResponse_Json.htm" />
+  <HelpKINode Title="JsonWebResponse.JsonWebResponse constructor" Url="html/Overload_NScrape_JsonWebResponse__ctor.htm" />
+  <HelpKINode Title="Load method" Url="html/Overload_NScrape_Forms_HtmlForm_Load.htm" />
+  <HelpKINode Title="Month enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="Name property" Url="html/P_NScrape_Forms_HtmlFormControl_Name.htm" />
+  <HelpKINode Title="NScrape namespace" Url="html/N_NScrape.htm" />
+  <HelpKINode Title="NScrape.AddingCookieEventArgs class" Url="html/T_NScrape_AddingCookieEventArgs.htm" />
+  <HelpKINode Title="NScrape.BinaryWebResponse class" Url="html/T_NScrape_BinaryWebResponse.htm" />
+  <HelpKINode Title="NScrape.ExceptionWebResponse class" Url="html/T_NScrape_ExceptionWebResponse.htm" />
+  <HelpKINode Title="NScrape.Forms namespace" Url="html/N_NScrape_Forms.htm" />
+  <HelpKINode Title="NScrape.Forms.BasicAspxForm class" Url="html/T_NScrape_Forms_BasicAspxForm.htm" />
+  <HelpKINode Title="NScrape.Forms.BasicForm class" Url="html/T_NScrape_Forms_BasicForm.htm" />
+  <HelpKINode Title="NScrape.Forms.BasicHtmlForm class" Url="html/T_NScrape_Forms_BasicHtmlForm.htm" />
+  <HelpKINode Title="NScrape.Forms.HtmlForm class" Url="html/T_NScrape_Forms_HtmlForm.htm" />
+  <HelpKINode Title="NScrape.Forms.HtmlFormControl class" Url="html/T_NScrape_Forms_HtmlFormControl.htm" />
+  <HelpKINode Title="NScrape.Forms.HtmlFormDefinition class" Url="html/T_NScrape_Forms_HtmlFormDefinition.htm" />
+  <HelpKINode Title="NScrape.Forms.HtmlOption class" Url="html/T_NScrape_Forms_HtmlOption.htm" />
+  <HelpKINode Title="NScrape.Forms.InputCheckableHtmlFormControl class" Url="html/T_NScrape_Forms_InputCheckableHtmlFormControl.htm" />
+  <HelpKINode Title="NScrape.Forms.InputCheckBoxHtmlFormControl class" Url="html/T_NScrape_Forms_InputCheckBoxHtmlFormControl.htm" />
+  <HelpKINode Title="NScrape.Forms.InputHtmlFormControl class" Url="html/T_NScrape_Forms_InputHtmlFormControl.htm" />
+  <HelpKINode Title="NScrape.Forms.InputHtmlFormControlType enumeration" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="NScrape.Forms.InputRadioHtmlFormControl class" Url="html/T_NScrape_Forms_InputRadioHtmlFormControl.htm" />
+  <HelpKINode Title="NScrape.Forms.SelectHtmlFormControl class" Url="html/T_NScrape_Forms_SelectHtmlFormControl.htm" />
+  <HelpKINode Title="NScrape.Forms.TextAreaHtmlFormControl class" Url="html/T_NScrape_Forms_TextAreaHtmlFormControl.htm" />
+  <HelpKINode Title="NScrape.GetWebRequest class" Url="html/T_NScrape_GetWebRequest.htm" />
+  <HelpKINode Title="NScrape.HtmlWebResponse class" Url="html/T_NScrape_HtmlWebResponse.htm" />
+  <HelpKINode Title="NScrape.ImageWebResponse class" Url="html/T_NScrape_ImageWebResponse.htm" />
+  <HelpKINode Title="NScrape.IWebClient interface" Url="html/T_NScrape_IWebClient.htm" />
+  <HelpKINode Title="NScrape.JavaScriptWebResponse class" Url="html/T_NScrape_JavaScriptWebResponse.htm" />
+  <HelpKINode Title="NScrape.JsonWebResponse class" Url="html/T_NScrape_JsonWebResponse.htm" />
+  <HelpKINode Title="NScrape.NScrapeExtensions class" Url="html/T_NScrape_NScrapeExtensions.htm" />
+  <HelpKINode Title="NScrape.NScrapeUtility class" Url="html/T_NScrape_NScrapeUtility.htm" />
+  <HelpKINode Title="NScrape.PlainTextWebResponse class" Url="html/T_NScrape_PlainTextWebResponse.htm" />
+  <HelpKINode Title="NScrape.PostWebRequest class" Url="html/T_NScrape_PostWebRequest.htm" />
+  <HelpKINode Title="NScrape.ProcessingResponseEventArgs class" Url="html/T_NScrape_ProcessingResponseEventArgs.htm" />
+  <HelpKINode Title="NScrape.RedirectedWebResponse class" Url="html/T_NScrape_RedirectedWebResponse.htm" />
+  <HelpKINode Title="NScrape.ScrapeException class" Url="html/T_NScrape_ScrapeException.htm" />
+  <HelpKINode Title="NScrape.Scraper class" Url="html/T_NScrape_Scraper.htm" />
+  <HelpKINode Title="NScrape.SendingRequestEventArgs class" Url="html/T_NScrape_SendingRequestEventArgs.htm" />
+  <HelpKINode Title="NScrape.TextWebResponse class" Url="html/T_NScrape_TextWebResponse.htm" />
+  <HelpKINode Title="NScrape.UnsupportedWebResponse class" Url="html/T_NScrape_UnsupportedWebResponse.htm" />
+  <HelpKINode Title="NScrape.WebClient class" Url="html/T_NScrape_WebClient.htm" />
+  <HelpKINode Title="NScrape.WebRequest class" Url="html/T_NScrape_WebRequest.htm" />
+  <HelpKINode Title="NScrape.WebRequestType enumeration" Url="html/T_NScrape_WebRequestType.htm" />
+  <HelpKINode Title="NScrape.WebResponse class" Url="html/T_NScrape_WebResponse.htm" />
+  <HelpKINode Title="NScrape.WebResponseFactory class" Url="html/T_NScrape_WebResponseFactory.htm" />
+  <HelpKINode Title="NScrape.WebResponseType enumeration" Url="html/T_NScrape_WebResponseType.htm" />
+  <HelpKINode Title="NScrape.WebResponseValidator class" Url="html/T_NScrape_WebResponseValidator.htm" />
+  <HelpKINode Title="NScrape.XmlWebResponse class" Url="html/T_NScrape_XmlWebResponse.htm" />
+  <HelpKINode Title="NScrapeExtensions class">
+    <HelpKINode Title="NScrapeExtensions Class" Url="html/T_NScrape_NScrapeExtensions.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_NScrapeExtensions.htm" />
+  </HelpKINode>
+  <HelpKINode Title="NScrapeExtensions.GetEncoding method" Url="html/M_NScrape_NScrapeExtensions_GetEncoding.htm" />
+  <HelpKINode Title="NScrapeExtensions.GetResponseText method" Url="html/M_NScrape_NScrapeExtensions_GetResponseText.htm" />
+  <HelpKINode Title="NScrapeUtility class">
+    <HelpKINode Title="NScrapeUtility Class" Url="html/T_NScrape_NScrapeUtility.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_NScrapeUtility.htm" />
+  </HelpKINode>
+  <HelpKINode Title="NScrapeUtility.TryParseHttpDate method" Url="html/M_NScrape_NScrapeUtility_TryParseHttpDate.htm" />
+  <HelpKINode Title="NScrapeUtility.UrlEncode method" Url="html/M_NScrape_NScrapeUtility_UrlEncode.htm" />
+  <HelpKINode Title="Number enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="OnAddingCookie method" Url="html/M_NScrape_WebClient_OnAddingCookie.htm" />
+  <HelpKINode Title="OnProcessingResponse method" Url="html/M_NScrape_WebClient_OnProcessingResponse.htm" />
+  <HelpKINode Title="OnSendingRequest method" Url="html/M_NScrape_WebClient_OnSendingRequest.htm" />
+  <HelpKINode Title="Option property" Url="html/P_NScrape_Forms_HtmlOption_Option.htm" />
+  <HelpKINode Title="Options property" Url="html/P_NScrape_Forms_SelectHtmlFormControl_Options.htm" />
+  <HelpKINode Title="PageHtml property" Url="html/P_NScrape_Forms_HtmlFormDefinition_PageHtml.htm" />
+  <HelpKINode Title="Parse method" Url="html/M_NScrape_Forms_HtmlFormDefinition_Parse.htm" />
+  <HelpKINode Title="Password enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="PlainText enumeration member" Url="html/T_NScrape_WebResponseType.htm" />
+  <HelpKINode Title="PlainText property" Url="html/P_NScrape_PlainTextWebResponse_PlainText.htm" />
+  <HelpKINode Title="PlainTextWebResponse class">
+    <HelpKINode Title="PlainTextWebResponse Class" Url="html/T_NScrape_PlainTextWebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_PlainTextWebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_PlainTextWebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_PlainTextWebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PlainTextWebResponse.PlainText property" Url="html/P_NScrape_PlainTextWebResponse_PlainText.htm" />
+  <HelpKINode Title="PlainTextWebResponse.PlainTextWebResponse constructor" Url="html/Overload_NScrape_PlainTextWebResponse__ctor.htm" />
+  <HelpKINode Title="Post enumeration member" Url="html/T_NScrape_WebRequestType.htm" />
+  <HelpKINode Title="PostWebRequest class">
+    <HelpKINode Title="PostWebRequest Class" Url="html/T_NScrape_PostWebRequest.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_PostWebRequest__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_PostWebRequest.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_PostWebRequest.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PostWebRequest.ContentType property" Url="html/P_NScrape_PostWebRequest_ContentType.htm" />
+  <HelpKINode Title="PostWebRequest.PostWebRequest constructor" Url="html/Overload_NScrape_PostWebRequest__ctor.htm" />
+  <HelpKINode Title="PostWebRequest.RequestData property" Url="html/P_NScrape_PostWebRequest_RequestData.htm" />
+  <HelpKINode Title="PostWebRequest.ToString method" Url="html/M_NScrape_PostWebRequest_ToString.htm" />
+  <HelpKINode Title="ProcessingResponse event">
+    <HelpKINode Title="IWebClient.ProcessingResponse Event" Url="html/E_NScrape_IWebClient_ProcessingResponse.htm" />
+    <HelpKINode Title="WebClient.ProcessingResponse Event" Url="html/E_NScrape_WebClient_ProcessingResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ProcessingResponseEventArgs class">
+    <HelpKINode Title="ProcessingResponseEventArgs Class" Url="html/T_NScrape_ProcessingResponseEventArgs.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_ProcessingResponseEventArgs.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_ProcessingResponseEventArgs.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ProcessingResponseEventArgs.Response property" Url="html/P_NScrape_ProcessingResponseEventArgs_Response.htm" />
+  <HelpKINode Title="Radio enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="RadioControls property" Url="html/P_NScrape_Forms_BasicForm_RadioControls.htm" />
+  <HelpKINode Title="Range enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="ReadResponseText method" Url="html/Overload_NScrape_WebResponseFactory_ReadResponseText.htm" />
+  <HelpKINode Title="Redirect enumeration member" Url="html/T_NScrape_WebResponseType.htm" />
+  <HelpKINode Title="RedirectedWebResponse class">
+    <HelpKINode Title="RedirectedWebResponse Class" Url="html/T_NScrape_RedirectedWebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_RedirectedWebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_RedirectedWebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_RedirectedWebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RedirectedWebResponse.RedirectedWebResponse constructor" Url="html/M_NScrape_RedirectedWebResponse__ctor.htm" />
+  <HelpKINode Title="RedirectedWebResponse.RedirectUrl property" Url="html/P_NScrape_RedirectedWebResponse_RedirectUrl.htm" />
+  <HelpKINode Title="RedirectedWebResponse.WebRequest property" Url="html/P_NScrape_RedirectedWebResponse_WebRequest.htm" />
+  <HelpKINode Title="RedirectUrl property" Url="html/P_NScrape_RedirectedWebResponse_RedirectUrl.htm" />
+  <HelpKINode Title="RequestData property" Url="html/P_NScrape_PostWebRequest_RequestData.htm" />
+  <HelpKINode Title="Reset enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="Response property" Url="html/P_NScrape_ProcessingResponseEventArgs_Response.htm" />
+  <HelpKINode Title="ResponseType property" Url="html/P_NScrape_WebResponse_ResponseType.htm" />
+  <HelpKINode Title="ResponseUrl property" Url="html/P_NScrape_WebResponse_ResponseUrl.htm" />
+  <HelpKINode Title="ScrapeException class">
+    <HelpKINode Title="ScrapeException Class" Url="html/T_NScrape_ScrapeException.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_ScrapeException__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_NScrape_ScrapeException.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_ScrapeException.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_ScrapeException.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ScrapeException.GetObjectData method" Url="html/M_NScrape_ScrapeException_GetObjectData.htm" />
+  <HelpKINode Title="ScrapeException.Html property" Url="html/P_NScrape_ScrapeException_Html.htm" />
+  <HelpKINode Title="ScrapeException.ScrapeException constructor" Url="html/Overload_NScrape_ScrapeException__ctor.htm" />
+  <HelpKINode Title="Scraper class">
+    <HelpKINode Title="Scraper Class" Url="html/T_NScrape_Scraper.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_Scraper__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Scraper.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Scraper.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Scraper.Html property" Url="html/P_NScrape_Scraper_Html.htm" />
+  <HelpKINode Title="Scraper.HtmlDocument property" Url="html/P_NScrape_Scraper_HtmlDocument.htm" />
+  <HelpKINode Title="Scraper.Scraper constructor" Url="html/M_NScrape_Scraper__ctor.htm" />
+  <HelpKINode Title="Search enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="SelectControls property" Url="html/P_NScrape_Forms_BasicForm_SelectControls.htm" />
+  <HelpKINode Title="Selected property" Url="html/P_NScrape_Forms_HtmlOption_Selected.htm" />
+  <HelpKINode Title="SelectHtmlFormControl class">
+    <HelpKINode Title="SelectHtmlFormControl Class" Url="html/T_NScrape_Forms_SelectHtmlFormControl.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_SelectHtmlFormControl.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_SelectHtmlFormControl.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SelectHtmlFormControl.EncodedData property" Url="html/P_NScrape_Forms_SelectHtmlFormControl_EncodedData.htm" />
+  <HelpKINode Title="SelectHtmlFormControl.Options property" Url="html/P_NScrape_Forms_SelectHtmlFormControl_Options.htm" />
+  <HelpKINode Title="SelectHtmlFormControl.UnselectAll method" Url="html/M_NScrape_Forms_SelectHtmlFormControl_UnselectAll.htm" />
+  <HelpKINode Title="SendingRequest event">
+    <HelpKINode Title="IWebClient.SendingRequest Event" Url="html/E_NScrape_IWebClient_SendingRequest.htm" />
+    <HelpKINode Title="WebClient.SendingRequest Event" Url="html/E_NScrape_WebClient_SendingRequest.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SendingRequestEventArgs class">
+    <HelpKINode Title="SendingRequestEventArgs Class" Url="html/T_NScrape_SendingRequestEventArgs.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_SendingRequestEventArgs.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_SendingRequestEventArgs.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SendingRequestEventArgs.WebRequest property" Url="html/P_NScrape_SendingRequestEventArgs_WebRequest.htm" />
+  <HelpKINode Title="SendRequest method">
+    <HelpKINode Title="IWebClient.SendRequest Method " Url="html/Overload_NScrape_IWebClient_SendRequest.htm" />
+    <HelpKINode Title="WebClient.SendRequest Method " Url="html/Overload_NScrape_WebClient_SendRequest.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Submit enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="Submit method">
+    <HelpKINode Title="BasicAspxForm.Submit Method " Url="html/M_NScrape_Forms_BasicAspxForm_Submit.htm" />
+    <HelpKINode Title="BasicHtmlForm.Submit Method " Url="html/M_NScrape_Forms_BasicHtmlForm_Submit.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SubmitAsXmlHttpRequest property" Url="html/P_NScrape_Forms_HtmlForm_SubmitAsXmlHttpRequest.htm" />
+  <HelpKINode Title="SubmitHtmlRequest method" Url="html/M_NScrape_Forms_HtmlForm_SubmitHtmlRequest.htm" />
+  <HelpKINode Title="SubmitRedirectRequest method" Url="html/M_NScrape_Forms_HtmlForm_SubmitRedirectRequest.htm" />
+  <HelpKINode Title="SubmitRequest method" Url="html/Overload_NScrape_Forms_HtmlForm_SubmitRequest.htm" />
+  <HelpKINode Title="Success property" Url="html/P_NScrape_WebResponse_Success.htm" />
+  <HelpKINode Title="SupportedContentTypes property" Url="html/P_NScrape_WebResponseFactory_SupportedContentTypes.htm" />
+  <HelpKINode Title="Tel enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="Text enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="Text property">
+    <HelpKINode Title="TextAreaHtmlFormControl.Text Property " Url="html/P_NScrape_Forms_TextAreaHtmlFormControl_Text.htm" />
+    <HelpKINode Title="TextWebResponse.Text Property " Url="html/P_NScrape_TextWebResponse_Text.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TextAreaControls property" Url="html/P_NScrape_Forms_BasicForm_TextAreaControls.htm" />
+  <HelpKINode Title="TextAreaHtmlFormControl class">
+    <HelpKINode Title="TextAreaHtmlFormControl Class" Url="html/T_NScrape_Forms_TextAreaHtmlFormControl.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_Forms_TextAreaHtmlFormControl.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_Forms_TextAreaHtmlFormControl.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TextAreaHtmlFormControl.EncodedData property" Url="html/P_NScrape_Forms_TextAreaHtmlFormControl_EncodedData.htm" />
+  <HelpKINode Title="TextAreaHtmlFormControl.Text property" Url="html/P_NScrape_Forms_TextAreaHtmlFormControl_Text.htm" />
+  <HelpKINode Title="TextWebResponse class">
+    <HelpKINode Title="TextWebResponse Class" Url="html/T_NScrape_TextWebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_TextWebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_TextWebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_TextWebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TextWebResponse.DisposeManagedRessources method" Url="html/M_NScrape_TextWebResponse_DisposeManagedRessources.htm" />
+  <HelpKINode Title="TextWebResponse.Encoding property" Url="html/P_NScrape_TextWebResponse_Encoding.htm" />
+  <HelpKINode Title="TextWebResponse.Text property" Url="html/P_NScrape_TextWebResponse_Text.htm" />
+  <HelpKINode Title="TextWebResponse.TextWebResponse constructor" Url="html/Overload_NScrape_TextWebResponse__ctor.htm" />
+  <HelpKINode Title="Time enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="ToString method">
+    <HelpKINode Title="GetWebRequest.ToString Method " Url="html/M_NScrape_GetWebRequest_ToString.htm" />
+    <HelpKINode Title="InputHtmlFormControl.ToString Method " Url="html/M_NScrape_Forms_InputHtmlFormControl_ToString.htm" />
+    <HelpKINode Title="PostWebRequest.ToString Method " Url="html/M_NScrape_PostWebRequest_ToString.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TryParseHttpDate method" Url="html/M_NScrape_NScrapeUtility_TryParseHttpDate.htm" />
+  <HelpKINode Title="Type property" Url="html/P_NScrape_WebRequest_Type.htm" />
+  <HelpKINode Title="Unknown enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="UnselectAll method" Url="html/M_NScrape_Forms_SelectHtmlFormControl_UnselectAll.htm" />
+  <HelpKINode Title="Unsupported enumeration member" Url="html/T_NScrape_WebResponseType.htm" />
+  <HelpKINode Title="UnsupportedWebResponse class">
+    <HelpKINode Title="UnsupportedWebResponse Class" Url="html/T_NScrape_UnsupportedWebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_UnsupportedWebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_UnsupportedWebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_UnsupportedWebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UnsupportedWebResponse.ContentType property" Url="html/P_NScrape_UnsupportedWebResponse_ContentType.htm" />
+  <HelpKINode Title="UnsupportedWebResponse.UnsupportedWebResponse constructor" Url="html/M_NScrape_UnsupportedWebResponse__ctor.htm" />
+  <HelpKINode Title="Url enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="UrlEncode method" Url="html/M_NScrape_NScrapeUtility_UrlEncode.htm" />
+  <HelpKINode Title="UserAgent property">
+    <HelpKINode Title="IWebClient.UserAgent Property " Url="html/P_NScrape_IWebClient_UserAgent.htm" />
+    <HelpKINode Title="WebClient.UserAgent Property " Url="html/P_NScrape_WebClient_UserAgent.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ValidateHtmlResponse method" Url="html/M_NScrape_WebResponseValidator_ValidateHtmlResponse.htm" />
+  <HelpKINode Title="ValidateImageResponse method" Url="html/M_NScrape_WebResponseValidator_ValidateImageResponse.htm" />
+  <HelpKINode Title="ValidateJavaScriptResponse method" Url="html/M_NScrape_WebResponseValidator_ValidateJavaScriptResponse.htm" />
+  <HelpKINode Title="ValidatePlaintextResponse method" Url="html/M_NScrape_WebResponseValidator_ValidatePlaintextResponse.htm" />
+  <HelpKINode Title="ValidateRedirectResponse method" Url="html/M_NScrape_WebResponseValidator_ValidateRedirectResponse.htm" />
+  <HelpKINode Title="ValidateResponse method" Url="html/Overload_NScrape_WebResponseValidator_ValidateResponse.htm" />
+  <HelpKINode Title="ValidateXmlResponse method" Url="html/M_NScrape_WebResponseValidator_ValidateXmlResponse.htm" />
+  <HelpKINode Title="Value property">
+    <HelpKINode Title="HtmlOption.Value Property " Url="html/P_NScrape_Forms_HtmlOption_Value.htm" />
+    <HelpKINode Title="InputCheckableHtmlFormControl.Value Property " Url="html/P_NScrape_Forms_InputCheckableHtmlFormControl_Value.htm" />
+    <HelpKINode Title="InputHtmlFormControl.Value Property " Url="html/P_NScrape_Forms_InputHtmlFormControl_Value.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WebClient class">
+    <HelpKINode Title="WebClient Class" Url="html/T_NScrape_WebClient.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_WebClient__ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events_T_NScrape_WebClient.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_WebClient.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_WebClient.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WebClient property" Url="html/P_NScrape_Forms_HtmlForm_WebClient.htm" />
+  <HelpKINode Title="WebClient.AddingCookie event" Url="html/E_NScrape_WebClient_AddingCookie.htm" />
+  <HelpKINode Title="WebClient.CookieJar property" Url="html/P_NScrape_WebClient_CookieJar.htm" />
+  <HelpKINode Title="WebClient.OnAddingCookie method" Url="html/M_NScrape_WebClient_OnAddingCookie.htm" />
+  <HelpKINode Title="WebClient.OnProcessingResponse method" Url="html/M_NScrape_WebClient_OnProcessingResponse.htm" />
+  <HelpKINode Title="WebClient.OnSendingRequest method" Url="html/M_NScrape_WebClient_OnSendingRequest.htm" />
+  <HelpKINode Title="WebClient.ProcessingResponse event" Url="html/E_NScrape_WebClient_ProcessingResponse.htm" />
+  <HelpKINode Title="WebClient.SendingRequest event" Url="html/E_NScrape_WebClient_SendingRequest.htm" />
+  <HelpKINode Title="WebClient.SendRequest method" Url="html/Overload_NScrape_WebClient_SendRequest.htm" />
+  <HelpKINode Title="WebClient.UserAgent property" Url="html/P_NScrape_WebClient_UserAgent.htm" />
+  <HelpKINode Title="WebClient.WebClient constructor" Url="html/M_NScrape_WebClient__ctor.htm" />
+  <HelpKINode Title="WebRequest class">
+    <HelpKINode Title="WebRequest Class" Url="html/T_NScrape_WebRequest.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_WebRequest__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_WebRequest.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_WebRequest.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WebRequest property">
+    <HelpKINode Title="RedirectedWebResponse.WebRequest Property " Url="html/P_NScrape_RedirectedWebResponse_WebRequest.htm" />
+    <HelpKINode Title="SendingRequestEventArgs.WebRequest Property " Url="html/P_NScrape_SendingRequestEventArgs_WebRequest.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WebRequest.AutoRedirect property" Url="html/P_NScrape_WebRequest_AutoRedirect.htm" />
+  <HelpKINode Title="WebRequest.Destination property" Url="html/P_NScrape_WebRequest_Destination.htm" />
+  <HelpKINode Title="WebRequest.Headers property" Url="html/P_NScrape_WebRequest_Headers.htm" />
+  <HelpKINode Title="WebRequest.IsXmlHttpRequest property" Url="html/P_NScrape_WebRequest_IsXmlHttpRequest.htm" />
+  <HelpKINode Title="WebRequest.Type property" Url="html/P_NScrape_WebRequest_Type.htm" />
+  <HelpKINode Title="WebRequest.WebRequest constructor" Url="html/Overload_NScrape_WebRequest__ctor.htm" />
+  <HelpKINode Title="WebRequestType enumeration" Url="html/T_NScrape_WebRequestType.htm" />
+  <HelpKINode Title="WebResponse class">
+    <HelpKINode Title="WebResponse Class" Url="html/T_NScrape_WebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_WebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_WebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_WebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WebResponse.Dispose method" Url="html/M_NScrape_WebResponse_Dispose.htm" />
+  <HelpKINode Title="WebResponse.DisposeManagedRessources method" Url="html/M_NScrape_WebResponse_DisposeManagedRessources.htm" />
+  <HelpKINode Title="WebResponse.DisposeUnmanagedRessources method" Url="html/M_NScrape_WebResponse_DisposeUnmanagedRessources.htm" />
+  <HelpKINode Title="WebResponse.Finalize method" Url="html/M_NScrape_WebResponse_Finalize.htm" />
+  <HelpKINode Title="WebResponse.ResponseType property" Url="html/P_NScrape_WebResponse_ResponseType.htm" />
+  <HelpKINode Title="WebResponse.ResponseUrl property" Url="html/P_NScrape_WebResponse_ResponseUrl.htm" />
+  <HelpKINode Title="WebResponse.Success property" Url="html/P_NScrape_WebResponse_Success.htm" />
+  <HelpKINode Title="WebResponse.WebResponse constructor" Url="html/M_NScrape_WebResponse__ctor.htm" />
+  <HelpKINode Title="WebResponseFactory class">
+    <HelpKINode Title="WebResponseFactory Class" Url="html/T_NScrape_WebResponseFactory.htm" />
+    <HelpKINode Title="constructor" Url="html/M_NScrape_WebResponseFactory__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_WebResponseFactory.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_WebResponseFactory.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WebResponseFactory.CreateBinaryResponse method" Url="html/M_NScrape_WebResponseFactory_CreateBinaryResponse.htm" />
+  <HelpKINode Title="WebResponseFactory.CreateHtmlResponse method" Url="html/M_NScrape_WebResponseFactory_CreateHtmlResponse.htm" />
+  <HelpKINode Title="WebResponseFactory.CreateImageResponse method" Url="html/M_NScrape_WebResponseFactory_CreateImageResponse.htm" />
+  <HelpKINode Title="WebResponseFactory.CreateJavaScriptResponse method" Url="html/M_NScrape_WebResponseFactory_CreateJavaScriptResponse.htm" />
+  <HelpKINode Title="WebResponseFactory.CreateJsonResponse method" Url="html/M_NScrape_WebResponseFactory_CreateJsonResponse.htm" />
+  <HelpKINode Title="WebResponseFactory.CreatePlainTextResponse method" Url="html/M_NScrape_WebResponseFactory_CreatePlainTextResponse.htm" />
+  <HelpKINode Title="WebResponseFactory.CreateResponse method" Url="html/M_NScrape_WebResponseFactory_CreateResponse.htm" />
+  <HelpKINode Title="WebResponseFactory.CreateTextResponse method" Url="html/M_NScrape_WebResponseFactory_CreateTextResponse.htm" />
+  <HelpKINode Title="WebResponseFactory.CreateXmlResponse method" Url="html/M_NScrape_WebResponseFactory_CreateXmlResponse.htm" />
+  <HelpKINode Title="WebResponseFactory.GetEncoding method" Url="html/M_NScrape_WebResponseFactory_GetEncoding.htm" />
+  <HelpKINode Title="WebResponseFactory.ReadResponseText method" Url="html/Overload_NScrape_WebResponseFactory_ReadResponseText.htm" />
+  <HelpKINode Title="WebResponseFactory.SupportedContentTypes property" Url="html/P_NScrape_WebResponseFactory_SupportedContentTypes.htm" />
+  <HelpKINode Title="WebResponseFactory.WebResponseFactory constructor" Url="html/M_NScrape_WebResponseFactory__ctor.htm" />
+  <HelpKINode Title="WebResponseType enumeration" Url="html/T_NScrape_WebResponseType.htm" />
+  <HelpKINode Title="WebResponseValidator class">
+    <HelpKINode Title="WebResponseValidator Class" Url="html/T_NScrape_WebResponseValidator.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_WebResponseValidator.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WebResponseValidator.ValidateHtmlResponse method" Url="html/M_NScrape_WebResponseValidator_ValidateHtmlResponse.htm" />
+  <HelpKINode Title="WebResponseValidator.ValidateImageResponse method" Url="html/M_NScrape_WebResponseValidator_ValidateImageResponse.htm" />
+  <HelpKINode Title="WebResponseValidator.ValidateJavaScriptResponse method" Url="html/M_NScrape_WebResponseValidator_ValidateJavaScriptResponse.htm" />
+  <HelpKINode Title="WebResponseValidator.ValidatePlaintextResponse method" Url="html/M_NScrape_WebResponseValidator_ValidatePlaintextResponse.htm" />
+  <HelpKINode Title="WebResponseValidator.ValidateRedirectResponse method" Url="html/M_NScrape_WebResponseValidator_ValidateRedirectResponse.htm" />
+  <HelpKINode Title="WebResponseValidator.ValidateResponse method" Url="html/Overload_NScrape_WebResponseValidator_ValidateResponse.htm" />
+  <HelpKINode Title="WebResponseValidator.ValidateXmlResponse method" Url="html/M_NScrape_WebResponseValidator_ValidateXmlResponse.htm" />
+  <HelpKINode Title="Week enumeration member" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
+  <HelpKINode Title="XDocument property" Url="html/P_NScrape_XmlWebResponse_XDocument.htm" />
+  <HelpKINode Title="Xml enumeration member" Url="html/T_NScrape_WebResponseType.htm" />
+  <HelpKINode Title="XmlWebResponse class">
+    <HelpKINode Title="XmlWebResponse Class" Url="html/T_NScrape_XmlWebResponse.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_NScrape_XmlWebResponse__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_NScrape_XmlWebResponse.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_NScrape_XmlWebResponse.htm" />
+  </HelpKINode>
+  <HelpKINode Title="XmlWebResponse.XDocument property" Url="html/P_NScrape_XmlWebResponse_XDocument.htm" />
+  <HelpKINode Title="XmlWebResponse.XmlWebResponse constructor" Url="html/Overload_NScrape_XmlWebResponse__ctor.htm" />
+</HelpKI>
