@@ -36,7 +36,7 @@ private class TestScraper : Scraper {
 		var node = HtmlDocument.DocumentNode.Descendants().SingleOrDefault( n => n.Attributes.Contains( "class" ) && n.Attributes["class"].Value == "myforecast-current-lrg" );
 
 		if ( node != null ) {
-			return node.InnerText.Replace( "&deg;", "°" );
+			return node.InnerText.Replace( "&deg;", "Â°" );
 		}
 
 		throw new ScrapeException( "Could not scrape temperature.", Html );
