@@ -119,15 +119,15 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="accounts_craigslist_org_login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\TestData\accounts.craigslist.org login.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+    <value>..\..\NScrape.Test.Common\TestData\accounts.craigslist.org login.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="chicago_craigslist_org" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\TestData\chicago.craigslist.org.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+    <value>..\..\NScrape.Test.Common\TestData\chicago.craigslist.org.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="flickr_com_search_advanced" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\TestData\flickr.com search advanced .html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\..\NScrape.Test.Common\TestData\flickr.com search advanced .html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="quackit_com_html_codes_comment_box_code" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\TestData\quackit.com html codes comment_box_code.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+    <value>..\..\NScrape.Test.Common\TestData\quackit.com html codes comment_box_code.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

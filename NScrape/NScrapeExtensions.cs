@@ -51,7 +51,7 @@ namespace NScrape {
 			if ( s != null ) {
 				StreamReader sr;
 
-				if ( webResponse.ContentEncoding == "gzip" ) {
+				if ( webResponse.Headers[HttpResponseHeader.ContentEncoding] == "gzip" ) {
 					sr = new StreamReader( new GZipStream( s, CompressionMode.Decompress ), encoding );
 				}
 				else {
@@ -60,7 +60,7 @@ namespace NScrape {
 
 				var content = sr.ReadToEnd();
 
-				sr.Close();
+				sr.Dispose();
 
 				return content;
 			}

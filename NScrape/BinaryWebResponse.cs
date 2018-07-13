@@ -52,7 +52,7 @@ namespace NScrape {
 		/// </remarks>
 		/// <seealso cref="GetResponseStream"/>
 		public void Close() {
-		    webResponse?.Close();
+		    webResponse?.Dispose();
 	    }
 
 	    /// <summary>

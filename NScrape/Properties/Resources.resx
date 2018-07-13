@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DefaultUserAgent" xml:space="preserve">
+    <value> NScrape/{0} (+https://github.com/darrylwhitmore/NScrape)</value>
+  </data>
   <data name="InvalidFormId" xml:space="preserve">
     <value>Form {0} '{1}' was not found.</value>
   </data>
@@ -131,6 +134,12 @@
   </data>
   <data name="NotASelectHtmlControl" xml:space="preserve">
     <value>HTML is not a SELECT control: '{0}'</value>
+  </data>
+  <data name="NotASelectHtmlControlOption" xml:space="preserve">
+    <value>HTML is not a SELECT OPTION: '{0}'</value>
+  </data>
+  <data name="NotATextAreaHtmlControl" xml:space="preserve">
+    <value>HTML is not a TEXTAREA control: '{0}'</value>
   </data>
   <data name="UnexpectedHtmlPage" xml:space="preserve">
     <value>An HTML page was returned unexpectedly.</value>
@@ -161,14 +170,5 @@
   </data>
   <data name="UnsupportedResponseType" xml:space="preserve">
     <value>Unsupported response type: '{0}'</value>
-  </data>
-  <data name="NotASelectHtmlControlOption" xml:space="preserve">
-    <value>HTML is not a SELECT OPTION: '{0}'</value>
-  </data>
-  <data name="NotATextAreaHtmlControl" xml:space="preserve">
-    <value>HTML is not a TEXTAREA control: '{0}'</value>
-  </data>
-  <data name="DefaultUserAgent" xml:space="preserve">
-    <value> NScrape/{0} (+https://github.com/darrylwhitmore/NScrape)</value>
   </data>
 </root>

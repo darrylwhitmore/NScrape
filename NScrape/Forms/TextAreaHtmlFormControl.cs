@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Web;
 
 namespace NScrape.Forms {
 	/// <summary>
@@ -14,11 +13,11 @@ namespace NScrape.Forms {
 			if ( match.Success ) {
 				AddAttributes( match.Groups[RegexLibrary.ParseTextAreaAttributesGroup].Value );
 
-				// Initalize text if default provided
+				// Initialize text if default provided
 				Text = match.Groups[RegexLibrary.ParseTextAreaTextGroup].Value;
 			}
 			else {
-				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.NotATextAreaHtmlControl, html ) );
+				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.NotATextAreaHtmlControl, html ) );
 			}
 		}
 
@@ -28,7 +27,7 @@ namespace NScrape.Forms {
 		public override string EncodedData {
 			get {
 				if ( Name.Length > 0 ) {
-					return string.Format( CultureInfo.InvariantCulture, "{0}={1}", HttpUtility.UrlEncode( Name ), HttpUtility.UrlEncode( Text ) );
+					return string.Format( CultureInfo.InvariantCulture, "{0}={1}", NScrapeUtility.UrlEncode( Name ), NScrapeUtility.UrlEncode( Text ) );
 				}
 
 				return string.Empty;

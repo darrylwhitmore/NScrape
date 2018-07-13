@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Web;
 using System.Net;
 using NScrape.Cookies;
 using Sprache;
@@ -11,7 +12,7 @@ namespace NScrape {
 	/// </summary>
 	public static class NScrapeUtility {
 		/// <summary>
-		/// Parse cookies from from a <c>Set-Cookie</c> header.
+		/// Parse cookies from a <c>Set-Cookie</c> header.
 		/// </summary>
 		/// <param name="setCookieHeader">The <c>Set-Cookie</c> header.</param>
 		/// <param name="hostName">
@@ -126,6 +127,18 @@ namespace NScrape {
 			}
 
 			return result;
+		}
+
+		/// <summary>
+		/// Encodes a URL string
+		/// </summary>
+		/// <param name="str">
+		/// The URL string to encode
+		/// </param>
+		/// <returns>
+		/// The encoded URL string</returns>
+		public static string UrlEncode( string str ) {
+			return HttpUtility.UrlEncode( str );
 		}
 	}
 }

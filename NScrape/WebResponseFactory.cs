@@ -30,7 +30,7 @@ namespace NScrape {
 		}
 
 		/// <summary>
-		/// Gets a dictionary containing all content types currently suported by the
+		/// Gets a dictionary containing all content types currently supported by the
 		/// <see cref="WebResponseFactory"/>.
 		/// </summary>
 		/// <remarks>
@@ -164,6 +164,11 @@ namespace NScrape {
 		/// <see cref="WebResponse"/> object; otherwise, an <see cref="UnsupportedWebResponse"/> object.
 		/// </returns>
 		public static WebResponse CreateResponse( HttpWebResponse webResponse ) {
+			if ( !webResponse.Headers.AllKeys.Contains( CommonHeaders.ContentType ) ) {
+				// The response is missing a content type.
+				return new UnsupportedWebResponse( webResponse.ResponseUri, string.Empty );
+			}
+
 			var contentType = webResponse.Headers[CommonHeaders.ContentType];
 
 			// The keys in the SupportedContentTypes indicate the text the contentType

@@ -1,6 +1,5 @@
 using System;
 using System.Globalization;
-using System.Web;
 
 namespace NScrape.Forms {
 
@@ -10,7 +9,7 @@ namespace NScrape.Forms {
 	public class InputHtmlFormControl : HtmlFormControl {
 
         /// <summary>
-        /// Initialzes a new instance of the <see cref="InputHtmlFormControl"/> class.
+        /// Initializes a new instance of the <see cref="InputHtmlFormControl"/> class.
         /// </summary>
         /// <param name="type">
         /// The control type to create.
@@ -56,7 +55,7 @@ namespace NScrape.Forms {
 				}
 			}
 			else {
-				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.NotAnInputHtmlControl, html ) );
+				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.NotAnInputHtmlControl, html ) );
 			}
 		}
 
@@ -71,7 +70,7 @@ namespace NScrape.Forms {
 		public override string EncodedData {
 			get {
 				if ( Name.Length > 0 ) {
-					return string.Format( CultureInfo.InvariantCulture, "{0}={1}", HttpUtility.UrlEncode( Name ), HttpUtility.UrlEncode( Value ) );
+					return string.Format( CultureInfo.InvariantCulture, "{0}={1}", NScrapeUtility.UrlEncode( Name ), NScrapeUtility.UrlEncode( Value ) );
 				}
 
 				return string.Empty;

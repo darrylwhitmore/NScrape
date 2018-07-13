@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace NScrape.Forms {
 
@@ -22,7 +21,7 @@ namespace NScrape.Forms {
 				Options = BuildOptionList( match.Groups[RegexLibrary.ParseSelectOptionsGroup].Value );
 			}
 			else {
-				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.NotASelectHtmlControl, html ) );
+				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.NotASelectHtmlControl, html ) );
 			}
 		}
 
@@ -52,13 +51,13 @@ namespace NScrape.Forms {
 								sb.Append( "&" );
 							}
 
-							sb.AppendFormat( "{0}=", HttpUtility.UrlEncode( Name ) );
+							sb.AppendFormat( "{0}=", NScrapeUtility.UrlEncode( Name ) );
 
 							if ( option.Value.Length > 0 ) {
-								sb.Append( HttpUtility.UrlEncode( option.Value ) );
+								sb.Append( NScrapeUtility.UrlEncode( option.Value ) );
 							}
 							else {
-								sb.Append( HttpUtility.UrlEncode( option.Option ) );
+								sb.Append( NScrapeUtility.UrlEncode( option.Option ) );
 							}
 						}
 					}

@@ -1,37 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <!-- The configuration and platform will be used to determine which assemblies to include from solution and
 				 project documentation sources -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{61970b1f-5e72-457c-b9d8-307f815b53f2}</ProjectGuid>
-    <SHFBSchemaVersion>1.9.9.0</SHFBSchemaVersion>
+    <ProjectGuid>{5c3feb4b-73c0-49f1-a5fe-a9cbf80b6dec}</ProjectGuid>
+    <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
     <AssemblyName>Documentation</AssemblyName>
     <RootNamespace>Documentation</RootNamespace>
     <Name>Documentation</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>.NET Framework 4.0</FrameworkVersion>
+    <FrameworkVersion>.NET Framework 4.6.1</FrameworkVersion>
     <OutputPath>.\Help\</OutputPath>
     <HtmlHelpName>NScrape</HtmlHelpName>
     <Language>en-US</Language>
-    <MaximumGroupParts>2</MaximumGroupParts>
-    <NamespaceGrouping>False</NamespaceGrouping>
-    <SyntaxFilters>Standard</SyntaxFilters>
-    <SdkLinkTarget>Blank</SdkLinkTarget>
-    <RootNamespaceContainer>False</RootNamespaceContainer>
-    <PresentationStyle>VS2013</PresentationStyle>
-    <Preliminary>False</Preliminary>
-    <NamingMethod>Guid</NamingMethod>
-    <HelpTitle>NScrape Web Scraping Framework</HelpTitle>
-    <CopyrightText>Copyright &amp;#169%3b Darryl G. Whitmore 2008-2016</CopyrightText>
-    <ContentPlacement>AboveNamespaces</ContentPlacement>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\NScrape\bin\Debug\NScrape.dll" xmlns="" />
-      <DocumentationSource sourceFile="..\NScrape\bin\Debug\NScrape.xml" xmlns="" />
+      <DocumentationSource sourceFile="..\NScrape\bin\Debug\netstandard2.0\NScrape.dll" />
+      <DocumentationSource sourceFile="..\NScrape\bin\Debug\netstandard2.0\NScrape.xml" />
     </DocumentationSources>
+    <HelpFileFormat>Website</HelpFileFormat>
+    <SyntaxFilters>C#, Visual Basic, Managed C++</SyntaxFilters>
+    <PresentationStyle>VS2013</PresentationStyle>
+    <CleanIntermediates>True</CleanIntermediates>
+    <KeepLogFile>True</KeepLogFile>
+    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
+    <IndentHtml>False</IndentHtml>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
+    <HelpTitle>NScrape Web Scraping Framework</HelpTitle>
+    <HelpFileVersion>1.0.0.0</HelpFileVersion>
+    <NamingMethod>MemberName</NamingMethod>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <RootNamespaceContainer>False</RootNamespaceContainer>
+    <NamespaceGrouping>True</NamespaceGrouping>
+    <Preliminary>False</Preliminary>
+    <CopyrightText>Copyright &amp;#169%3b Darryl G. Whitmore 2008-2018</CopyrightText>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="NScrape" isDocumented="True">The &lt;b&gt;NScrape&lt;/b&gt; namespace contains the types that provide core framework functionality.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="NScrape.Forms" isDocumented="True">The &lt;b&gt;NScrape.Forms&lt;/b&gt; namespace contains the types that provide HTML form handling functionality.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="(global)" isDocumented="False" />
+<NamespaceSummaryItem name="NScrape (Group)" isGroup="True" isDocumented="True">NScrape types are grouped into the following namespaces.</NamespaceSummaryItem></NamespaceSummaries>
+    <ProjectSummary>
+    </ProjectSummary>
+    <RootNamespaceTitle>
+    </RootNamespaceTitle>
+    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
@@ -51,12 +67,26 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NScrape\NScrape.csproj">
-      <Name>NScrape</Name>
-      <Project>{CEC1BB54-ABEE-46F5-BDE2-DF9C2DCBCCEC}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <!-- Import the SHFB build targets -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+  <!-- The pre-build and post-build event properties must appear *after* the targets file import in order to be
+			 evaluated correctly. -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.7.2\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Sprache.Signed">
+      <HintPath>..\packages\Sprache.Signed.2.1.2\lib\net45\Sprache.Signed.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>..\packages\System.Drawing.Common.4.5.0-preview1-26216-02\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

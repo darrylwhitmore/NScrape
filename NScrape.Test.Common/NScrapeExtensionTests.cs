@@ -1,13 +1,14 @@
 ﻿using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace NScrape.Test {
 	public class NScrapeExtensionTests {
 		[Fact]
-		public void GetEncodingTest() {
+		public async Task GetEncodingTest() {
 			var request = System.Net.WebRequest.Create( "https://www.wikipedia.org/" );
-			var response = request.GetResponse();
+			var response = await request.GetResponseAsync();
 			var httpWebResponse = response as HttpWebResponse;
 
 			Assert.NotNull( httpWebResponse );
@@ -15,9 +16,9 @@ namespace NScrape.Test {
 		}
 
 		[Fact]
-		public void GetEncodingBackwardsCompatibilityTest() {
+		public async Task GetEncodingBackwardsCompatibilityTest() {
 			var request = System.Net.WebRequest.Create( "https://www.wikipedia.org/" );
-			var response = request.GetResponse();
+			var response = await request.GetResponseAsync();
 			var httpWebResponse = response as HttpWebResponse;
 
 			Assert.NotNull( httpWebResponse );
@@ -27,11 +28,11 @@ namespace NScrape.Test {
 		}
 
 		[Fact]
-		public void GetResponseTextTest() {
+		public async Task GetResponseTextTest() {
 			const string testText = "<title>Lorem Ipsum - All the facts - Lipsum generator</title>";
 
 			var request = System.Net.WebRequest.Create( "http://www.lipsum.com/" );
-			var response = request.GetResponse();
+			var response = await request.GetResponseAsync();
 			var httpWebResponse = response as HttpWebResponse;
 			Assert.NotNull( httpWebResponse );
 			var html = httpWebResponse.GetResponseText();
@@ -39,7 +40,7 @@ namespace NScrape.Test {
 			Assert.Contains( testText, html );
 
 			request = System.Net.WebRequest.Create( "http://www.lipsum.com/" );
-			response = request.GetResponse();
+			response = await request.GetResponseAsync();
 			httpWebResponse = response as HttpWebResponse;
 			Assert.NotNull( httpWebResponse );
 			html = httpWebResponse.GetResponseText( Encoding.GetEncoding( "ISO-8859-1" ) );
@@ -48,11 +49,11 @@ namespace NScrape.Test {
 		}
 
 		[Fact]
-		public void ReadResponseTextBackwardsCompatibilityTest() {
+		public async Task ReadResponseTextBackwardsCompatibilityTest() {
 			const string testText = "<title>Lorem Ipsum - All the facts - Lipsum generator</title>";
 
 			var request = System.Net.WebRequest.Create( "http://www.lipsum.com/" );
-			var response = request.GetResponse();
+			var response = await request.GetResponseAsync();
 			var httpWebResponse = response as HttpWebResponse;
 			Assert.NotNull( httpWebResponse );
 #pragma warning disable 618
@@ -62,7 +63,7 @@ namespace NScrape.Test {
 			Assert.Contains( testText, html );
 
 			request = System.Net.WebRequest.Create( "http://www.lipsum.com/" );
-			response = request.GetResponse();
+			response = await request.GetResponseAsync();
 			httpWebResponse = response as HttpWebResponse;
 			Assert.NotNull( httpWebResponse );
 #pragma warning disable 618

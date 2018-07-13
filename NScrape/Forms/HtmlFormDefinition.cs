@@ -89,7 +89,7 @@ namespace NScrape.Forms {
 					control = new TextAreaHtmlFormControl( controlMatch.Value );
 				}
 				else {
-					throw new System.Net.WebException( string.Format( CultureInfo.CurrentCulture, NScrapeResources.UnsupportedHtmlControl, controlMatch.Value ) );
+					throw new System.Net.WebException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.UnsupportedHtmlControl, controlMatch.Value ) );
 				}
 
 				if ( control.Name != null ) {

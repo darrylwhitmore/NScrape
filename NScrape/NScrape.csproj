@@ -1,181 +1,57 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CEC1BB54-ABEE-46F5-BDE2-DF9C2DCBCCEC}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NScrape</RootNamespace>
-    <AssemblyName>NScrape</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\NScrape.xml</DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>6</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\Release\NScrape.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyVersion>0.4.0.0</AssemblyVersion>
+    <FileVersion>0.4.0.0</FileVersion>
     <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile>nscrape.snk</AssemblyOriginatorKeyFile>
+    <PackageId>NScrape</PackageId>
+	<title>NScrape Web Scraping Framework</title>
+    <Version>0.4.0.0</Version>
+    <Authors>Darryl G. Whitmore</Authors>
+    <Company>Darryl G. Whitmore</Company>
+    <Description>A web scraping framework for .Net</Description>
+    <Copyright>2008-2018</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/darrylwhitmore/NScrape/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/darrylwhitmore/NScrape</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/darrylwhitmore/NScrape/master/Assets/NScrape.png</PackageIconUrl>
+    <PackageTags>html scrape scraper scraping crawler crawling htmlagilitypack htmlagility agility</PackageTags>
+    <Product>NScrape Web Scraping Framework</Product>
+    <PackageReleaseNotes>For this release, NScape has been converted to a .NET Standard 2.0 library. In addition, the API reference has been moved from a standalone CHM file to the new NScrape.com GitHub Pages website.</PackageReleaseNotes>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
-    <DocumentationFile>
-    </DocumentationFile>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
-    <Prefer32Bit>false</Prefer32Bit>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\NScrape.xml</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
-    <Prefer32Bit>false</Prefer32Bit>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\NScrape.xml</DocumentationFile>
   </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.JScript" />
-    <Reference Include="Sprache, Version=2.0.0.52, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packagesSigned\Sprache.2.0.0.52\lib\portable-net4+netcore45+win8+wp8+sl5+MonoAndroid+Xamarin.iOS10+MonoTouch\Sprache.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <None Remove="nscrape.publickey" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="BinaryWebResponse.cs" />
-    <Compile Include="CommonHeaders.cs" />
-    <Compile Include="Cookies\CookieNameValuePair.cs" />
-    <Compile Include="Cookies\ParsedCookie.cs" />
-    <Compile Include="Cookies\ParsedSetCookieHeader.cs" />
-    <Compile Include="Cookies\SetCookieHeaderGrammar.cs" />
-    <Compile Include="Forms\HtmlFormDefinition.cs" />
-    <Compile Include="Forms\InputCheckableHtmlFormControl.cs" />
-    <Compile Include="Forms\BasicAspxForm.cs" />
-    <Compile Include="Forms\BasicForm.cs" />
-    <Compile Include="Forms\BasicHtmlForm.cs" />
-    <Compile Include="Forms\TextAreaHtmlFormControl.cs" />
-    <Compile Include="IWebClient.cs" />
-    <Compile Include="JavaScriptWebResponse.cs" />
-    <Compile Include="JsonWebResponse.cs" />
-    <Compile Include="NScrapeExtensions.cs" />
-    <Compile Include="NScrapeUtility.cs" />
-    <Compile Include="RegexCache.cs" />
-    <Compile Include="ScrapeException.cs" />
-    <Compile Include="Scraper.cs" />
-    <Compile Include="ProcessingResponseEventArgs.cs" />
-    <Compile Include="SendingRequestEventArgs.cs" />
-    <Compile Include="Forms\InputCheckBoxHtmlFormControl.cs" />
-    <Compile Include="Forms\InputHtmlFormControlType.cs" />
-    <Compile Include="Forms\NamespaceDoc.cs" />
-    <Compile Include="Forms\InputRadioHtmlFormControl.cs" />
-    <Compile Include="AddingCookieEventArgs.cs" />
-    <Compile Include="ExceptionWebResponse.cs" />
-    <Compile Include="Forms\Utility.cs" />
-    <Compile Include="GetWebRequest.cs" />
-    <Compile Include="Forms\HtmlForm.cs" />
-    <Compile Include="Forms\HtmlFormControl.cs" />
-    <Compile Include="Forms\HtmlOption.cs" />
-    <Compile Include="HtmlWebResponse.cs" />
-    <Compile Include="ImageWebResponse.cs" />
-    <Compile Include="Forms\InputHtmlFormControl.cs" />
-    <Compile Include="NamespaceDoc.cs" />
-    <Compile Include="NScrapeResources.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <PackageReference Include="HtmlAgilityPack" Version="1.7.2" />
+    <PackageReference Include="Sprache.Signed" Version="2.1.2" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.0-preview1-26216-02" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
-      <DependentUpon>NScrapeResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="PlaintextWebResponse.cs" />
-    <Compile Include="PostWebRequest.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RedirectedWebResponse.cs" />
-    <Compile Include="RegexLibrary.cs" />
-    <Compile Include="Forms\SelectHtmlFormControl.cs" />
-    <Compile Include="TextWebResponse.cs" />
-    <Compile Include="UnexpectedWebResponseGenerator.cs" />
-    <Compile Include="UnsupportedWebResponse.cs" />
-    <Compile Include="WebClient.cs" />
-    <Compile Include="WebRequest.cs" />
-    <Compile Include="WebRequestType.cs" />
-    <Compile Include="WebResponse.cs" />
-    <Compile Include="WebResponseFactory.cs" />
-    <Compile Include="WebResponseType.cs" />
-    <Compile Include="WebResponseValidator.cs" />
-    <Compile Include="XmlWebResponse.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <EmbeddedResource Include="NScrapeResources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>NScrapeResources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="nscrape.snk" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="IWebClient.xml" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
