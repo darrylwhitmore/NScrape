@@ -185,7 +185,7 @@ namespace NScrape.Test {
 			Assert.Null( cookie.CommentUri );
 			Assert.False( cookie.Discard );
 			Assert.Equal( ".github.com", cookie.Domain );
-			Assert.False( cookie.Expired );
+			Assert.True( cookie.Expired );
 			Assert.Equal( new DateTime( 2018, 6, 8, 21, 8, 36 ), cookie.Expires );
 			Assert.False( cookie.HttpOnly );
 			Assert.Equal( "_octo", cookie.Name );
