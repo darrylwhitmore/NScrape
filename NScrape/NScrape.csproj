@@ -18,6 +18,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/darrylwhitmore/NScrape/master/Assets/NScrape.png</PackageIconUrl>
     <PackageTags>html scrape scraper scraping crawler crawling htmlagilitypack htmlagility agility</PackageTags>
     <Product>NScrape Web Scraping Framework</Product>
+    <PackageReleaseNotes>For this release, NScape has been converted to a .NET Standard 2.0 library. In addition, the API reference has been moved from a standalone CHM file to the new NScrape.com GitHub Pages website.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
