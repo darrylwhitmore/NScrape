@@ -110,7 +110,7 @@ namespace NScrape.Test {
 				Assert.NotNull( htmlWebResponse );
 
 				Assert.NotNull( htmlWebResponse.Html );
-				Assert.Contains( "\"NScrape - A web scraping framework for .NET\"", htmlWebResponse.Html );
+				Assert.Contains( "A web scraping framework for .NET", htmlWebResponse.Html );
 			}
 		}
 

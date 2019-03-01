@@ -2,23 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyVersion>0.4.0.0</AssemblyVersion>
-    <FileVersion>0.4.0.0</FileVersion>
+    <AssemblyVersion>0.4.1.0</AssemblyVersion>
+    <FileVersion>0.4.1.0</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>nscrape.snk</AssemblyOriginatorKeyFile>
     <PackageId>NScrape</PackageId>
 	<title>NScrape Web Scraping Framework</title>
-    <Version>0.4.0.0</Version>
+    <Version>0.4.1.0</Version>
     <Authors>Darryl G. Whitmore</Authors>
     <Company>Darryl G. Whitmore</Company>
-    <Description>A web scraping framework for .Net</Description>
-    <Copyright>2008-2018</Copyright>
+    <Description>A web scraping framework for .NET</Description>
+    <Copyright>2008-2019</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/darrylwhitmore/NScrape/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/darrylwhitmore/NScrape</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/darrylwhitmore/NScrape/master/Assets/NScrape.png</PackageIconUrl>
     <PackageTags>html scrape scraper scraping crawler crawling htmlagilitypack htmlagility agility</PackageTags>
     <Product>NScrape Web Scraping Framework</Product>
-    <PackageReleaseNotes>For this release, NScape has been converted to a .NET Standard 2.0 library. In addition, the API reference has been moved from a standalone CHM file to the new NScrape.com GitHub Pages website.</PackageReleaseNotes>
+    <PackageReleaseNotes>Just a small package refresh, notably updating to the release version of System.Drawing.Common.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -34,9 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.7.2" />
-    <PackageReference Include="Sprache.Signed" Version="2.1.2" />
-    <PackageReference Include="System.Drawing.Common" Version="4.5.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.9.1" />
+    <PackageReference Include="Sprache.Signed" Version="2.2.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
   </ItemGroup>
 
   <ItemGroup>

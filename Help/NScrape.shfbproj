@@ -22,7 +22,7 @@
       <DocumentationSource sourceFile="..\NScrape\bin\Debug\netstandard2.0\NScrape.xml" />
     </DocumentationSources>
     <HelpFileFormat>Website</HelpFileFormat>
-    <SyntaxFilters>C#, Visual Basic, Managed C++</SyntaxFilters>
+    <SyntaxFilters>Standard</SyntaxFilters>
     <PresentationStyle>VS2013</PresentationStyle>
     <CleanIntermediates>True</CleanIntermediates>
     <KeepLogFile>True</KeepLogFile>
@@ -36,13 +36,14 @@
     <RootNamespaceContainer>False</RootNamespaceContainer>
     <NamespaceGrouping>True</NamespaceGrouping>
     <Preliminary>False</Preliminary>
-    <CopyrightText>Copyright &amp;#169%3b Darryl G. Whitmore 2008-2018</CopyrightText>
+    <CopyrightText>Copyright &amp;#169%3b Darryl G. Whitmore 2008-2019</CopyrightText>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="NScrape" isDocumented="True">The &lt;b&gt;NScrape&lt;/b&gt; namespace contains the types that provide core framework functionality.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="NScrape.Forms" isDocumented="True">The &lt;b&gt;NScrape.Forms&lt;/b&gt; namespace contains the types that provide HTML form handling functionality.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="(global)" isDocumented="False" />
-<NamespaceSummaryItem name="NScrape (Group)" isGroup="True" isDocumented="True">NScrape types are grouped into the following namespaces.</NamespaceSummaryItem></NamespaceSummaries>
+      <NamespaceSummaryItem name="NScrape.Forms" isDocumented="True">The &lt;b&gt;NScrape.Forms&lt;/b&gt; namespace contains the types that provide HTML form handling functionality.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="(global)" isDocumented="False" />
+      <NamespaceSummaryItem name="NScrape (Group)" isGroup="True" isDocumented="True">NScrape types are grouped into the following namespaces.</NamespaceSummaryItem>
+    </NamespaceSummaries>
     <ProjectSummary>
     </ProjectSummary>
     <RootNamespaceTitle>
@@ -80,13 +81,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.7.2\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\packages\HtmlAgilityPack.1.9.1\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Sprache.Signed">
-      <HintPath>..\packages\Sprache.Signed.2.1.2\lib\net45\Sprache.Signed.dll</HintPath>
+      <HintPath>..\packages\Sprache.Signed.2.2.0\lib\net45\Sprache.Signed.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing.Common">
-      <HintPath>..\packages\System.Drawing.Common.4.5.0-preview1-26216-02\lib\net461\System.Drawing.Common.dll</HintPath>
+      <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\netstandard2.0\System.Drawing.Common.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
