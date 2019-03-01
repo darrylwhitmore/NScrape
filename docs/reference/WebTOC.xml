@@ -1,76 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="9fb2ed99-2ba1-4632-82d4-f629067865d4" Title="NScrape Namespaces" Url="html/G_NScrape.htm">
-    <HelpTOCNode Id="f98c55f1-a93f-4b93-942f-9db8183d4324" Title="NScrape" Url="html/N_NScrape.htm">
-      <HelpTOCNode Id="887ed389-67ba-4ffb-aa84-0edd79b5d2f3" Title="AddingCookieEventArgs Class" Url="html/T_NScrape_AddingCookieEventArgs.htm">
-        <HelpTOCNode Id="3c24830b-cabf-4ac4-9979-f3a4fe103ba5" Title="AddingCookieEventArgs Properties" Url="html/Properties_T_NScrape_AddingCookieEventArgs.htm">
+  <HelpTOCNode Id="bdef8e25-e9f7-41bd-b651-0f4cf5fe9903" Title="NScrape Namespaces" Url="html/G_NScrape.htm">
+    <HelpTOCNode Id="3f47544b-f1bd-4e31-8344-34085ba0f4a6" Title="NScrape" Url="html/N_NScrape.htm">
+      <HelpTOCNode Id="3b142be0-d7f3-4bfb-b590-1e99d2777055" Title="AddingCookieEventArgs Class" Url="html/T_NScrape_AddingCookieEventArgs.htm">
+        <HelpTOCNode Id="ff435cbf-585d-4e9d-a87b-2a58955abdcd" Title="AddingCookieEventArgs Properties" Url="html/Properties_T_NScrape_AddingCookieEventArgs.htm">
           <HelpTOCNode Title="Cookie Property " Url="html/P_NScrape_AddingCookieEventArgs_Cookie.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="AddingCookieEventArgs Methods" Url="html/Methods_T_NScrape_AddingCookieEventArgs.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="f1cd290d-830c-4b63-afeb-ec38564167e0" Title="BinaryWebResponse Class" Url="html/T_NScrape_BinaryWebResponse.htm">
-        <HelpTOCNode Id="36c01b24-832d-4362-b444-b3f03059473e" Title="BinaryWebResponse Constructor " Url="html/Overload_NScrape_BinaryWebResponse__ctor.htm">
+      <HelpTOCNode Id="5108a1c1-9287-4abd-b070-6360ba958710" Title="BinaryWebResponse Class" Url="html/T_NScrape_BinaryWebResponse.htm">
+        <HelpTOCNode Id="eb3cc044-3167-410d-8a0d-79353c6fd5a0" Title="BinaryWebResponse Constructor " Url="html/Overload_NScrape_BinaryWebResponse__ctor.htm">
           <HelpTOCNode Title="BinaryWebResponse Constructor (Boolean, HttpWebResponse)" Url="html/M_NScrape_BinaryWebResponse__ctor.htm" />
           <HelpTOCNode Title="BinaryWebResponse Constructor (Boolean, Uri, Byte[])" Url="html/M_NScrape_BinaryWebResponse__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="385ba797-895b-48b0-a1f1-33a6be9e370a" Title="BinaryWebResponse Properties" Url="html/Properties_T_NScrape_BinaryWebResponse.htm">
+        <HelpTOCNode Id="b966d99d-e241-4a61-bde6-f640cafda915" Title="BinaryWebResponse Properties" Url="html/Properties_T_NScrape_BinaryWebResponse.htm">
           <HelpTOCNode Title="ContentLength Property " Url="html/P_NScrape_BinaryWebResponse_ContentLength.htm" />
           <HelpTOCNode Title="Data Property " Url="html/P_NScrape_BinaryWebResponse_Data.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="244fa211-2408-4dfd-a2a8-505307016525" Title="BinaryWebResponse Methods" Url="html/Methods_T_NScrape_BinaryWebResponse.htm">
+        <HelpTOCNode Id="69278a97-a5ba-422e-8bd0-413a0c621711" Title="BinaryWebResponse Methods" Url="html/Methods_T_NScrape_BinaryWebResponse.htm">
           <HelpTOCNode Title="Close Method " Url="html/M_NScrape_BinaryWebResponse_Close.htm" />
           <HelpTOCNode Title="DisposeManagedRessources Method " Url="html/M_NScrape_BinaryWebResponse_DisposeManagedRessources.htm" />
           <HelpTOCNode Title="GetResponseStream Method " Url="html/M_NScrape_BinaryWebResponse_GetResponseStream.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="812b8bed-868e-4bdc-9559-c43b3a4acbfd" Title="ExceptionWebResponse Class" Url="html/T_NScrape_ExceptionWebResponse.htm">
+      <HelpTOCNode Id="d81c6909-c151-4caf-ac05-e17ed95b75b6" Title="ExceptionWebResponse Class" Url="html/T_NScrape_ExceptionWebResponse.htm">
         <HelpTOCNode Title="ExceptionWebResponse Constructor " Url="html/M_NScrape_ExceptionWebResponse__ctor.htm" />
-        <HelpTOCNode Id="2e3d8018-a114-491a-8a70-15a2e66087d6" Title="ExceptionWebResponse Properties" Url="html/Properties_T_NScrape_ExceptionWebResponse.htm">
+        <HelpTOCNode Id="3041f45b-4a1e-4781-85f9-f06797f59b08" Title="ExceptionWebResponse Properties" Url="html/Properties_T_NScrape_ExceptionWebResponse.htm">
           <HelpTOCNode Title="Exception Property " Url="html/P_NScrape_ExceptionWebResponse_Exception.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="ExceptionWebResponse Methods" Url="html/Methods_T_NScrape_ExceptionWebResponse.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b347fb5a-61ab-4a04-bf1f-0275bc25e760" Title="GetWebRequest Class" Url="html/T_NScrape_GetWebRequest.htm">
-        <HelpTOCNode Id="2b1edc02-e207-4550-801f-8bc27bbed861" Title="GetWebRequest Constructor " Url="html/Overload_NScrape_GetWebRequest__ctor.htm">
+      <HelpTOCNode Id="3ae6e151-ae8c-4e2b-a388-1d795f913373" Title="GetWebRequest Class" Url="html/T_NScrape_GetWebRequest.htm">
+        <HelpTOCNode Id="1173fd7c-83dc-45ee-b43e-0dd1464377ad" Title="GetWebRequest Constructor " Url="html/Overload_NScrape_GetWebRequest__ctor.htm">
           <HelpTOCNode Title="GetWebRequest Constructor " Url="html/M_NScrape_GetWebRequest__ctor.htm" />
           <HelpTOCNode Title="GetWebRequest Constructor (Uri)" Url="html/M_NScrape_GetWebRequest__ctor_1.htm" />
           <HelpTOCNode Title="GetWebRequest Constructor (Uri, Boolean)" Url="html/M_NScrape_GetWebRequest__ctor_2.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="GetWebRequest Properties" Url="html/Properties_T_NScrape_GetWebRequest.htm" />
-        <HelpTOCNode Id="83053c51-65e2-464c-855d-3b7df4823082" Title="GetWebRequest Methods" Url="html/Methods_T_NScrape_GetWebRequest.htm">
+        <HelpTOCNode Id="b7dfebf1-a2bc-43f4-b5b9-46055ba935b2" Title="GetWebRequest Methods" Url="html/Methods_T_NScrape_GetWebRequest.htm">
           <HelpTOCNode Title="ToString Method " Url="html/M_NScrape_GetWebRequest_ToString.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="1e984ffb-13ab-40af-9697-47ca77717743" Title="HtmlWebResponse Class" Url="html/T_NScrape_HtmlWebResponse.htm">
-        <HelpTOCNode Id="c28a5194-96d8-407c-81a6-bc520dcfe3f2" Title="HtmlWebResponse Constructor " Url="html/Overload_NScrape_HtmlWebResponse__ctor.htm">
+      <HelpTOCNode Id="2052bf28-5257-4a38-8e44-2ba55e620862" Title="HtmlWebResponse Class" Url="html/T_NScrape_HtmlWebResponse.htm">
+        <HelpTOCNode Id="79ce1ab6-6b65-4968-8069-d77e0914c908" Title="HtmlWebResponse Constructor " Url="html/Overload_NScrape_HtmlWebResponse__ctor.htm">
           <HelpTOCNode Title="HtmlWebResponse Constructor (Boolean, HttpWebResponse)" Url="html/M_NScrape_HtmlWebResponse__ctor.htm" />
           <HelpTOCNode Title="HtmlWebResponse Constructor (Boolean, Uri, String, Encoding)" Url="html/M_NScrape_HtmlWebResponse__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="6019befd-ca2e-49e9-8b0f-f81d704cd736" Title="HtmlWebResponse Properties" Url="html/Properties_T_NScrape_HtmlWebResponse.htm">
+        <HelpTOCNode Id="53757641-9af4-420d-be8a-5b711351437e" Title="HtmlWebResponse Properties" Url="html/Properties_T_NScrape_HtmlWebResponse.htm">
           <HelpTOCNode Title="Html Property " Url="html/P_NScrape_HtmlWebResponse_Html.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="HtmlWebResponse Methods" Url="html/Methods_T_NScrape_HtmlWebResponse.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="24c12272-aa38-42ae-be01-920d8a7f0d3f" Title="ImageWebResponse Class" Url="html/T_NScrape_ImageWebResponse.htm">
-        <HelpTOCNode Id="93eeb5da-6469-47f0-bb2f-4d10061ac7b3" Title="ImageWebResponse Constructor " Url="html/Overload_NScrape_ImageWebResponse__ctor.htm">
+      <HelpTOCNode Id="142a3f35-b4be-40dd-98bd-51158977df0a" Title="ImageWebResponse Class" Url="html/T_NScrape_ImageWebResponse.htm">
+        <HelpTOCNode Id="da4bcc91-37d0-45fc-88dc-8d631f27bb8d" Title="ImageWebResponse Constructor " Url="html/Overload_NScrape_ImageWebResponse__ctor.htm">
           <HelpTOCNode Title="ImageWebResponse Constructor (Boolean, HttpWebResponse)" Url="html/M_NScrape_ImageWebResponse__ctor.htm" />
           <HelpTOCNode Title="ImageWebResponse Constructor (Boolean, Uri, Bitmap)" Url="html/M_NScrape_ImageWebResponse__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="fb896d15-8b86-43e0-8ae2-7bf17401eaa0" Title="ImageWebResponse Properties" Url="html/Properties_T_NScrape_ImageWebResponse.htm">
+        <HelpTOCNode Id="8f7ac427-698d-452a-a991-dbf0d7f822ea" Title="ImageWebResponse Properties" Url="html/Properties_T_NScrape_ImageWebResponse.htm">
           <HelpTOCNode Title="Image Property " Url="html/P_NScrape_ImageWebResponse_Image.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="4d98db7a-a691-4397-8a3f-a29a5d22f578" Title="ImageWebResponse Methods" Url="html/Methods_T_NScrape_ImageWebResponse.htm">
+        <HelpTOCNode Id="ae6fc0db-ac35-41ee-84c3-ce15b309aeca" Title="ImageWebResponse Methods" Url="html/Methods_T_NScrape_ImageWebResponse.htm">
           <HelpTOCNode Title="DisposeManagedRessources Method " Url="html/M_NScrape_ImageWebResponse_DisposeManagedRessources.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="028dd3d1-d574-409f-9b9d-5b1134f43390" Title="IWebClient Interface" Url="html/T_NScrape_IWebClient.htm">
-        <HelpTOCNode Id="0d1df240-3dd9-4457-a1d9-40ee26355565" Title="IWebClient Properties" Url="html/Properties_T_NScrape_IWebClient.htm">
+      <HelpTOCNode Id="8c17a189-a47b-4add-9a23-40cc4ed8d2b6" Title="IWebClient Interface" Url="html/T_NScrape_IWebClient.htm">
+        <HelpTOCNode Id="b26bf40d-effb-4f2c-bb45-5dc5d5ed7bfd" Title="IWebClient Properties" Url="html/Properties_T_NScrape_IWebClient.htm">
           <HelpTOCNode Title="CookieJar Property " Url="html/P_NScrape_IWebClient_CookieJar.htm" />
           <HelpTOCNode Title="UserAgent Property " Url="html/P_NScrape_IWebClient_UserAgent.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="679f6789-101b-435d-8c59-ab898599b383" Title="IWebClient Methods" Url="html/Methods_T_NScrape_IWebClient.htm">
-          <HelpTOCNode Id="866f1936-15f7-4baf-8637-c950d93f67a5" Title="SendRequest Method " Url="html/Overload_NScrape_IWebClient_SendRequest.htm">
+        <HelpTOCNode Id="1e88e8e1-2504-461f-9026-8b6ad5c35665" Title="IWebClient Methods" Url="html/Methods_T_NScrape_IWebClient.htm">
+          <HelpTOCNode Id="4f36242b-7cfb-4627-b946-8de7f6efe63d" Title="SendRequest Method " Url="html/Overload_NScrape_IWebClient_SendRequest.htm">
             <HelpTOCNode Title="SendRequest Method (Uri)" Url="html/M_NScrape_IWebClient_SendRequest_1.htm" />
             <HelpTOCNode Title="SendRequest Method (WebRequest)" Url="html/M_NScrape_IWebClient_SendRequest.htm" />
             <HelpTOCNode Title="SendRequest Method (Uri, Boolean)" Url="html/M_NScrape_IWebClient_SendRequest_2.htm" />
@@ -78,86 +78,86 @@
             <HelpTOCNode Title="SendRequest Method (Uri, String, Boolean)" Url="html/M_NScrape_IWebClient_SendRequest_4.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="ec250737-2f37-49c2-8aed-a203fff49ea9" Title="IWebClient Events" Url="html/Events_T_NScrape_IWebClient.htm">
+        <HelpTOCNode Id="be352a58-c9f4-475a-842e-28f631a21fcb" Title="IWebClient Events" Url="html/Events_T_NScrape_IWebClient.htm">
           <HelpTOCNode Title="AddingCookie Event" Url="html/E_NScrape_IWebClient_AddingCookie.htm" />
           <HelpTOCNode Title="ProcessingResponse Event" Url="html/E_NScrape_IWebClient_ProcessingResponse.htm" />
           <HelpTOCNode Title="SendingRequest Event" Url="html/E_NScrape_IWebClient_SendingRequest.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="5f410e6b-e5a6-4b0e-b3d5-a2cd07075a6d" Title="JavaScriptWebResponse Class" Url="html/T_NScrape_JavaScriptWebResponse.htm">
-        <HelpTOCNode Id="eafba94d-ee94-41c6-90d2-dff79b173980" Title="JavaScriptWebResponse Constructor " Url="html/Overload_NScrape_JavaScriptWebResponse__ctor.htm">
+      <HelpTOCNode Id="ac8b574b-03d7-43b1-a844-cf8312ad3e13" Title="JavaScriptWebResponse Class" Url="html/T_NScrape_JavaScriptWebResponse.htm">
+        <HelpTOCNode Id="9f06cbae-32d4-4abc-b54f-5855157be836" Title="JavaScriptWebResponse Constructor " Url="html/Overload_NScrape_JavaScriptWebResponse__ctor.htm">
           <HelpTOCNode Title="JavaScriptWebResponse Constructor (Boolean, HttpWebResponse)" Url="html/M_NScrape_JavaScriptWebResponse__ctor.htm" />
           <HelpTOCNode Title="JavaScriptWebResponse Constructor (Boolean, Uri, String, Encoding)" Url="html/M_NScrape_JavaScriptWebResponse__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="389d01e8-70d1-4d51-bbb9-c823aa8b3112" Title="JavaScriptWebResponse Properties" Url="html/Properties_T_NScrape_JavaScriptWebResponse.htm">
+        <HelpTOCNode Id="12b374db-bba9-4846-8e2b-cbe5f38eb698" Title="JavaScriptWebResponse Properties" Url="html/Properties_T_NScrape_JavaScriptWebResponse.htm">
           <HelpTOCNode Title="JavaScript Property " Url="html/P_NScrape_JavaScriptWebResponse_JavaScript.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="JavaScriptWebResponse Methods" Url="html/Methods_T_NScrape_JavaScriptWebResponse.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="4d9548ec-1f18-4570-bc87-a45b79b87010" Title="JsonWebResponse Class" Url="html/T_NScrape_JsonWebResponse.htm">
-        <HelpTOCNode Id="cbecc9a5-7487-4658-b6a3-b3c38e2b9d21" Title="JsonWebResponse Constructor " Url="html/Overload_NScrape_JsonWebResponse__ctor.htm">
+      <HelpTOCNode Id="247a5f84-debd-4237-acd5-3b4a0ecc2d34" Title="JsonWebResponse Class" Url="html/T_NScrape_JsonWebResponse.htm">
+        <HelpTOCNode Id="ca2eb7d0-456d-4030-bb6d-8d0758c43291" Title="JsonWebResponse Constructor " Url="html/Overload_NScrape_JsonWebResponse__ctor.htm">
           <HelpTOCNode Title="JsonWebResponse Constructor (Boolean, HttpWebResponse)" Url="html/M_NScrape_JsonWebResponse__ctor.htm" />
           <HelpTOCNode Title="JsonWebResponse Constructor (Boolean, Uri, String, Encoding)" Url="html/M_NScrape_JsonWebResponse__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="f4eb7768-7165-4c39-acdc-df2349d28b3a" Title="JsonWebResponse Properties" Url="html/Properties_T_NScrape_JsonWebResponse.htm">
+        <HelpTOCNode Id="c7a1a8e4-1694-4fda-897d-f7be2e7ecb6d" Title="JsonWebResponse Properties" Url="html/Properties_T_NScrape_JsonWebResponse.htm">
           <HelpTOCNode Title="Json Property " Url="html/P_NScrape_JsonWebResponse_Json.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="JsonWebResponse Methods" Url="html/Methods_T_NScrape_JsonWebResponse.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="4b74123d-15ac-40be-828e-f5b10a256e53" Title="NScrapeExtensions Class" Url="html/T_NScrape_NScrapeExtensions.htm">
-        <HelpTOCNode Id="9a252c53-7413-4a4f-9d48-8bfa45b24adf" Title="NScrapeExtensions Methods" Url="html/Methods_T_NScrape_NScrapeExtensions.htm">
+      <HelpTOCNode Id="a6a938df-e56e-462b-a19a-dbbc1eb34e1e" Title="NScrapeExtensions Class" Url="html/T_NScrape_NScrapeExtensions.htm">
+        <HelpTOCNode Id="a07af017-32b7-4523-9818-de05f94397be" Title="NScrapeExtensions Methods" Url="html/Methods_T_NScrape_NScrapeExtensions.htm">
           <HelpTOCNode Title="GetEncoding Method " Url="html/M_NScrape_NScrapeExtensions_GetEncoding.htm" />
           <HelpTOCNode Title="GetResponseText Method " Url="html/M_NScrape_NScrapeExtensions_GetResponseText.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="cfdabb25-e766-4f13-8a6a-af81262c399f" Title="NScrapeUtility Class" Url="html/T_NScrape_NScrapeUtility.htm">
-        <HelpTOCNode Id="897a43c4-4798-4c4d-a8b4-5c5cfcc5fcf9" Title="NScrapeUtility Methods" Url="html/Methods_T_NScrape_NScrapeUtility.htm">
+      <HelpTOCNode Id="c6abc525-5679-4b07-8c3f-0f5a0777ce56" Title="NScrapeUtility Class" Url="html/T_NScrape_NScrapeUtility.htm">
+        <HelpTOCNode Id="654e88c6-2d06-455f-89c7-3712d2cc2384" Title="NScrapeUtility Methods" Url="html/Methods_T_NScrape_NScrapeUtility.htm">
           <HelpTOCNode Title="TryParseHttpDate Method " Url="html/M_NScrape_NScrapeUtility_TryParseHttpDate.htm" />
           <HelpTOCNode Title="UrlEncode Method " Url="html/M_NScrape_NScrapeUtility_UrlEncode.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="8e676f57-de4f-46d9-a2a6-29993db5b57f" Title="PlainTextWebResponse Class" Url="html/T_NScrape_PlainTextWebResponse.htm">
-        <HelpTOCNode Id="9057fb78-5f43-49b5-af1b-ae219a985e6a" Title="PlainTextWebResponse Constructor " Url="html/Overload_NScrape_PlainTextWebResponse__ctor.htm">
+      <HelpTOCNode Id="6dab60f3-9027-4634-94f5-8eaf1d8d6d63" Title="PlainTextWebResponse Class" Url="html/T_NScrape_PlainTextWebResponse.htm">
+        <HelpTOCNode Id="15208954-4eb6-47b9-a5f9-8c8019e283bf" Title="PlainTextWebResponse Constructor " Url="html/Overload_NScrape_PlainTextWebResponse__ctor.htm">
           <HelpTOCNode Title="PlainTextWebResponse Constructor (Boolean, HttpWebResponse)" Url="html/M_NScrape_PlainTextWebResponse__ctor.htm" />
           <HelpTOCNode Title="PlainTextWebResponse Constructor (Boolean, Uri, String, Encoding)" Url="html/M_NScrape_PlainTextWebResponse__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="5d29735f-f576-4d8e-ae2c-93b8fce4af62" Title="PlainTextWebResponse Properties" Url="html/Properties_T_NScrape_PlainTextWebResponse.htm">
+        <HelpTOCNode Id="cb96b819-dc77-4d33-a7ed-d77248998a81" Title="PlainTextWebResponse Properties" Url="html/Properties_T_NScrape_PlainTextWebResponse.htm">
           <HelpTOCNode Title="PlainText Property " Url="html/P_NScrape_PlainTextWebResponse_PlainText.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="PlainTextWebResponse Methods" Url="html/Methods_T_NScrape_PlainTextWebResponse.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ec2ee787-8aee-464e-842e-5363e9ac78d9" Title="PostWebRequest Class" Url="html/T_NScrape_PostWebRequest.htm">
-        <HelpTOCNode Id="623bf198-c214-4543-a21e-9129fe57f53a" Title="PostWebRequest Constructor " Url="html/Overload_NScrape_PostWebRequest__ctor.htm">
+      <HelpTOCNode Id="cc630556-a850-4dfc-994d-b5285cef5da6" Title="PostWebRequest Class" Url="html/T_NScrape_PostWebRequest.htm">
+        <HelpTOCNode Id="333dd554-7a1a-45c0-a913-1a6aaa995394" Title="PostWebRequest Constructor " Url="html/Overload_NScrape_PostWebRequest__ctor.htm">
           <HelpTOCNode Title="PostWebRequest Constructor " Url="html/M_NScrape_PostWebRequest__ctor.htm" />
           <HelpTOCNode Title="PostWebRequest Constructor (Uri, String)" Url="html/M_NScrape_PostWebRequest__ctor_1.htm" />
           <HelpTOCNode Title="PostWebRequest Constructor (Uri, String, Boolean)" Url="html/M_NScrape_PostWebRequest__ctor_2.htm" />
           <HelpTOCNode Title="PostWebRequest Constructor (Uri, String, String)" Url="html/M_NScrape_PostWebRequest__ctor_3.htm" />
           <HelpTOCNode Title="PostWebRequest Constructor (Uri, String, String, Boolean)" Url="html/M_NScrape_PostWebRequest__ctor_4.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="da56a55c-eb9b-4ebe-9db4-8935497fffa1" Title="PostWebRequest Properties" Url="html/Properties_T_NScrape_PostWebRequest.htm">
+        <HelpTOCNode Id="e8408c6a-c0ac-4cfd-acb2-99b63b5baa1d" Title="PostWebRequest Properties" Url="html/Properties_T_NScrape_PostWebRequest.htm">
           <HelpTOCNode Title="ContentType Property " Url="html/P_NScrape_PostWebRequest_ContentType.htm" />
           <HelpTOCNode Title="RequestData Property " Url="html/P_NScrape_PostWebRequest_RequestData.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="45c298bc-4eae-4848-a32f-012d413d1253" Title="PostWebRequest Methods" Url="html/Methods_T_NScrape_PostWebRequest.htm">
+        <HelpTOCNode Id="e14d15dc-13f2-4833-9004-4384aa466ec2" Title="PostWebRequest Methods" Url="html/Methods_T_NScrape_PostWebRequest.htm">
           <HelpTOCNode Title="ToString Method " Url="html/M_NScrape_PostWebRequest_ToString.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="c1c83096-26d3-4cc7-887f-9cb49ebdff5c" Title="ProcessingResponseEventArgs Class" Url="html/T_NScrape_ProcessingResponseEventArgs.htm">
-        <HelpTOCNode Id="4c69a814-3ff4-4c22-9044-836b6a4a8e62" Title="ProcessingResponseEventArgs Properties" Url="html/Properties_T_NScrape_ProcessingResponseEventArgs.htm">
+      <HelpTOCNode Id="41d40215-1683-46da-b260-3e93b1dd5837" Title="ProcessingResponseEventArgs Class" Url="html/T_NScrape_ProcessingResponseEventArgs.htm">
+        <HelpTOCNode Id="22e6f1a0-5766-436f-827f-43a7875ee68f" Title="ProcessingResponseEventArgs Properties" Url="html/Properties_T_NScrape_ProcessingResponseEventArgs.htm">
           <HelpTOCNode Title="Response Property " Url="html/P_NScrape_ProcessingResponseEventArgs_Response.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="ProcessingResponseEventArgs Methods" Url="html/Methods_T_NScrape_ProcessingResponseEventArgs.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="7c0c00fa-0e30-465a-b10b-5a80ca928c06" Title="RedirectedWebResponse Class" Url="html/T_NScrape_RedirectedWebResponse.htm">
+      <HelpTOCNode Id="a2a0fef0-39ad-49e9-851c-393c0a9ea271" Title="RedirectedWebResponse Class" Url="html/T_NScrape_RedirectedWebResponse.htm">
         <HelpTOCNode Title="RedirectedWebResponse Constructor " Url="html/M_NScrape_RedirectedWebResponse__ctor.htm" />
-        <HelpTOCNode Id="0fa5b960-61e5-4a58-9d94-383a4e763cb2" Title="RedirectedWebResponse Properties" Url="html/Properties_T_NScrape_RedirectedWebResponse.htm">
+        <HelpTOCNode Id="c9202317-49ed-4b1e-abbe-18174276ce2c" Title="RedirectedWebResponse Properties" Url="html/Properties_T_NScrape_RedirectedWebResponse.htm">
           <HelpTOCNode Title="RedirectUrl Property " Url="html/P_NScrape_RedirectedWebResponse_RedirectUrl.htm" />
           <HelpTOCNode Title="WebRequest Property " Url="html/P_NScrape_RedirectedWebResponse_WebRequest.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="RedirectedWebResponse Methods" Url="html/Methods_T_NScrape_RedirectedWebResponse.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="471f6494-43fe-4e34-8d71-2951f807e915" Title="ScrapeException Class" Url="html/T_NScrape_ScrapeException.htm">
-        <HelpTOCNode Id="fdd14ba0-9dfe-4685-a1f4-019af56d6fa7" Title="ScrapeException Constructor " Url="html/Overload_NScrape_ScrapeException__ctor.htm">
+      <HelpTOCNode Id="4cf381ad-a95e-4b72-aae9-52069130daff" Title="ScrapeException Class" Url="html/T_NScrape_ScrapeException.htm">
+        <HelpTOCNode Id="dc0a8e9a-1e3e-4c63-9cc2-c2c1e3cb0227" Title="ScrapeException Constructor " Url="html/Overload_NScrape_ScrapeException__ctor.htm">
           <HelpTOCNode Title="ScrapeException Constructor " Url="html/M_NScrape_ScrapeException__ctor.htm" />
           <HelpTOCNode Title="ScrapeException Constructor (String)" Url="html/M_NScrape_ScrapeException__ctor_2.htm" />
           <HelpTOCNode Title="ScrapeException Constructor (SerializationInfo, StreamingContext)" Url="html/M_NScrape_ScrapeException__ctor_1.htm" />
@@ -165,59 +165,59 @@
           <HelpTOCNode Title="ScrapeException Constructor (String, String)" Url="html/M_NScrape_ScrapeException__ctor_4.htm" />
           <HelpTOCNode Title="ScrapeException Constructor (String, String, Exception)" Url="html/M_NScrape_ScrapeException__ctor_5.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="df69fe8c-891f-49c8-b5f8-f731e0cd8ac4" Title="ScrapeException Properties" Url="html/Properties_T_NScrape_ScrapeException.htm">
+        <HelpTOCNode Id="91478d48-1fcc-4f14-b8d7-b1ae93c9aa74" Title="ScrapeException Properties" Url="html/Properties_T_NScrape_ScrapeException.htm">
           <HelpTOCNode Title="Html Property " Url="html/P_NScrape_ScrapeException_Html.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="72bf330e-5e01-459d-86b8-4e6a1e91f5aa" Title="ScrapeException Methods" Url="html/Methods_T_NScrape_ScrapeException.htm">
+        <HelpTOCNode Id="424903c3-0e4a-4a3f-861c-c53cd02a61e5" Title="ScrapeException Methods" Url="html/Methods_T_NScrape_ScrapeException.htm">
           <HelpTOCNode Title="GetObjectData Method " Url="html/M_NScrape_ScrapeException_GetObjectData.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="ScrapeException Events" Url="html/Events_T_NScrape_ScrapeException.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="bd2d1bce-34d9-4468-a51e-cd4fb296f8a1" Title="Scraper Class" Url="html/T_NScrape_Scraper.htm">
+      <HelpTOCNode Id="b14d44c7-6b8a-456d-8dfb-8f403b80def2" Title="Scraper Class" Url="html/T_NScrape_Scraper.htm">
         <HelpTOCNode Title="Scraper Constructor " Url="html/M_NScrape_Scraper__ctor.htm" />
-        <HelpTOCNode Id="9671d41c-056e-4be6-8d96-fc81069ecfbb" Title="Scraper Properties" Url="html/Properties_T_NScrape_Scraper.htm">
+        <HelpTOCNode Id="4228a057-1812-499b-9399-568064f6605c" Title="Scraper Properties" Url="html/Properties_T_NScrape_Scraper.htm">
           <HelpTOCNode Title="Html Property " Url="html/P_NScrape_Scraper_Html.htm" />
           <HelpTOCNode Title="HtmlDocument Property " Url="html/P_NScrape_Scraper_HtmlDocument.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="Scraper Methods" Url="html/Methods_T_NScrape_Scraper.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d825cea3-2ee7-4f71-a3b4-4b3ba09b502f" Title="SendingRequestEventArgs Class" Url="html/T_NScrape_SendingRequestEventArgs.htm">
-        <HelpTOCNode Id="945df98a-9950-4456-b232-d1925b2e52a2" Title="SendingRequestEventArgs Properties" Url="html/Properties_T_NScrape_SendingRequestEventArgs.htm">
+      <HelpTOCNode Id="37a93684-087f-479f-91af-d31de22b1aad" Title="SendingRequestEventArgs Class" Url="html/T_NScrape_SendingRequestEventArgs.htm">
+        <HelpTOCNode Id="e1013755-6dda-47d6-8c23-9534c84c0efb" Title="SendingRequestEventArgs Properties" Url="html/Properties_T_NScrape_SendingRequestEventArgs.htm">
           <HelpTOCNode Title="WebRequest Property " Url="html/P_NScrape_SendingRequestEventArgs_WebRequest.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="SendingRequestEventArgs Methods" Url="html/Methods_T_NScrape_SendingRequestEventArgs.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e7683234-1167-43c5-a41c-8a12693511b8" Title="TextWebResponse Class" Url="html/T_NScrape_TextWebResponse.htm">
-        <HelpTOCNode Id="d0ac741a-e036-4a7c-a1fe-0ec9825666ba" Title="TextWebResponse Constructor " Url="html/Overload_NScrape_TextWebResponse__ctor.htm">
+      <HelpTOCNode Id="a1e13217-c2f3-4acc-96a9-fe653d64161c" Title="TextWebResponse Class" Url="html/T_NScrape_TextWebResponse.htm">
+        <HelpTOCNode Id="11fc5a9c-e13b-46c5-b380-256a4eab7f49" Title="TextWebResponse Constructor " Url="html/Overload_NScrape_TextWebResponse__ctor.htm">
           <HelpTOCNode Title="TextWebResponse Constructor (Boolean, WebResponseType, HttpWebResponse)" Url="html/M_NScrape_TextWebResponse__ctor.htm" />
           <HelpTOCNode Title="TextWebResponse Constructor (Boolean, Uri, WebResponseType, String, Encoding)" Url="html/M_NScrape_TextWebResponse__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="508eddea-8807-434d-90c6-bd94b2297567" Title="TextWebResponse Properties" Url="html/Properties_T_NScrape_TextWebResponse.htm">
+        <HelpTOCNode Id="775ec637-a1db-490e-9972-24265e361fc1" Title="TextWebResponse Properties" Url="html/Properties_T_NScrape_TextWebResponse.htm">
           <HelpTOCNode Title="Encoding Property " Url="html/P_NScrape_TextWebResponse_Encoding.htm" />
           <HelpTOCNode Title="Text Property " Url="html/P_NScrape_TextWebResponse_Text.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="d230ad48-46d2-4e8d-aaab-fb3efb34d1cb" Title="TextWebResponse Methods" Url="html/Methods_T_NScrape_TextWebResponse.htm">
+        <HelpTOCNode Id="5a50d579-e082-4049-9180-541516898dba" Title="TextWebResponse Methods" Url="html/Methods_T_NScrape_TextWebResponse.htm">
           <HelpTOCNode Title="DisposeManagedRessources Method " Url="html/M_NScrape_TextWebResponse_DisposeManagedRessources.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="02c09b19-71ec-4e95-a9bb-a2d0dbefd135" Title="UnsupportedWebResponse Class" Url="html/T_NScrape_UnsupportedWebResponse.htm">
+      <HelpTOCNode Id="cc0f245a-7d2b-403b-9afd-7807ba98be49" Title="UnsupportedWebResponse Class" Url="html/T_NScrape_UnsupportedWebResponse.htm">
         <HelpTOCNode Title="UnsupportedWebResponse Constructor " Url="html/M_NScrape_UnsupportedWebResponse__ctor.htm" />
-        <HelpTOCNode Id="a28462e2-47c7-4cc6-9dee-ec85417e4ed2" Title="UnsupportedWebResponse Properties" Url="html/Properties_T_NScrape_UnsupportedWebResponse.htm">
+        <HelpTOCNode Id="c827bbb9-edd9-4c2e-b0a9-bf99302035e6" Title="UnsupportedWebResponse Properties" Url="html/Properties_T_NScrape_UnsupportedWebResponse.htm">
           <HelpTOCNode Title="ContentType Property " Url="html/P_NScrape_UnsupportedWebResponse_ContentType.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="UnsupportedWebResponse Methods" Url="html/Methods_T_NScrape_UnsupportedWebResponse.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="cc0af4e8-11ce-47e9-9a56-4f9f74d53fca" Title="WebClient Class" Url="html/T_NScrape_WebClient.htm">
+      <HelpTOCNode Id="41005757-68cb-4e87-bf9e-72921db0cdbe" Title="WebClient Class" Url="html/T_NScrape_WebClient.htm">
         <HelpTOCNode Title="WebClient Constructor " Url="html/M_NScrape_WebClient__ctor.htm" />
-        <HelpTOCNode Id="44db2746-4388-4a30-8209-47ba51a883fb" Title="WebClient Properties" Url="html/Properties_T_NScrape_WebClient.htm">
+        <HelpTOCNode Id="19fa8677-9fe7-4498-946d-3ebf4cf9e882" Title="WebClient Properties" Url="html/Properties_T_NScrape_WebClient.htm">
           <HelpTOCNode Title="CookieJar Property " Url="html/P_NScrape_WebClient_CookieJar.htm" />
           <HelpTOCNode Title="UserAgent Property " Url="html/P_NScrape_WebClient_UserAgent.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="b75558ab-d095-4efa-ae59-3b591b5adc0a" Title="WebClient Methods" Url="html/Methods_T_NScrape_WebClient.htm">
+        <HelpTOCNode Id="de450c29-4b07-4183-8627-18bd08e2b364" Title="WebClient Methods" Url="html/Methods_T_NScrape_WebClient.htm">
           <HelpTOCNode Title="OnAddingCookie Method " Url="html/M_NScrape_WebClient_OnAddingCookie.htm" />
           <HelpTOCNode Title="OnProcessingResponse Method " Url="html/M_NScrape_WebClient_OnProcessingResponse.htm" />
           <HelpTOCNode Title="OnSendingRequest Method " Url="html/M_NScrape_WebClient_OnSendingRequest.htm" />
-          <HelpTOCNode Id="de91faa3-4750-42e2-8c16-f95e48cbcc21" Title="SendRequest Method " Url="html/Overload_NScrape_WebClient_SendRequest.htm">
+          <HelpTOCNode Id="38cca32b-6a44-4997-a42f-668b103f74a4" Title="SendRequest Method " Url="html/Overload_NScrape_WebClient_SendRequest.htm">
             <HelpTOCNode Title="SendRequest Method (Uri)" Url="html/M_NScrape_WebClient_SendRequest_1.htm" />
             <HelpTOCNode Title="SendRequest Method (WebRequest)" Url="html/M_NScrape_WebClient_SendRequest.htm" />
             <HelpTOCNode Title="SendRequest Method (Uri, Boolean)" Url="html/M_NScrape_WebClient_SendRequest_2.htm" />
@@ -225,18 +225,18 @@
             <HelpTOCNode Title="SendRequest Method (Uri, String, Boolean)" Url="html/M_NScrape_WebClient_SendRequest_4.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="f0f22d5d-eb8b-4b38-9346-102109d94433" Title="WebClient Events" Url="html/Events_T_NScrape_WebClient.htm">
+        <HelpTOCNode Id="bf55a1e1-140d-4c70-88d9-3968967ffdef" Title="WebClient Events" Url="html/Events_T_NScrape_WebClient.htm">
           <HelpTOCNode Title="AddingCookie Event" Url="html/E_NScrape_WebClient_AddingCookie.htm" />
           <HelpTOCNode Title="ProcessingResponse Event" Url="html/E_NScrape_WebClient_ProcessingResponse.htm" />
           <HelpTOCNode Title="SendingRequest Event" Url="html/E_NScrape_WebClient_SendingRequest.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="731d9a13-6983-48ed-9efc-5367139ed23c" Title="WebRequest Class" Url="html/T_NScrape_WebRequest.htm">
-        <HelpTOCNode Id="2224f210-c297-43df-8052-f1b40f9515e3" Title="WebRequest Constructor " Url="html/Overload_NScrape_WebRequest__ctor.htm">
+      <HelpTOCNode Id="a5df55ca-6390-454a-ba96-988880661181" Title="WebRequest Class" Url="html/T_NScrape_WebRequest.htm">
+        <HelpTOCNode Id="ff351e86-3fa9-4c44-9f4c-d1f44a812676" Title="WebRequest Constructor " Url="html/Overload_NScrape_WebRequest__ctor.htm">
           <HelpTOCNode Title="WebRequest Constructor (WebRequestType)" Url="html/M_NScrape_WebRequest__ctor.htm" />
           <HelpTOCNode Title="WebRequest Constructor (WebRequestType, Uri)" Url="html/M_NScrape_WebRequest__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="b0d439c8-4f92-40f4-9c90-f0b37e0bee95" Title="WebRequest Properties" Url="html/Properties_T_NScrape_WebRequest.htm">
+        <HelpTOCNode Id="1910788f-16d0-4800-bd08-f4991609198b" Title="WebRequest Properties" Url="html/Properties_T_NScrape_WebRequest.htm">
           <HelpTOCNode Title="AutoRedirect Property " Url="html/P_NScrape_WebRequest_AutoRedirect.htm" />
           <HelpTOCNode Title="Destination Property " Url="html/P_NScrape_WebRequest_Destination.htm" />
           <HelpTOCNode Title="Headers Property " Url="html/P_NScrape_WebRequest_Headers.htm" />
@@ -246,26 +246,26 @@
         <HelpTOCNode Title="WebRequest Methods" Url="html/Methods_T_NScrape_WebRequest.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="WebRequestType Enumeration" Url="html/T_NScrape_WebRequestType.htm" />
-      <HelpTOCNode Id="8e0ef4b3-3518-423e-a55b-394f6e302748" Title="WebResponse Class" Url="html/T_NScrape_WebResponse.htm">
+      <HelpTOCNode Id="dd1b17be-bdd5-4f72-985b-b11f88194029" Title="WebResponse Class" Url="html/T_NScrape_WebResponse.htm">
         <HelpTOCNode Title="WebResponse Constructor " Url="html/M_NScrape_WebResponse__ctor.htm" />
-        <HelpTOCNode Id="db29c49c-c1dd-4bc2-969c-6e706fa01fb9" Title="WebResponse Properties" Url="html/Properties_T_NScrape_WebResponse.htm">
+        <HelpTOCNode Id="9e907bc7-a622-46ef-af12-fa2fb1f75b54" Title="WebResponse Properties" Url="html/Properties_T_NScrape_WebResponse.htm">
           <HelpTOCNode Title="ResponseType Property " Url="html/P_NScrape_WebResponse_ResponseType.htm" />
           <HelpTOCNode Title="ResponseUrl Property " Url="html/P_NScrape_WebResponse_ResponseUrl.htm" />
           <HelpTOCNode Title="Success Property " Url="html/P_NScrape_WebResponse_Success.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="4599aa9b-9090-4a34-9179-ac0a06aab479" Title="WebResponse Methods" Url="html/Methods_T_NScrape_WebResponse.htm">
+        <HelpTOCNode Id="3adaf3b0-6902-4bb8-905a-827d9d2b651e" Title="WebResponse Methods" Url="html/Methods_T_NScrape_WebResponse.htm">
           <HelpTOCNode Title="Dispose Method " Url="html/M_NScrape_WebResponse_Dispose.htm" />
           <HelpTOCNode Title="DisposeManagedRessources Method " Url="html/M_NScrape_WebResponse_DisposeManagedRessources.htm" />
           <HelpTOCNode Title="DisposeUnmanagedRessources Method " Url="html/M_NScrape_WebResponse_DisposeUnmanagedRessources.htm" />
           <HelpTOCNode Title="Finalize Method " Url="html/M_NScrape_WebResponse_Finalize.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="f0735308-c84d-447d-bc52-2f28d5b1bd67" Title="WebResponseFactory Class" Url="html/T_NScrape_WebResponseFactory.htm">
+      <HelpTOCNode Id="ef9f14ce-5254-497a-9287-78b47dbd4c60" Title="WebResponseFactory Class" Url="html/T_NScrape_WebResponseFactory.htm">
         <HelpTOCNode Title="WebResponseFactory Constructor " Url="html/M_NScrape_WebResponseFactory__ctor.htm" />
-        <HelpTOCNode Id="01297043-be12-454d-becd-283d6639bea2" Title="WebResponseFactory Properties" Url="html/Properties_T_NScrape_WebResponseFactory.htm">
+        <HelpTOCNode Id="b5eeabc7-e344-4f43-80e1-e2b23512e11a" Title="WebResponseFactory Properties" Url="html/Properties_T_NScrape_WebResponseFactory.htm">
           <HelpTOCNode Title="SupportedContentTypes Property " Url="html/P_NScrape_WebResponseFactory_SupportedContentTypes.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="24cc1c54-3170-4a0f-9e11-5c4ff1bad7f6" Title="WebResponseFactory Methods" Url="html/Methods_T_NScrape_WebResponseFactory.htm">
+        <HelpTOCNode Id="4be0cb1a-3879-458a-896e-f2a0cab0d0b7" Title="WebResponseFactory Methods" Url="html/Methods_T_NScrape_WebResponseFactory.htm">
           <HelpTOCNode Title="CreateBinaryResponse Method " Url="html/M_NScrape_WebResponseFactory_CreateBinaryResponse.htm" />
           <HelpTOCNode Title="CreateHtmlResponse Method " Url="html/M_NScrape_WebResponseFactory_CreateHtmlResponse.htm" />
           <HelpTOCNode Title="CreateImageResponse Method " Url="html/M_NScrape_WebResponseFactory_CreateImageResponse.htm" />
@@ -276,49 +276,49 @@
           <HelpTOCNode Title="CreateTextResponse Method " Url="html/M_NScrape_WebResponseFactory_CreateTextResponse.htm" />
           <HelpTOCNode Title="CreateXmlResponse Method " Url="html/M_NScrape_WebResponseFactory_CreateXmlResponse.htm" />
           <HelpTOCNode Title="GetEncoding Method " Url="html/M_NScrape_WebResponseFactory_GetEncoding.htm" />
-          <HelpTOCNode Id="13eb2e55-db8d-42f9-8c2f-e710ca988f8e" Title="ReadResponseText Method " Url="html/Overload_NScrape_WebResponseFactory_ReadResponseText.htm">
+          <HelpTOCNode Id="5a8f9523-c3fd-4443-b594-66776efe72a6" Title="ReadResponseText Method " Url="html/Overload_NScrape_WebResponseFactory_ReadResponseText.htm">
             <HelpTOCNode Title="ReadResponseText Method (HttpWebResponse)" Url="html/M_NScrape_WebResponseFactory_ReadResponseText.htm" />
             <HelpTOCNode Title="ReadResponseText Method (HttpWebResponse, Encoding)" Url="html/M_NScrape_WebResponseFactory_ReadResponseText_1.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="WebResponseType Enumeration" Url="html/T_NScrape_WebResponseType.htm" />
-      <HelpTOCNode Id="8b935038-a171-4688-9aeb-029f816ed898" Title="WebResponseValidator Class" Url="html/T_NScrape_WebResponseValidator.htm">
-        <HelpTOCNode Id="e9a1941d-9adc-4bf6-8268-358de6453bec" Title="WebResponseValidator Methods" Url="html/Methods_T_NScrape_WebResponseValidator.htm">
+      <HelpTOCNode Id="d6c72951-215a-4356-b9fe-1c1542bc9b5e" Title="WebResponseValidator Class" Url="html/T_NScrape_WebResponseValidator.htm">
+        <HelpTOCNode Id="dc4590bd-425f-4a5a-bdb3-e5555833a9de" Title="WebResponseValidator Methods" Url="html/Methods_T_NScrape_WebResponseValidator.htm">
           <HelpTOCNode Title="ValidateHtmlResponse Method " Url="html/M_NScrape_WebResponseValidator_ValidateHtmlResponse.htm" />
           <HelpTOCNode Title="ValidateImageResponse Method " Url="html/M_NScrape_WebResponseValidator_ValidateImageResponse.htm" />
           <HelpTOCNode Title="ValidateJavaScriptResponse Method " Url="html/M_NScrape_WebResponseValidator_ValidateJavaScriptResponse.htm" />
           <HelpTOCNode Title="ValidatePlaintextResponse Method " Url="html/M_NScrape_WebResponseValidator_ValidatePlaintextResponse.htm" />
           <HelpTOCNode Title="ValidateRedirectResponse Method " Url="html/M_NScrape_WebResponseValidator_ValidateRedirectResponse.htm" />
-          <HelpTOCNode Id="de01c2ee-16ed-486d-88f4-09c879d080de" Title="ValidateResponse Method " Url="html/Overload_NScrape_WebResponseValidator_ValidateResponse.htm">
+          <HelpTOCNode Id="e3258325-b57c-4c32-a444-0ace11479b91" Title="ValidateResponse Method " Url="html/Overload_NScrape_WebResponseValidator_ValidateResponse.htm">
             <HelpTOCNode Title="ValidateResponse Method (WebResponse, WebResponseType, String)" Url="html/M_NScrape_WebResponseValidator_ValidateResponse.htm" />
             <HelpTOCNode Title="ValidateResponse Method (WebResponse, WebResponseType[], String)" Url="html/M_NScrape_WebResponseValidator_ValidateResponse_1.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="ValidateXmlResponse Method " Url="html/M_NScrape_WebResponseValidator_ValidateXmlResponse.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="0bbd38ad-4bab-48c8-8a01-93e1e0d90023" Title="XmlWebResponse Class" Url="html/T_NScrape_XmlWebResponse.htm">
-        <HelpTOCNode Id="57cd5ee9-61b6-46c7-82be-fb97cda08f14" Title="XmlWebResponse Constructor " Url="html/Overload_NScrape_XmlWebResponse__ctor.htm">
+      <HelpTOCNode Id="986d8b2f-25b9-400b-af50-2e6fa4eb4b93" Title="XmlWebResponse Class" Url="html/T_NScrape_XmlWebResponse.htm">
+        <HelpTOCNode Id="2f5db2a7-3af4-4e2a-a6c5-6ed60d92cb9a" Title="XmlWebResponse Constructor " Url="html/Overload_NScrape_XmlWebResponse__ctor.htm">
           <HelpTOCNode Title="XmlWebResponse Constructor (Boolean, HttpWebResponse)" Url="html/M_NScrape_XmlWebResponse__ctor.htm" />
           <HelpTOCNode Title="XmlWebResponse Constructor (Boolean, Uri, String, Encoding)" Url="html/M_NScrape_XmlWebResponse__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="55bc8e5f-44a0-4ce9-ab0c-274ea93e25a5" Title="XmlWebResponse Properties" Url="html/Properties_T_NScrape_XmlWebResponse.htm">
+        <HelpTOCNode Id="fe0126c6-693a-4f6e-8040-e22cbae0258d" Title="XmlWebResponse Properties" Url="html/Properties_T_NScrape_XmlWebResponse.htm">
           <HelpTOCNode Title="XDocument Property " Url="html/P_NScrape_XmlWebResponse_XDocument.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="XmlWebResponse Methods" Url="html/Methods_T_NScrape_XmlWebResponse.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="cd14867f-a0b0-4cde-ab1a-b55787c6f4fb" Title="NScrape.Forms" Url="html/N_NScrape_Forms.htm">
-      <HelpTOCNode Id="bb67e6a6-d182-47fa-b44b-47a19cf16333" Title="BasicAspxForm Class" Url="html/T_NScrape_Forms_BasicAspxForm.htm">
+    <HelpTOCNode Id="744f2dd7-ea43-4a4d-ab40-c7563643eb88" Title="NScrape.Forms" Url="html/N_NScrape_Forms.htm">
+      <HelpTOCNode Id="c1fb46ce-257c-4251-8cce-59cef4817d64" Title="BasicAspxForm Class" Url="html/T_NScrape_Forms_BasicAspxForm.htm">
         <HelpTOCNode Title="BasicAspxForm Constructor " Url="html/M_NScrape_Forms_BasicAspxForm__ctor.htm" />
         <HelpTOCNode Title="BasicAspxForm Properties" Url="html/Properties_T_NScrape_Forms_BasicAspxForm.htm" />
-        <HelpTOCNode Id="e75d2779-4311-4fb3-bb08-0c11279ac918" Title="BasicAspxForm Methods" Url="html/Methods_T_NScrape_Forms_BasicAspxForm.htm">
+        <HelpTOCNode Id="4873b26e-6a72-4348-952f-7d1d522f0115" Title="BasicAspxForm Methods" Url="html/Methods_T_NScrape_Forms_BasicAspxForm.htm">
           <HelpTOCNode Title="Submit Method " Url="html/M_NScrape_Forms_BasicAspxForm_Submit.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="792eda56-0d89-4a4a-9aac-690221be56fb" Title="BasicForm Class" Url="html/T_NScrape_Forms_BasicForm.htm">
+      <HelpTOCNode Id="315c4a32-0303-48e6-ae62-5d9e2ca8cf43" Title="BasicForm Class" Url="html/T_NScrape_Forms_BasicForm.htm">
         <HelpTOCNode Title="BasicForm Constructor " Url="html/M_NScrape_Forms_BasicForm__ctor.htm" />
-        <HelpTOCNode Id="6e390c20-bedf-428e-a11e-2c4e8c3f06b6" Title="BasicForm Properties" Url="html/Properties_T_NScrape_Forms_BasicForm.htm">
+        <HelpTOCNode Id="b065189a-b6a7-452e-873c-006404bfc863" Title="BasicForm Properties" Url="html/Properties_T_NScrape_Forms_BasicForm.htm">
           <HelpTOCNode Title="AllControls Property " Url="html/P_NScrape_Forms_BasicForm_AllControls.htm" />
           <HelpTOCNode Title="CheckBoxControls Property " Url="html/P_NScrape_Forms_BasicForm_CheckBoxControls.htm" />
           <HelpTOCNode Title="InputControls Property " Url="html/P_NScrape_Forms_BasicForm_InputControls.htm" />
@@ -328,16 +328,16 @@
         </HelpTOCNode>
         <HelpTOCNode Title="BasicForm Methods" Url="html/Methods_T_NScrape_Forms_BasicForm.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="5ffd1b62-353a-44fa-9463-b62d376980dd" Title="BasicHtmlForm Class" Url="html/T_NScrape_Forms_BasicHtmlForm.htm">
+      <HelpTOCNode Id="7c0f737c-36b0-4f11-81b5-6ce60fd3a309" Title="BasicHtmlForm Class" Url="html/T_NScrape_Forms_BasicHtmlForm.htm">
         <HelpTOCNode Title="BasicHtmlForm Constructor " Url="html/M_NScrape_Forms_BasicHtmlForm__ctor.htm" />
         <HelpTOCNode Title="BasicHtmlForm Properties" Url="html/Properties_T_NScrape_Forms_BasicHtmlForm.htm" />
-        <HelpTOCNode Id="d594bb67-a998-4be7-91d4-5b9799d7003b" Title="BasicHtmlForm Methods" Url="html/Methods_T_NScrape_Forms_BasicHtmlForm.htm">
+        <HelpTOCNode Id="669b5e9e-50d0-4c99-9fba-d5142776aec9" Title="BasicHtmlForm Methods" Url="html/Methods_T_NScrape_Forms_BasicHtmlForm.htm">
           <HelpTOCNode Title="Submit Method " Url="html/M_NScrape_Forms_BasicHtmlForm_Submit.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="cf0a6a92-b34d-48c9-8e54-6ed08eae7d77" Title="HtmlForm Class" Url="html/T_NScrape_Forms_HtmlForm.htm">
+      <HelpTOCNode Id="3712a65e-9309-4079-876b-8286db4cc398" Title="HtmlForm Class" Url="html/T_NScrape_Forms_HtmlForm.htm">
         <HelpTOCNode Title="HtmlForm Constructor " Url="html/M_NScrape_Forms_HtmlForm__ctor.htm" />
-        <HelpTOCNode Id="e248bf92-4d08-43d7-823d-27ad5c7dec38" Title="HtmlForm Properties" Url="html/Properties_T_NScrape_Forms_HtmlForm.htm">
+        <HelpTOCNode Id="a2c325f6-66be-4dfe-9016-13080f503276" Title="HtmlForm Properties" Url="html/Properties_T_NScrape_Forms_HtmlForm.htm">
           <HelpTOCNode Title="ActionUrl Property " Url="html/P_NScrape_Forms_HtmlForm_ActionUrl.htm" />
           <HelpTOCNode Title="Attributes Property " Url="html/P_NScrape_Forms_HtmlForm_Attributes.htm" />
           <HelpTOCNode Title="Controls Property " Url="html/P_NScrape_Forms_HtmlForm_Controls.htm" />
@@ -346,10 +346,10 @@
           <HelpTOCNode Title="SubmitAsXmlHttpRequest Property " Url="html/P_NScrape_Forms_HtmlForm_SubmitAsXmlHttpRequest.htm" />
           <HelpTOCNode Title="WebClient Property " Url="html/P_NScrape_Forms_HtmlForm_WebClient.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="5af4ab8a-1b89-4105-8b13-a650f73a7b75" Title="HtmlForm Methods" Url="html/Methods_T_NScrape_Forms_HtmlForm.htm">
+        <HelpTOCNode Id="2cc18966-9c74-4ccf-989f-9b49be2f04c7" Title="HtmlForm Methods" Url="html/Methods_T_NScrape_Forms_HtmlForm.htm">
           <HelpTOCNode Title="BuildAspxPostBackRequest Method " Url="html/M_NScrape_Forms_HtmlForm_BuildAspxPostBackRequest.htm" />
           <HelpTOCNode Title="BuildRequest Method " Url="html/M_NScrape_Forms_HtmlForm_BuildRequest.htm" />
-          <HelpTOCNode Id="9279242f-a370-4ca4-a554-7ffc7c9b7411" Title="Load Method " Url="html/Overload_NScrape_Forms_HtmlForm_Load.htm">
+          <HelpTOCNode Id="64e17f78-9721-447f-8477-60a0d159f423" Title="Load Method " Url="html/Overload_NScrape_Forms_HtmlForm_Load.htm">
             <HelpTOCNode Title="Load Method (Uri, HtmlFormDefinition)" Url="html/M_NScrape_Forms_HtmlForm_Load.htm" />
             <HelpTOCNode Title="Load Method (Uri, KeyValuePair(String, String))" Url="html/M_NScrape_Forms_HtmlForm_Load_1.htm" />
             <HelpTOCNode Title="Load Method (Uri, Int32)" Url="html/M_NScrape_Forms_HtmlForm_Load_2.htm" />
@@ -360,7 +360,7 @@
           </HelpTOCNode>
           <HelpTOCNode Title="SubmitHtmlRequest Method " Url="html/M_NScrape_Forms_HtmlForm_SubmitHtmlRequest.htm" />
           <HelpTOCNode Title="SubmitRedirectRequest Method " Url="html/M_NScrape_Forms_HtmlForm_SubmitRedirectRequest.htm" />
-          <HelpTOCNode Id="4c632c92-d75c-4b76-a312-77642eab46ed" Title="SubmitRequest Method " Url="html/Overload_NScrape_Forms_HtmlForm_SubmitRequest.htm">
+          <HelpTOCNode Id="4aa62168-a230-4707-9253-4b077b112750" Title="SubmitRequest Method " Url="html/Overload_NScrape_Forms_HtmlForm_SubmitRequest.htm">
             <HelpTOCNode Title="SubmitRequest Method (String, WebResponseType)" Url="html/M_NScrape_Forms_HtmlForm_SubmitRequest.htm" />
             <HelpTOCNode Title="SubmitRequest Method (String, WebResponseType[])" Url="html/M_NScrape_Forms_HtmlForm_SubmitRequest_1.htm" />
             <HelpTOCNode Title="SubmitRequest Method (String, Boolean, WebResponseType)" Url="html/M_NScrape_Forms_HtmlForm_SubmitRequest_2.htm" />
@@ -368,33 +368,33 @@
           </HelpTOCNode>
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="13b72e62-db5c-4e92-aeb3-9824eac4516b" Title="HtmlFormControl Class" Url="html/T_NScrape_Forms_HtmlFormControl.htm">
+      <HelpTOCNode Id="a61ab65c-14c0-473f-9e1e-b066562972a8" Title="HtmlFormControl Class" Url="html/T_NScrape_Forms_HtmlFormControl.htm">
         <HelpTOCNode Title="HtmlFormControl Constructor " Url="html/M_NScrape_Forms_HtmlFormControl__ctor.htm" />
-        <HelpTOCNode Id="43eb7fd2-26ba-4b65-990b-ded886779f4c" Title="HtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_HtmlFormControl.htm">
+        <HelpTOCNode Id="321d3b4d-8a76-4cfa-a626-89c4bf8ccfdc" Title="HtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_HtmlFormControl.htm">
           <HelpTOCNode Title="Attributes Property " Url="html/P_NScrape_Forms_HtmlFormControl_Attributes.htm" />
           <HelpTOCNode Title="Disabled Property " Url="html/P_NScrape_Forms_HtmlFormControl_Disabled.htm" />
           <HelpTOCNode Title="EncodedData Property " Url="html/P_NScrape_Forms_HtmlFormControl_EncodedData.htm" />
           <HelpTOCNode Title="Id Property " Url="html/P_NScrape_Forms_HtmlFormControl_Id.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_NScrape_Forms_HtmlFormControl_Name.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="c1529e86-ee46-47c8-8671-fb90bfeeeef8" Title="HtmlFormControl Methods" Url="html/Methods_T_NScrape_Forms_HtmlFormControl.htm">
+        <HelpTOCNode Id="008b96d7-3797-4972-b02f-c1fca32e744b" Title="HtmlFormControl Methods" Url="html/Methods_T_NScrape_Forms_HtmlFormControl.htm">
           <HelpTOCNode Title="AddAttribute Method " Url="html/M_NScrape_Forms_HtmlFormControl_AddAttribute.htm" />
           <HelpTOCNode Title="AddAttributes Method " Url="html/M_NScrape_Forms_HtmlFormControl_AddAttributes.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="426b44a9-a578-4876-ac23-0acc26490532" Title="HtmlFormDefinition Class" Url="html/T_NScrape_Forms_HtmlFormDefinition.htm">
-        <HelpTOCNode Id="cfe059f8-a38e-46f6-86b4-1c35247f5292" Title="HtmlFormDefinition Properties" Url="html/Properties_T_NScrape_Forms_HtmlFormDefinition.htm">
+      <HelpTOCNode Id="475f9400-5db3-4c55-8909-04b2d4df4ca3" Title="HtmlFormDefinition Class" Url="html/T_NScrape_Forms_HtmlFormDefinition.htm">
+        <HelpTOCNode Id="b0149177-1b56-426f-873b-091d67c639d1" Title="HtmlFormDefinition Properties" Url="html/Properties_T_NScrape_Forms_HtmlFormDefinition.htm">
           <HelpTOCNode Title="Attributes Property " Url="html/P_NScrape_Forms_HtmlFormDefinition_Attributes.htm" />
           <HelpTOCNode Title="Controls Property " Url="html/P_NScrape_Forms_HtmlFormDefinition_Controls.htm" />
           <HelpTOCNode Title="Id Property " Url="html/P_NScrape_Forms_HtmlFormDefinition_Id.htm" />
           <HelpTOCNode Title="PageHtml Property " Url="html/P_NScrape_Forms_HtmlFormDefinition_PageHtml.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="24b0d597-99a9-4aa6-9d2e-c51c8efe0484" Title="HtmlFormDefinition Methods" Url="html/Methods_T_NScrape_Forms_HtmlFormDefinition.htm">
+        <HelpTOCNode Id="3568845a-bcc3-49d9-8bf2-119f4cbef4d6" Title="HtmlFormDefinition Methods" Url="html/Methods_T_NScrape_Forms_HtmlFormDefinition.htm">
           <HelpTOCNode Title="Parse Method " Url="html/M_NScrape_Forms_HtmlFormDefinition_Parse.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="359185df-86ef-48bf-8778-8f01a75467f8" Title="HtmlOption Class" Url="html/T_NScrape_Forms_HtmlOption.htm">
-        <HelpTOCNode Id="0f9ab348-704a-4701-b0a6-bff2e8102b74" Title="HtmlOption Properties" Url="html/Properties_T_NScrape_Forms_HtmlOption.htm">
+      <HelpTOCNode Id="f8ffec5c-d213-4cb6-8526-6569cb67855b" Title="HtmlOption Class" Url="html/T_NScrape_Forms_HtmlOption.htm">
+        <HelpTOCNode Id="dbcd1b6e-a47a-4247-8852-ed0c8f3bf6c0" Title="HtmlOption Properties" Url="html/Properties_T_NScrape_Forms_HtmlOption.htm">
           <HelpTOCNode Title="Attributes Property " Url="html/P_NScrape_Forms_HtmlOption_Attributes.htm" />
           <HelpTOCNode Title="Option Property " Url="html/P_NScrape_Forms_HtmlOption_Option.htm" />
           <HelpTOCNode Title="Selected Property " Url="html/P_NScrape_Forms_HtmlOption_Selected.htm" />
@@ -402,46 +402,46 @@
         </HelpTOCNode>
         <HelpTOCNode Title="HtmlOption Methods" Url="html/Methods_T_NScrape_Forms_HtmlOption.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="9f2bb4fb-7342-4ff5-99bb-b0a7f762174a" Title="InputCheckableHtmlFormControl Class" Url="html/T_NScrape_Forms_InputCheckableHtmlFormControl.htm">
-        <HelpTOCNode Id="5819b275-f2e5-4fbe-981e-688ddab3b4b6" Title="InputCheckableHtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_InputCheckableHtmlFormControl.htm">
+      <HelpTOCNode Id="3a70e324-362d-48d0-b22f-ffb9b93fe4f5" Title="InputCheckableHtmlFormControl Class" Url="html/T_NScrape_Forms_InputCheckableHtmlFormControl.htm">
+        <HelpTOCNode Id="c3b1f8d7-9f99-48da-ade2-a3a1d3f0e428" Title="InputCheckableHtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_InputCheckableHtmlFormControl.htm">
           <HelpTOCNode Title="Checked Property " Url="html/P_NScrape_Forms_InputCheckableHtmlFormControl_Checked.htm" />
           <HelpTOCNode Title="Value Property " Url="html/P_NScrape_Forms_InputCheckableHtmlFormControl_Value.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="InputCheckableHtmlFormControl Methods" Url="html/Methods_T_NScrape_Forms_InputCheckableHtmlFormControl.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ecec9a13-ad99-4f43-8b63-69022248745d" Title="InputCheckBoxHtmlFormControl Class" Url="html/T_NScrape_Forms_InputCheckBoxHtmlFormControl.htm">
+      <HelpTOCNode Id="c9e0f160-b994-4782-bd6c-aa7c0228b7d4" Title="InputCheckBoxHtmlFormControl Class" Url="html/T_NScrape_Forms_InputCheckBoxHtmlFormControl.htm">
         <HelpTOCNode Title="InputCheckBoxHtmlFormControl Constructor " Url="html/M_NScrape_Forms_InputCheckBoxHtmlFormControl__ctor.htm" />
         <HelpTOCNode Title="InputCheckBoxHtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_InputCheckBoxHtmlFormControl.htm" />
         <HelpTOCNode Title="InputCheckBoxHtmlFormControl Methods" Url="html/Methods_T_NScrape_Forms_InputCheckBoxHtmlFormControl.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="a66bc8a0-6d75-48a3-b60b-87887ab30434" Title="InputHtmlFormControl Class" Url="html/T_NScrape_Forms_InputHtmlFormControl.htm">
+      <HelpTOCNode Id="cff383ac-1132-4392-877b-1743875b4205" Title="InputHtmlFormControl Class" Url="html/T_NScrape_Forms_InputHtmlFormControl.htm">
         <HelpTOCNode Title="InputHtmlFormControl Constructor " Url="html/M_NScrape_Forms_InputHtmlFormControl__ctor.htm" />
-        <HelpTOCNode Id="64c060b7-5cbb-4e21-93ad-e8290eb92019" Title="InputHtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_InputHtmlFormControl.htm">
+        <HelpTOCNode Id="0aff1fe5-dac5-484b-b4ae-0ec72ea3a2ca" Title="InputHtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_InputHtmlFormControl.htm">
           <HelpTOCNode Title="ControlType Property " Url="html/P_NScrape_Forms_InputHtmlFormControl_ControlType.htm" />
           <HelpTOCNode Title="EncodedData Property " Url="html/P_NScrape_Forms_InputHtmlFormControl_EncodedData.htm" />
           <HelpTOCNode Title="Value Property " Url="html/P_NScrape_Forms_InputHtmlFormControl_Value.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="8ccba00e-3385-451a-b902-790312931f46" Title="InputHtmlFormControl Methods" Url="html/Methods_T_NScrape_Forms_InputHtmlFormControl.htm">
+        <HelpTOCNode Id="f8182c07-5d8d-4e06-9aaf-a57edf9cd22c" Title="InputHtmlFormControl Methods" Url="html/Methods_T_NScrape_Forms_InputHtmlFormControl.htm">
           <HelpTOCNode Title="ToString Method " Url="html/M_NScrape_Forms_InputHtmlFormControl_ToString.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="InputHtmlFormControlType Enumeration" Url="html/T_NScrape_Forms_InputHtmlFormControlType.htm" />
-      <HelpTOCNode Id="1efd7cd1-0a07-49e0-89b1-06886af5b16d" Title="InputRadioHtmlFormControl Class" Url="html/T_NScrape_Forms_InputRadioHtmlFormControl.htm">
+      <HelpTOCNode Id="d7eb15a2-59c5-4de6-8daf-5fdabbf99a34" Title="InputRadioHtmlFormControl Class" Url="html/T_NScrape_Forms_InputRadioHtmlFormControl.htm">
         <HelpTOCNode Title="InputRadioHtmlFormControl Constructor " Url="html/M_NScrape_Forms_InputRadioHtmlFormControl__ctor.htm" />
         <HelpTOCNode Title="InputRadioHtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_InputRadioHtmlFormControl.htm" />
         <HelpTOCNode Title="InputRadioHtmlFormControl Methods" Url="html/Methods_T_NScrape_Forms_InputRadioHtmlFormControl.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e263d161-7a33-4617-a9a9-dbd5b637db4d" Title="SelectHtmlFormControl Class" Url="html/T_NScrape_Forms_SelectHtmlFormControl.htm">
-        <HelpTOCNode Id="75792ba3-8763-42db-8bb2-18b1b070dad0" Title="SelectHtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_SelectHtmlFormControl.htm">
+      <HelpTOCNode Id="78eacded-08b0-4c38-ace7-6af9d03ef41f" Title="SelectHtmlFormControl Class" Url="html/T_NScrape_Forms_SelectHtmlFormControl.htm">
+        <HelpTOCNode Id="43ead5cc-340b-4775-8829-9be3dcb5a181" Title="SelectHtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_SelectHtmlFormControl.htm">
           <HelpTOCNode Title="EncodedData Property " Url="html/P_NScrape_Forms_SelectHtmlFormControl_EncodedData.htm" />
           <HelpTOCNode Title="Options Property " Url="html/P_NScrape_Forms_SelectHtmlFormControl_Options.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="be51c3f3-d064-4c8d-b2e3-170937ae02a8" Title="SelectHtmlFormControl Methods" Url="html/Methods_T_NScrape_Forms_SelectHtmlFormControl.htm">
+        <HelpTOCNode Id="05aa4f19-9e1d-44c9-9eb9-d14413a10798" Title="SelectHtmlFormControl Methods" Url="html/Methods_T_NScrape_Forms_SelectHtmlFormControl.htm">
           <HelpTOCNode Title="UnselectAll Method " Url="html/M_NScrape_Forms_SelectHtmlFormControl_UnselectAll.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="5c369819-5f7f-46e2-9b98-0602a2278838" Title="TextAreaHtmlFormControl Class" Url="html/T_NScrape_Forms_TextAreaHtmlFormControl.htm">
-        <HelpTOCNode Id="eba4f0c5-3b1b-4377-9080-acde980d0cf7" Title="TextAreaHtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_TextAreaHtmlFormControl.htm">
+      <HelpTOCNode Id="9c8e1fa7-65d6-4399-a2ff-ea8b867cc77a" Title="TextAreaHtmlFormControl Class" Url="html/T_NScrape_Forms_TextAreaHtmlFormControl.htm">
+        <HelpTOCNode Id="453742de-0d4f-436e-b86f-2be963697992" Title="TextAreaHtmlFormControl Properties" Url="html/Properties_T_NScrape_Forms_TextAreaHtmlFormControl.htm">
           <HelpTOCNode Title="EncodedData Property " Url="html/P_NScrape_Forms_TextAreaHtmlFormControl_EncodedData.htm" />
           <HelpTOCNode Title="Text Property " Url="html/P_NScrape_Forms_TextAreaHtmlFormControl_Text.htm" />
         </HelpTOCNode>
