@@ -4,6 +4,7 @@ using Sprache;
 using Xunit;
 
 namespace NScrape.Test.Cookies {
+	[System.Diagnostics.CodeAnalysis.SuppressMessage( "Assertions", "xUnit2013:Do not use equality check to check for collection size.", Justification = "<Pending>" )]
 	public class SetCookieHeaderGrammarTests {
 		private const string ExpiresName = "expires";
 		private const string ExpiresNameUpperCase = "EXPIRES";

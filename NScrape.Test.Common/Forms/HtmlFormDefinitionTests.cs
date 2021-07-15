@@ -3,6 +3,7 @@ using NScrape.Forms;
 using Xunit;
 
 namespace NScrape.Test.Forms {
+	[System.Diagnostics.CodeAnalysis.SuppressMessage( "Assertions", "xUnit2013:Do not use equality check to check for collection size.", Justification = "<Pending>" )]
 	public class HtmlFormDefinitionTests {
 		[Fact]
 		public void TestSingleFormTextsAndDropdown() {
