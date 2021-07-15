@@ -5,6 +5,7 @@ using Xunit;
 // ReSharper disable UnusedParameter.Local
 
 namespace NScrape.Test {
+	[System.Diagnostics.CodeAnalysis.SuppressMessage( "Assertions", "xUnit2013:Do not use equality check to check for collection size.", Justification = "<Pending>" )]
 	public class NScrapeUtilityParseSetCookieHeaderTests {
 		private const string DefaultDomain = "DefaultDomainWhenNotSuppliedInCookie.com";
 		private const string CookieGithub1 = "_octo=GH1.1.1471152791.1465438116; domain=.github.com; path=/; expires=Sat, 09 Jun 2018 02:08:36 -0000";
@@ -25,14 +26,14 @@ namespace NScrape.Test {
 			Assert.Equal( 0, cookies.Count() );
 
 			var ex = Assert.Throws<ArgumentException>( () => NScrapeUtility.ParseSetCookieHeader( null, null ) );
-			Assert.Equal( ex.ParamName, "hostName" );
+			Assert.Equal( "hostName" , ex.ParamName);
 
 			// Empty arguments
 			cookies = NScrapeUtility.ParseSetCookieHeader( string.Empty, DefaultDomain );
 			Assert.Equal( 0, cookies.Count() );
 
 			ex = Assert.Throws<ArgumentException>( () => NScrapeUtility.ParseSetCookieHeader( string.Empty, string.Empty ) );
-			Assert.Equal( ex.ParamName, "hostName" );
+			Assert.Equal( "hostName" , ex.ParamName);
 		}
 
 		[Fact]
