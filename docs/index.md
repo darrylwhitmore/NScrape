@@ -13,11 +13,11 @@ We'll use the US National Weather Service page at [http://www.weather.gov/](http
 
 In the resulting page, identify the *condition* and *temperature* values; this is what we're going to scrape. View the source using your browser's developer tools. These values can be uniquely identified by the *class* attributes *myforecast-current* and *myforecast-current-lrg*:
 
-![Using browser development tools](https://raw.githubusercontent.com/darrylwhitmore/NScrape/blob/develop/Assets/Fairbanks%20Alaska%20weather%20developer%20tools%20result.jpg)
+![Using browser development tools](https://raw.githubusercontent.com/darrylwhitmore/NScrape/develop/Assets/Fairbanks%20Alaska%20weather%20developer%20tools%20result.jpg)
 
 Alternately, you can find these classes by viewing the page HTML:
 
-![Using HTML source](https://raw.githubusercontent.com/darrylwhitmore/NScrape/blob/develop/Assets/Fairbanks%20Alaska%20weather%20HTML%20result.jpg)
+![Using HTML source](https://raw.githubusercontent.com/darrylwhitmore/NScrape/develop/Assets/Fairbanks%20Alaska%20weather%20HTML%20result.jpg)
 
 ### Implement a Scraper
 Let's implement a scraper to scrape the *condition* and *temperature* values from the page. We create a class that inherits from the [Scraper](https://nscrape.com/reference/html/T_NScrape_Scraper.htm) base class. Once instantiated with the page HTML, our class will have the [HTML Agility Pack](http://html-agility-pack.net/) [HtmlDocument](https://nscrape.com/reference/html/P_NScrape_Scraper_HtmlDocument.htm) property ready for us to use. All we have to do is implement a couple methods to scrape the values from the HTML.  If you'd rather scrape manually, you can reference the [Html](https://nscrape.com/reference/html/P_NScrape_Scraper_Html.htm) property instead.
