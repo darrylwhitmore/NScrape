@@ -36,7 +36,7 @@
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.34" />
     <PackageReference Include="Sprache.Signed" Version="2.3.1" />
-    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.3" />
   </ItemGroup>
 
   <ItemGroup>
