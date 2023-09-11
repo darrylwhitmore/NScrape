@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.52" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.53" />
     <PackageReference Include="Microsoft.Win32.SystemEvents" Version="7.0.0" />
     <PackageReference Include="Sprache.Signed" Version="2.3.1" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
