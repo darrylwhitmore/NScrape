@@ -7,7 +7,7 @@ namespace NScrape.Test {
 	public class NScrapeExtensionTests {
 		[Fact]
 		public async Task GetEncodingTest() {
-			var request = System.Net.WebRequest.Create( "https://www.wikipedia.org/" );
+			var request = System.Net.WebRequest.Create( "https://www.google.com/" );
 			var response = await request.GetResponseAsync();
 			var httpWebResponse = response as HttpWebResponse;
 
@@ -17,7 +17,7 @@ namespace NScrape.Test {
 
 		[Fact]
 		public async Task GetEncodingBackwardsCompatibilityTest() {
-			var request = System.Net.WebRequest.Create( "https://www.wikipedia.org/" );
+			var request = System.Net.WebRequest.Create( "https://www.google.com/" );
 			var response = await request.GetResponseAsync();
 			var httpWebResponse = response as HttpWebResponse;
 

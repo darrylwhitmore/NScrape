@@ -11,7 +11,7 @@ namespace NScrape.Test {
 			var webClient = new WebClient();
 
 			var uri = new Uri( "https://jigsaw.w3.org/HTTP/300/301.html" );
-			var redirectUri = new Uri( "https://jigsaw.w3.org/HTTP/300/Overview.html" );
+			var redirectUri = new Uri( "http://jigsaw.w3.org/HTTP/300/Overview.html" );
 
 			using ( var response = webClient.SendRequest( uri, false ) ) {
 				Assert.NotNull( response );
@@ -138,7 +138,7 @@ namespace NScrape.Test {
 		public void JavaScriptWebResponseTest() {
 			var webClient = new WebClient();
 
-			var uri = new Uri( "http://www.javascriptkit.com/script/script2/offcanvasmenu.js" );
+			var uri = new Uri( "https://filesampleshub.com/download/code/js/sample1.js" );
 
 			using ( var response = webClient.SendRequest( uri ) ) {
 				Assert.NotNull( response );
@@ -150,7 +150,7 @@ namespace NScrape.Test {
 				Assert.NotNull( javaScriptWebResponse );
 
 				Assert.NotNull( javaScriptWebResponse.JavaScript );
-				Assert.Contains( "var offcanvasmenu = (function($){", javaScriptWebResponse.JavaScript );
+				Assert.Contains( "generateRandomArray", javaScriptWebResponse.JavaScript );
 			}
 		}
 	
@@ -202,7 +202,7 @@ namespace NScrape.Test {
 		public void ImageWebResponseTest() {
 			var webClient = new WebClient();
 
-			var uri = new Uri( "http://sites.psu.edu/siowfa15/wp-content/uploads/sites/29639/2015/10/cat.jpg" );
+			var uri = new Uri( "https://cpb-us-e1.wpmucdn.com/sites.psu.edu/dist/3/29639/files/2015/10/cat.jpg" );
 
 			using ( var response = webClient.SendRequest( uri ) ) {
 				Assert.NotNull( response );
@@ -221,7 +221,7 @@ namespace NScrape.Test {
 		public void BinaryWebResponseTest() {
 			var webClient = new WebClient();
 
-			var uri = new Uri( "https://download-cdn.getsync.com/stable/windows64/Resilio-Sync_x64.exe" );
+			var uri = new Uri( "https://hil-speed.hetzner.com/100MB.bin" );
 
 			using ( var response = webClient.SendRequest( uri ) ) {
 				Assert.NotNull( response );
@@ -251,7 +251,7 @@ namespace NScrape.Test {
 		public void BinaryWebResponseDataPropertyBackwardsCompatibilityTest() {
 			var webClient = new WebClient();
 
-			var uri = new Uri( "https://download-cdn.getsync.com/stable/windows64/Resilio-Sync_x64.exe" );
+			var uri = new Uri( "https://hil-speed.hetzner.com/100MB.bin" );
 
 			using ( var response = webClient.SendRequest( uri ) ) {
 				Assert.NotNull( response );
