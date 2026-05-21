@@ -12,21 +12,6 @@ namespace NScrape {
         private Bitmap image;
 		private readonly HttpWebResponse webResponse;
 
-	    /// <summary>
-	    /// Initializes a new instance of the <see cref="ImageWebResponse"/> class.
-	    /// </summary>
-	    /// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
-	    /// <param name="responseUrl">The URL of the response.</param>
-	    /// <param name="image">The image of the response.</param>
-		/// <remarks>
-		/// Deprecated; please use <see cref="ImageWebResponse( bool, HttpWebResponse )"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use ImageWebResponse( bool, HttpWebResponse ) instead." )]
-		public ImageWebResponse( bool success, Uri responseUrl, Bitmap image )
-            : base( success, responseUrl, WebResponseType.Image ) {
-            this.image = image;
-        }
-
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ImageWebResponse"/> class.
 		/// </summary>

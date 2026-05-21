@@ -84,23 +84,6 @@ namespace NScrape {
 		}
 
 		/// <summary>
-		/// Creates a <see cref="PlainTextWebResponse"/>.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The original <see cref="HttpWebResponse"/>.
-		/// </param>
-		/// <returns>
-		/// A new <see cref="PlainTextWebResponse"/>.
-		/// </returns>
-		/// <remarks>
-		/// Deprecated; please use <see cref="CreatePlainTextResponse( HttpWebResponse )"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use CreatePlainTextResponse( HttpWebResponse ) instead." )]
-		public static WebResponse CreateTextResponse( HttpWebResponse webResponse ) {
-			return CreatePlainTextResponse( webResponse );
-		}
-
-		/// <summary>
 		/// Creates an <see cref="XmlWebResponse"/>.
 		/// </summary>
 		/// <param name="webResponse">
@@ -181,60 +164,6 @@ namespace NScrape {
 			}
 
 			return SupportedContentTypes[key]( webResponse );
-		}
-
-		/// <summary>
-		/// Gets the encoding used by an <see cref="HttpWebResponse"/>.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The <see cref="HttpWebResponse"/> for which to determine the content type.
-		/// </param>
-		/// <returns>
-		/// The content type used by the <see cref="HttpWebResponse"/>.
-		/// </returns>
-		/// <remarks>
-		/// Deprecated; please use <see cref="NScrapeExtensions.GetEncoding( HttpWebResponse )"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use NScrapeExtensions.GetEncoding( HttpWebResponse ) instead." )]
-		public static Encoding GetEncoding( HttpWebResponse webResponse ) {
-			return webResponse.GetEncoding();
-		}
-
-		/// <summary>
-		/// Reads an <see cref="HttpWebResponse"/> as plain text.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The <see cref="HttpWebResponse"/> to read.
-		/// </param>
-		/// <returns>
-		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
-		/// </returns>
-		/// <remarks>
-		/// Deprecated; please use <see cref="NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding )"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use NScrapeExtensions.GetResponseText( HttpWebResponse ) instead." )]
-		public static string ReadResponseText( HttpWebResponse webResponse ) {
-			return webResponse.GetResponseText();
-		}
-
-		/// <summary>
-		/// Reads an <see cref="HttpWebResponse"/> as plain text.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The <see cref="HttpWebResponse"/> to read.
-		/// </param>
-		/// <param name="encoding">
-		/// The encoding used.
-		/// </param>
-		/// <returns>
-		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
-		/// </returns>
-		/// <remarks>
-		/// Deprecated; please use <see cref="NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding )"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding ) instead." )]
-		public static string ReadResponseText( HttpWebResponse webResponse, Encoding encoding ) {
-			return webResponse.GetResponseText( encoding );
 		}
 	}
 }

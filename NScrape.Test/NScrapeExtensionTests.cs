@@ -16,18 +16,6 @@ namespace NScrape.Test {
 		}
 
 		[Fact]
-		public async Task GetEncodingBackwardsCompatibilityTest() {
-			var request = System.Net.WebRequest.Create( "https://www.google.com/" );
-			var response = await request.GetResponseAsync();
-			var httpWebResponse = response as HttpWebResponse;
-
-			Assert.NotNull( httpWebResponse );
-#pragma warning disable 618
-			Assert.Equal( Encoding.GetEncoding( "ISO-8859-1" ), WebResponseFactory.GetEncoding( httpWebResponse ) );
-#pragma warning restore 618
-		}
-
-		[Fact]
 		public async Task GetResponseTextTest() {
 			const string testText = "<title>Lorem Ipsum - All the facts - Lipsum generator</title>";
 
@@ -47,31 +35,5 @@ namespace NScrape.Test {
 			Assert.NotNull( html );
 			Assert.Contains( testText, html );
 		}
-
-		[Fact]
-		public async Task ReadResponseTextBackwardsCompatibilityTest() {
-			const string testText = "<title>Lorem Ipsum - All the facts - Lipsum generator</title>";
-
-			var request = System.Net.WebRequest.Create( "http://www.lipsum.com/" );
-			var response = await request.GetResponseAsync();
-			var httpWebResponse = response as HttpWebResponse;
-			Assert.NotNull( httpWebResponse );
-#pragma warning disable 618
-			var html = WebResponseFactory.ReadResponseText( httpWebResponse );
-#pragma warning restore 618
-			Assert.NotNull( html );
-			Assert.Contains( testText, html );
-
-			request = System.Net.WebRequest.Create( "http://www.lipsum.com/" );
-			response = await request.GetResponseAsync();
-			httpWebResponse = response as HttpWebResponse;
-			Assert.NotNull( httpWebResponse );
-#pragma warning disable 618
-			html = WebResponseFactory.ReadResponseText( httpWebResponse, Encoding.GetEncoding( "ISO-8859-1" ) );
-#pragma warning restore 618
-			Assert.NotNull( html );
-			Assert.Contains( testText, html );
-		}
-
 	}
 }

@@ -7,23 +7,7 @@ namespace NScrape {
 	/// Represents a web response for a request that returned binary data.
 	/// </summary>
     public class BinaryWebResponse : WebResponse {
-		private byte[] data;
 		private readonly HttpWebResponse webResponse;
-
-	    /// <summary>
-	    /// Initializes a new instance of the <see cref="BinaryWebResponse"/> class.
-	    /// </summary>
-	    /// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
-	    /// <param name="responseUrl">The URL of the response.</param>
-	    /// <param name="data">The data that was returned by the web server.</param>
-	    /// <remarks>
-		/// Deprecated; please use <see cref="BinaryWebResponse( bool, HttpWebResponse )"/> instead.
-	    /// </remarks>
-		[Obsolete( "Please use BinaryWebResponse( bool, HttpWebResponse ) instead." )]
-		public BinaryWebResponse( bool success, Uri responseUrl, byte[] data )
-            : base( success, responseUrl, WebResponseType.Binary ) {
-            this.data = data;
-        }
 
 	    /// <summary>
 	    /// Initializes a new instance of the <see cref="BinaryWebResponse"/> class.
@@ -54,36 +38,6 @@ namespace NScrape {
 		public void Close() {
 		    webResponse?.Dispose();
 	    }
-
-	    /// <summary>
-		/// Gets the binary data.
-		/// </summary>
-		/// <remarks>
-		/// Deprecated; please use <see cref="BinaryWebResponse.GetResponseStream()"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use BinaryWebResponse.GetResponseStream() instead." )]
-		public byte[] Data {
-			get {
-				if ( data == null ) {
-					// Backwards compatibility. 
-					using ( var s = GetResponseStream() ) {
-						// Skeet says a null is unlikely, but check to make Resharper happy.
-						// http://stackoverflow.com/questions/16911056/can-webresponse-getresponsestream-return-a-null
-						if ( s == null ) {
-							throw new IOException( "HttpWebResponse.GetResponseStream() has returned null" );
-						}
-
-						using ( var ms = new MemoryStream() ) {
-							s.CopyTo( ms );
-
-							data = ms.ToArray();
-						}
-					}
-				}
-
-				return data;
-			}
-		}
 
 	    /// <summary>
 	    /// Handles disposal of managed resources.

@@ -41,24 +41,6 @@ namespace NScrape.Forms {
 		}
 
 		/// <summary>
-		/// Loads the form specified by identifying attributes on the page at the specified URL.
-		/// </summary>
-		/// <param name="formUrl">Contains the URL of the page containing the form.</param>
-		/// <param name="attribute">Contains the form attribute to be used to identify the form to load.</param>
-		/// <param name="attributeValue">Contains the form attribute value to be used to identify the form to load.</param>
-		/// <remarks>
-		/// Deprecated; please use <see cref="Load( Uri, KeyValuePair&lt;string, string&gt; )"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use Load( Uri, KeyValuePair<string, string> ) instead." )]
-		public void Load( Uri formUrl, string attribute, string attributeValue ) {
-			FormUrl = formUrl;
-
-			Html = DownloadFormHtml();
-
-			Initialize( new KeyValuePair<string, string>( attribute, attributeValue ) );
-		}
-
-		/// <summary>
 		/// Loads the form specified by identifying attribute on the page at the specified URL.
 		/// </summary>
 		/// <param name="formUrl">Contains the URL of the page containing the form.</param>
@@ -86,25 +68,6 @@ namespace NScrape.Forms {
 			Html = formHtml;
 
 			Initialize( formOrdinal );
-		}
-
-		/// <summary>
-		/// Loads the form specified by identifying attributes in the provided HTML.
-		/// </summary>
-		/// <param name="formUrl">Contains the URL where the page containing the form resides.</param>
-		/// <param name="formHtml">Contains the HTML text containing the form.</param>
-		/// <param name="attribute">Contains the form attribute to be used to identify the form to load.</param>
-		/// <param name="attributeValue">Contains the form attribute value to be used to identify the form to load.</param>
-		/// <remarks>
-		/// Deprecated; please use <see cref="Load( Uri, string, KeyValuePair&lt;string, string&gt; )"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use Load( Uri, string, KeyValuePair<string, string> ) instead." )]
-		public void Load( Uri formUrl, string formHtml, string attribute, string attributeValue ) {
-			FormUrl = formUrl;
-
-			Html = formHtml;
-
-			Initialize( new KeyValuePair<string, string>( attribute, attributeValue ) );
 		}
 
 		/// <summary>
