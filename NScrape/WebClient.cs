@@ -172,7 +172,9 @@ namespace NScrape {
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_WebRequest/*'/>
         public WebResponse SendRequest( WebRequest webRequest ) {
-            var httpWebRequest = (HttpWebRequest)System.Net.WebRequest.Create( webRequest.Destination );
+#pragma warning disable SYSLIB0014
+			var httpWebRequest = ( HttpWebRequest )System.Net.WebRequest.Create( webRequest.Destination );
+#pragma warning restore SYSLIB0014
 
 			httpWebRequest.Method = webRequest.Type.ToString().ToUpperInvariant();
 

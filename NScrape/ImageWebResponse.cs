@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Runtime.Versioning;
 
 namespace NScrape {
     /// <summary>
@@ -50,9 +51,10 @@ namespace NScrape {
 			}
 		}
 
-	    /// <summary>
+		/// <summary>
 		/// Gets the image.
 		/// </summary>
+		[SupportedOSPlatform( "windows6.1" )]
 		public Bitmap Image {
 			get {
 				if ( image == null ) {
