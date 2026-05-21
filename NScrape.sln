@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.37203.1 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NScrape", "NScrape\NScrape.csproj", "{1DC30563-902D-4AE0-A385-73392CBF3C08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NScrape.Test.Core", "NScrape.Test.Core\NScrape.Test.Core.csproj", "{782AA666-A4D6-4DE7-82BC-541288F5C58F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NScrape.Test", "NScrape.Test\NScrape.Test.csproj", "{782AA666-A4D6-4DE7-82BC-541288F5C58F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

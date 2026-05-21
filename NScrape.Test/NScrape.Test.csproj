@@ -13,16 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\NScrape.Test.Common\Cookies\SetCookieHeaderGrammarTests.cs" Link="Cookies\SetCookieHeaderGrammarTests.cs" />
-    <Compile Include="..\NScrape.Test.Common\Forms\HtmlFormDefinitionTests.cs" Link="Forms\HtmlFormDefinitionTests.cs" />
-    <Compile Include="..\NScrape.Test.Common\Forms\HtmlFormTests.cs" Link="Forms\HtmlFormTests.cs" />
-    <Compile Include="..\NScrape.Test.Common\NScrapeExtensionTests.cs" Link="NScrapeExtensionTests.cs" />
-    <Compile Include="..\NScrape.Test.Common\NScrapeUtilityParseSetCookieHeaderTests.cs" Link="NScrapeUtilityParseSetCookieHeaderTests.cs" />
-    <Compile Include="..\NScrape.Test.Common\NScrapeUtilityTryParseHttpDateTests.cs" Link="NScrapeUtilityTryParseHttpDateTests.cs" />
-    <Compile Include="..\NScrape.Test.Common\WebResponseTests.cs" Link="WebResponseTests.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.5.1" />
     <PackageReference Include="Microsoft.Win32.SystemEvents" Version="10.0.8" />
     <PackageReference Include="xunit" Version="2.9.3" />
