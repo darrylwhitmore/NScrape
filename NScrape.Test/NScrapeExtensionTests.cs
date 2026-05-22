@@ -7,7 +7,9 @@ namespace NScrape.Test {
 	public class NScrapeExtensionTests {
 		[Fact]
 		public async Task GetEncodingTest() {
+#pragma warning disable SYSLIB0014
 			var request = System.Net.WebRequest.Create( "https://www.google.com/" );
+#pragma warning restore SYSLIB0014
 			var response = await request.GetResponseAsync();
 			var httpWebResponse = response as HttpWebResponse;
 
@@ -19,7 +21,9 @@ namespace NScrape.Test {
 		public async Task GetResponseTextTest() {
 			const string testText = "<title>Lorem Ipsum - All the facts - Lipsum generator</title>";
 
+#pragma warning disable SYSLIB0014
 			var request = System.Net.WebRequest.Create( "http://www.lipsum.com/" );
+#pragma warning restore SYSLIB0014
 			var response = await request.GetResponseAsync();
 			var httpWebResponse = response as HttpWebResponse;
 			Assert.NotNull( httpWebResponse );
@@ -27,7 +31,9 @@ namespace NScrape.Test {
 			Assert.NotNull( html );
 			Assert.Contains( testText, html );
 
+#pragma warning disable SYSLIB0014
 			request = System.Net.WebRequest.Create( "http://www.lipsum.com/" );
+#pragma warning restore SYSLIB0014
 			response = await request.GetResponseAsync();
 			httpWebResponse = response as HttpWebResponse;
 			Assert.NotNull( httpWebResponse );
