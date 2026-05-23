@@ -201,7 +201,7 @@ namespace NScrape.Test {
 		}
 
 		[Fact]
-		public void ImageWebResponseTest() {
+		public void ImageWebResponseTestBitmap() {
 			var webClient = new WebClient();
 
 			var uri = new Uri( "https://cpb-us-e1.wpmucdn.com/sites.psu.edu/dist/3/29639/files/2015/10/cat.jpg" );
@@ -216,6 +216,41 @@ namespace NScrape.Test {
 				Assert.NotNull( imageResponse );
 
 				Assert.NotNull( imageResponse.Image );
+
+				//imageResponse.Image.Save( "catViaBitmap.jpg" );
+			}
+		}
+
+		[Fact]
+		public void ImageWebResponseTestStream() {
+			var webClient = new WebClient();
+
+			var uri = new Uri( "https://cpb-us-e1.wpmucdn.com/sites.psu.edu/dist/3/29639/files/2015/10/cat.jpg" );
+
+			using ( var response = webClient.SendRequest( uri ) ) {
+				Assert.NotNull( response );
+				Assert.True( response.Success );
+				Assert.Equal( WebResponseType.Image, response.ResponseType );
+				Assert.Equal( uri, response.ResponseUrl );
+
+				var imageResponse = response as ImageWebResponse;
+				Assert.NotNull( imageResponse );
+				Assert.True( imageResponse.ContentLength > 0 );
+
+				byte[] imageBytes;
+
+				var s = imageResponse.GetImageStream();
+				Assert.NotNull( s );
+
+				using ( var ms = new MemoryStream() ) {
+					s.CopyTo( ms );
+
+					imageBytes = ms.ToArray();
+				}
+
+				Assert.NotNull( imageBytes );
+
+				//File.WriteAllBytes( "catViaStream.jpg", imageBytes );
 			}
 		}
 
@@ -243,34 +278,6 @@ namespace NScrape.Test {
 					s.CopyTo( ms );
 
 					data = ms.ToArray();
-				}
-
-				Assert.NotNull( data );
-			}
-		}
-
-		[Fact]
-		public void BinaryWebResponseDataPropertyBackwardsCompatibilityTest() {
-			var webClient = new WebClient();
-
-			var uri = new Uri( "https://hil-speed.hetzner.com/100MB.bin" );
-
-			using ( var response = webClient.SendRequest( uri ) ) {
-				Assert.NotNull( response );
-				Assert.True( response.Success );
-				Assert.Equal( WebResponseType.Binary, response.ResponseType );
-				Assert.Equal( uri, response.ResponseUrl );
-
-				var binaryResponse = response as BinaryWebResponse;
-				Assert.NotNull( binaryResponse );
-
-				byte[] data;
-				using ( var s = binaryResponse.GetResponseStream() ) {
-					using ( var ms = new MemoryStream() ) {
-						s.CopyTo( ms );
-
-						data = ms.ToArray();
-					}
 				}
 
 				Assert.NotNull( data );

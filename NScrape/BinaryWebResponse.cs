@@ -30,8 +30,8 @@ namespace NScrape {
 		/// <remarks>
 		/// The Close method closes the binary response stream and releases the connection to the resource for reuse by other requests.
 		/// <br/><br/>
-		/// You must call either the <see cref="Stream.Close">Stream.Close</see> or the BinaryWebResponse.Close method to close the stream and release the
-		/// connection for reuse. It is not necessary to call both <see cref="Stream.Close">Stream.Close</see> and BinaryWebResponse.Close, but doing so does not cause an
+		/// You must call either the <see cref="Stream.Close">Stream.Close</see> or the <see cref="BinaryWebResponse.Close"/> method to close the stream and release the
+		/// connection for reuse. It is not necessary to call both <see cref="Stream.Close">Stream.Close</see> and <see cref="BinaryWebResponse.Close"/>, but doing so does not cause an
 		/// error. Failure to close the stream can cause your application to run out of connections.
 		/// </remarks>
 		/// <seealso cref="GetResponseStream"/>

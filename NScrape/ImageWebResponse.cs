@@ -9,7 +9,7 @@ namespace NScrape {
 	/// Represents a web response for a request that returned an image.
 	/// </summary>
     public class ImageWebResponse : WebResponse {
-        private Bitmap image;
+        private Bitmap cachedBitmap;
 		private readonly HttpWebResponse webResponse;
 
 		/// <summary>
@@ -23,6 +23,26 @@ namespace NScrape {
 		}
 
 		/// <summary>
+		/// Gets the length of the content returned by the request.
+		/// </summary>
+		public long ContentLength => webResponse.ContentLength;
+
+		/// <summary>
+		/// Closes the image response stream.
+		/// </summary>
+		/// <remarks>
+		/// The Close method closes the image response stream and releases the connection to the resource for reuse by other requests.
+		/// <br/><br/>
+		/// You must call either the <see cref="Stream.Close">Stream.Close</see> or the <see cref="ImageWebResponse.Close"/> method to close the stream and release the
+		/// connection for reuse. It is not necessary to call both <see cref="Stream.Close">Stream.Close</see> and <see cref="ImageWebResponse.Close"/>, but doing so does not cause an
+		/// error. Failure to close the stream can cause your application to run out of connections.
+		/// </remarks>
+		/// <seealso cref="GetImageStream"/>
+		public void Close() {
+			webResponse?.Dispose();
+		}
+
+		/// <summary>
 		/// Handles disposal of managed resources.
 		/// </summary>
 		/// <remarks>
@@ -31,18 +51,20 @@ namespace NScrape {
 		protected override void DisposeManagedRessources() {
 			base.DisposeManagedRessources();
 
-			if ( webResponse != null ) {
-				webResponse.Dispose();
-			}
+			webResponse?.Dispose();
 		}
 
 		/// <summary>
 		/// Gets the image.
 		/// </summary>
+		/// <remarks>
+		/// Deprecated; please use <see cref="GetImageStream()"/> instead.
+		/// </remarks>
 		[SupportedOSPlatform( "windows6.1" )]
+		[Obsolete( "Please use GetImageStream() instead." )]
 		public Bitmap Image {
 			get {
-				if ( image == null ) {
+				if ( cachedBitmap == null ) {
 					using ( var s = webResponse.GetResponseStream() ) {
 						// Skeet says a null is unlikely, but check to make Resharper happy.
 						// http://stackoverflow.com/questions/16911056/can-webresponse-getresponsestream-return-a-null
@@ -50,12 +72,34 @@ namespace NScrape {
 							throw new IOException( "HttpWebResponse.GetResponseStream() has returned null" );
 						}
 
-						image = new Bitmap( s );
+						cachedBitmap = new Bitmap( s );
 					}
 				}
 
-				return image;
+				return cachedBitmap;
 			}
 		}
-    }
+
+		/// <summary>
+		/// Gets the image stream.
+		/// </summary>
+		/// <returns>A <see cref="Stream"/> containing the image data.</returns>
+		/// <remarks>
+		/// The GetResponseStream method returns the binary image stream from the response.
+		/// <br/><br/>
+		/// <note>
+		/// You must call either the <see cref="Stream.Close">Stream.Close</see> or the <see cref="ImageWebResponse.Close"/> method to close the stream and release the
+		/// connection for reuse. It is not necessary to call both <see cref="Stream.Close">Stream.Close</see> and <see cref="ImageWebResponse.Close"/>, but doing so does not cause an
+		/// error. Failure to close the stream can cause your application to run out of connections.
+		/// </note>
+		/// </remarks>
+		/// <seealso cref="Close"/>
+		public Stream GetImageStream() {
+			if ( webResponse != null ) {
+				return webResponse.GetResponseStream();
+			}
+
+			throw new InvalidOperationException( "This object was not instantiated with a valid HttpWebResponse object." );
+		}
+	}
 }
