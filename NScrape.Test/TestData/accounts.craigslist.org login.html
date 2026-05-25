@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>craigslist: account log in</title>
+    <link type="text/css" rel="stylesheet" media="all" href="//www.craigslist.org/styles/cl.css?v=9baadd40d5c64b557ccd3a5bb8794930">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=1">
+    <!--[if lt IE 9]>
+<script src="//www.craigslist.org/js/html5shiv.min.js?v=42e8031bc7ca9d67a48f4a5feff7bf29" type="text/javascript" ></script>
+<![endif]-->
+<!--[if lte IE 7]>
+<script src="//www.craigslist.org/js/json2.min.js?v=178d4ad319e0e0b4a451b15e49b71bec" type="text/javascript" ></script>
+<![endif]-->
+</head>
+
+<body class="login">
+<script type="text/javascript"><!--
+    function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
+    var pagetype, pagemode;
+    (function(){
+        var h = document.documentElement;
+        h.className = h.className.replace('no-js', 'js');
+        var b = document.body;
+        var bodyClassList = b.className.split(/\s+/);;
+        pagetype = bodyClassList[0]; // dangerous assumption
+        var fmt = C('cl_fmt');
+        if ( fmt === 'regular' || fmt === 'mobile' ) {
+            pagemode = fmt;
+        } else if (screen.width <= 480) {
+            pagemode = 'mobile';
+        } else {
+            pagemode = 'regular';
+        }
+        var lng = C('cl_def_lang');
+        if (lng) bodyClassList.push(lng);
+        pagemode = pagemode === 'mobile' ? 'mobile' : 'desktop';
+        bodyClassList.push(pagemode);
+        if (C('hidesearch') === '1' && pagemode !== 'mobile') {
+            bodyClassList.push('hide-search');
+        }
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width > 1000) { bodyClassList.push('w1024'); }
+        if (typeof sectionAbb !== 'undefined') {
+            var mode = (decodeURIComponent(C('cl_tocmode') || '').match(new RegExp(sectionAbb + ':([^,]+)', 'i')) || {})[1];
+            if (mode) {
+                bodyClassList.push(mode);
+            }
+        }
+        b.className = bodyClassList.join(' ');
+    }());
+--></script>
+
+
+<article id="pagecontainer">
+    <header>
+        <section class="contents">
+            <a href="http://www.craigslist.org">craigslist</a>: Account Log In
+        </section>
+    </header>
+
+        <section class="body">
+            <form action="https://accounts.craigslist.org/login" method="post" name="login">
+            <input type="hidden" name="step" value="confirmation">
+            <input type="hidden" name="rt" value="L">
+            <input type="hidden" name="rp" value="/login/home">
+            <input type="hidden" name="p" value="0">
+
+            
+            
+
+            
+
+            <br>
+
+            <section id="loginBox">
+                <h4 class="ban">Log in to your craigslist account</h4>
+                <p>
+                    <label for="inputEmailHandle">Email / Handle:</label>
+                    <input type="text" id="inputEmailHandle" name="inputEmailHandle" value="">
+                </p>
+                <p>
+                    <label for="inputPassword">Password:</label>
+                    <input id="inputPassword" type="password" name="inputPassword">
+                </p>
+                
+                <p>
+                    <label>&nbsp;</label>
+                    <button type="submit">Log In</button>
+                    <a href="https://accounts.craigslist.org/reset">forgot password?</a>
+                </p>
+            </section>
+            <p>
+                <a href="https://accounts.craigslist.org/signup?rt=L&amp;rp=%2Flogin%2Fhome">Sign up for an account</a> |
+                <a href="//www.craigslist.org/about/help/user_accounts">Why do I need an account?</a>
+            </p>
+            </form>
+        </section>
+        <footer>
+    
+    <ul class="clfooter">
+        <li>&copy; 2015 <span class="desktop">craigslist</span><span class="mobile">CL</span></li>
+        <li><a href="//www.craigslist.org/about/help/">help</a></li>
+        <li><a href="//www.craigslist.org/about/scams">safety</a></li>
+        <li class="desktop"><a href="//www.craigslist.org/about/privacy.policy">privacy</a></li>
+        <li class="desktop"><a href="https://forums.craigslist.org/?forumID=8">feedback</a></li>
+        <li class="desktop"><a href="//www.craigslist.org/about/craigslist_is_hiring">cl jobs</a></li>
+        <li><a href="//www.craigslist.org/about/terms.of.use">terms</a></li>
+        <li><a href="//www.craigslist.org/about/">about</a></li>
+        <li class="fsel desktop linklike" data-mode="mobile">mobile</li>
+        <li class="fsel mobile linklike" data-mode="regular">desktop</li>
+    </ul>
+</footer>
+    </article>
+
+    <script src="//www.craigslist.org/js/general-concat.min.js?v=7842af8e389ecaa0f797b4c0712b6255" type="text/javascript" ></script>
+    <script type="text/javascript"><!--
+        var iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = '//www.' + CL.url.baseDomain + '/static/localstorage.html?v=51a29e41f8e978141e4085ed4a77d170';
+        document.body.insertBefore(iframe, null);
+    --></script>
+    <script type="text/javascript">
+        <!--
+            if (top != self) { top.location.href = location.href; }
+            $(document).ready(
+                function() {
+                    $('#inputEmailHandle').focus();
+                    $('#inputPassword').attr('autocomplete','off');
+                }
+            );
+        -->
+    </script>
+</body>
+</html>

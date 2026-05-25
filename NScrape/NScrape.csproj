@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AssemblyVersion>0.4.1.0</AssemblyVersion>
     <FileVersion>0.4.1.0</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>nscrape.snk</AssemblyOriginatorKeyFile>
     <PackageId>NScrape</PackageId>
 	<title>NScrape Web Scraping Framework</title>
-    <Version>0.4.1.0</Version>
+    <Version>1.0.0.0</Version>
     <Authors>Darryl G. Whitmore</Authors>
     <Company>Darryl G. Whitmore</Company>
     <Description>A web scraping framework for .NET</Description>
-    <Copyright>2008-2019</Copyright>
+    <Copyright>2008-2026</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/darrylwhitmore/NScrape/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/darrylwhitmore/NScrape</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/darrylwhitmore/NScrape/master/Assets/NScrape.png</PackageIconUrl>
@@ -38,6 +38,7 @@
     <PackageReference Include="Microsoft.Win32.SystemEvents" Version="10.0.8" />
     <PackageReference Include="Sprache.Signed" Version="2.3.1" />
     <PackageReference Include="System.Drawing.Common" Version="10.0.8" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>
