@@ -268,6 +268,7 @@ namespace NScrape.Test {
 
 				var binaryResponse = response as BinaryWebResponse;
 				Assert.NotNull( binaryResponse );
+				Assert.True( binaryResponse.ContentLength > 0 );
 
 				byte[] data;
 
