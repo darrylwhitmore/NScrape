@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Net;
 
-namespace NScrape {
+namespace NScrape.Interfaces {
 	/// <summary>
-	/// Represents a web client that handles cookies and redirection.
+	/// Defines the contract for a web client that manages cookies, handles redirection, 
+	/// and facilitates sending HTTP requests and processing responses.
 	/// </summary>
 	public interface IWebClient {
 		/// <include file='IWebClient.xml' path='/IWebClient/AddingCookie/*'/>

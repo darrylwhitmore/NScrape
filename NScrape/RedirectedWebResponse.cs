@@ -1,10 +1,11 @@
 using System;
+using NScrape.Interfaces;
 
 namespace NScrape {
-    /// <summary>
+	/// <summary>
 	/// Represents a web response for a request that was redirected.
 	/// </summary>
-    public class RedirectedWebResponse : WebResponse {
+    public class RedirectedWebResponse : WebResponse, IRedirectedWebResponse {
         private readonly WebRequest request;
         private readonly Uri redirectUrl;
 

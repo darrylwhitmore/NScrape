@@ -1,4 +1,6 @@
-﻿namespace NScrape.Forms {
+﻿using NScrape.Interfaces;
+
+namespace NScrape.Forms {
 	/// <summary>
 	/// Represents a basic HTML form that should do the trick in most cases.
 	/// </summary>

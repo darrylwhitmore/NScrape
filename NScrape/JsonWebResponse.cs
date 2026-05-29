@@ -1,12 +1,11 @@
-﻿using System;
-using System.Net;
-using System.Text;
+﻿using System.Net;
+using NScrape.Interfaces;
 
 namespace NScrape {
 	/// <summary>
 	/// Represents a web response for a request that returned JSON.
 	/// </summary>
-	public class JsonWebResponse : TextWebResponse {
+	public class JsonWebResponse : TextWebResponse, IJsonWebResponse {
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="JsonWebResponse"/> class.

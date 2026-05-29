@@ -1,12 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using NScrape.Interfaces;
 
 namespace NScrape {
 	/// <summary>
 	/// Represents a web response for a request that returned binary data.
 	/// </summary>
-    public class BinaryWebResponse : StreamWebResponse {
+    public class BinaryWebResponse : StreamWebResponse, IBinaryWebResponse {
 	    /// <summary>
 	    /// Initializes a new instance of the <see cref="BinaryWebResponse"/> class.
 	    /// </summary>

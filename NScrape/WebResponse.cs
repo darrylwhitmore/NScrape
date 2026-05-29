@@ -1,11 +1,12 @@
 using System;
 using System.Runtime.CompilerServices;
+using NScrape.Interfaces;
 
 namespace NScrape {
 	/// <summary>
 	/// Provides the base implementation for classes which represent web responses.
 	/// </summary>
-	public abstract class WebResponse : IDisposable {
+	public abstract class WebResponse : IWebResponse, IDisposable {
 		private bool isDisposed;
 		private readonly WebResponseType responseType;
 		private readonly Uri responseUrl;

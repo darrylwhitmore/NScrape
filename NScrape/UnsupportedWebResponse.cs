@@ -1,10 +1,11 @@
 using System;
+using NScrape.Interfaces;
 
 namespace NScrape {
-    /// <summary>
+	/// <summary>
 	/// Represents a web response for a request that returned unsupported content.
 	/// </summary>
-    public class UnsupportedWebResponse : WebResponse {
+    public class UnsupportedWebResponse : WebResponse, IUnsupportedWebResponse {
         private readonly string contentType;
 
 	    /// <summary>

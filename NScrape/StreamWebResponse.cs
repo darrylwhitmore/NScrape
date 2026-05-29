@@ -1,13 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using NScrape.Interfaces;
 
 namespace NScrape;
 
 /// <summary>
 /// Provides the base implementation for classes which represent stream-based web responses.
 /// </summary>
-public abstract class StreamWebResponse : WebResponse {
+public abstract class StreamWebResponse : WebResponse, IStreamWebResponse {
 	private readonly HttpWebResponse webResponse;
 
 	/// <summary>

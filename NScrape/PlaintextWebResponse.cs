@@ -1,12 +1,11 @@
-using System;
 using System.Net;
-using System.Text;
+using NScrape.Interfaces;
 
 namespace NScrape {
-    /// <summary>
+	/// <summary>
 	/// Represents a web response for a request that returned plain text.
 	/// </summary>
-    public class PlainTextWebResponse : TextWebResponse {
+    public class PlainTextWebResponse : TextWebResponse, IPlainTextWebResponse {
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="PlainTextWebResponse"/> class.

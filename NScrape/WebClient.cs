@@ -5,19 +5,20 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using NScrape.Interfaces;
 
 namespace NScrape {
 	/// <summary>
 	/// Represents a web client that handles cookies and redirection.
 	/// </summary>
 	public class WebClient : IWebClient {
-        /// <include file='IWebClient.xml' path='/IWebClient/AddingCookie/*'/>
+        /// <include file='Interfaces/IWebClient.xml' path='/IWebClient/AddingCookie/*'/>
 		public event EventHandler<AddingCookieEventArgs> AddingCookie;
 
-		/// <include file='IWebClient.xml' path='/IWebClient/SendingRequest/*'/>
+		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendingRequest/*'/>
         public event EventHandler<SendingRequestEventArgs> SendingRequest;
 
-		/// <include file='IWebClient.xml' path='/IWebClient/ProcessingResponse/*'/>
+		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/ProcessingResponse/*'/>
         public event EventHandler<ProcessingResponseEventArgs> ProcessingResponse;
 
 	    private readonly HttpStatusCode[] redirectionStatusCodes = {
@@ -94,7 +95,7 @@ namespace NScrape {
 			}
 		}
 
-		/// <include file='IWebClient.xml' path='/IWebClient/CookieJar/*'/>
+		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/CookieJar/*'/>
         public CookieContainer CookieJar => cookieJar;
 
 		private string GetMetaRefreshUrl( string html ) {
@@ -150,27 +151,27 @@ namespace NScrape {
 			ProcessingResponse?.Invoke(this, args);
 		}
 
-		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri/*'/>
+		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendRequest_Uri/*'/>
         public WebResponse SendRequest( Uri destination ) {
             return SendRequest( new GetWebRequest( destination ) );
         }
 
-		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_bool/*'/>
+		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendRequest_Uri_bool/*'/>
         public WebResponse SendRequest( Uri destination, bool autoRedirect ) {
             return SendRequest( new GetWebRequest( destination, autoRedirect ) );
         }
 
-		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string/*'/>
+		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendRequest_Uri_string/*'/>
         public WebResponse SendRequest( Uri destination, string requestData ) {
             return SendRequest( new PostWebRequest( destination, requestData ) );
         }
 
-		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string_bool/*'/>
+		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendRequest_Uri_string_bool/*'/>
         public WebResponse SendRequest( Uri destination, string requestData, bool autoRedirect ) {
             return SendRequest( new PostWebRequest( destination, requestData, autoRedirect ) );
         }
 
-		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_WebRequest/*'/>
+		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendRequest_WebRequest/*'/>
         public WebResponse SendRequest( WebRequest webRequest ) {
 #pragma warning disable SYSLIB0014
 			var httpWebRequest = ( HttpWebRequest )System.Net.WebRequest.Create( webRequest.Destination );
@@ -383,7 +384,7 @@ namespace NScrape {
             return response;
         }
 
-		/// <include file='IWebClient.xml' path='/IWebClient/UserAgent/*'/>
+		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/UserAgent/*'/>
         public string UserAgent { get; set; }
 	}
 }

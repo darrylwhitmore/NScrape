@@ -1,13 +1,16 @@
-using System;
 using System.Net;
-using System.Text;
 using System.Xml.Linq;
+using NScrape.Interfaces;
 
 namespace NScrape {
 	/// <summary>
-	/// Represents a web response for a request that returned XML.
+	/// Represents a web response containing XML data.
 	/// </summary>
-	public class XmlWebResponse : TextWebResponse {
+	/// <remarks>
+	/// This class extends <see cref="TextWebResponse"/> and implements <see cref="IXmlWebResponse"/>.
+	/// It provides access to the XML content of the response through the <see cref="XDocument"/> property.
+	/// </remarks>
+	public class XmlWebResponse : TextWebResponse, IXmlWebResponse {
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="XmlWebResponse"/> class.

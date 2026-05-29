@@ -3,12 +3,13 @@ using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Runtime.Versioning;
+using NScrape.Interfaces;
 
 namespace NScrape {
-    /// <summary>
+	/// <summary>
 	/// Represents a web response for a request that returned an image.
 	/// </summary>
-    public class ImageWebResponse : StreamWebResponse {
+    public class ImageWebResponse : StreamWebResponse, IImageWebResponse {
         private Bitmap cachedBitmap;
 
 		/// <summary>

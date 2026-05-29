@@ -1,12 +1,11 @@
-using System;
 using System.Net;
-using System.Text;
+using NScrape.Interfaces;
 
 namespace NScrape {
-    /// <summary>
+	/// <summary>
 	/// Represents a web response for a request that returned HTML.
 	/// </summary>
-    public class HtmlWebResponse : TextWebResponse {
+    public class HtmlWebResponse : TextWebResponse, IHtmlWebResponse {
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="HtmlWebResponse"/> class.
