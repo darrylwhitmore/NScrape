@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using NScrape.Interfaces;
 
-namespace NScrape;
+namespace NScrape.Responses;
 
 /// <summary>
 /// Provides the base implementation for classes which represent stream-based web responses.

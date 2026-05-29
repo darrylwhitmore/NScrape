@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using NScrape.Responses;
 using Xunit;
 
 // TODO: physically delete deprecated NScrape.Test.Common & NScrape.Test.Framework 

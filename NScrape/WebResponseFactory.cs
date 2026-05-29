@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
+using NScrape.Responses;
+using WebResponse = NScrape.Responses.WebResponse;
 
 namespace NScrape {
 	/// <summary>

@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Net;
+using NScrape.Responses;
 
 namespace NScrape.Interfaces;
 

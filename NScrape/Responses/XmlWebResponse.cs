@@ -2,7 +2,7 @@ using System.Net;
 using System.Xml.Linq;
 using NScrape.Interfaces;
 
-namespace NScrape {
+namespace NScrape.Responses {
 	/// <summary>
 	/// Represents a web response containing XML data.
 	/// </summary>

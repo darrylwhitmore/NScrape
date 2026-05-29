@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using NScrape.Interfaces;
 
-namespace NScrape {
+namespace NScrape.Responses {
 	/// <summary>
 	/// Represents a web response for a request that returned binary data.
 	/// </summary>

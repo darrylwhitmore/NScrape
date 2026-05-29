@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using WebResponse = NScrape.Responses.WebResponse;
 
 namespace NScrape.Interfaces {
 	/// <summary>

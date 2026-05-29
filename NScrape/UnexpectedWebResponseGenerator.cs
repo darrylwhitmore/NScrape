@@ -1,6 +1,8 @@
 using System;
 using System.Globalization;
 using System.Net;
+using NScrape.Responses;
+using WebResponse = NScrape.Responses.WebResponse;
 
 namespace NScrape {
 

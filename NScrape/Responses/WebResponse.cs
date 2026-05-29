@@ -2,7 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using NScrape.Interfaces;
 
-namespace NScrape {
+namespace NScrape.Responses {
 	/// <summary>
 	/// Provides the base implementation for classes which represent web responses.
 	/// </summary>

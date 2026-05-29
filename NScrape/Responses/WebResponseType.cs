@@ -1,4 +1,4 @@
-﻿namespace NScrape {
+﻿namespace NScrape.Responses {
 	/// <summary>
 	/// Indicates the type of web response.
 	/// </summary>

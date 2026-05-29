@@ -1,4 +1,5 @@
 ﻿using NScrape.Interfaces;
+using NScrape.Responses;
 
 namespace NScrape.Forms {
 	/// <summary>

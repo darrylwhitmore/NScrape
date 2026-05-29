@@ -6,6 +6,8 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using NScrape.Interfaces;
+using NScrape.Responses;
+using WebResponse = NScrape.Responses.WebResponse;
 
 namespace NScrape {
 	/// <summary>

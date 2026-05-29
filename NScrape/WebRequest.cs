@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
+using NScrape.Responses;
 
 namespace NScrape {
 

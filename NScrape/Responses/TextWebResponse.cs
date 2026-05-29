@@ -1,7 +1,7 @@
 using System.Net;
 using System.Text;
 
-namespace NScrape {
+namespace NScrape.Responses {
     /// <summary>
 	/// Provides the base implementation for classes which represent text-based web responses.
 	/// </summary>
