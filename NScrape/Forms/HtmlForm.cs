@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using NScrape.Interfaces;
+using NScrape.RegexUtility;
 using NScrape.Requests;
 using NScrape.Responses;
 
