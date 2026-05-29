@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using NScrape.Responses;
 
-namespace NScrape {
+namespace NScrape.Requests {
 
     /// <summary>
 	/// Provides the base implementation for classes which represent web requests.

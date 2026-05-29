@@ -1,5 +1,6 @@
 using System;
 using NScrape.Interfaces;
+using NScrape.Requests;
 
 namespace NScrape.Responses {
 	/// <summary>

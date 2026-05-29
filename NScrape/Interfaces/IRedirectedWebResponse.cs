@@ -1,4 +1,5 @@
 using System;
+using NScrape.Requests;
 
 namespace NScrape.Interfaces;
 

@@ -6,7 +6,9 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using NScrape.Interfaces;
+using NScrape.Requests;
 using NScrape.Responses;
+using WebRequest = NScrape.Requests.WebRequest;
 using WebResponse = NScrape.Responses.WebResponse;
 
 namespace NScrape {
