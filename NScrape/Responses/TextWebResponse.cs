@@ -1,13 +1,12 @@
-using System;
 using System.Net;
 using System.Text;
 
-namespace NScrape {
+namespace NScrape.Responses {
     /// <summary>
 	/// Provides the base implementation for classes which represent text-based web responses.
 	/// </summary>
     public abstract class TextWebResponse : WebResponse {
-		private readonly HttpWebResponse webResponse;
+		private readonly HttpWebResponse httpWebResponse;
         private string text;
         private Encoding encoding;
 
@@ -16,10 +15,10 @@ namespace NScrape {
 		/// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
 		/// <param name="responseType">The type of response.</param>
-		/// <param name="webResponse">The web response object.</param>
-		protected TextWebResponse( bool success, WebResponseType responseType, HttpWebResponse webResponse )
-			: base( success, webResponse.ResponseUri, responseType ) {
-			this.webResponse = webResponse;
+		/// <param name="httpWebResponse">The web response object.</param>
+		protected TextWebResponse( bool success, WebResponseType responseType, HttpWebResponse httpWebResponse )
+			: base( success, httpWebResponse.ResponseUri, responseType ) {
+			this.httpWebResponse = httpWebResponse;
 		}
 
 		/// <summary>
@@ -31,19 +30,19 @@ namespace NScrape {
 		protected override void DisposeManagedRessources() {
 			base.DisposeManagedRessources();
 
-			if ( webResponse != null ) {
-				webResponse.Dispose();
+			if ( httpWebResponse != null ) {
+				httpWebResponse.Dispose();
 			}
 		}
 
 	    /// <summary>
         /// Gets the text.
         /// </summary>
-		protected string Text { get { return text ?? ( text = webResponse.GetResponseText() ); } }
+		protected string Text { get { return text ?? ( text = httpWebResponse.GetResponseText() ); } }
 
 		/// <summary>
 		/// Gets the encoding of the text.
 		/// </summary>
-		protected Encoding Encoding { get { return encoding ?? ( encoding = webResponse.GetEncoding() ); } }
+		protected Encoding Encoding { get { return encoding ?? ( encoding = httpWebResponse.GetEncoding() ); } }
     }
 }

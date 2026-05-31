@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using NScrape.RegexUtility;
 
 namespace NScrape.Forms {
 

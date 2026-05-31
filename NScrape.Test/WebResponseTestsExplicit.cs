@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using NScrape.Interfaces;
+using NScrape.Responses;
 using Xunit;
 
 // TODO: physically delete deprecated NScrape.Test.Common & NScrape.Test.Framework 
@@ -22,7 +24,7 @@ namespace NScrape.Test {
 				Assert.True( response.Success );
 				Assert.Equal( WebResponseType.Redirect, response.ResponseType );
 
-				var redirectedWebResponse = response as RedirectedWebResponse;
+				var redirectedWebResponse = response as IRedirectedWebResponse;
 				Assert.NotNull( redirectedWebResponse );
 				Assert.Equal( redirectUri, redirectedWebResponse.RedirectUrl );
 
@@ -45,7 +47,7 @@ namespace NScrape.Test {
 				Assert.Equal( WebResponseType.Html, response.ResponseType );
 				Assert.Equal( redirectUri, response.ResponseUrl );
 
-				var htmlWebResponse = response as HtmlWebResponse;
+				var htmlWebResponse = response as IHtmlWebResponse;
 				Assert.NotNull( htmlWebResponse );
 
 				Assert.NotNull( htmlWebResponse.Html );
@@ -65,7 +67,7 @@ namespace NScrape.Test {
 				Assert.True( response.Success );
 				Assert.Equal( WebResponseType.Redirect, response.ResponseType );
 
-				var redirectedWebResponse = response as RedirectedWebResponse;
+				var redirectedWebResponse = response as IRedirectedWebResponse;
 				Assert.NotNull( redirectedWebResponse );
 				Assert.Equal( redirectUri, redirectedWebResponse.RedirectUrl );
 
@@ -88,7 +90,7 @@ namespace NScrape.Test {
 				Assert.Equal( WebResponseType.Html, response.ResponseType );
 				Assert.Equal( redirectUri, response.ResponseUrl );
 
-				var htmlWebResponse = response as HtmlWebResponse;
+				var htmlWebResponse = response as IHtmlWebResponse;
 				Assert.NotNull( htmlWebResponse );
 
 				Assert.NotNull( htmlWebResponse.Html );
@@ -110,7 +112,7 @@ namespace NScrape.Test {
 				Assert.Equal( WebResponseType.Html, response.ResponseType );
 				Assert.Equal( uri, response.ResponseUrl );
 
-				var htmlWebResponse = response as HtmlWebResponse;
+				var htmlWebResponse = response as IHtmlWebResponse;
 				Assert.NotNull( htmlWebResponse );
 
 				Assert.NotNull( htmlWebResponse.Html );
@@ -130,7 +132,7 @@ namespace NScrape.Test {
 				Assert.Equal( WebResponseType.Json, response.ResponseType );
 				Assert.Equal( uri, response.ResponseUrl );
 
-				var jsonWebResponse = response as JsonWebResponse;
+				var jsonWebResponse = response as IJsonWebResponse;
 				Assert.NotNull( jsonWebResponse );
 
 				Assert.NotNull( jsonWebResponse.Json );
@@ -150,7 +152,7 @@ namespace NScrape.Test {
 				Assert.Equal( WebResponseType.JavaScript, response.ResponseType );
 				Assert.Equal( uri, response.ResponseUrl );
 
-				var javaScriptWebResponse = response as JavaScriptWebResponse;
+				var javaScriptWebResponse = response as IJavaScriptWebResponse;
 				Assert.NotNull( javaScriptWebResponse );
 
 				Assert.NotNull( javaScriptWebResponse.JavaScript );
@@ -170,7 +172,7 @@ namespace NScrape.Test {
 				Assert.Equal( WebResponseType.Xml, response.ResponseType );
 				Assert.Equal( uri, response.ResponseUrl );
 
-				var xmlResponse = response as XmlWebResponse;
+				var xmlResponse = response as IXmlWebResponse;
 				Assert.NotNull( xmlResponse );
 
 				Assert.NotNull( xmlResponse.XDocument );
@@ -194,7 +196,7 @@ namespace NScrape.Test {
 				Assert.Equal( WebResponseType.PlainText, response.ResponseType );
 				Assert.Equal( uri, response.ResponseUrl );
 
-				var plainTextResponse = response as PlainTextWebResponse;
+				var plainTextResponse = response as IPlainTextWebResponse;
 				Assert.NotNull( plainTextResponse );
 
 				Assert.NotNull( plainTextResponse.PlainText );
@@ -214,7 +216,7 @@ namespace NScrape.Test {
 				Assert.Equal( WebResponseType.Image, response.ResponseType );
 				Assert.Equal( uri, response.ResponseUrl );
 
-				var imageResponse = response as ImageWebResponse;
+				var imageResponse = response as IImageWebResponse;
 				Assert.NotNull( imageResponse );
 
 				Assert.NotNull( imageResponse.Image );
@@ -235,7 +237,7 @@ namespace NScrape.Test {
 				Assert.Equal( WebResponseType.Image, response.ResponseType );
 				Assert.Equal( uri, response.ResponseUrl );
 
-				var imageResponse = response as ImageWebResponse;
+				var imageResponse = response as IImageWebResponse;
 				Assert.NotNull( imageResponse );
 				Assert.True( imageResponse.ContentLength > 0 );
 
@@ -268,7 +270,7 @@ namespace NScrape.Test {
 				Assert.Equal( WebResponseType.Binary, response.ResponseType );
 				Assert.Equal( uri, response.ResponseUrl );
 
-				var binaryResponse = response as BinaryWebResponse;
+				var binaryResponse = response as IBinaryWebResponse;
 				Assert.NotNull( binaryResponse );
 				Assert.True( binaryResponse.ContentLength > 0 );
 

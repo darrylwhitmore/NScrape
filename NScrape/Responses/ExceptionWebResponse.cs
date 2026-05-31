@@ -1,11 +1,12 @@
 using System;
 using System.Net;
+using NScrape.Interfaces;
 
-namespace NScrape {
-    /// <summary>
+namespace NScrape.Responses {
+	/// <summary>
 	/// Represents a web response for a request that returned an exception.
 	/// </summary>
-    public class ExceptionWebResponse : WebResponse {
+    public class ExceptionWebResponse : WebResponse, IExceptionWebResponse {
         private readonly WebException exception;
 
 	    /// <summary>

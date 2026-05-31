@@ -7,8 +7,8 @@ namespace NScrape {
 	/// </summary>
 	public class ProcessingResponseEventArgs : EventArgs {
 
-		internal ProcessingResponseEventArgs( HttpWebResponse response ) {
-            Response = response;
+		internal ProcessingResponseEventArgs( HttpWebResponse httpWebResponse ) {
+            Response = httpWebResponse;
 		}
 
 		/// <summary>

@@ -3,21 +3,22 @@ using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Runtime.Versioning;
+using NScrape.Interfaces;
 
-namespace NScrape {
-    /// <summary>
+namespace NScrape.Responses {
+	/// <summary>
 	/// Represents a web response for a request that returned an image.
 	/// </summary>
-    public class ImageWebResponse : StreamWebResponse {
+    public class ImageWebResponse : StreamWebResponse, IImageWebResponse {
         private Bitmap cachedBitmap;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ImageWebResponse"/> class.
 		/// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
-		/// <param name="webResponse">The web response object.</param>
-		public ImageWebResponse( bool success, HttpWebResponse webResponse )
-			: base( success, WebResponseType.Image, webResponse ) {
+		/// <param name="httpWebResponse">The web response object.</param>
+		public ImageWebResponse( bool success, HttpWebResponse httpWebResponse )
+			: base( success, WebResponseType.Image, httpWebResponse ) {
 		}
 
 		/// <summary>

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace NScrape {
+namespace NScrape.RegexUtility {
 	internal class RegexCache {
 		private readonly Dictionary<string, Regex> cache = new Dictionary<string, Regex>();
 

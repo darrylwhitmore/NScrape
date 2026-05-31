@@ -1,4 +1,7 @@
-﻿namespace NScrape.Forms {
+﻿using NScrape.Interfaces;
+using NScrape.Responses;
+
+namespace NScrape.Forms {
 	/// <summary>
 	/// Represents a basic HTML form that should do the trick in most cases.
 	/// </summary>
@@ -24,7 +27,7 @@
 		/// When the form has multiple submit buttons/images, specify which one should be used; otherwise, for forms with a 
 		/// single submit button/image, the parameter may be omitted.
 		/// </remarks>
-		public WebResponse Submit( string submitButtonName = null ) {
+		public IWebResponse Submit( string submitButtonName = null ) {
 			return SubmitHtmlRequest( BuildRequest( submitButtonName ) );
 		}
 	}

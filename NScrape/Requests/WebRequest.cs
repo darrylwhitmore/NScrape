@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Specialized;
+using NScrape.Interfaces;
+using NScrape.Responses;
 
-namespace NScrape {
+namespace NScrape.Requests {
 
     /// <summary>
 	/// Provides the base implementation for classes which represent web requests.
@@ -34,7 +36,7 @@ namespace NScrape {
 	    /// </summary>
 	    /// <remarks>
 		/// If <b>true</b>, the request shall be automatically redirected if specified by the server; if <b>false</b>, the
-		/// request shall return a <see cref="RedirectedWebResponse"/>.
+		/// request shall return a <see cref="IRedirectedWebResponse"/>.
 	    /// </remarks>
 	    public bool AutoRedirect { get; set; }
 

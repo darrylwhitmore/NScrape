@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using NScrape.Interfaces;
+using NScrape.RegexUtility;
+using NScrape.Requests;
+using NScrape.Responses;
 
 namespace NScrape.Forms {
 
@@ -325,8 +329,8 @@ namespace NScrape.Forms {
 		/// <remarks>
 		/// This method is convenient for forms that are known to return an HTML response. Requests shall be automatically redirected if necessary.
 		/// </remarks>
-		protected HtmlWebResponse SubmitHtmlRequest( string requestData ) {
-			return SubmitRequest( requestData, WebResponseType.Html ) as HtmlWebResponse;
+		protected IHtmlWebResponse SubmitHtmlRequest( string requestData ) {
+			return SubmitRequest( requestData, WebResponseType.Html ) as IHtmlWebResponse;
 		}
 
 		/// <summary>
@@ -337,8 +341,8 @@ namespace NScrape.Forms {
 		/// <remarks>
 		/// This method is convenient for forms that are known to return a redirection response. 
 		/// </remarks>
-		protected RedirectedWebResponse SubmitRedirectRequest( string requestData ) {
-			return SubmitRequest( requestData, false, new[] { WebResponseType.Redirect } ) as RedirectedWebResponse;
+		protected IRedirectedWebResponse SubmitRedirectRequest( string requestData ) {
+			return SubmitRequest( requestData, false, new[] { WebResponseType.Redirect } ) as IRedirectedWebResponse;
 		}
 
 		/// <summary>
@@ -350,7 +354,7 @@ namespace NScrape.Forms {
 		/// <remarks>
 		/// This overload is convenient for forms that are known to return a specific response type. Requests shall be automatically redirected if necessary.
 		/// </remarks>
-		protected WebResponse SubmitRequest( string requestData, WebResponseType validType ) {
+		protected IWebResponse SubmitRequest( string requestData, WebResponseType validType ) {
 			return SubmitRequest( requestData, true, new[] { validType } );
 		}
 
@@ -364,7 +368,7 @@ namespace NScrape.Forms {
 		/// <remarks>
 		/// This overload is convenient when the redirection action needs to be specified.
 		/// </remarks>
-		protected WebResponse SubmitRequest( string requestData, bool autoRedirect, WebResponseType validType ) {
+		protected IWebResponse SubmitRequest( string requestData, bool autoRedirect, WebResponseType validType ) {
 			return SubmitRequest( requestData, autoRedirect, new[] { validType } );
 		}
 
@@ -377,7 +381,7 @@ namespace NScrape.Forms {
 		/// <remarks>
 		/// This overload is convenient when multiple response types are possible. Requests shall be automatically redirected if necessary.
 		/// </remarks>
-		protected WebResponse SubmitRequest( string requestData, WebResponseType[] validTypes ) {
+		protected IWebResponse SubmitRequest( string requestData, WebResponseType[] validTypes ) {
 			return SubmitRequest( requestData, true, validTypes );
 		}
 
@@ -391,7 +395,7 @@ namespace NScrape.Forms {
 		/// <remarks>
 		/// This overload allows all form request options to be specified.
 		/// </remarks>
-		protected WebResponse SubmitRequest( string requestData, bool autoRedirect, WebResponseType[] validTypes ) {
+		protected IWebResponse SubmitRequest( string requestData, bool autoRedirect, WebResponseType[] validTypes ) {
 			WebRequest request;
 
 			if ( Attributes.ContainsKey( "method" ) && Attributes["method"].ToUpperInvariant() == "POST" ) {

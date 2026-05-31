@@ -1,19 +1,20 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using NScrape.Interfaces;
 
-namespace NScrape {
+namespace NScrape.Responses {
 	/// <summary>
 	/// Represents a web response for a request that returned binary data.
 	/// </summary>
-    public class BinaryWebResponse : StreamWebResponse {
+    public class BinaryWebResponse : StreamWebResponse, IBinaryWebResponse {
 	    /// <summary>
 	    /// Initializes a new instance of the <see cref="BinaryWebResponse"/> class.
 	    /// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
-		/// <param name="webResponse">The web response object.</param>
-	    public BinaryWebResponse( bool success, HttpWebResponse webResponse )
-			: base( success, WebResponseType.Binary, webResponse ) {
+		/// <param name="httpWebResponse">The web response object.</param>
+	    public BinaryWebResponse( bool success, HttpWebResponse httpWebResponse )
+			: base( success, WebResponseType.Binary, httpWebResponse ) {
 	    }
 
 		/// <summary>

@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace NScrape {
+namespace NScrape.RegexUtility {
     internal static class RegexLibrary {
         // Parse attributes
 		public const string ParseAttributes = "(?<name>[^\\s=]+)  (?: (?# empty) (?:\\s+|$) | (?# unquoted) \\s*=\\s* (?<value>\\w+)(?:\\s+|$)  | (?# single/double quoted) \\s*=\\s* (?<delimiter>'|\\\")?  (?<value>.*?) \\k<delimiter> | (?# non-standard empty) \\s*=(?:\\s+|$) )  #http://www.w3.org/TR/html-markup/syntax.html#syntax-attributes";

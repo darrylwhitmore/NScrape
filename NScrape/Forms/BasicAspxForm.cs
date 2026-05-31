@@ -1,4 +1,6 @@
-﻿namespace NScrape.Forms {
+﻿using NScrape.Interfaces;
+
+namespace NScrape.Forms {
 	/// <summary>
 	/// Represents a basic ASPX form that should do the trick in most cases.
 	/// </summary>
@@ -21,7 +23,7 @@
 		/// <param name="eventTargetValue">Contains the value for <b>__EVENTTARGET</b>, the control doing the submission.</param>
 		/// <param name="eventArgumentValue">Contains the value for <b>__EVENTARGUMENT</b>, any additional information.</param>
 		/// <returns>The server response.</returns>
-		public WebResponse Submit( string eventTargetValue, string eventArgumentValue = "" ) {
+		public IWebResponse Submit( string eventTargetValue, string eventArgumentValue = "" ) {
 			return SubmitHtmlRequest( BuildAspxPostBackRequest( eventTargetValue, eventArgumentValue ) );
 		}
 	}

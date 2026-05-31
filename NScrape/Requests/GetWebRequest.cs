@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NScrape {
+namespace NScrape.Requests {
 
     /// <summary>
     /// Represents a GET web request

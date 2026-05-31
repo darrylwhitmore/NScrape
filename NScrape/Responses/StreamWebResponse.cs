@@ -1,30 +1,31 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using NScrape.Interfaces;
 
-namespace NScrape;
+namespace NScrape.Responses;
 
 /// <summary>
 /// Provides the base implementation for classes which represent stream-based web responses.
 /// </summary>
-public abstract class StreamWebResponse : WebResponse {
-	private readonly HttpWebResponse webResponse;
+public abstract class StreamWebResponse : WebResponse, IStreamWebResponse {
+	private readonly HttpWebResponse httpWebResponse;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="StreamWebResponse"/> class.
 	/// </summary>
 	/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
 	/// <param name="responseType">The type of the web response.</param>
-	/// <param name="webResponse">The web response object.</param>
-	protected StreamWebResponse( bool success, WebResponseType responseType, HttpWebResponse webResponse )
-		: base( success, webResponse.ResponseUri, responseType ) {
-		this.webResponse = webResponse;
+	/// <param name="httpWebResponse">The web response object.</param>
+	protected StreamWebResponse( bool success, WebResponseType responseType, HttpWebResponse httpWebResponse )
+		: base( success, httpWebResponse.ResponseUri, responseType ) {
+		this.httpWebResponse = httpWebResponse;
 	}
 
 	/// <summary>
 	/// Gets the length of the content returned by the request.
 	/// </summary>
-	public long ContentLength => webResponse.ContentLength;
+	public long ContentLength => httpWebResponse.ContentLength;
 
 	/// <summary>
 	/// Closes the stream-based web response.
@@ -36,7 +37,7 @@ public abstract class StreamWebResponse : WebResponse {
 	/// Calling this method is equivalent to disposing of the underlying <see cref="HttpWebResponse"/> object.
 	/// </remarks>
 	public void Close() {
-		webResponse?.Dispose();
+		httpWebResponse?.Dispose();
 	}
 
 	/// <summary>
@@ -48,7 +49,7 @@ public abstract class StreamWebResponse : WebResponse {
 	protected override void DisposeManagedRessources() {
 		base.DisposeManagedRessources();
 
-		webResponse?.Dispose();
+		httpWebResponse?.Dispose();
 	}
 
 	/// <summary>
@@ -65,8 +66,8 @@ public abstract class StreamWebResponse : WebResponse {
 	/// </remarks>
 	/// <seealso cref="Close"/>
 	protected Stream GetStream() {
-		if ( webResponse != null ) {
-			return webResponse.GetResponseStream();
+		if ( httpWebResponse != null ) {
+			return httpWebResponse.GetResponseStream();
 		}
 
 		throw new InvalidOperationException( "This object was not instantiated with a valid HttpWebResponse object." );

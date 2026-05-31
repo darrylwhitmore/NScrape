@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using NScrape.Forms;
+using NScrape.Interfaces;
+using NScrape.Responses;
 using Xunit;
 
 namespace NScrape.Test.Forms {
@@ -121,7 +123,7 @@ namespace NScrape.Test.Forms {
 			using ( var response = form.Submit() ) {
 
 				if ( response.ResponseType == WebResponseType.Html ) {
-					var scraper = new MultipleControlsScraper( ( ( HtmlWebResponse )response ).Html );
+					var scraper = new MultipleControlsScraper( ( ( IHtmlWebResponse )response ).Html );
 
 					Assert.Equal( "theUser", scraper.GetUserName() );
 
@@ -161,7 +163,7 @@ namespace NScrape.Test.Forms {
 			using ( var response = form.Submit() ) {
 
 				if ( response.ResponseType == WebResponseType.Html ) {
-					var scraper = new WeatherScraper( ( ( HtmlWebResponse )response ).Html );
+					var scraper = new WeatherScraper( ( ( IHtmlWebResponse )response ).Html );
 
 					var conditions = scraper.GetConditions();
 

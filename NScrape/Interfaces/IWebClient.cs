@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Net;
+using WebRequest = NScrape.Requests.WebRequest;
 
-namespace NScrape {
+namespace NScrape.Interfaces {
 	/// <summary>
-	/// Represents a web client that handles cookies and redirection.
+	/// Defines the contract for a web client that manages cookies, handles redirection, 
+	/// and facilitates sending HTTP requests and processing responses.
 	/// </summary>
 	public interface IWebClient {
 		/// <include file='IWebClient.xml' path='/IWebClient/AddingCookie/*'/>
@@ -19,18 +21,18 @@ namespace NScrape {
 		CookieContainer CookieJar { get; }
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri/*'/>
-		WebResponse SendRequest( Uri destination );
+		IWebResponse SendRequest( Uri destination );
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_bool/*'/>
-		WebResponse SendRequest( Uri destination, bool autoRedirect );
+		IWebResponse SendRequest( Uri destination, bool autoRedirect );
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string/*'/>
-		WebResponse SendRequest( Uri destination, string requestData );
+		IWebResponse SendRequest( Uri destination, string requestData );
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string_bool/*'/>
-		WebResponse SendRequest( Uri destination, string requestData, bool autoRedirect );
+		IWebResponse SendRequest( Uri destination, string requestData, bool autoRedirect );
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_WebRequest/*'/>
-		WebResponse SendRequest( WebRequest webRequest );
+		IWebResponse SendRequest( WebRequest webRequest );
 
 		/// <include file='IWebClient.xml' path='/IWebClient/UserAgent/*'/>
 		string UserAgent { get; set; }
