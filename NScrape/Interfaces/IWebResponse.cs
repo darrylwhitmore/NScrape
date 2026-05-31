@@ -6,7 +6,7 @@ namespace NScrape.Interfaces;
 /// <summary>
 /// Defines the contract for a web response.
 /// </summary>
-public interface IWebResponse {
+public interface IWebResponse : IDisposable {
 	/// <summary>
 	/// Gets the type of the response.
 	/// </summary>

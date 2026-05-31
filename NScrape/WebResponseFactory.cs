@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using NScrape.Interfaces;
 using NScrape.Responses;
-using WebResponse = NScrape.Responses.WebResponse;
 
 namespace NScrape {
 	/// <summary>
-	/// Creates a <see cref="WebResponse"/> object based on an <see cref="HttpWebResponse"/> object.
+	/// Creates a <see cref="IWebResponse"/> object based on an <see cref="HttpWebResponse"/> object.
 	/// </summary>
 	public class WebResponseFactory {
 		/// <summary>
 		/// Initializes static members of the <see cref="WebResponseFactory"/> class.
 		/// </summary>
 		static WebResponseFactory() {
-			SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, WebResponse>> {
+			SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, IWebResponse>> {
 				{ "application/javascript", CreateJavaScriptResponse },
 				{ "application/json", CreateJsonResponse },
 				{ "application/octet-stream", CreateBinaryResponse },
+				{ "application/pdf", CreateBinaryResponse },
 				{ "application/x-dosexec", CreateBinaryResponse },
 				{ "application/x-javascript", CreateJavaScriptResponse },
 				{ "application/x-msdos-program", CreateBinaryResponse },
@@ -39,121 +40,121 @@ namespace NScrape {
 		/// must start with (but not necessarily the full text of the content type).
 		/// <br/><br/>
 		/// The value is a
-		/// <see cref="Func{HttpWebResponse, WebResponse}"/> that takes an <see cref="HttpWebResponse"/>
-		/// object with the given content type and returns a <see cref="WebResponse"/>. The return value
-		/// is usually a subclass of the <see cref="WebResponse"/> class.
+		/// <see cref="Func{HttpWebResponse, IWebResponse}"/> that takes an <see cref="HttpWebResponse"/>
+		/// object with the given content type and returns a <see cref="IWebResponse"/>. The return value
+		/// is usually a subclass of the <see cref="IWebResponse"/> interface.
 		/// </remarks>
-		public static Dictionary<string, Func<HttpWebResponse, WebResponse>> SupportedContentTypes { get; }
+		public static Dictionary<string, Func<HttpWebResponse, IWebResponse>> SupportedContentTypes { get; }
 
 		/// <summary>
-		/// Creates an <see cref="HtmlWebResponse"/>.
+		/// Creates an <see cref="IHtmlWebResponse"/>.
 		/// </summary>
-		/// <param name="webResponse">
+		/// <param name="httpWebResponse">
 		/// The original <see cref="HttpWebResponse"/>.
 		/// </param>
 		/// <returns>
-		/// A new <see cref="HtmlWebResponse"/>.
+		/// A new <see cref="IHtmlWebResponse"/>.
 		/// </returns>
-		public static WebResponse CreateHtmlResponse( HttpWebResponse webResponse ) {
-			return new HtmlWebResponse( true, webResponse );
+		public static IWebResponse CreateHtmlResponse( HttpWebResponse httpWebResponse ) {
+			return new HtmlWebResponse( true, httpWebResponse );
 		}
 
 		/// <summary>
-		/// Creates a <see cref="ImageWebResponse"/>.
+		/// Creates a <see cref="IImageWebResponse"/>.
 		/// </summary>
-		/// <param name="webResponse">
+		/// <param name="httpWebResponse">
 		/// The original <see cref="HttpWebResponse"/>.
 		/// </param>
 		/// <returns>
-		/// A new <see cref="ImageWebResponse"/>.
+		/// A new <see cref="IImageWebResponse"/>.
 		/// </returns>
-		public static WebResponse CreateImageResponse( HttpWebResponse webResponse ) {
-			return new ImageWebResponse( true, webResponse );
+		public static IWebResponse CreateImageResponse( HttpWebResponse httpWebResponse ) {
+			return new ImageWebResponse( true, httpWebResponse );
 		}
 
 		/// <summary>
-		/// Creates a <see cref="PlainTextWebResponse"/>.
+		/// Creates a <see cref="IPlainTextWebResponse"/>.
 		/// </summary>
-		/// <param name="webResponse">
+		/// <param name="httpWebResponse">
 		/// The original <see cref="HttpWebResponse"/>.
 		/// </param>
 		/// <returns>
-		/// A new <see cref="PlainTextWebResponse"/>.
+		/// A new <see cref="IPlainTextWebResponse"/>.
 		/// </returns>
-		public static WebResponse CreatePlainTextResponse( HttpWebResponse webResponse ) {
-			return new PlainTextWebResponse( true, webResponse );
+		public static IWebResponse CreatePlainTextResponse( HttpWebResponse httpWebResponse ) {
+			return new PlainTextWebResponse( true, httpWebResponse );
 		}
 
 		/// <summary>
-		/// Creates an <see cref="XmlWebResponse"/>.
+		/// Creates an <see cref="IXmlWebResponse"/>.
 		/// </summary>
-		/// <param name="webResponse">
+		/// <param name="httpWebResponse">
 		/// The original <see cref="HttpWebResponse"/>.
 		/// </param>
 		/// <returns>
-		/// A new <see cref="XmlWebResponse"/>.
+		/// A new <see cref="IXmlWebResponse"/>.
 		/// </returns>
-		public static WebResponse CreateXmlResponse( HttpWebResponse webResponse ) {
-			return new XmlWebResponse( true, webResponse );
+		public static IWebResponse CreateXmlResponse( HttpWebResponse httpWebResponse ) {
+			return new XmlWebResponse( true, httpWebResponse );
 		}
 
 		/// <summary>
-		/// Creates a <see cref="BinaryWebResponse"/>.
+		/// Creates a <see cref="IBinaryWebResponse"/>.
 		/// </summary>
-		/// <param name="webResponse">
+		/// <param name="httpWebResponse">
 		/// The original <see cref="HttpWebResponse"/>.
 		/// </param>
 		/// <returns>
-		/// A new <see cref="BinaryWebResponse"/>.
+		/// A new <see cref="IBinaryWebResponse"/>.
 		/// </returns>
-		public static WebResponse CreateBinaryResponse( HttpWebResponse webResponse ) {
-			return new BinaryWebResponse( true, webResponse );
+		public static IWebResponse CreateBinaryResponse( HttpWebResponse httpWebResponse ) {
+			return new BinaryWebResponse( true, httpWebResponse );
 		}
 
 		/// <summary>
-		/// Creates a <see cref="JavaScriptWebResponse"/>.
+		/// Creates a <see cref="IJavaScriptWebResponse"/>.
 		/// </summary>
-		/// <param name="webResponse">
+		/// <param name="httpWebResponse">
 		/// The original <see cref="HttpWebResponse"/>.
 		/// </param>
 		/// <returns>
-		/// A new <see cref="JavaScriptWebResponse"/>.
+		/// A new <see cref="IJavaScriptWebResponse"/>.
 		/// </returns>
-		public static WebResponse CreateJavaScriptResponse( HttpWebResponse webResponse ) {
-			return new JavaScriptWebResponse( true, webResponse );
+		public static IWebResponse CreateJavaScriptResponse( HttpWebResponse httpWebResponse ) {
+			return new JavaScriptWebResponse( true, httpWebResponse );
 		}
 
 		/// <summary>
-		/// Creates a <see cref="JsonWebResponse"/>.
+		/// Creates a <see cref="IJsonWebResponse"/>.
 		/// </summary>
-		/// <param name="webResponse">
+		/// <param name="httpWebResponse">
 		/// The original <see cref="HttpWebResponse"/>.
 		/// </param>
 		/// <returns>
-		/// A new <see cref="JsonWebResponse"/>.
+		/// A new <see cref="IJsonWebResponse"/>.
 		/// </returns>
-		public static WebResponse CreateJsonResponse( HttpWebResponse webResponse ) {
-			return new JsonWebResponse( true, webResponse );
+		public static IWebResponse CreateJsonResponse( HttpWebResponse httpWebResponse ) {
+			return new JsonWebResponse( true, httpWebResponse );
 		}
 
 		/// <summary>
-		/// Creates a <see cref="WebResponse"/> for an <see cref="HttpWebResponse"/>, based on its
+		/// Creates a <see cref="IWebResponse"/> for an <see cref="HttpWebResponse"/>, based on its
 		/// content type.
 		/// </summary>
-		/// <param name="webResponse">
+		/// <param name="httpWebResponse">
 		/// The <see cref="HttpWebResponse"/> to parse.
 		/// </param>
 		/// <returns>
 		/// If the content type is registered with the <see cref="WebResponseFactory"/>, the corresponding
-		/// <see cref="WebResponse"/> object; otherwise, an <see cref="UnsupportedWebResponse"/> object.
+		/// <see cref="IWebResponse"/> object; otherwise, an <see cref="UnsupportedWebResponse"/> object.
 		/// </returns>
-		public static WebResponse CreateResponse( HttpWebResponse webResponse ) {
-			if ( !webResponse.Headers.AllKeys.Contains( CommonHeaders.ContentType ) ) {
+		public static IWebResponse CreateResponse( HttpWebResponse httpWebResponse ) {
+			if ( !httpWebResponse.Headers.AllKeys.Contains( CommonHeaders.ContentType ) ) {
 				// The response is missing a content type.
-				return new UnsupportedWebResponse( webResponse.ResponseUri, string.Empty );
+				return new UnsupportedWebResponse( httpWebResponse.ResponseUri, string.Empty );
 			}
 
-			var contentType = webResponse.Headers[CommonHeaders.ContentType];
+			var contentType = httpWebResponse.Headers[CommonHeaders.ContentType];
 
 			// The keys in the SupportedContentTypes indicate the text the contentType
 			// must start with. Find that key
@@ -161,10 +162,10 @@ namespace NScrape {
 
 			// We don't support this content type
 			if ( key == null ) {
-				return new UnsupportedWebResponse( webResponse.ResponseUri, contentType );
+				return new UnsupportedWebResponse( httpWebResponse.ResponseUri, contentType );
 			}
 
-			return SupportedContentTypes[key]( webResponse );
+			return SupportedContentTypes[key]( httpWebResponse );
 		}
 	}
 }

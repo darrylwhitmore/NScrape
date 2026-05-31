@@ -16,9 +16,9 @@ namespace NScrape.Responses {
 		/// Initializes a new instance of the <see cref="XmlWebResponse"/> class.
 		/// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
-		/// <param name="webResponse">The web response object.</param>
-		public XmlWebResponse( bool success, HttpWebResponse webResponse )
-			: base( success, WebResponseType.Xml, webResponse ) {
+		/// <param name="httpWebResponse">The web response object.</param>
+		public XmlWebResponse( bool success, HttpWebResponse httpWebResponse )
+			: base( success, WebResponseType.Xml, httpWebResponse ) {
 			XDocument = XDocument.Parse( Text );
 		}
 

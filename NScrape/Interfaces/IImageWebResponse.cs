@@ -31,7 +31,7 @@ public interface IImageWebResponse : IStreamWebResponse {
 	/// Thrown when the <see cref="HttpWebResponse"/> object is not valid or was not properly instantiated.
 	/// </exception>
 	/// <remarks>
-	/// The <see cref="ImageWebResponse.GetImageStream"/> method provides access to the binary image stream from the response.
+	/// The <see cref="IImageWebResponse.GetImageStream"/> method provides access to the binary image stream from the response.
 	/// <br/><br/>
 	/// <note type="important">
 	/// Ensure that you call either the <see cref="Stream.Close"/> method or the <see cref="StreamWebResponse.Close"/> method to close the stream and release the connection for reuse.

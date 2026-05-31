@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
+using NScrape.Interfaces;
 using NScrape.Responses;
 
 namespace NScrape.Requests {
@@ -35,7 +36,7 @@ namespace NScrape.Requests {
 	    /// </summary>
 	    /// <remarks>
 		/// If <b>true</b>, the request shall be automatically redirected if specified by the server; if <b>false</b>, the
-		/// request shall return a <see cref="RedirectedWebResponse"/>.
+		/// request shall return a <see cref="IRedirectedWebResponse"/>.
 	    /// </remarks>
 	    public bool AutoRedirect { get; set; }
 

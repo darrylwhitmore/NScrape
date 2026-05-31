@@ -10,7 +10,6 @@ using NScrape.RegexUtility;
 using NScrape.Requests;
 using NScrape.Responses;
 using WebRequest = NScrape.Requests.WebRequest;
-using WebResponse = NScrape.Responses.WebResponse;
 
 namespace NScrape {
 	/// <summary>
@@ -157,27 +156,27 @@ namespace NScrape {
 		}
 
 		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendRequest_Uri/*'/>
-        public WebResponse SendRequest( Uri destination ) {
+        public IWebResponse SendRequest( Uri destination ) {
             return SendRequest( new GetWebRequest( destination ) );
         }
 
 		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendRequest_Uri_bool/*'/>
-        public WebResponse SendRequest( Uri destination, bool autoRedirect ) {
+        public IWebResponse SendRequest( Uri destination, bool autoRedirect ) {
             return SendRequest( new GetWebRequest( destination, autoRedirect ) );
         }
 
 		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendRequest_Uri_string/*'/>
-        public WebResponse SendRequest( Uri destination, string requestData ) {
+        public IWebResponse SendRequest( Uri destination, string requestData ) {
             return SendRequest( new PostWebRequest( destination, requestData ) );
         }
 
 		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendRequest_Uri_string_bool/*'/>
-        public WebResponse SendRequest( Uri destination, string requestData, bool autoRedirect ) {
+        public IWebResponse SendRequest( Uri destination, string requestData, bool autoRedirect ) {
             return SendRequest( new PostWebRequest( destination, requestData, autoRedirect ) );
         }
 
 		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendRequest_WebRequest/*'/>
-        public WebResponse SendRequest( WebRequest webRequest ) {
+        public IWebResponse SendRequest( WebRequest webRequest ) {
 #pragma warning disable SYSLIB0014
 			var httpWebRequest = ( HttpWebRequest )System.Net.WebRequest.Create( webRequest.Destination );
 #pragma warning restore SYSLIB0014
@@ -223,12 +222,12 @@ namespace NScrape {
 
 			OnSendingRequest( new SendingRequestEventArgs( webRequest ) );
 
-            WebResponse response;
-			HttpWebResponse webResponse = null;
+            IWebResponse webResponse;
+			HttpWebResponse httpWebResponse = null;
 
             try {
 				try {
-					webResponse = ( HttpWebResponse )httpWebRequest.GetResponseAsync().Result;
+					httpWebResponse = ( HttpWebResponse )httpWebRequest.GetResponseAsync().Result;
 				}
 				catch ( AggregateException ex ) {
 					// While the line above executes without exception under the .Net Framework, under
@@ -242,22 +241,22 @@ namespace NScrape {
 					// https://github.com/dotnet/corefx/issues/23422
 					if ( ex.InnerExceptions.Count == 1 ) {
 						if ( ex.InnerExceptions[0] is WebException webException ) {
-							if ( webException.Response is HttpWebResponse httpWebResponse ) {
-								webResponse = httpWebResponse;
+							if ( webException.Response is HttpWebResponse foundHttpWebResponse ) {
+								httpWebResponse = foundHttpWebResponse;
 							}
 						}
 					}
 
-					if ( webResponse == null ) {
+					if ( httpWebResponse == null ) {
 						// The exception was not as expected so we can't process it.
 						throw;
 					}
 				}
 
-	            OnProcessingResponse( new ProcessingResponseEventArgs( webResponse ) );
+	            OnProcessingResponse( new ProcessingResponseEventArgs( httpWebResponse ) );
 
                 if ( httpWebRequest.HaveResponse ) {
-					var responseCookies = new CookieCollection { webResponse.Cookies };
+					var responseCookies = new CookieCollection { httpWebResponse.Cookies };
 
 					// Some cookies in the Set-Cookie header can be omitted from the response's CookieCollection. For example:
 					//	Set-Cookie:ADCDownloadAuth=[long token];Version=1;Comment=;Domain=apple.com;Path=/;Max-Age=108000;HttpOnly;Expires=Tue, 03 May 2016 13:30:57 GMT
@@ -266,11 +265,11 @@ namespace NScrape {
 					// http://stackoverflow.com/questions/15103513/httpwebresponse-cookies-empty-despite-set-cookie-header-no-redirect
 					//
 					// To catch these, we parse the header manually and add any cookie that is missing.
-					if ( webResponse.Headers.AllKeys.Contains( CommonHeaders.SetCookie ) ) {
+					if ( httpWebResponse.Headers.AllKeys.Contains( CommonHeaders.SetCookie ) ) {
 						var responseCookieList = responseCookies.OfType<Cookie>().ToList();
 
 						var host = httpWebRequest.Host;
-						var cookies = NScrapeUtility.ParseSetCookieHeader( webResponse.Headers[CommonHeaders.SetCookie], host );
+						var cookies = NScrapeUtility.ParseSetCookieHeader( httpWebResponse.Headers[CommonHeaders.SetCookie], host );
 
 						foreach ( var cookie in cookies ) {
 							if ( responseCookieList.All( c => c.Name != cookie.Name ) ) {
@@ -312,9 +311,9 @@ namespace NScrape {
                         }
                     }
 
-					if ( redirectionStatusCodes.Contains( webResponse.StatusCode ) ) {
+					if ( redirectionStatusCodes.Contains( httpWebResponse.StatusCode ) ) {
 						// We have a redirected response, so get the new location.
-                        var location = webResponse.Headers[CommonHeaders.Location];
+                        var location = httpWebResponse.Headers[CommonHeaders.Location];
 
 						// Locations should always be absolute, per the RFC (http://tools.ietf.org/html/rfc2616#section-14.30), but
 						// that won't always be the case.
@@ -329,64 +328,64 @@ namespace NScrape {
 						if ( webRequest.AutoRedirect ) {
 							// Dispose webResponse before auto redirect, otherwise the connection will not be closed until all the auto redirect finished.
 							// http://www.wadewegner.com/2007/08/systemnetwebexception-when-issuing-more-than-two-concurrent-webrequests/
-							webResponse.Dispose();
+							httpWebResponse.Dispose();
 
 							// We are auto redirecting, so make a recursive call to perform the redirect by hand.
-							response = SendRequest( new GetWebRequest( redirectUri ) );
+							webResponse = SendRequest( new GetWebRequest( redirectUri ) );
 						}
 						else {
-							var responseUri = webResponse.ResponseUri;
-							webResponse.Dispose();
+							var responseUri = httpWebResponse.ResponseUri;
+							httpWebResponse.Dispose();
 
 							// We are not auto redirecting, so send the caller a redirect response.
-							response = new RedirectedWebResponse( responseUri, webRequest, redirectUri );
+							webResponse = new RedirectedWebResponse( responseUri, webRequest, redirectUri );
 						}
                     }
 					else {
 						// We have a non-redirected response.
-						response = WebResponseFactory.CreateResponse( webResponse );
+						webResponse = WebResponseFactory.CreateResponse( httpWebResponse );
 
-						if ( response.ResponseType == WebResponseType.Html ) {
+						if ( webResponse.ResponseType == WebResponseType.Html ) {
 							// We have an HTML response, so check for an old school Meta refresh tag
-							var metaRefreshUrl = GetMetaRefreshUrl( ( ( HtmlWebResponse )response ).Html );
+							var metaRefreshUrl = GetMetaRefreshUrl( ( ( IHtmlWebResponse )webResponse ).Html );
 
 							if ( !string.IsNullOrWhiteSpace( metaRefreshUrl ) ) {
 								// The page has a Meta refresh tag, so build the redirect URL
-								var redirectUri = new Uri( response.ResponseUrl, metaRefreshUrl );
+								var redirectUri = new Uri( webResponse.ResponseUrl, metaRefreshUrl );
 
 								if ( webRequest.AutoRedirect ) {
 									// Dispose webResponse before auto redirect, otherwise the connection will not be closed until all the auto redirect finished.
 									// http://www.wadewegner.com/2007/08/systemnetwebexception-when-issuing-more-than-two-concurrent-webrequests/
-									response.Dispose();
+									webResponse.Dispose();
 
 									// We are auto redirecting, so make a recursive call to perform the redirect
-									response = SendRequest( new GetWebRequest( redirectUri, httpWebRequest.AllowAutoRedirect ) );
+									webResponse = SendRequest( new GetWebRequest( redirectUri, httpWebRequest.AllowAutoRedirect ) );
 								}
 								else {
-									var responseUrl = response.ResponseUrl;
+									var responseUrl = webResponse.ResponseUrl;
 
-									response.Dispose();
+									webResponse.Dispose();
 
 									// We are not auto redirecting, so send the caller a redirect response
-									response = new RedirectedWebResponse( responseUrl, webRequest, redirectUri );
+									webResponse = new RedirectedWebResponse( responseUrl, webRequest, redirectUri );
 								}
 							}
 						}
 					}
 				}
 				else {
-					response = new ExceptionWebResponse( webRequest.Destination, new WebException( Properties.Resources.NoResponse ) );
+					webResponse = new ExceptionWebResponse( webRequest.Destination, new WebException( Properties.Resources.NoResponse ) );
 
-					webResponse.Dispose();
+					httpWebResponse.Dispose();
 				}
             }
             catch ( WebException ex ) {
-                response = new ExceptionWebResponse( webRequest.Destination, ex );
+                webResponse = new ExceptionWebResponse( webRequest.Destination, ex );
 
-	            webResponse?.Dispose();
+	            httpWebResponse?.Dispose();
             }
 
-            return response;
+            return webResponse;
         }
 
 		/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/UserAgent/*'/>

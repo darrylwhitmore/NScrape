@@ -11,9 +11,9 @@ namespace NScrape.Responses {
 		/// Initializes a new instance of the <see cref="PlainTextWebResponse"/> class.
 		/// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
-		/// <param name="webResponse">The web response object.</param>
-		public PlainTextWebResponse( bool success, HttpWebResponse webResponse )
-			: base( success, WebResponseType.PlainText, webResponse ) {
+		/// <param name="httpWebResponse">The web response object.</param>
+		public PlainTextWebResponse( bool success, HttpWebResponse httpWebResponse )
+			: base( success, WebResponseType.PlainText, httpWebResponse ) {
 		}
 
         /// <summary>

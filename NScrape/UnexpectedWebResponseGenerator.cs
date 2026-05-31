@@ -1,20 +1,20 @@
 using System;
 using System.Globalization;
 using System.Net;
+using NScrape.Interfaces;
 using NScrape.Responses;
-using WebResponse = NScrape.Responses.WebResponse;
 
 namespace NScrape {
 
     internal static class UnexpectedWebResponseGenerator {
 
-        public static Exception CreateException( string message, WebResponse response ) {
+        public static Exception CreateException( string message, IWebResponse response ) {
             Exception exception;
 
             switch ( response.ResponseType ) {
 
 				case WebResponseType.Exception:
-                    var exceptionResponse = (ExceptionWebResponse)response;
+                    var exceptionResponse = (IExceptionWebResponse)response;
 
                     exception = exceptionResponse.Exception;
                     break;

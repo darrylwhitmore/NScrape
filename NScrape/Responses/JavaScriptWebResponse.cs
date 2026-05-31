@@ -11,9 +11,9 @@ namespace NScrape.Responses {
 		/// Initializes a new instance of the <see cref="JavaScriptWebResponse"/> class.
 		/// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
-		/// <param name="webResponse">The web response object.</param>
-		public JavaScriptWebResponse( bool success, HttpWebResponse webResponse )
-			: base( success, WebResponseType.JavaScript, webResponse ) {
+		/// <param name="httpWebResponse">The web response object.</param>
+		public JavaScriptWebResponse( bool success, HttpWebResponse httpWebResponse )
+			: base( success, WebResponseType.JavaScript, httpWebResponse ) {
 		}
 
 		/// <summary>

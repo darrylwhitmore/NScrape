@@ -27,7 +27,7 @@ namespace NScrape.Forms {
 		/// When the form has multiple submit buttons/images, specify which one should be used; otherwise, for forms with a 
 		/// single submit button/image, the parameter may be omitted.
 		/// </remarks>
-		public WebResponse Submit( string submitButtonName = null ) {
+		public IWebResponse Submit( string submitButtonName = null ) {
 			return SubmitHtmlRequest( BuildRequest( submitButtonName ) );
 		}
 	}

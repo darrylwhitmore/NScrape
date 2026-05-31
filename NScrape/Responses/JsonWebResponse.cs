@@ -11,9 +11,9 @@ namespace NScrape.Responses {
 		/// Initializes a new instance of the <see cref="JsonWebResponse"/> class.
 		/// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
-		/// <param name="webResponse">The web response object.</param>
-		public JsonWebResponse( bool success, HttpWebResponse webResponse )
-			: base( success, WebResponseType.Json, webResponse ) {
+		/// <param name="httpWebResponse">The web response object.</param>
+		public JsonWebResponse( bool success, HttpWebResponse httpWebResponse )
+			: base( success, WebResponseType.Json, httpWebResponse ) {
 		}
 
 		/// <summary>

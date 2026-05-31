@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net;
 using WebRequest = NScrape.Requests.WebRequest;
-using WebResponse = NScrape.Responses.WebResponse;
 
 namespace NScrape.Interfaces {
 	/// <summary>
@@ -22,18 +21,18 @@ namespace NScrape.Interfaces {
 		CookieContainer CookieJar { get; }
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri/*'/>
-		WebResponse SendRequest( Uri destination );
+		IWebResponse SendRequest( Uri destination );
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_bool/*'/>
-		WebResponse SendRequest( Uri destination, bool autoRedirect );
+		IWebResponse SendRequest( Uri destination, bool autoRedirect );
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string/*'/>
-		WebResponse SendRequest( Uri destination, string requestData );
+		IWebResponse SendRequest( Uri destination, string requestData );
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_string_bool/*'/>
-		WebResponse SendRequest( Uri destination, string requestData, bool autoRedirect );
+		IWebResponse SendRequest( Uri destination, string requestData, bool autoRedirect );
 
 		/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_WebRequest/*'/>
-		WebResponse SendRequest( WebRequest webRequest );
+		IWebResponse SendRequest( WebRequest webRequest );
 
 		/// <include file='IWebClient.xml' path='/IWebClient/UserAgent/*'/>
 		string UserAgent { get; set; }

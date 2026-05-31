@@ -16,9 +16,9 @@ namespace NScrape.Responses {
 		/// Initializes a new instance of the <see cref="ImageWebResponse"/> class.
 		/// </summary>
 		/// <param name="success"><b>true</b> if the response is considered successful, <b>false</b> otherwise.</param>
-		/// <param name="webResponse">The web response object.</param>
-		public ImageWebResponse( bool success, HttpWebResponse webResponse )
-			: base( success, WebResponseType.Image, webResponse ) {
+		/// <param name="httpWebResponse">The web response object.</param>
+		public ImageWebResponse( bool success, HttpWebResponse httpWebResponse )
+			: base( success, WebResponseType.Image, httpWebResponse ) {
 		}
 
 		/// <summary>

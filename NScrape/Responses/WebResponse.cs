@@ -6,7 +6,7 @@ namespace NScrape.Responses {
 	/// <summary>
 	/// Provides the base implementation for classes which represent web responses.
 	/// </summary>
-	public abstract class WebResponse : IWebResponse, IDisposable {
+	public abstract class WebResponse : IWebResponse {
 		private bool isDisposed;
 		private readonly WebResponseType responseType;
 		private readonly Uri responseUrl;
