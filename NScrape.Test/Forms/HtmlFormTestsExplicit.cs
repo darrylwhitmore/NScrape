@@ -60,32 +60,6 @@ namespace NScrape.Test.Forms {
 			}
 		}
 
-		private class WeatherScraper : Scraper {
-			public WeatherScraper( string html ) : base( html ) {
-			}
-
-			public string GetConditions() {
-				var node = HtmlDocument.DocumentNode.Descendants().SingleOrDefault( n => n.Attributes.Contains( "class" ) && n.Attributes["class"].Value == "myforecast-current" );
-
-				if ( node != null ) {
-					return node.InnerText;
-				}
-
-				throw new ScrapeException( "Could not scrape conditions.", Html );
-			}
-
-			public string GetTemperature() {
-				var node = HtmlDocument.DocumentNode.Descendants().SingleOrDefault( n => n.Attributes.Contains( "class" ) && n.Attributes["class"].Value == "myforecast-current-lrg" );
-
-				if ( node != null ) {
-					return node.InnerText.Replace( "&deg;", "°" );
-				}
-
-				throw new ScrapeException( "Could not scrape temperature.", Html );
-			}
-		}
-
-
 
 		[Fact( Explicit = true )]
 		public void MultipleFormControlsTest() {
@@ -153,23 +127,22 @@ namespace NScrape.Test.Forms {
 		}
 
 		[Fact( Explicit = true, Skip = "Site has changed to dynamically generate the values to be scraped" )]
-		public void ScrapeTest() {
+		public void WeatherScrapeTest() {
 			var webClient = new WebClient();
 
 			var form = new BasicHtmlForm( webClient );
 			form.Load( new Uri( "http://www.weather.gov/" ), new KeyValuePair<string, string>( "name", "getForecast" ) );
 			form.InputControls.Single( c => c.Name == "inputstring" ).Value = "fairbanks, ak";
 
-			using ( var response = form.Submit() ) {
+			using var response = form.Submit();
 
-				if ( response.ResponseType == WebResponseType.Html ) {
-					var scraper = new WeatherScraper( ( ( IHtmlWebResponse )response ).Html );
+			Assert.Equal( WebResponseType.Html, response.ResponseType );
 
-					var conditions = scraper.GetConditions();
+			var scraper = new WeatherScraper( ( ( IHtmlWebResponse )response ).Html );
 
-					var temperature = scraper.GetTemperature();
-				}
-			}
+			var conditions = scraper.GetConditions();
+
+			var temperature = scraper.GetTemperature();
 		}
 
 		[Fact( Explicit = true, Skip = "A bunch of sample form/control code without any tests" )]
