@@ -121,6 +121,12 @@
   <data name="accounts_craigslist_org_login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\NScrape.Test\TestData\accounts.craigslist.org login.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="ca_gov_contractor_license_lookup_results" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\ca.gov contractor license lookup results.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ca_gov_contractor_lookup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\ca.gov contractor lookup.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="chicago_craigslist_org" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\NScrape.Test\TestData\chicago.craigslist.org.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
@@ -129,5 +135,11 @@
   </data>
   <data name="quackit_com_html_codes_comment_box_code" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\NScrape.Test\TestData\quackit.com html codes comment_box_code.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="weather_gov" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\weather.gov.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="weather_gov_honolulu_weather" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\weather.gov honolulu weather.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

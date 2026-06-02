@@ -60,32 +60,6 @@ namespace NScrape.Test.Forms {
 			}
 		}
 
-		private class WeatherScraper : Scraper {
-			public WeatherScraper( string html ) : base( html ) {
-			}
-
-			public string GetConditions() {
-				var node = HtmlDocument.DocumentNode.Descendants().SingleOrDefault( n => n.Attributes.Contains( "class" ) && n.Attributes["class"].Value == "myforecast-current" );
-
-				if ( node != null ) {
-					return node.InnerText;
-				}
-
-				throw new ScrapeException( "Could not scrape conditions.", Html );
-			}
-
-			public string GetTemperature() {
-				var node = HtmlDocument.DocumentNode.Descendants().SingleOrDefault( n => n.Attributes.Contains( "class" ) && n.Attributes["class"].Value == "myforecast-current-lrg" );
-
-				if ( node != null ) {
-					return node.InnerText.Replace( "&deg;", "°" );
-				}
-
-				throw new ScrapeException( "Could not scrape temperature.", Html );
-			}
-		}
-
-
 
 		[Fact( Explicit = true )]
 		public void MultipleFormControlsTest() {
@@ -120,56 +94,54 @@ namespace NScrape.Test.Forms {
 
 			form.InputControls.Single( c => c.Name == "submitbutton" && c.Value == "cancel" ).Disabled = true;
 
-			using ( var response = form.Submit() ) {
+			using var response = form.Submit();
 
-				if ( response.ResponseType == WebResponseType.Html ) {
-					var scraper = new MultipleControlsScraper( ( ( IHtmlWebResponse )response ).Html );
+			Assert.Equal( WebResponseType.Html, response.ResponseType );
 
-					Assert.Equal( "theUser", scraper.GetUserName() );
+			var scraper = new MultipleControlsScraper( ( ( IHtmlWebResponse )response ).Html );
 
-					Assert.Equal( "123abc", scraper.GetPassword() );
+			Assert.Equal( "theUser", scraper.GetUserName() );
 
-					Assert.Equal( "no comment", scraper.GetComments() );
+			Assert.Equal( "123abc", scraper.GetPassword() );
 
-					Assert.Equal( @"c:\directory\file", scraper.GetHiddenField() );
+			Assert.Equal( "no comment", scraper.GetComments() );
 
-					// Should find our checkbox, but the site incorrectly requires the url encoding in the form
-					// submission to be uppercase. The url encoding is supposed to be case-insensitive (ours is done by
-					// .Net and is lowercase). 
-					var scrapedCheckboxes = scraper.GetCheckboxes();
-					Assert.Empty( scrapedCheckboxes );
+			Assert.Equal( @"c:\directory\file", scraper.GetHiddenField() );
 
-					Assert.Equal( "rd3", scraper.GetRadioButton() );
+			// Should find our checkbox, but the site incorrectly requires the url encoding in the form
+			// submission to be uppercase. The url encoding is supposed to be case-insensitive (ours is done by
+			// .Net and is lowercase). 
+			var scrapedCheckboxes = scraper.GetCheckboxes();
+			Assert.Empty( scrapedCheckboxes );
 
-					// Should find our multi selections, but the site incorrectly requires the url encoding in the form
-					// submission to be uppercase. The url encoding is supposed to be case-insensitive (ours is done by
-					// .Net and is lowercase). 
-					var scrapedSelections = scraper.GetMultiSelect();
-					Assert.Empty( scrapedSelections );
+			Assert.Equal( "rd3", scraper.GetRadioButton() );
 
-					Assert.Equal( "dd5", scraper.GetDropDown() );
-				}
-			}
+			// Should find our multi selections, but the site incorrectly requires the url encoding in the form
+			// submission to be uppercase. The url encoding is supposed to be case-insensitive (ours is done by
+			// .Net and is lowercase). 
+			var scrapedSelections = scraper.GetMultiSelect();
+			Assert.Empty( scrapedSelections );
+
+			Assert.Equal( "dd5", scraper.GetDropDown() );
 		}
 
 		[Fact( Explicit = true, Skip = "Site has changed to dynamically generate the values to be scraped" )]
-		public void ScrapeTest() {
+		public void WeatherScrapeTest() {
 			var webClient = new WebClient();
 
 			var form = new BasicHtmlForm( webClient );
 			form.Load( new Uri( "http://www.weather.gov/" ), new KeyValuePair<string, string>( "name", "getForecast" ) );
 			form.InputControls.Single( c => c.Name == "inputstring" ).Value = "fairbanks, ak";
 
-			using ( var response = form.Submit() ) {
+			using var response = form.Submit();
 
-				if ( response.ResponseType == WebResponseType.Html ) {
-					var scraper = new WeatherScraper( ( ( IHtmlWebResponse )response ).Html );
+			Assert.Equal( WebResponseType.Html, response.ResponseType );
 
-					var conditions = scraper.GetConditions();
+			var scraper = new WeatherScraper( ( ( IHtmlWebResponse )response ).Html );
 
-					var temperature = scraper.GetTemperature();
-				}
-			}
+			var conditions = scraper.GetConditions();
+
+			var temperature = scraper.GetTemperature();
 		}
 
 		[Fact( Explicit = true, Skip = "A bunch of sample form/control code without any tests" )]
@@ -232,8 +204,9 @@ namespace NScrape.Test.Forms {
 			form.Load( new Uri( "https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx" ), new KeyValuePair<string, string>( "id", "ctl00" ) );
 			form.InputControls.Single( c => c.Name == "ctl00$MainContent$LicNo" ).Value = "999";
 
-			using ( var response = form.Submit( "ctl00$MainContent$Contractor_License_Number_Search" ) ) {
-			}
+			using var response = form.Submit( "ctl00$MainContent$Contractor_License_Number_Search" );
+
+			Assert.Equal( WebResponseType.Html, response.ResponseType );
 		}
 
 		[Fact( Explicit = true, Skip = "Broken, but do we need a second ASPX test anyway?" )]
@@ -244,8 +217,9 @@ namespace NScrape.Test.Forms {
 			form.Load( new Uri( "http://www.ncsc.org/information-and-resources/browse-by-state/state-court-websites.aspx" ), new KeyValuePair<string, string>( "name", "ctl01" ) );
 			form.InputControls.Single( c => c.Name == "header_0$ctl02$txtSearch" ).Value = "fubar";
 
-			using ( var response = form.Submit( "header_0$ctl02$btnSearch" ) ) {
-			}
+			using var response = form.Submit( "header_0$ctl02$btnSearch" );
+
+			Assert.Equal( WebResponseType.Html, response.ResponseType );
 		}
 	}
 }
