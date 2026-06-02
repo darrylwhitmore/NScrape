@@ -1,5 +1,4 @@
 using System;
-using System.Drawing;
 using System.IO;
 using System.Net;
 using NScrape.Responses;
@@ -11,18 +10,10 @@ namespace NScrape.Interfaces;
 /// </summary>
 /// <remarks>
 /// This interface extends the <see cref="NScrape.Interfaces.IStreamWebResponse"/> interface to include functionality specific to image-based web responses.
-/// Implementations of this interface should provide access to the image data as both a <see cref="System.Drawing.Bitmap"/> and a <see cref="System.IO.Stream"/>.
+/// Implementations of this interface should provide access to the image data as a <see cref="System.IO.Stream"/>.
 /// </remarks>
 /// <seealso cref="NScrape.Interfaces.IStreamWebResponse"/>
 public interface IImageWebResponse : IStreamWebResponse {
-	/// <summary>
-	/// Gets the image.
-	/// </summary>
-	/// <remarks>
-	/// Deprecated; please use <see cref="GetImageStream()"/> instead.
-	/// </remarks>
-	Bitmap Image { get; }
-
 	/// <summary>
 	/// Gets the image stream.
 	/// </summary>

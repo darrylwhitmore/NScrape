@@ -205,28 +205,7 @@ namespace NScrape.Test {
 		}
 
 		[Fact( Explicit = true )]
-		public void ImageWebResponseTestBitmap() {
-			var webClient = new WebClient();
-
-			var uri = new Uri( "https://cpb-us-e1.wpmucdn.com/sites.psu.edu/dist/3/29639/files/2015/10/cat.jpg" );
-
-			using ( var response = webClient.SendRequest( uri ) ) {
-				Assert.NotNull( response );
-				Assert.True( response.Success );
-				Assert.Equal( WebResponseType.Image, response.ResponseType );
-				Assert.Equal( uri, response.ResponseUrl );
-
-				var imageResponse = response as IImageWebResponse;
-				Assert.NotNull( imageResponse );
-
-				Assert.NotNull( imageResponse.Image );
-
-				//imageResponse.Image.Save( "catViaBitmap.jpg" );
-			}
-		}
-
-		[Fact( Explicit = true )]
-		public void ImageWebResponseTestStream() {
+		public void ImageWebResponseTest() {
 			var webClient = new WebClient();
 
 			var uri = new Uri( "https://cpb-us-e1.wpmucdn.com/sites.psu.edu/dist/3/29639/files/2015/10/cat.jpg" );
