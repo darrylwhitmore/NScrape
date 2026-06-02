@@ -80,6 +80,60 @@ namespace NScrape.Test.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///
+        ///&lt;!doctype html&gt;
+        ///&lt;!--[if lt IE 7]&gt; &lt;html class=&quot;no-js ie6 oldie&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
+        ///&lt;!--[if IE 7]&gt;    &lt;html class=&quot;no-js ie7 oldie&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
+        ///&lt;!--[if IE 8]&gt;    &lt;html class=&quot;no-js ie8 oldie&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
+        ///&lt;!--[if IE 9]&gt;    &lt;html class=&quot;no-js ie9 oldie&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
+        ///&lt;!--[if (gt IE 9)]&gt;&lt;!--&gt;
+        ///&lt;html class=&quot;no-js&quot; lang=&quot;en&quot;&gt;
+        ///&lt;!--&lt;![endif]--&gt;
+        ///&lt;head&gt;
+        ///    &lt;!--
+        ///California State Template
+        ///Version 5.0.8
+        /// 
+        ///Based on Twitter Bootstrap
+        ///--&gt;
+        ///    &lt;meta charset=&quot;utf-8&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ca_gov_contractor_license_lookup_results {
+            get {
+                return ResourceManager.GetString("ca_gov_contractor_license_lookup_results", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///
+        ///&lt;!doctype html&gt;
+        ///&lt;!--[if lt IE 7]&gt; &lt;html class=&quot;no-js ie6 oldie&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
+        ///&lt;!--[if IE 7]&gt;    &lt;html class=&quot;no-js ie7 oldie&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
+        ///&lt;!--[if IE 8]&gt;    &lt;html class=&quot;no-js ie8 oldie&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
+        ///&lt;!--[if IE 9]&gt;    &lt;html class=&quot;no-js ie9 oldie&quot; lang=&quot;en&quot;&gt; &lt;![endif]--&gt;
+        ///&lt;!--[if (gt IE 9)]&gt;&lt;!--&gt;
+        ///&lt;html class=&quot;no-js&quot; lang=&quot;en&quot;&gt;
+        ///&lt;!--&lt;![endif]--&gt;
+        ///&lt;head&gt;
+        ///    &lt;!--
+        ///California State Template
+        ///Version 5.0.8
+        /// 
+        ///Based on Twitter Bootstrap
+        ///--&gt;
+        ///    &lt;meta charset=&quot;utf-8&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ca_gov_contractor_lookup {
+            get {
+                return ResourceManager.GetString("ca_gov_contractor_lookup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
         ///&lt;html class=&quot;no-js&quot;&gt;
         ///&lt;head&gt;
