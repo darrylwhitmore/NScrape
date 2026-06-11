@@ -15,19 +15,33 @@ namespace NScrape {
 		/// </summary>
 		static WebResponseFactory() {
 			SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, IWebResponse>> {
+				{ "application/atom+xml", CreateXmlResponse },
+				{ "application/gzip", CreateBinaryResponse },
 				{ "application/javascript", CreateJavaScriptResponse },
 				{ "application/json", CreateJsonResponse },
+				{ "application/ld+json", CreateJsonResponse },
+				{ "application/msword", CreateBinaryResponse },
 				{ "application/octet-stream", CreateBinaryResponse },
 				{ "application/pdf", CreateBinaryResponse },
+				{ "application/rss+xml", CreateXmlResponse },
+				{ "application/vnd.ms-excel", CreateBinaryResponse },
+				{ "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", CreateBinaryResponse },
+				{ "application/vnd.openxmlformats-officedocument.wordprocessingml.document", CreateBinaryResponse },
 				{ "application/x-dosexec", CreateBinaryResponse },
 				{ "application/x-javascript", CreateJavaScriptResponse },
 				{ "application/x-msdos-program", CreateBinaryResponse },
+				{ "application/x-zip-compressed", CreateBinaryResponse },
+				{ "application/xhtml+xml", CreateHtmlResponse },
 				{ "application/xml", CreateXmlResponse },
+				{ "application/zip", CreateBinaryResponse },
+				{ "audio/", CreateBinaryResponse },
+				{ "font/", CreateBinaryResponse },
 				{ "image/", CreateBinaryResponse },
 				{ "text/html", CreateHtmlResponse },
 				{ "text/javascript", CreateJavaScriptResponse },
 				{ "text/plain", CreatePlainTextResponse },
-				{ "text/xml", CreateXmlResponse }
+				{ "text/xml", CreateXmlResponse },
+				{ "video/", CreateBinaryResponse },
 			};
 		}
 
