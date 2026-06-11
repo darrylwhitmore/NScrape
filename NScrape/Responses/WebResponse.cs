@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 using NScrape.Interfaces;
 
 namespace NScrape.Responses {
@@ -25,51 +24,26 @@ namespace NScrape.Responses {
 		}
 
 		/// <summary>
-		/// Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
-		/// </summary>
-		~WebResponse() {
-			Dispose( false );
-		}
-
-		/// <summary>
-		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+		/// Performs application-defined tasks associated with freeing, releasing, or resetting resources.
 		/// </summary>
 		/// <filterpriority>2</filterpriority>
-		[MethodImpl( MethodImplOptions.Synchronized )]
 		public void Dispose() {
-			Dispose( true );
-			GC.SuppressFinalize( this );
-		}
-
-		private void Dispose( bool isDisposing ) {
 			if ( isDisposed ) {
 				return;
 			}
 
-			if ( isDisposing ) {
-				DisposeManagedRessources();
-			}
-
-			DisposeUnmanagedRessources();
+			DisposeResources();
 			isDisposed = true;
 		}
 
 		/// <summary>
-		/// Handles disposal of managed resources.
+		/// Handles disposal of resources.
 		/// </summary>
 		/// <remarks>
-		/// Inheriting classes owning managed resources should override this method and use it to dispose of them.
+		/// Inheriting classes owning disposable resources (such as an underlying <see cref="System.Net.HttpWebResponse"/>)
+		/// should override this method and use it to dispose of them.
 		/// </remarks>
-		protected virtual void DisposeManagedRessources() {
-		}
-
-		/// <summary>
-		/// Handles disposal of unmanaged resources.
-		/// </summary>
-		/// <remarks>
-		/// Inheriting classes owning unmanaged resources should override this method and use it to dispose of them.
-		/// </remarks>
-		protected virtual void DisposeUnmanagedRessources() {
+		protected virtual void DisposeResources() {
 		}
 
 		/// <summary>

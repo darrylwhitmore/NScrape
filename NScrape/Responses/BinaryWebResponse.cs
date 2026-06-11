@@ -38,13 +38,13 @@ namespace NScrape.Responses {
 	    }
 		
 	    /// <summary>
-	    /// Handles disposal of managed resources.
+	    /// Handles disposal of resources.
 	    /// </summary>
 	    /// <remarks>
-	    /// Inheriting classes owning managed resources should override this method and use it to dispose of them.
+	    /// Inheriting classes owning disposable resources should override this method and use it to dispose of them.
 	    /// </remarks>
-	    protected override void DisposeManagedRessources() {
-		    base.DisposeManagedRessources();
+	    protected override void DisposeResources() {
+		    base.DisposeResources();
 
 		    httpWebResponse?.Dispose();
 	    }
