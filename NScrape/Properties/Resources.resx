@@ -144,9 +144,6 @@
   <data name="UnexpectedHtmlPage" xml:space="preserve">
     <value>An HTML page was returned unexpectedly.</value>
   </data>
-  <data name="UnexpectedImage" xml:space="preserve">
-    <value>An image was returned unexpectedly.</value>
-  </data>
   <data name="UnexpectedPlainText" xml:space="preserve">
     <value>Plain text was returned unexpectedly.</value>
   </data>

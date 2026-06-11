@@ -19,16 +19,6 @@ namespace NScrape {
 			return ValidateResponse( response, WebResponseType.Html, message ) as IHtmlWebResponse;
         }
 
-        /// <summary>
-		/// Validates a <see cref="IWebResponse"/> to be of type <see cref="WebResponseType.Image"/>.
-        /// </summary>
-		/// <param name="response">The web response to be validated.</param>
-		/// <param name="message">The error message to be used to generate an exception if the validation fails.</param>
-		/// <returns>The web response cast as an <see cref="IImageWebResponse"/>.</returns>
-		public static IImageWebResponse ValidateImageResponse( IWebResponse response, string message ) {
-			return ValidateResponse( response, WebResponseType.Image, message ) as IImageWebResponse;
-        }
-
 		/// <summary>
 		/// Validates a <see cref="IWebResponse"/> to be of type <see cref="WebResponseType.JavaScript"/>.
 		/// </summary>

@@ -14,11 +14,6 @@
 		Html,
 
 		/// <summary>
-		/// An image response.
-		/// </summary>
-		Image,
-
-		/// <summary>
 		/// A JavaScript response.
 		/// </summary>
 		JavaScript,

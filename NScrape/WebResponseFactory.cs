@@ -23,7 +23,7 @@ namespace NScrape {
 				{ "application/x-javascript", CreateJavaScriptResponse },
 				{ "application/x-msdos-program", CreateBinaryResponse },
 				{ "application/xml", CreateXmlResponse },
-				{ "image/", CreateImageResponse },
+				{ "image/", CreateBinaryResponse },
 				{ "text/html", CreateHtmlResponse },
 				{ "text/javascript", CreateJavaScriptResponse },
 				{ "text/plain", CreatePlainTextResponse },
@@ -57,19 +57,6 @@ namespace NScrape {
 		/// </returns>
 		public static IWebResponse CreateHtmlResponse( HttpWebResponse httpWebResponse ) {
 			return new HtmlWebResponse( true, httpWebResponse );
-		}
-
-		/// <summary>
-		/// Creates a <see cref="IImageWebResponse"/>.
-		/// </summary>
-		/// <param name="httpWebResponse">
-		/// The original <see cref="HttpWebResponse"/>.
-		/// </param>
-		/// <returns>
-		/// A new <see cref="IImageWebResponse"/>.
-		/// </returns>
-		public static IWebResponse CreateImageResponse( HttpWebResponse httpWebResponse ) {
-			return new ImageWebResponse( true, httpWebResponse );
 		}
 
 		/// <summary>

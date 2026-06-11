@@ -213,16 +213,16 @@ namespace NScrape.Test {
 			using ( var response = webClient.SendRequest( uri ) ) {
 				Assert.NotNull( response );
 				Assert.True( response.Success );
-				Assert.Equal( WebResponseType.Image, response.ResponseType );
+				Assert.Equal( WebResponseType.Binary, response.ResponseType );
 				Assert.Equal( uri, response.ResponseUrl );
 
-				var imageResponse = response as IImageWebResponse;
-				Assert.NotNull( imageResponse );
-				Assert.True( imageResponse.ContentLength > 0 );
+				var binaryResponse = response as IBinaryWebResponse;
+				Assert.NotNull( binaryResponse );
+				Assert.True( binaryResponse.ContentLength > 0 );
 
 				byte[] imageBytes;
 
-				var s = imageResponse.GetImageStream();
+				var s = binaryResponse.GetStream();
 				Assert.NotNull( s );
 
 				using ( var ms = new MemoryStream() ) {
@@ -255,7 +255,7 @@ namespace NScrape.Test {
 
 				byte[] data;
 
-				var s = binaryResponse.GetResponseStream();
+				var s = binaryResponse.GetStream();
 				Assert.NotNull( s );
 
 				using ( var ms = new MemoryStream() ) {

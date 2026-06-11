@@ -23,10 +23,6 @@ namespace NScrape {
                     exception = new InvalidOperationException( Properties.Resources.UnexpectedHtmlPage );
                     break;
 
-				case WebResponseType.Image:
-                    exception = new InvalidOperationException( Properties.Resources.UnexpectedImage );
-                    break;
-
 				case WebResponseType.Unsupported:
                     var unsupportedResponse = (UnsupportedWebResponse)response;
 
