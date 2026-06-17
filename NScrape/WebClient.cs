@@ -34,12 +34,25 @@ namespace NScrape {
 		    HttpStatusCode.RedirectMethod		// 303
 	    };
 		private readonly CookieContainer cookieJar = new CookieContainer();
+		private readonly IWebResponseFactory webResponseFactory;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WebClient"/> class.
-        /// </summary>
-		public WebClient() {
-	        // The request was aborted: Could not create SSL/TLS secure channel.
+		/// <summary>
+		/// Initializes a new instance of the <see cref="NScrape.WebClient"/> class 
+		/// using a default instance of <see cref="NScrape.WebResponseFactory"/>.
+		/// </summary>
+		public WebClient() : this( new WebResponseFactory() ) {
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="WebClient"/> class with the specified web response factory.
+		/// </summary>
+		/// <param name="webResponseFactory">
+		/// An implementation of the <see cref="IWebResponseFactory"/> interface used to create web responses.
+		/// </param>
+		public WebClient( IWebResponseFactory webResponseFactory ) {
+			this.webResponseFactory = webResponseFactory;
+			
+			// The request was aborted: Could not create SSL/TLS secure channel.
 	        // https://github.com/google/google-api-dotnet-client/issues/911
 			//
 			// The request was aborted: Could not create SSL/TLS secure channel
@@ -343,7 +356,7 @@ namespace NScrape {
                     }
 					else {
 						// We have a non-redirected response.
-						webResponse = WebResponseFactory.CreateResponse( httpWebResponse );
+						webResponse = webResponseFactory.CreateResponse( httpWebResponse );
 
 						if ( webResponse.ResponseType == WebResponseType.Html ) {
 							// We have an HTML response, so check for an old school Meta refresh tag
