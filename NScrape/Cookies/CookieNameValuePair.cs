@@ -1,16 +1,16 @@
-﻿namespace NScrape.Cookies {
-	internal class CookieNameValuePair {
+﻿namespace NScrape.Cookies;
 
-		public CookieNameValuePair( string name, string value = "" ) {
-			Name = name;
-			Value = value;
-		}
+internal class CookieNameValuePair {
 
-		public string Name { get; }
-		public string Value { get; }
+	public CookieNameValuePair( string name, string value = "" ) {
+		Name = name;
+		Value = value;
+	}
 
-		public override string ToString() {
-			return $"{Name}={Value}";
-		}
+	public string Name { get; }
+	public string Value { get; }
+
+	public override string ToString() {
+		return $"{Name}={Value}";
 	}
 }

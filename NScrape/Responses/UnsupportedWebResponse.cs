@@ -1,26 +1,26 @@
 using System;
 using NScrape.Interfaces;
 
-namespace NScrape.Responses {
+namespace NScrape.Responses;
+
+/// <summary>
+/// Represents a web response for a request that returned unsupported content.
+/// </summary>
+public class UnsupportedWebResponse : WebResponse, IUnsupportedWebResponse {
+	private readonly string contentType;
+
 	/// <summary>
-	/// Represents a web response for a request that returned unsupported content.
+	/// Initializes a new instance of the <see cref="UnsupportedWebResponse"/> class.
 	/// </summary>
-    public class UnsupportedWebResponse : WebResponse, IUnsupportedWebResponse {
-        private readonly string contentType;
+	/// <param name="responseUrl">The URL of the response.</param>
+	/// <param name="contentType">Contains the <b>MIME</b> content type.</param>
+	public UnsupportedWebResponse( Uri responseUrl, string contentType )
+		: base( false, responseUrl, WebResponseType.Unsupported ) {
+		this.contentType = contentType;
+	}
 
-	    /// <summary>
-	    /// Initializes a new instance of the <see cref="UnsupportedWebResponse"/> class.
-	    /// </summary>
-	    /// <param name="responseUrl">The URL of the response.</param>
-	    /// <param name="contentType">Contains the <b>MIME</b> content type.</param>
-	    public UnsupportedWebResponse( Uri responseUrl, string contentType )
-            : base( false, responseUrl, WebResponseType.Unsupported ) {
-            this.contentType = contentType;
-        }
-
-        /// <summary>
-		/// Gets the content type.
-		/// </summary>
-        public string ContentType { get { return contentType; } }
-    }
+	/// <summary>
+	/// Gets the content type.
+	/// </summary>
+	public string ContentType => contentType;
 }
