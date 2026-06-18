@@ -1,5 +1,4 @@
-﻿namespace NScrape.Test {
-	
-	public class WebResponseTests {
-	}
+﻿namespace NScrape.Test;
+
+public class WebResponseTests {
 }
