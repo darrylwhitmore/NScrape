@@ -5,8 +5,6 @@ using NScrape.Interfaces;
 using NScrape.Responses;
 using Xunit;
 
-// TODO: physically delete deprecated NScrape.Test.Common & NScrape.Test.Framework 
-
 namespace NScrape.Test;
 
 [Trait( "Category", "Integration" )]
