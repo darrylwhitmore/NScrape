@@ -89,6 +89,10 @@ public class WebResponseFactory : IWebResponseFactory {
 	/// An implementation of <see cref="IWebResponse"/> that corresponds to the specified <paramref name="httpWebResponse"/>.
 	/// </returns>
 	public IWebResponse CreateResponse( HttpWebResponse httpWebResponse ) {
+		if ( httpWebResponse is null ) {
+			throw new ArgumentNullException( nameof( httpWebResponse ) );
+		}
+
 		if ( !httpWebResponse.Headers.AllKeys.Contains( CommonHeaders.ContentType ) ) {
 			// The response is missing a content type.
 			return new UnsupportedWebResponse( httpWebResponse.ResponseUri, string.Empty );
