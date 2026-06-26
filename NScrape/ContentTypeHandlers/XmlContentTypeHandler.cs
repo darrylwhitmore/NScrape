@@ -36,8 +36,9 @@ public class XmlContentTypeHandler : ContentTypeHandlerBase {
 	/// An <see cref="NScrape.Interfaces.IWebResponse"/> implementation that represents the XML response.
 	/// </returns>
 	/// <remarks>
-	/// This method provides a specialized response type for XML content by wrapping the provided
-	/// <see cref="System.Net.HttpWebResponse"/> in an <see cref="NScrape.Responses.XmlWebResponse"/> instance.
+	/// This method overrides the base implementation to provide a specialized response type for XML content.
+	/// It wraps the provided <see cref="System.Net.HttpWebResponse"/> in an <see cref="NScrape.Responses.XmlWebResponse"/> instance,
+	/// enabling XML-specific processing.
 	/// </remarks>
-	public override IWebResponse CreateResponse( HttpWebResponse httpWebResponse ) => new XmlWebResponse( true, httpWebResponse );
+	protected override IWebResponse CreateResponseCore( HttpWebResponse httpWebResponse ) => new XmlWebResponse( true, httpWebResponse );
 }

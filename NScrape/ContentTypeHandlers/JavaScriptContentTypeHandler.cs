@@ -38,5 +38,5 @@ public class JavaScriptContentTypeHandler : ContentTypeHandlerBase {
 	/// This method is overridden to handle HTTP responses with JavaScript-related content types.
 	/// It ensures that the response is encapsulated in a <see cref="NScrape.Responses.JavaScriptWebResponse"/> object.
 	/// </remarks>
-	public override IWebResponse CreateResponse( HttpWebResponse httpWebResponse ) => new JavaScriptWebResponse( true, httpWebResponse );
+	protected override IWebResponse CreateResponseCore( HttpWebResponse httpWebResponse ) => new JavaScriptWebResponse( true, httpWebResponse );
 }
