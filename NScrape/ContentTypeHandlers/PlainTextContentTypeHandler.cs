@@ -35,7 +35,8 @@ public class PlainTextContentTypeHandler : ContentTypeHandlerBase {
 	/// An instance of <see cref="NScrape.Responses.PlainTextWebResponse"/> that represents the plain text response.
 	/// </returns>
 	/// <remarks>
-	/// This method overrides the base implementation to provide a specific response type for plain text content.
+	/// This method overrides the base implementation in <see cref="NScrape.ContentTypeHandlers.ContentTypeHandlerBase"/>
+	/// to provide a specific response type for plain text content.
 	/// </remarks>
-	public override IWebResponse CreateResponse( HttpWebResponse httpWebResponse ) => new PlainTextWebResponse( true, httpWebResponse );
+	protected override IWebResponse CreateResponseCore( HttpWebResponse httpWebResponse ) => new PlainTextWebResponse( true, httpWebResponse );
 }

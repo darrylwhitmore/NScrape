@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using NScrape.Interfaces;
 
 namespace NScrape.ContentTypeHandlers;
@@ -35,15 +36,35 @@ public abstract class ContentTypeHandlerBase : IContentTypeHandler {
 	/// prefix during initialization.
 	/// </remarks>
 	public string ContentTypePrefix { get; }
-		
+
 	/// <summary>
-	/// Creates an <see cref="IWebResponse"/> instance based on the provided <see cref="HttpWebResponse"/>.
+	/// Creates an <see cref="NScrape.Interfaces.IWebResponse"/> instance based on the provided 
+	/// <see cref="System.Net.HttpWebResponse"/>.
+	/// </summary>
+	/// <param name="httpWebResponse">The HTTP web response to process.</param>
+	/// <returns>An instance of <see cref="NScrape.Interfaces.IWebResponse"/> representing the processed response.</returns>
+	/// <exception cref="System.ArgumentNullException">
+	/// Thrown when <paramref name="httpWebResponse"/> is <c>null</c>.
+	/// </exception>
+	/// <remarks>
+	/// This method delegates the actual response creation to the <see cref="CreateResponseCore"/> method, 
+	/// which must be implemented by derived classes.
+	/// </remarks>
+	public IWebResponse CreateResponse( HttpWebResponse httpWebResponse ) {
+		ArgumentNullException.ThrowIfNull( httpWebResponse );
+
+		return CreateResponseCore( httpWebResponse );
+	}
+
+	/// <summary>
+	/// When overridden in a derived class, creates an <see cref="IWebResponse"/> instance 
+	/// based on the provided <see cref="HttpWebResponse"/>.
 	/// </summary>
 	/// <param name="httpWebResponse">The HTTP web response to be processed.</param>
 	/// <returns>An <see cref="IWebResponse"/> instance representing the processed response.</returns>
 	/// <remarks>
-	/// Derived classes must implement this method to provide specific handling logic for the content type
-	/// associated with the handler.
+	/// This method must be implemented by derived classes to define specific handling logic 
+	/// for the content type associated with the handler.
 	/// </remarks>
-	public abstract IWebResponse CreateResponse( HttpWebResponse httpWebResponse );
+	protected abstract IWebResponse CreateResponseCore( HttpWebResponse httpWebResponse );
 }

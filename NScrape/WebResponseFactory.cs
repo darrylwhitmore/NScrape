@@ -89,6 +89,8 @@ public class WebResponseFactory : IWebResponseFactory {
 	/// An implementation of <see cref="IWebResponse"/> that corresponds to the specified <paramref name="httpWebResponse"/>.
 	/// </returns>
 	public IWebResponse CreateResponse( HttpWebResponse httpWebResponse ) {
+		ArgumentNullException.ThrowIfNull( httpWebResponse );
+
 		if ( !httpWebResponse.Headers.AllKeys.Contains( CommonHeaders.ContentType ) ) {
 			// The response is missing a content type.
 			return new UnsupportedWebResponse( httpWebResponse.ResponseUri, string.Empty );
@@ -103,8 +105,10 @@ public class WebResponseFactory : IWebResponseFactory {
 
 		var key = handlers.Keys.SingleOrDefault( k => contentType.StartsWith( k, StringComparison.OrdinalIgnoreCase ) );
 
-		return key != null
-			? handlers[key].CreateResponse( httpWebResponse )
-			: new UnsupportedWebResponse( httpWebResponse.ResponseUri, contentType );
+		if ( key == null ) {
+			return new UnsupportedWebResponse( httpWebResponse.ResponseUri, contentType );
+		}
+		
+		return handlers[key].CreateResponse( httpWebResponse );
 	}
 }

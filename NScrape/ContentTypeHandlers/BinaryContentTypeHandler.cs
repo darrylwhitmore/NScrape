@@ -35,7 +35,8 @@ public class BinaryContentTypeHandler : ContentTypeHandlerBase {
 	/// An instance of <see cref="NScrape.Responses.BinaryWebResponse"/> representing the processed response.
 	/// </returns>
 	/// <remarks>
-	/// This method overrides the base implementation to handle binary content types specifically.
+	/// This method overrides the base implementation in <see cref="NScrape.ContentTypeHandlers.ContentTypeHandlerBase"/> 
+	/// to specifically handle binary content types.
 	/// </remarks>
-	public override IWebResponse CreateResponse( HttpWebResponse httpWebResponse ) => new BinaryWebResponse( true, httpWebResponse );
+	protected override IWebResponse CreateResponseCore( HttpWebResponse httpWebResponse ) => new BinaryWebResponse( true, httpWebResponse );
 }

@@ -36,8 +36,9 @@ public class HtmlContentTypeHandler : ContentTypeHandlerBase {
 	/// An instance of <see cref="NScrape.Interfaces.IWebResponse" /> representing the HTML response.
 	/// </returns>
 	/// <remarks>
-	/// This method processes the given <see cref="System.Net.HttpWebResponse" /> and wraps it in an
+	/// This method overrides <see cref="NScrape.ContentTypeHandlers.ContentTypeHandlerBase.CreateResponseCore" />.
+	/// It processes the given <see cref="System.Net.HttpWebResponse" /> and wraps it in an
 	/// <see cref="NScrape.Responses.HtmlWebResponse" /> object, indicating whether the response was successful.
 	/// </remarks>
-	public override IWebResponse CreateResponse( HttpWebResponse httpWebResponse ) => new HtmlWebResponse( true, httpWebResponse );
+	protected override IWebResponse CreateResponseCore( HttpWebResponse httpWebResponse ) => new HtmlWebResponse( true, httpWebResponse );
 }

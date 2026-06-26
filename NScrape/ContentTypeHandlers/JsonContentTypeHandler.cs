@@ -28,15 +28,15 @@ public class JsonContentTypeHandler : ContentTypeHandlerBase {
 	}
 	
 	/// <summary>
-	/// Creates a new instance of <see cref="NScrape.Responses.JsonWebResponse"/> based on the provided HTTP response.
+	/// Creates a response object for handling JSON content.
 	/// </summary>
-	/// <param name="httpWebResponse">The HTTP response to process.</param>
+	/// <param name="httpWebResponse">The HTTP web response to be wrapped in a JSON response object.</param>
 	/// <returns>
-	/// An instance of <see cref="NScrape.Responses.JsonWebResponse"/> representing the processed response.
+	/// An instance of <see cref="NScrape.Responses.JsonWebResponse"/> that represents the JSON response.
 	/// </returns>
 	/// <remarks>
-	/// This method is overridden to handle HTTP responses with JSON-related content types.
-	/// It ensures that the response is encapsulated in a <see cref="NScrape.Responses.JsonWebResponse"/> object.
+	/// This method overrides the base implementation in <see cref="NScrape.ContentTypeHandlers.ContentTypeHandlerBase"/>
+	/// to provide a specific response type for JSON content.
 	/// </remarks>
-	public override IWebResponse CreateResponse( HttpWebResponse httpWebResponse ) => new JsonWebResponse( true, httpWebResponse );
+	protected override IWebResponse CreateResponseCore( HttpWebResponse httpWebResponse ) => new JsonWebResponse( true, httpWebResponse );
 }
