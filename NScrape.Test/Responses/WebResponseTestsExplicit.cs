@@ -5,7 +5,7 @@ using NScrape.Interfaces;
 using NScrape.Responses;
 using Xunit;
 
-namespace NScrape.Test;
+namespace NScrape.Test.Responses;
 
 [Trait( "Category", "Integration" )]
 public class WebResponseTestsExplicit {
@@ -203,7 +203,7 @@ public class WebResponseTestsExplicit {
 	}
 
 	[Fact( Explicit = true )]
-	public void ImageWebResponseTest() {
+	public void BinaryWebResponseForImageFileTest() {
 		var webClient = new WebClient();
 
 		var uri = new Uri( "https://cpb-us-e1.wpmucdn.com/sites.psu.edu/dist/3/29639/files/2015/10/cat.jpg" );
@@ -236,7 +236,7 @@ public class WebResponseTestsExplicit {
 	}
 
 	[Fact( Explicit = true )]
-	public void BinaryWebResponseTest() {
+	public void BinaryWebResponseForBinaryFileTest() {
 		var webClient = new WebClient();
 
 		var uri = new Uri( "https://hil-speed.hetzner.com/100MB.bin" );
