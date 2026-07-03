@@ -44,6 +44,18 @@
     <seealso cref="AddingCookie"/>
   </CookieJar>
 
+  <Proxy>
+    <summary>
+      Gets or sets the proxy server to use for requests.
+    </summary>
+    <value>
+      An implementation of the <see cref="System.Net.IWebProxy"/> interface that specifies the proxy settings.
+    </value>    
+    <remarks>
+      Use this property to specify a proxy server for the <see cref="WebClient"/> to use when sending requests.
+    </remarks>
+  </Proxy>
+
   <SendRequest_Uri>
     <summary>
       Sends a GET request.

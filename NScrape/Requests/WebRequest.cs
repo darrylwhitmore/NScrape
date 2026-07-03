@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
+using System.Net;
 using NScrape.Interfaces;
-using NScrape.Responses;
 
 namespace NScrape.Requests;
 
@@ -57,6 +57,18 @@ public abstract class WebRequest {
 	/// Gets the type of the request.
 	/// </summary>
 	public WebRequestType Type { get; private set; }
+
+	/// <summary>
+	/// Gets or sets the proxy information used for the web request.
+	/// </summary>
+	/// <value>
+	/// An <see cref="IWebProxy"/> instance that specifies the proxy settings for the request.
+	/// </value>
+	/// <remarks>
+	/// Use this property to configure the proxy server through which the web request is sent.
+	/// If no proxy is specified, the request will use the default system proxy settings.
+	/// </remarks>
+	public IWebProxy Proxy { get; set; }
 
 	/// <summary>
 	/// Gets or sets a value indicating whether the request shall attempt to mimic a JQuery request.

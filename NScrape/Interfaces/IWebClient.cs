@@ -21,8 +21,12 @@ public interface IWebClient {
 	/// <include file='IWebClient.xml' path='/IWebClient/CookieJar/*'/>
 	CookieContainer CookieJar { get; }
 
+	/// <include file='IWebClient.xml' path='/IWebClient/Proxy/*'/>
+	IWebProxy Proxy { get; set; }
+
 	/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri/*'/>
 	IWebResponse SendRequest( Uri destination );
+
 	/// <include file='IWebClient.xml' path='/IWebClient/SendRequest_Uri_bool/*'/>
 	IWebResponse SendRequest( Uri destination, bool autoRedirect );
 

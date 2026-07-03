@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -169,6 +169,9 @@ public class WebClient : IWebClient {
 		ProcessingResponse?.Invoke(this, args);
 	}
 
+	/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/Proxy/*'/>
+	public IWebProxy Proxy { get; set; }
+	
 	/// <include file='Interfaces/IWebClient.xml' path='/IWebClient/SendRequest_Uri/*'/>
 	public IWebResponse SendRequest( Uri destination ) {
 		return SendRequest( new GetWebRequest( destination ) );
@@ -194,6 +197,14 @@ public class WebClient : IWebClient {
 #pragma warning disable SYSLIB0014
 		var httpWebRequest = ( HttpWebRequest )System.Net.WebRequest.Create( webRequest.Destination );
 #pragma warning restore SYSLIB0014
+
+		// A proxy specified in the request, if any, takes precedence over a proxy specified here in the client, if any.
+		if ( webRequest.Proxy != null ) {
+			httpWebRequest.Proxy = webRequest.Proxy;
+		}
+		else if ( Proxy != null ) {
+			httpWebRequest.Proxy = Proxy;
+		}
 
 		httpWebRequest.Method = webRequest.Type.ToString().ToUpperInvariant();
 
