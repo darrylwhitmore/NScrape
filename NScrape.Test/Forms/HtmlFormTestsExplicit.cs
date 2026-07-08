@@ -66,7 +66,7 @@ public class HtmlFormTestsExplicit {
 		var webClient = new WebClient();
 
 		var form = new BasicHtmlForm( webClient );
-		form.Load( new Uri( "https://testpages.eviltester.com/pages/forms/html-form/" ), new KeyValuePair<string, string>( "name", "HTMLFormElements" ) );
+		form.Load( new Uri( "https://testpages.eviltester.com/pages/forms/html-form/" ), "name", "HTMLFormElements" );
 		form.InputControls.Single( c => c.Name == "username" ).Value = "theUser";
 
 		form.InputControls.Single( c => c.Name == "password" ).Value = "123abc";
@@ -130,7 +130,7 @@ public class HtmlFormTestsExplicit {
 		var webClient = new WebClient();
 
 		var form = new BasicHtmlForm( webClient );
-		form.Load( new Uri( "http://www.weather.gov/" ), new KeyValuePair<string, string>( "name", "getForecast" ) );
+		form.Load( new Uri( "http://www.weather.gov/" ), "name", "getForecast" );
 		form.InputControls.Single( c => c.Name == "inputstring" ).Value = "fairbanks, ak";
 
 		using var response = form.Submit();
@@ -201,7 +201,7 @@ public class HtmlFormTestsExplicit {
 		var webClient = new WebClient();
 
 		var form = new BasicAspxForm( webClient );
-		form.Load( new Uri( "https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx" ), new KeyValuePair<string, string>( "id", "ctl00" ) );
+		form.Load( new Uri( "https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx" ), "id", "ctl00" );
 		form.InputControls.Single( c => c.Name == "ctl00$MainContent$LicNo" ).Value = "999";
 
 		using var response = form.Submit( "ctl00$MainContent$Contractor_License_Number_Search" );
@@ -214,7 +214,7 @@ public class HtmlFormTestsExplicit {
 		var webClient = new WebClient();
 
 		var form = new BasicAspxForm( webClient );
-		form.Load( new Uri( "http://www.ncsc.org/information-and-resources/browse-by-state/state-court-websites.aspx" ), new KeyValuePair<string, string>( "name", "ctl01" ) );
+		form.Load( new Uri( "http://www.ncsc.org/information-and-resources/browse-by-state/state-court-websites.aspx" ), "name", "ctl01" );
 		form.InputControls.Single( c => c.Name == "header_0$ctl02$txtSearch" ).Value = "fubar";
 
 		using var response = form.Submit( "header_0$ctl02$btnSearch" );

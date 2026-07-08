@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using NScrape.Forms;
@@ -32,7 +32,7 @@ public class HtmlFormTests {
 
 
 		var form = new BasicHtmlForm( webClient );
-		form.Load( new Uri( "http://www.weather.gov/" ), new KeyValuePair<string, string>( "name", "getForecast" ) );
+		form.Load( new Uri( "http://www.weather.gov/" ), "name", "getForecast" );
 		form.InputControls.Single( c => c.Name == "inputstring" ).Value = "honolulu, hi";
 
 		using var response = form.Submit();
@@ -45,7 +45,7 @@ public class HtmlFormTests {
 		Assert.Equal( "Partly Cloudy", conditions );
 
 		var temperature = scraper.GetTemperature();
-		Assert.Equal( "81�F", temperature );
+		Assert.Equal( "81°F", temperature );
 	}
 
 	[Fact]
@@ -68,7 +68,7 @@ public class HtmlFormTests {
 		
 		
 		var form = new BasicAspxForm( webClient );
-		form.Load( new Uri( "https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx" ), new KeyValuePair<string, string>( "id", "ctl00" ) );
+		form.Load( new Uri( "https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx" ), "id", "ctl00" );
 		form.InputControls.Single( c => c.Name == "ctl00$MainContent$LicNo" ).Value = "956855";
 
 		using var response = form.Submit( "ctl00$MainContent$Contractor_License_Number_Search" );

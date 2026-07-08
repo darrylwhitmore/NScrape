@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -48,13 +48,14 @@ public abstract class HtmlForm {
 	/// Loads the form specified by identifying attribute on the page at the specified URL.
 	/// </summary>
 	/// <param name="formUrl">Contains the URL of the page containing the form.</param>
-	/// <param name="identifyingAttribute">Contains the form attribute/value to be used to identify the form to load.</param>
-	public void Load( Uri formUrl, KeyValuePair<string, string> identifyingAttribute ) {
+	/// <param name="attributeName">Contains the form attribute to be used to identify the form to load.</param>
+	/// <param name="attributeValue">Contains the form attribute value to be used to identify the form to load.</param>
+	public void Load( Uri formUrl, string attributeName, string attributeValue ) {
 		FormUrl = formUrl;
 
 		Html = DownloadFormHtml();
 
-		Initialize( identifyingAttribute );
+		Initialize( attributeName, attributeValue );
 	}
 
 	/// <summary>
@@ -79,16 +80,17 @@ public abstract class HtmlForm {
 	/// </summary>
 	/// <param name="formUrl">Contains the URL where the page containing the form resides.</param>
 	/// <param name="formHtml">Contains the HTML text containing the form.</param>
-	/// <param name="identifyingAttribute">Contains the form attribute/value to be used to identify the form to load.</param>
+	/// <param name="attributeName">Contains the form attribute to be used to identify the form to load.</param>
+	/// <param name="attributeValue">Contains the form attribute value to be used to identify the form to load.</param>
 	/// <remarks>
 	/// The form identified by the specified attribute/value in the provided HTML text shall be loaded.
 	/// </remarks>
-	public void Load( Uri formUrl, string formHtml, KeyValuePair<string, string> identifyingAttribute ) {
+	public void Load( Uri formUrl, string formHtml, string attributeName, string attributeValue ) {
 		FormUrl = formUrl;
 
 		Html = formHtml;
 
-		Initialize( identifyingAttribute );
+		Initialize( attributeName, attributeValue );
 	}
 		
 	/// <summary>
@@ -289,13 +291,13 @@ public abstract class HtmlForm {
 		PopulateForm( formDefinitions.ElementAt( formOrdinal ) );
 	}
 
-	private void Initialize( KeyValuePair<string, string> identifyingAttribute ) {
+	private void Initialize( string attributeName, string attributeValue ) {
 		var formDefinitions = HtmlFormDefinition.Parse( Html ).ToList();
 
-		var formDefinition = formDefinitions.FirstOrDefault( d => d.Attributes.ContainsKey( identifyingAttribute.Key ) && d.Attributes[identifyingAttribute.Key] == identifyingAttribute.Value );
+		var formDefinition = formDefinitions.FirstOrDefault( d => d.Attributes.TryGetValue( attributeName, out var value ) && value == attributeValue );
 
 		if ( formDefinition == null ) {
-			throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.InvalidFormId, identifyingAttribute.Key.ToUpperInvariant(), identifyingAttribute.Value ) );
+			throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.InvalidFormId, attributeName.ToUpperInvariant(), attributeValue ) );
 		}
 
 		PopulateForm( formDefinition );
