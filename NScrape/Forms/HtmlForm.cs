@@ -315,15 +315,6 @@ public abstract class HtmlForm {
 	}
 
 	/// <summary>
-	/// Gets or sets a value indicating whether the form submission shall attempt to mimic a JQuery request.
-	/// </summary>
-	/// <remarks>
-	/// If <b>true</b>, the form request shall have the <b>X-Requested-With=XMLHttpRequest</b> header added to the headers collection. If <b>false</b>,
-	/// the header shall be removed if previously added.
-	/// </remarks>
-	protected bool SubmitAsXmlHttpRequest { get; set; }
-
-	/// <summary>
 	/// Submits the form, specifying the request data.
 	/// </summary>
 	/// <param name="requestData">Contains the request data in <b>application/x-www-form-urlencoded</b> format.</param>
@@ -412,10 +403,8 @@ public abstract class HtmlForm {
 			request = new GetWebRequest( builder.Uri, autoRedirect );
 		}
 
-		request.IsXmlHttpRequest = SubmitAsXmlHttpRequest;
-
-		if (FormUrl != null) {
-			request.Headers.Add(CommonHeaders.Referer, FormUrl.ToString());
+		if ( FormUrl != null ) {
+			request.Headers.Add( CommonHeaders.Referer, FormUrl.ToString() );
 		}
 
 		return WebResponseValidator.ValidateResponse( WebClient.SendRequest( request ), validTypes, string.Format( CultureInfo.CurrentCulture, Properties.Resources.UnexpectedResponseOnFormSubmission, request.Destination ) );

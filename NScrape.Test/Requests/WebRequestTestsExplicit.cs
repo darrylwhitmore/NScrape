@@ -31,21 +31,27 @@ public class WebRequestTestsExplicit {
 				Proxy = new WebProxy( candidateProxy )
 			};
 
-			using var response = webClient.SendRequest( getRequest );
+			try {
+				using var response = webClient.SendRequest( getRequest );
 			
-			if ( response.Success ) {
-				Assert.NotNull( response );
-				Assert.True( response.Success );
-				Assert.Equal( WebResponseType.Html, response.ResponseType );
-				Assert.Equal( uri, response.ResponseUrl );
+				if ( response.Success ) {
+					Assert.NotNull( response );
+					Assert.True( response.Success );
+					Assert.Equal( WebResponseType.Html, response.ResponseType );
+					Assert.Equal( uri, response.ResponseUrl );
 
-				var htmlWebResponse = response as IHtmlWebResponse;
-				Assert.NotNull( htmlWebResponse );
+					var htmlWebResponse = response as IHtmlWebResponse;
+					Assert.NotNull( htmlWebResponse );
 
-				Assert.NotNull( htmlWebResponse.Html );
-				Assert.Contains( "A web scraping framework for .NET", htmlWebResponse.Html );
+					Assert.NotNull( htmlWebResponse.Html );
+					Assert.Contains( "A web scraping framework for .NET", htmlWebResponse.Html );
 
-				return;
+					output.WriteLine( $"\tSuccessfully connected using proxy: {candidateProxy}" );
+					return;
+				}
+			}
+			catch ( Exception e ) {
+				output.WriteLine( $"\tProxy {candidateProxy} failed with exception: {e.Message}" );
 			}
 		}
 

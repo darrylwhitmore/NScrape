@@ -27,18 +27,6 @@ public class BinaryWebResponse : WebResponse, IBinaryWebResponse {
 	public long ContentLength => httpWebResponse.ContentLength;
 
 	/// <summary>
-	/// Closes the binary response stream and releases associated resources.
-	/// </summary>
-	/// <remarks>
-	/// This method ensures proper resource management by releasing the underlying stream and connection.
-	/// It is equivalent to disposing of the underlying <see cref="HttpWebResponse"/> object.
-	/// Failure to call this method may result in resource leaks or connection exhaustion.
-	/// </remarks>
-	public void Close() {
-		httpWebResponse?.Dispose();
-	}
-		
-	/// <summary>
 	/// Handles disposal of resources.
 	/// </summary>
 	/// <remarks>
@@ -51,18 +39,19 @@ public class BinaryWebResponse : WebResponse, IBinaryWebResponse {
 	}
 	    
 	/// <summary>
-	/// Gets the stream that is used to read the binary response.
+	/// Retrieves the stream containing the binary data of the web response.
 	/// </summary>
-	/// <returns>A <see cref="Stream"/> containing the binary response.</returns>
+	/// <returns>
+	/// A <see cref="Stream"/> that provides access to the binary data of the response.
+	/// </returns>
 	/// <exception cref="InvalidOperationException">
-	/// Thrown when the method is called on an instance that was not initialized with a valid <see cref="HttpWebResponse"/> object.
+	/// Thrown if the method is invoked on an instance that was not initialized with a valid 
+	/// <see cref="HttpWebResponse"/> object.
 	/// </exception>
 	/// <remarks>
-	/// This method provides access to the binary data stream of the response. 
-	/// It is essential to close the stream after use by calling either <see cref="Stream.Close"/> or <see cref="Close"/> 
-	/// to release the connection for reuse. Failure to do so may lead to connection exhaustion in your application.
+	/// This method allows access to the binary data stream of the response. Be sure to 
+	/// properly dispose of the stream after use to prevent resource leaks and connection exhaustion.
 	/// </remarks>
-	/// <seealso cref="Close"/>
 	public Stream GetStream() {
 		if ( httpWebResponse != null ) {
 			return httpWebResponse.GetResponseStream();

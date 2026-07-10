@@ -9,8 +9,6 @@ namespace NScrape.Requests;
 /// Provides the base implementation for classes which represent web requests.
 /// </summary>
 public abstract class WebRequest {
-	private const string XmlHttpRequestValue = "XMLHttpRequest";
-
 	/// <summary>
 	/// Initializes a new instance of the <see cref="WebRequest"/> class.
 	/// </summary>
@@ -69,33 +67,4 @@ public abstract class WebRequest {
 	/// If no proxy is specified, the request will use the default system proxy settings.
 	/// </remarks>
 	public IWebProxy Proxy { get; set; }
-
-	/// <summary>
-	/// Gets or sets a value indicating whether the request shall attempt to mimic a JQuery request.
-	/// </summary>
-	/// <remarks>
-	/// If <b>true</b>, the <b>X-Requested-With=XMLHttpRequest</b> header shall be added to the headers collection. If <b>false</b>,
-	/// the header shall be removed if previously added.
-	/// </remarks>
-	public bool IsXmlHttpRequest {
-		// For those servers that check, using this header makes us look like a JQuery call:
-		// http://www.web-design-talk.co.uk/197/detect-ajax-requests-using-the-x-requested-with-header-and-xmlhttprequest/
-		get {
-			var value = Headers[CommonHeaders.XRequestedWith];
-
-			return value != null && value == XmlHttpRequestValue;
-		}
-		set {
-			if ( value ) {
-				if ( !IsXmlHttpRequest ) {
-					Headers.Add( CommonHeaders.XRequestedWith, XmlHttpRequestValue );
-				}
-			}
-			else {
-				if ( IsXmlHttpRequest ) {
-					Headers.Remove( CommonHeaders.XRequestedWith );
-				}
-			}
-		}
-	}
 }

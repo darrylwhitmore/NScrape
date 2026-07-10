@@ -1,4 +1,4 @@
-namespace NScrape;
+﻿namespace NScrape;
 
 internal class CommonHeaders {
 	public const string Accept = "Accept";
@@ -14,5 +14,4 @@ internal class CommonHeaders {
 	public const string Referer = "Referer";
 	public const string SetCookie = "Set-Cookie";
 	public const string TransferEncoding = "Transfer-Encoding";
-	public const string XRequestedWith = "X-Requested-With";
 }
