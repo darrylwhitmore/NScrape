@@ -2,34 +2,38 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <AssemblyVersion>0.4.1.0</AssemblyVersion>
-    <FileVersion>0.4.1.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>nscrape.snk</AssemblyOriginatorKeyFile>
     <PackageId>NScrape</PackageId>
-	<title>NScrape Web Scraping Framework</title>
-    <Version>1.0.0.0</Version>
+    <title>NScrape Web Scraping Framework</title>
+    <Version>1.0.0</Version>
     <Authors>Darryl G. Whitmore</Authors>
     <Company>Darryl G. Whitmore</Company>
     <Description>A web scraping framework for .NET</Description>
     <Copyright>2008-2026</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/darrylwhitmore/NScrape/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/darrylwhitmore/NScrape</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/darrylwhitmore/NScrape/master/Assets/NScrape.png</PackageIconUrl>
+    <PackageIcon>NScrape.png</PackageIcon>
     <PackageTags>html scrape scraper scraping crawler crawling htmlagilitypack htmlagility agility</PackageTags>
     <Product>NScrape Web Scraping Framework</Product>
-    <PackageReleaseNotes>Just a small package refresh, notably updating to the release version of System.Drawing.Common.</PackageReleaseNotes>
+    <PackageReleaseNotes>
+      Version 1.0.0 — Breaking changes release. See full release notes at
+      https://github.com/darrylwhitmore/NScrape/releases/tag/v1.0.0
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\NScrape.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\net8.0\NScrape.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\NScrape.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\net8.0\NScrape.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\Assets\NScrape.png" Pack="true" PackagePath="\" />
     <None Remove="nscrape.publickey" />
   </ItemGroup>
 
