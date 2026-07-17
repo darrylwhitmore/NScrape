@@ -1,54 +1,51 @@
 using System;
 using System.Globalization;
 using System.Net;
+using NScrape.Interfaces;
+using NScrape.Responses;
 
-namespace NScrape {
+namespace NScrape;
 
-    internal static class UnexpectedWebResponseGenerator {
+internal static class UnexpectedWebResponseGenerator {
 
-        public static Exception CreateException( string message, WebResponse response ) {
-            Exception exception;
+	public static Exception CreateException( string message, IWebResponse response ) {
+		Exception exception;
 
-            switch ( response.ResponseType ) {
+		switch ( response.ResponseType ) {
 
-				case WebResponseType.Exception:
-                    var exceptionResponse = (ExceptionWebResponse)response;
+			case WebResponseType.Exception:
+				var exceptionResponse = (IExceptionWebResponse)response;
 
-                    exception = exceptionResponse.Exception;
-                    break;
+				exception = exceptionResponse.Exception;
+				break;
 
-				case WebResponseType.Html:
-                    exception = new InvalidOperationException( Properties.Resources.UnexpectedHtmlPage );
-                    break;
+			case WebResponseType.Html:
+				exception = new InvalidOperationException( Properties.Resources.UnexpectedHtmlPage );
+				break;
 
-				case WebResponseType.Image:
-                    exception = new InvalidOperationException( Properties.Resources.UnexpectedImage );
-                    break;
+			case WebResponseType.Unsupported:
+				var unsupportedResponse = (UnsupportedWebResponse)response;
 
-				case WebResponseType.Unsupported:
-                    var unsupportedResponse = (UnsupportedWebResponse)response;
+				exception = new WebException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.UnsupportedResponseContentType, unsupportedResponse.ContentType ) );
+				break;
 
-                    exception = new WebException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.UnsupportedResponseContentType, unsupportedResponse.ContentType ) );
-                    break;
+			case WebResponseType.Redirect:
+				exception = new InvalidOperationException( Properties.Resources.UnexpectedRedirect );
+				break;
 
-				case WebResponseType.Redirect:
-                    exception = new InvalidOperationException( Properties.Resources.UnexpectedRedirect );
-                    break;
+			case WebResponseType.PlainText:
+				exception = new InvalidOperationException( Properties.Resources.UnexpectedPlainText );
+				break;
 
-				case WebResponseType.PlainText:
-                    exception = new InvalidOperationException( Properties.Resources.UnexpectedPlainText );
-                    break;
+			case WebResponseType.Xml:
+				exception = new InvalidOperationException( Properties.Resources.UnexpectedXml );
+				break;
 
-				case WebResponseType.Xml:
-                    exception = new InvalidOperationException( Properties.Resources.UnexpectedXml );
-                    break;
+			default:
+				exception = new WebException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.UnsupportedResponseType, response.ResponseType ) );
+				break;
+		}
 
-                default:
-                    exception = new WebException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.UnsupportedResponseType, response.ResponseType ) );
-                    break;
-            }
-
-            return new WebException( message, exception );
-        }
-    }
+		return new WebException( message, exception );
+	}
 }

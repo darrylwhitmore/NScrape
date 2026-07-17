@@ -6,6 +6,9 @@
 # VS hidden folder
 .vs/
 
+# Claude Code
+.claude/
+
 # Help build folder
 Help/Help/
 

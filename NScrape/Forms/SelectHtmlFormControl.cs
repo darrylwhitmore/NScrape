@@ -4,85 +4,85 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
+using NScrape.RegexUtility;
 
-namespace NScrape.Forms {
+namespace NScrape.Forms;
+
+/// <summary>
+/// Represents an HTML <b>select</b> control.
+/// </summary>
+public class SelectHtmlFormControl : HtmlFormControl {
+
+	internal SelectHtmlFormControl( string html ) {
+		var match = RegexCache.Instance.Regex( RegexLibrary.ParseSelect, RegexLibrary.ParseSelectOptions ).Match( html );
+
+		if ( match.Success ) {
+			AddAttributes( match.Groups[RegexLibrary.ParseSelectAttributesGroup].Value );
+
+			Options = BuildOptionList( match.Groups[RegexLibrary.ParseSelectOptionsGroup].Value );
+		}
+		else {
+			throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.NotASelectHtmlControl, html ) );
+		}
+	}
+
+	private static ReadOnlyCollection<HtmlOption> BuildOptionList( string optionListHtml ) {
+		var options = new List<HtmlOption>();
+
+		var matches = RegexCache.Instance.Regex( RegexLibrary.ParseOptionList, RegexLibrary.ParseOptionListOptions ).Matches( optionListHtml );
+
+		foreach ( Match match in matches ) {
+			options.Add( new HtmlOption( match.Value ) );
+		}
+
+		return new ReadOnlyCollection<HtmlOption>( options );
+	}
 
 	/// <summary>
-	/// Represents an HTML <b>select</b> control.
+	/// Gets the value of the control in <b>application/x-www-form-urlencoded</b> format.
 	/// </summary>
-	public class SelectHtmlFormControl : HtmlFormControl {
+	public override string EncodedData {
+		get {
+			if ( Name.Length > 0 ) {
+				var sb = new StringBuilder();
 
-		internal SelectHtmlFormControl( string html ) {
-			var match = RegexCache.Instance.Regex( RegexLibrary.ParseSelect, RegexLibrary.ParseSelectOptions ).Match( html );
+				foreach ( var option in Options ) {
+					if ( option.Selected ) {
+						if ( sb.Length > 0 ) {
+							sb.Append( "&" );
+						}
 
-			if ( match.Success ) {
-				AddAttributes( match.Groups[RegexLibrary.ParseSelectAttributesGroup].Value );
+						sb.AppendFormat( "{0}=", NScrapeUtility.UrlEncode( Name ) );
 
-				Options = BuildOptionList( match.Groups[RegexLibrary.ParseSelectOptionsGroup].Value );
-			}
-			else {
-				throw new ArgumentException( string.Format( CultureInfo.CurrentCulture, Properties.Resources.NotASelectHtmlControl, html ) );
-			}
-		}
-
-		private static ReadOnlyCollection<HtmlOption> BuildOptionList( string optionListHtml ) {
-			var options = new List<HtmlOption>();
-
-			var matches = RegexCache.Instance.Regex( RegexLibrary.ParseOptionList, RegexLibrary.ParseOptionListOptions ).Matches( optionListHtml );
-
-			foreach ( Match match in matches ) {
-				options.Add( new HtmlOption( match.Value ) );
-			}
-
-			return new ReadOnlyCollection<HtmlOption>( options );
-		}
-
-		/// <summary>
-		/// Gets the value of the control in <b>application/x-www-form-urlencoded</b> format.
-		/// </summary>
-		public override string EncodedData {
-			get {
-				if ( Name.Length > 0 ) {
-					var sb = new StringBuilder();
-
-					foreach ( var option in Options ) {
-						if ( option.Selected ) {
-							if ( sb.Length > 0 ) {
-								sb.Append( "&" );
-							}
-
-							sb.AppendFormat( "{0}=", NScrapeUtility.UrlEncode( Name ) );
-
-							if ( option.Value.Length > 0 ) {
-								sb.Append( NScrapeUtility.UrlEncode( option.Value ) );
-							}
-							else {
-								sb.Append( NScrapeUtility.UrlEncode( option.Option ) );
-							}
+						if ( option.Value.Length > 0 ) {
+							sb.Append( NScrapeUtility.UrlEncode( option.Value ) );
+						}
+						else {
+							sb.Append( NScrapeUtility.UrlEncode( option.Option ) );
 						}
 					}
-
-					return sb.ToString();
 				}
 
-				return string.Empty;
+				return sb.ToString();
 			}
-		}
 
-		/// <summary>
-		/// Unselect all of the control's options.
-		/// </summary>
-		public void UnselectAll() {
-			foreach ( var option in Options ) {
-				if ( option.Selected ) {
-					option.Selected = false;
-				}
-			}
+			return string.Empty;
 		}
-
-		/// <summary>
-		/// Gets the control's options.
-		/// </summary>
-		public ReadOnlyCollection<HtmlOption> Options { get; private set; }
 	}
+
+	/// <summary>
+	/// Unselect all of the control's options.
+	/// </summary>
+	public void UnselectAll() {
+		foreach ( var option in Options ) {
+			if ( option.Selected ) {
+				option.Selected = false;
+			}
+		}
+	}
+
+	/// <summary>
+	/// Gets the control's options.
+	/// </summary>
+	public ReadOnlyCollection<HtmlOption> Options { get; private set; }
 }

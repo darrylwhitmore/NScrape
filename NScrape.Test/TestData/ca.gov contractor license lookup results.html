@@ -1,0 +1,532 @@
+
+
+
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9 oldie" lang="en"> <![endif]-->
+<!--[if (gt IE 9)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+    <!--
+California State Template
+Version 5.0.8
+ 
+Based on Twitter Bootstrap
+-->
+    <meta charset="utf-8" />
+    <!-- TemplateBeginEditable name="doctitle" -->
+    <title>
+	Check A License - License Detail -CSLB 
+</title>
+    <!-- TemplateEndEditable -->
+    <!-- TemplateBeginEditable name="MetaTags" -->
+    <meta name="Author" content="State of California" /><meta name="Description" content="State of California" /><meta name="Keywords" content="California, government" />
+    <!-- TemplateEndEditable -->
+    <!-- head content, for all pages -->
+<!-- Use highest compatibility mode -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True" />
+<!-- for Blackberry, AvantGo -->
+<meta name="MobileOptimized" content="320" />
+<!-- for Windows mobile -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" type="text/css" />
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/css/cagov.core.css" />
+
+<script src="/js/search.js"></script>
+<!--
+Step 3
+Select a color scheme:
+<link rel="stylesheet" href="/css/colorscheme-eureka.css" /><link rel="stylesheet" href="/css/colorscheme-mono.css" /><link rel="stylesheet" href="/css/colorscheme-oceanside.css" /><link rel="stylesheet" href="/css/colorscheme-orangecounty.css" /><link rel="stylesheet" href="/css/colorscheme-pasorobles.css" /><link rel="stylesheet" href="/css/colorscheme-santabarbara.css" /><link rel="stylesheet" href="/css/colorscheme-sacramento.css" /><link rel="stylesheet" href="/css/colorscheme-sierra.css" /><link rel="stylesheet" href="/css/colorscheme-trinity.css" />
+-->
+
+<link rel="stylesheet" href="/css/colorscheme-oceanside.css" />
+
+<!-- selectivizr.com, emulates CSS3 pseudo-classes and attribute selectors in Internet Explorer 6-8 -->
+<!--[if (lt IE 9) & (!IEMobile)]>
+<script src="/js/libs/selectivizr-min.js"></script>
+<![endif]-->
+<!-- Load jQuery from CDN with fallback to local copy -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous"></script>
+<script>
+    //Fall back to local copy if no jquery found
+    if (typeof jQuery == 'undefined') {
+        document.write(unescape("%3Cscript src='/js/libs/jquery.js' type='text/javascript'%3E%3C/script%3E"));
+    }
+</script>
+<!-- Load jQuery migrate from CDN with fallback to local copy -->
+<script src="https://code.jquery.com/jquery-migrate-3.4.0.min.js" integrity="sha256-mBCu5+bVfYzOqpYyK4jm30ZxAZRomuErKEFJFIyrwvM=" crossorigin="anonymous"></script>
+<script>
+    //Fall back to local copy if no jQuery migrate found
+    if (typeof jQuery.migrateWarnings == 'undefined') { // or typeof jQuery.fn.live == 'undefined'
+        document.write(unescape("%3Cscript src='/js/libs/jquery-migrate-3.3.2.js' type='text/javascript'%3E%3C/script%3E"));
+    }
+
+</script>
+
+
+
+<!-- apple touch icons -->
+<link rel="apple-touch-icon-precomposed" sizes="100x100" href="/images/apple-touch-icon-precomposed.png" /><link rel="icon" sizes="192x192" href="/images/apple-touch-icon-192x192.png" /><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/images/apple-touch-icon-180x180.png" /><link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152.png" /><link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144.png" /><link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120.png" /><link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114.png" /><link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-57x57.png" /><link rel="shortcut icon" href="/images/apple-touch-icon-57x57.png" /><link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+
+<!-- For everything else -->
+<link rel="shortcut icon" href="/favicon.ico" />
+
+<!-- Activate ClearType for Mobile IE -->
+<!--[if IE]>
+<meta http-equiv="cleartype" content="on" />
+<![endif]-->
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="/js/libs/html5shiv.min.js"></script>
+  <script src="/js/libs/respond.min.js"></script>
+<![endif]-->
+<!-- Include Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1W465E5H9H"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-1W465E5H9H');</script>
+<script defer src=https://alert.cdt.ca.gov></script>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8901380-1']); // Step 4: your google analytics profile code, either from your own google account, or contact eServices to have one set up for you
+    _gaq.push(['_gat._anonymizeIp']);
+    _gaq.push(['_setDomainName', '.ca.gov']);
+    _gaq.push(['_trackPageview']);
+
+    _gaq.push(['b._setAccount', 'UA-3419582-2']); // statewide analytics - do not remove or change
+    _gaq.push(['b._setDomainName', '.ca.gov']);
+    _gaq.push(['b._trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js></script><link rel="stylesheet" href="/css/custom.css" />
+    <!-- TemplateBeginEditable name="head" -->
+    <!-- TemplateEndEditable -->
+    <!-- TemplateParam name="OptionalSlideshow" type="boolean" value="true" -->
+    <script src="/javascript/CSLB/LicenseCheck.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<!-- possible body classes are "primary" and "two-column" -->
+<body class="two-column">
+
+    <header role="banner" id="header" class="global-header fixed noPrint">
+        <div id="skip-to-content"><a href="#main-content">Skip to Main Content</a></div>
+
+        <!-- Include Utility Header -->
+        <div class="utility-header">
+    <div class="container">
+        <div class="group flex-row">
+            <div class="social-media-links" role="navigation" aria-label="media sites">
+                <div class="header-cagov-logo"><a href="https://ca.gov"><span class="sr-only">CA.gov</span><img src="/images/Ca-Gov-Logo-White.svg" class="pos-rel" alt="" aria-hidden="true" /></a></div>
+                <a href="/" class="ca-gov-icon-home"><span class="sr-only">Home</span></a>
+                <a href="https://www.facebook.com/CSLB.CA?ref=ts" class="ca-gov-icon-facebook"><span class="sr-only">Facebook</span></a>
+                <a href="https://twitter.com/CSLB" class="bi bi-twitter-x">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+                    </svg><span class="sr-only">Twitter</span>
+                </a>
+                <a href="https://www.instagram.com/CaContractorsBoard" class="ca-gov-icon-instagram"><span class="sr-only">Instagram</span></a>
+                <a href="https://www.linkedin.com/company/contractors-state-license-board" class="ca-gov-icon-linkedin"><span class="sr-only">LinkedIn</span></a>
+                <a href="http://www.youtube.com/user/ContractorsBoard/" class="ca-gov-icon-youtube"><span class="sr-only">YouTube</span></a>
+            </div>
+            <div class="settings-links" role="tablist" aria-label="CSLB Information" aria-owns="settingsTab">
+                <a href="/OnlineServices/CheckLicenseII/CheckLicense.aspx">&#10004; License Check</a>
+                <a href="/OnlineServices/MailList/MailSignUp.aspx"><span class="ca-gov-icon-bell" style="font-size: 12px; vertical-align:middle"></span> Subscribe</a>
+
+                <a href="/About_us/">About CSLB</a>
+                <a href="/Media_Room/Board_and_Committee_meetings/">Public Meetings</a>
+                <a href="/About_us/Contact_CSLB.aspx">Contact Us</a>
+                <!--<a href="/OnlineServices/MailList/MailSignUp.aspx">Join Our Mailing Lists</a>-->
+                <ul class="utility-links">
+                    <li style="color:white;" title="This Google translation feature is provided for informational purposes only as CSLB is unable to guarantee the accuracy of this translation. Please consult a translator for accuracy if you are relying on the translation or are using this site for official business.">Translate this site:</li>
+                    <li>
+                        <div id="google_translate_element"></div>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({
+                                    pageLanguage: 'en',
+                                    includedLanguages: 'ar,en,es,fa,hy,ja,ko,ru,tl,vi,zh-CN',
+                                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                                }, 'google_translate_element');
+                            }
+                        </script>
+                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    </li>
+                    <li>
+                        <button class="btn btn-xs btn-primary" data-toggle="collapse" data-target="#siteSettings" aria-expanded="false" aria-controls="siteSettings" role="tab" aria-selected="false" id="settingsTab"><span class="ca-gov-icon-gear" aria-hidden="true"></span>Settings</button>
+                    </li>
+                </ul>
+                <a href="/about_us/disability.aspx"><img style="max-height: 20px;" alt="Disability Icon" src="/images/disability.png"> </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Settings Bar -->
+        <div class="site-settings section section-standout collapse collapsed" role="alert" aria-atomic="true" id="siteSettings">
+    <div class="container  p-y">
+
+
+        <div class="btn-group btn-group-justified-sm" role="group" aria-label="contrastMode">
+            <div class="btn-group"><button type="button" class="btn btn-standout disableHighContrastMode">Default</button></div>
+            <div class="btn-group"><button type="button" class="btn btn-standout enableHighContrastMode">High Contrast</button></div>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="textSizeMode">
+            <div class="btn-group"><button type="button" class="btn btn-standout resetTextSize">Reset</button></div>
+            <div class="btn-group"><button type="button" class="btn btn-standout increaseTextSize"><span class="hidden-xs">Increase Font Size</span><span class="visible-xs">Font <span class="sr-only">Increase</span><span class="ca-gov-icon-plus-line font-size-sm" aria-hidden="true"></span></span></button></div>
+            <div class="btn-group"><button type="button" class="btn btn-standout decreaseTextSize"><span class="hidden-xs">Decrease Font Size</span><span class="visible-xs">Font <span class="sr-only">Decrease</span><span class="ca-gov-icon-minus-line font-size-sm" aria-hidden="true"></span></span></button></div>
+        </div>
+        <button type="button" class="close" data-toggle="collapse" data-target="#siteSettings" aria-expanded="false" aria-controls="siteSettings" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+</div>
+
+        <!-- Include Branding -->
+        <!-- header branding -->
+<div class="branding" role="banner" aria-label="State of California Website">
+    <div class="header-organization-banner">
+        <a href="/">
+            <img src="/images/header_organization.png" alt="State of California Website Template logo" />
+        </a>
+    </div>
+</div>
+
+        <!-- Include Mobile Controls -->
+        <!-- mobile navigation controls -->
+<div class="mobile-controls">
+    <span class="mobile-control-group mobile-header-icons">
+    	<!-- Add more mobile controls here. These will be on the right side of the mobile page header section -->
+    </span>
+    <div class="mobile-control-group main-nav-icons float-right">
+        <button id="nav-icon3" class="mobile-control toggle-menu float-right" aria-expanded="false" aria-controls="navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span class="sr-only">Menu</span>
+        </button>
+        <button class="mobile-control toggle-search">
+            <span class="ca-gov-icon-search hidden-print" aria-hidden="true"></span><span class="sr-only">Search</span>
+        </button>
+    </div>
+</div>
+
+        <div class="navigation-search">
+
+            <!-- Include Navigation -->
+            <!--
+Step 2
+Select Navigation Type:
+
+Options are: megadropdown dropdown singlelevel
+-->
+<nav id="navigation" class="main-navigation singlelevelnav auto-highlight" aria-label="Site Area Navigation Bar" role="navigation">
+    <ul id="nav_list" class="top-level-nav">
+        <li class="nav-item">
+            <a href="/Consumer.aspx" class="first-level-link" aria-label="Navigate to Consumers"><span class="ca-gov-icon-users" aria-hidden="true"></span>Consumers</a>
+        </li>
+        <li class="nav-item">
+            <a href="/Licensees.aspx" class="first-level-link" aria-label="Navigate to Licensees"><span class="ca-gov-icon-user-id" aria-hidden="true"></span>Licensees</a>
+        </li>
+        <li class="nav-item">
+            <a href="/Applicants.aspx" class="first-level-link" aria-label="Navigate to Applicants"><span class="ca-gov-icon-document" aria-hidden="true"></span>Applicants</a>
+        </li>
+        <li class="nav-item">
+            <a href="/OnlineService.aspx" class="first-level-link" aria-label="Navigate to Online Services"><span class="ca-gov-icon-online-services" aria-hidden="true"></span>Online Services</a>
+        </li>
+        <li class="nav-item">
+            <a href="/NewsRoom.aspx" class="first-level-link" aria-label="Navigate to Media"><span class="ca-gov-icon-globe" aria-hidden="true"></span>Media</a>
+        </li>
+
+        <li class="nav-item" id="nav-item-search">
+            <a href="/Resources.aspx" class="first-level-link" aria-label="Navigate to Resources"><span class="ca-gov-icon-gears" aria-hidden="true"></span>Resources</a>
+        </li>
+        <!--    <li class="nav-item">
+        <a href="javascript:;" class="first-level-link" aria-label="Search Button"><span class="ca-gov-icon-info-bubble"></span>How Do I...</a>
+    </li>-->
+    </ul>
+</nav>
+
+
+            <div id="head-search" class="search-container">
+                <!-- Include Search -->
+                <!-- Google Custom Search - /ssi/search.html-->
+
+<!--Uncomment if you prefer to use original google search box.
+    (be advided that original custom search box is not meeting WCAG accessibility standards)-->
+<!--<script type="text/javascript">
+    var cx = '001779225245372747843:9s-idxui5pk';// Step 7: Update this value with your search engine unique ID. Submit a request to the CDT Service Desk if you don't already know your unique search engine ID.
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script');
+    s[s.length - 1].parentNode.insertBefore(gcse, s[s.length - 1]);
+</script>
+<gcse:searchbox-only resultsUrl="/serp.html" enableAutoComplete="true"></gcse:searchbox-only>-->
+
+
+<!--Custom Google Search ID Script can be found inside of serp.html file -->
+<div class="container" role="search">
+    <form id="Search" class="pos-rel" action="/SearchResult.aspx">
+        <span class="sr-only" id="SearchInput">Custom Google Search</span>
+        <input type="text" id="q" name="q" aria-labelledby="SearchInput" placeholder="Search this website" class="focus-only search-textfield height-50 border-0 p-x-sm w-100" />
+        <button type="submit" class="pos-abs gsc-search-button top-0 width-50 height-50 border-0 bg-transparent"><span class="ca-gov-icon-search font-size-30 color-gray" aria-hidden="true"></span><span class="sr-only">Submit</span></button>
+        <div class="width-50 height-50 close-search-btn"><button class="close-search gsc-clear-button width-50 height-50 border-0 bg-transparent pos-rel" type="reset"><span class="sr-only">Close Search</span><span class="ca-gov-icon-close-mark" aria-hidden="true"></span></button></div>
+    </form>
+</div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="header-decoration"></div>
+    </header>
+    <!-- Include for optional slideshow banner -->
+    <!-- TemplateBeginIf cond="OptionalSlideshow" -->
+
+    <!-- TemplateEndIf -->
+    <div id="main-content" class="main-content two-column" role="main">
+        <div class="section">
+           
+            <div class="main-primary">
+                <div class="section">
+                    
+    <script type="text/javascript">
+        function getRefreshButton() {
+            return document.getElementById("refreshButton");
+        }
+        function onCaptchaBeginCallback(s, e) {
+            var refreshButton = getRefreshButton();
+            refreshButton.src = "/Images/refreshButtonAnimated.gif";
+        }
+        function onCaptchaEndCallback(s, e) {
+            var refreshButton = getRefreshButton();
+            refreshButton.src = "/Images/refreshButton.gif";
+            document.getElementById("tbCode").value = "";
+            if (typeof (lblCorrectCodeMessage) != "undefined")
+                lblCorrectCodeMessage.SetVisible(false);
+            if (typeof (lblIncorrectCodeMessage) != "undefined")
+                lblIncorrectCodeMessage.SetVisible(false);
+        }
+    </script>
+
+
+    <style>
+        table {
+            width: 100%;
+            border-width: 1px;
+        }
+
+        .hideFromScreen {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" media="print" href="/css/LicenseDetailPrint.css">
+
+    <a href="/">Home</a> | <a aria-label="Online Services" href="/OnlineServices/">Online Services</a> | License Details
+    <div class="CenterAlign">
+        <img src="/Images/CSLB/License_Detail_print_header.jpg" class="hideFromScreen printHeader" alt="printable header" />
+    </div>
+
+    <form method="post" action="./LicenseDetail.aspx?LicNum=956855" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="8CD1BF73" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="dlOMwjJjGMbxA3yyj7ycVXFMu3rt6wQa8Mi8xLUQ6VzbsKCDXzS4AzwVuZ+wWNmBMCTuLtsW5N3k2I05LyEQL1JEgWL9S6GRos9cuqdY3MBQdH/1k1zx3cQk05avWJswqy7SCNtZdG9+Dx4FNR57rEggjdgNm7FGGkJVdsmppCoWkLRD" />
+</div>
+        <h1 class="add_icon_blue_arrow_down">Contractor's License Detail for License #
+            <span id="MainContent_Header2Detail">956855</span></h1>
+
+
+        <div style="font-size: 90%" class="smallForPrint">
+
+            <p>
+                <img src="/images/icon/alert.gif" class="Icon" style="width: 31px; height: 22px" alt="Alert symbol" />
+                <strong>DISCLAIMER: A license status check provides information taken from the CSLB license database. Before relying on this information, you should be aware of the following limitations.</strong> 
+            </p>
+            <ul class="list-understated" id="disclaimer">
+                <li>CSLB complaint disclosure is restricted by law (<a href="http://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&&sectionNum=7124.6" class="newTab">B&amp;P 7124.6</a>)
+                   If this entity is subject to public complaint disclosure click on link that will appear below for more information.  Click <a aria-label="here" href="PublicComplaintDisclosure.aspx">here</a> for a definition of disclosable actions.  </li>
+                <li>Only construction related civil judgments reported to CSLB are disclosed (<a href="http://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=7071.17" class="newTab">B&amp;P 7071.17</a>).
+                     </li>
+                <li>Arbitrations are not listed unless the contractor fails to comply with the terms. </li>
+                <li>Due to workload, there may be relevant information that has not yet been entered into the board's license database. </li>
+            </ul>
+        </div>
+
+
+        
+        <span id="MainContent_extractDate" class="hideFromScreen" style="float: right;">Data current as of 5/31/2026 4:34:09 PM</span>
+        <table id="MainContent_LicTable">
+	<tr>
+		<td colspan="2"><h2 class="subheading">Business Information</h2></td>
+	</tr><tr>
+		<td id="MainContent_BusInfo" class="CenterAlign" colspan="2">ABC AIR CONDITIONING & HEATING<br />9016 LAUREL CANYON BLVD<br />SUN VALLEY, CA 91352<br />Business Phone Number:(818) 723-1086<br /><br /></td>
+	</tr><tr>
+		<td style="font-weight:bold;text-align: right; padding-right: 10px; width: 50%">Entity</td><td id="MainContent_Entity">Partnership</td>
+	</tr><tr>
+		<td style="font-weight:bold;text-align: right; padding-right: 10px; width: 50%">Issue Date</td><td id="MainContent_IssDt">01/21/2011</td>
+	</tr><tr>
+		<td style="font-weight:bold;text-align: right; padding-right: 10px; width: 50%">Expire Date</td><td id="MainContent_ExpDt" class="text-danger" style="font-weight: bold;">07/12/2013</td>
+	</tr><tr class="CenterAlign">
+		<td colspan="2"><h2  class="subheading">License Status</h2></td>
+	</tr><tr>
+		<td id="MainContent_Status" colspan="2"><span class="text-danger"><strong>This license is revoked and not able to contract at this time.</strong></span></td>
+	</tr><tr id="MainContent_AddLicStatRow" class="CenterAlign">
+		<td colspan="2" style="font-weight:bold;background-color: #CCCCCC; border: thin">Additional Status</td>
+	</tr><tr id="MainContent_AddLicStatRow2">
+		<td id="MainContent_AddLicStatus" colspan="2"><ul class="list-understated"></ul><h2 class='CenterAlign noPrint'><a href="/OnlineServices/CheckLicenseII/ComplaintDisclosure.aspx?LicType=LIC&amp;LicNum=956855"><strong><span class='text-danger h3' >Click here for Complaint Disclosure information.</span></strong></a></h2><div class='CenterAlign'><h2 class='hideFromScreen'><a href="/OnlineServices/CheckLicenseII/ComplaintDisclosure.aspx?LicType=LIC&amp;LicNum=956855"><strong><span class='text-danger h3' >There is Complaint Disclosure information for this license.<span></strong></a></h2></div></td>
+	</tr><tr id="MainContent_ClassificationRow" class="CenterAlign">
+		<td colspan="2"><h2  class="subheading">Classifications</h2></td>
+	</tr><tr id="MainContent_ClassificationRow2">
+		<td id="MainContent_ClassCellTable" colspan="2"><ul class="list-understated"><li><a href = "/About_Us/Library/Licensing_Classifications/Licensing_Classifications_Detail.aspx?Class=C10">C10 - ELECTRICAL</a></li><li><a href = "/About_Us/Library/Licensing_Classifications/Licensing_Classifications_Detail.aspx?Class=C20">C20 - WARM-AIR HEATING, VENTILATING AND AIR-CONDITIONING</a></li><li><a href = "/About_Us/Library/Licensing_Classifications/Licensing_Classifications_Detail.aspx?Class=C36">C36 - PLUMBING</a></li><li><a href = "/About_Us/Library/Licensing_Classifications/Licensing_Classifications_Detail.aspx?Class=C38">C38 - REFRIGERATION</a></li></ul></td>
+	</tr><tr id="MainContent_BondingHeading" class="CenterAlign">
+		<td colspan="2"><h2 class="subheading">Bonding Information</h2></td>
+	</tr><tr id="MainContent_BondingRow2">
+		<td id="MainContent_BondingCellTable" colspan="2"><table style='width:100%'><tr><td style='background-color:#CCCCCC' class='CenterAlign' >Contractor's Bond</td></tr></table><p>This license filed a Contractor's Bond with  <a href='/OnlineServices/CheckLicenseII/INSDetail.aspx?Action=INSDETIC&amp;Code=H09'>SURETEC INSURANCE COMPANY</a>.</p><p><strong>Bond Number: </strong>5143848</p><p><strong>Bond Amount: </strong>$12,500</p><p><strong>Effective Date:</strong> 07/27/2012</p><p><strong>Cancellation Date:</strong> 08/25/2013</p><a href="/OnlineServices/CheckLicenseII/ContractorBondingHistory.aspx?LicNum=956855&amp;BondType=CB">Contractor's Bond History</a></td>
+	</tr><tr class="CenterAlign">
+		<td colspan="2"><h2 class="subheading">Workers' Compensation</h2></td>
+	</tr><tr>
+		<td id="MainContent_WCStatus" colspan="2"><p>This license has workers compensation insurance with the <a style="font-size:13px" href="/OnlineServices/CheckLicenseII/INSDetail.aspx?Action=INSDETWC&amp;Code=400">SOUTHERN INSURANCE COMPANY</a></p><strong>Policy Number:</strong>PWC00364512<br /><strong>Effective Date:</strong> 07/16/2012<br /><strong>Expire Date:</strong> 07/16/2013<br /><p><a href="/OnlineServices/CheckLicenseII/WCHistory.aspx?LicNum=956855">Workers' Compensation History</a></p></td>
+	</tr><tr id="MainContent_MultiLicDisplayRow" class="CenterAlign">
+		<td colspan="2"><h2 class="subheading" >Other</h2></td>
+	</tr><tr id="MainContent_MultiLicDisplayRow2">
+		<td id="MainContent_MultiLicDisplay" colspan="2"><ul class='list-understated'><li>Personnel listed on this license (current or disassociated) are listed on other licenses.</li></ul></td>
+	</tr>
+</table>
+
+
+        <div id="MainContent_ButtonPanel" class="CenterAlign noPrint">
+	
+            <input type="image" name="ctl00$MainContent$PersonnelLink" id="MainContent_PersonnelLink" title="List of personnel associated with this license" src="/Images/ImageButtons/personnel.png" alt="List of personnel associated with this license" />
+
+            
+
+            <input type="image" name="ctl00$MainContent$OtherLicLink" id="MainContent_OtherLicLink" title="List of other licenses that personnel are associated." src="/Images/ImageButtons/other.png" alt="List of other licenses that personnel are associated." />
+
+            <input type="image" name="ctl00$MainContent$ComplDisclLink" id="MainContent_ComplDisclLink" title="List of complaint disclosures for this license" src="/Images/ImageButtons/complaint.png" alt="List of complaint disclosures for this license" />
+        
+</div>
+
+        <input type="hidden" name="ctl00$MainContent$LicenseNameForLink" id="MainContent_LicenseNameForLink" value="QUJDK0FJUitDT05ESVRJT05JTkcrJTI2K0hFQVRJTkc=" />
+    </form>
+    <div class="noPrint">
+        <h3 class="text-warning bg-dark CenterAlign"><strong>Is this your license?<br />
+            Does any of the information need to be corrected/updated?</strong></h3>
+        <h3 class="CenterAlign" style="font-size: 1.4em;"><a href="/Contractors/Maintain_License/" class="newTab">Find out how to make changes to your license info</a></h3>
+    </div>
+
+                </div>
+            </div>
+             <div class="main-secondary noPrint">
+                <div class="row ">
+                    <div class="panel panel-overstated highlight " style="width:100%" >
+                        <div class="panel-heading">
+                            <h2>Online Services Quick Hits</h2>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-overstated">
+                                <li><a href="/OnlineServices/CheckLicenseII/CheckLicense.aspx">Check a License or HIS Registration</a></li>
+                                <li><a href="/OnlineServices/CheckLicenseII/ZipCodeSearch.aspx">Find A Licensed Contractor</a></li>
+                                <li><a href="/About_Us/FAQs/">Frequently Asked Questions</a></li>
+                                <li><a href="/About_Us/Library/Forms_And_Applications.aspx">Forms and Applications</a></li>
+                                <li><a href="/About_Us/Library/Guides_and_Publications/">Guides and Publications</a></li>
+                                <li><a href="/About_Us/Library/Laws/">CSLB Laws and Regulations</a></li>
+                                <li><a href="/About_Us/Library/Fees.aspx">List of All CSLB Fees</a></li>
+                                <li><a href="/About_Us/Library/Licensing_Classifications/">License Classifications</a></li>
+                                <li><a href="/Newsletter/">Contractor Newsletter</a></li>
+                                <li><a href="/OnlineServices/CheckApplicationII/ApplicantRequest.aspx">Application Status</a></li>
+                                <li><a href="/OnlineServices/CheckApplicationII/SecuredApplicantRequest.aspx">Application Status (Secured)</a></li>
+                                <li><a href="/OnlineServices/CheckApplicationII/PersonnelNameRequest.aspx">Application Status by Personnel Name</a></li>
+                                <li><a href="/OnlineServices/CheckApplicationII/BusinessNameRequest.aspx">Application Status by Business Name</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="panel panel-overstated highlight noPrint" style="width:100%" >
+                        <div class="panel-heading">
+                            <h2>Online Services</h2>
+                        </div>
+                        <div class="panel-body">
+                            <div class="full">
+                                <img src="/images/cslb/Online.jpg" style="border-radius: 10px 10px 10px 10px; background: white; border: none; width: 90%;" alt="Online Service">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+<footer id="footer" class="global-footer" role="contentinfo">
+    <div class="container" role="navigation" aria-label="site information links">
+        <div class="row">
+            <div class="three-quarters">
+                <ul class="footer-links">
+                    <li><a href="#skip-to-content">Back to Top</a></li>
+                    <li><a href="https://www.ca.gov/use/">Conditions of Use</a></li>
+                    <li><a href="https://www.dca.ca.gov/about_dca/privacy_policy.shtml">Privacy Policy</a></li>
+                    <li><a href="http://www.cslb.ca.gov/About_Us/Accessibility.aspx">Accessibility</a></li>
+                    <li><a href="http://www.cslb.ca.gov/About_Us/CSLBCertificate.pdf">Accessibility Certification</a></li>
+                </ul>
+            </div>
+            <div class="quarter text-right">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Copyright Statement -->
+    <div class="copyright">
+        <div class="container">
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear())</script>
+            State of California
+
+        </div>
+    </div>
+</footer>
+
+<!-- Extra Decorative Content -->
+<div class="decoration-last">&nbsp;</div>
+<!-- Load template core -->
+<script src="/js/cagov.core.js"></script>
+<script src="/js/search.js "></script>
+<script>
+    $(document).ready(function () {
+        // Backward compatability fix for removing wrapper on new "sections"
+        $('.main-primary > .section').closest('div.wrapper').removeClass('wrapper');
+    });
+</script>
+
+</body>
+</html>
+

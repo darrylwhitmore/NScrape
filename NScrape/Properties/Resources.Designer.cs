@@ -19,7 +19,7 @@ namespace NScrape.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,7 +61,7 @@ namespace NScrape.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  NScrape/{0} (+https://github.com/darrylwhitmore/NScrape).
+        ///   Looks up a localized string similar to NScrape/{0}.
         /// </summary>
         internal static string DefaultUserAgent {
             get {
@@ -138,15 +138,6 @@ namespace NScrape.Properties {
         internal static string UnexpectedHtmlPage {
             get {
                 return ResourceManager.GetString("UnexpectedHtmlPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to An image was returned unexpectedly..
-        /// </summary>
-        internal static string UnexpectedImage {
-            get {
-                return ResourceManager.GetString("UnexpectedImage", resourceCulture);
             }
         }
         

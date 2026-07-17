@@ -1,5 +1,35 @@
-# top-most EditorConfig file
+# EditorConfig - https://editorconfig.org
 root = true
+
+[*]
+insert_final_newline = true
+trim_trailing_whitespace = true
+end_of_line = crlf
+charset = utf-8-bom
 
 [*.cs]
 indent_style = tab
+indent_size = 4
+
+# Namespace style
+csharp_style_namespace_declarations = file_scoped:suggestion
+
+# Expression-bodied members
+csharp_style_expression_bodied_properties = true:suggestion
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+
+# Prefer 'is null' over '== null'
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true:suggestion
+
+# Target-typed new
+csharp_style_implicit_object_creation_when_type_is_apparent = true:suggestion
+
+# var preferences - var preferred (matches existing NScrape style)
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = true:suggestion
+
+[*.{xml,resx,csproj,sln}]
+indent_style = space
+indent_size = 2
+insert_final_newline = false

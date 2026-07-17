@@ -2,239 +2,113 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
+using NScrape.ContentTypeHandlers;
+using NScrape.Interfaces;
+using NScrape.Responses;
 
-namespace NScrape {
+namespace NScrape;
+
+/// <summary>
+/// Represents a factory for creating instances of <see cref="NScrape.Interfaces.IWebResponse"/> 
+/// based on the provided <see cref="System.Net.HttpWebResponse"/>.
+/// </summary>
+/// <remarks>
+/// This class allows customization of response creation by supporting a collection of 
+/// <see cref="NScrape.Interfaces.IContentTypeHandler"/> implementations. These handlers 
+/// can be used to process specific content types.
+/// </remarks>
+public class WebResponseFactory : IWebResponseFactory {
+	private static readonly IEnumerable<IContentTypeHandler> defaultHandlers = [
+		new BinaryContentTypeHandler( "application/gzip" ),
+		new BinaryContentTypeHandler( "application/msword" ),
+		new BinaryContentTypeHandler( "application/octet-stream" ),
+		new BinaryContentTypeHandler( "application/pdf" ),
+		new BinaryContentTypeHandler( "application/vnd.ms-excel" ),
+		new BinaryContentTypeHandler( "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ),
+		new BinaryContentTypeHandler( "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ),
+		new BinaryContentTypeHandler( "application/x-dosexec" ),
+		new BinaryContentTypeHandler( "application/x-msdos-program" ),
+		new BinaryContentTypeHandler( "application/x-zip-compressed" ),
+		new BinaryContentTypeHandler( "application/zip" ),
+		new BinaryContentTypeHandler( "audio/" ),
+		new BinaryContentTypeHandler( "font/" ),
+		new BinaryContentTypeHandler( "image/" ),
+		new BinaryContentTypeHandler( "video/" ),
+
+		new HtmlContentTypeHandler( "application/xhtml+xml" ),
+		new HtmlContentTypeHandler( "text/html" ),
+
+		new JavaScriptContentTypeHandler( "application/javascript" ),
+		new JavaScriptContentTypeHandler( "application/x-javascript" ),
+		new JavaScriptContentTypeHandler( "text/javascript" ),
+
+		new JsonContentTypeHandler( "application/json" ),
+		new JsonContentTypeHandler( "application/ld+json" ),
+			
+		new PlainTextContentTypeHandler( "text/plain" ),
+
+		new XmlContentTypeHandler( "application/atom+xml" ),
+		new XmlContentTypeHandler( "application/rss+xml" ),
+		new XmlContentTypeHandler( "application/xml" ),
+		new XmlContentTypeHandler( "text/xml" )
+	];
+
+	private readonly Dictionary<string, IContentTypeHandler> handlers;
+
 	/// <summary>
-	/// Creates a <see cref="WebResponse"/> object based on an <see cref="HttpWebResponse"/> object.
+	/// Initializes a new instance of the <see cref="NScrape.WebResponseFactory"/> class with default settings.
 	/// </summary>
-	public class WebResponseFactory {
-		/// <summary>
-		/// Initializes static members of the <see cref="WebResponseFactory"/> class.
-		/// </summary>
-		static WebResponseFactory() {
-			SupportedContentTypes = new Dictionary<string, Func<HttpWebResponse, WebResponse>> {
-				{ "application/javascript", CreateJavaScriptResponse },
-				{ "application/json", CreateJsonResponse },
-				{ "application/octet-stream", CreateBinaryResponse },
-				{ "application/x-dosexec", CreateBinaryResponse },
-				{ "application/x-javascript", CreateJavaScriptResponse },
-				{ "application/x-msdos-program", CreateBinaryResponse },
-				{ "application/xml", CreateXmlResponse },
-				{ "image/", CreateImageResponse },
-				{ "text/html", CreateHtmlResponse },
-				{ "text/javascript", CreateJavaScriptResponse },
-				{ "text/plain", CreatePlainTextResponse },
-				{ "text/xml", CreateXmlResponse }
-			};
+	/// <remarks>
+	/// This constructor sets up the factory without any custom content type handlers. 
+	/// It uses the default behavior for creating instances of <see cref="NScrape.Interfaces.IWebResponse"/>.
+	/// </remarks>
+	public WebResponseFactory() : this( [] ) { 
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="WebResponseFactory"/> class with the specified custom content type handlers.
+	/// </summary>
+	/// <param name="customHandlers">
+	/// A collection of custom content type handlers to be used. These handlers will override the default handlers if they share the same content type prefix.
+	/// </param>
+	public WebResponseFactory( IEnumerable<IContentTypeHandler> customHandlers ) {
+		// Add our default handlers
+		handlers = defaultHandlers.ToDictionary( h => h.ContentTypePrefix, h => h, StringComparer.OrdinalIgnoreCase );
+
+		// Add the user's custom handlers, replacing ours if so specified
+		foreach ( var handler in customHandlers ) {
+			handlers[handler.ContentTypePrefix] = handler;
+		}
+	}
+
+	/// <summary>
+	/// Creates an instance of <see cref="IWebResponse"/> based on the provided <see cref="HttpWebResponse"/>.
+	/// </summary>
+	/// <param name="httpWebResponse">The HTTP web response to be wrapped in an <see cref="IWebResponse"/> instance.</param>
+	/// <returns>
+	/// An implementation of <see cref="IWebResponse"/> that corresponds to the specified <paramref name="httpWebResponse"/>.
+	/// </returns>
+	public IWebResponse CreateResponse( HttpWebResponse httpWebResponse ) {
+		ArgumentNullException.ThrowIfNull( httpWebResponse );
+
+		if ( !httpWebResponse.Headers.AllKeys.Contains( CommonHeaders.ContentType ) ) {
+			// The response is missing a content type.
+			return new UnsupportedWebResponse( httpWebResponse.ResponseUri, string.Empty );
 		}
 
-		/// <summary>
-		/// Gets a dictionary containing all content types currently supported by the
-		/// <see cref="WebResponseFactory"/>.
-		/// </summary>
-		/// <remarks>
-		/// The key of the dictionary is the text the content type
-		/// must start with (but not necessarily the full text of the content type).
-		/// <br/><br/>
-		/// The value is a
-		/// <see cref="Func{HttpWebResponse, WebResponse}"/> that takes an <see cref="HttpWebResponse"/>
-		/// object with the given content type and returns a <see cref="WebResponse"/>. The return value
-		/// is usually a subclass of the <see cref="WebResponse"/> class.
-		/// </remarks>
-		public static Dictionary<string, Func<HttpWebResponse, WebResponse>> SupportedContentTypes { get; }
+		var contentType = httpWebResponse.Headers[CommonHeaders.ContentType];
 
-		/// <summary>
-		/// Creates an <see cref="HtmlWebResponse"/>.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The original <see cref="HttpWebResponse"/>.
-		/// </param>
-		/// <returns>
-		/// A new <see cref="HtmlWebResponse"/>.
-		/// </returns>
-		public static WebResponse CreateHtmlResponse( HttpWebResponse webResponse ) {
-			return new HtmlWebResponse( true, webResponse );
+		if ( contentType is null ) {
+			// The content type header is present but has no value.
+			return new UnsupportedWebResponse( httpWebResponse.ResponseUri, string.Empty );
 		}
 
-		/// <summary>
-		/// Creates a <see cref="ImageWebResponse"/>.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The original <see cref="HttpWebResponse"/>.
-		/// </param>
-		/// <returns>
-		/// A new <see cref="ImageWebResponse"/>.
-		/// </returns>
-		public static WebResponse CreateImageResponse( HttpWebResponse webResponse ) {
-			return new ImageWebResponse( true, webResponse );
+		var key = handlers.Keys.SingleOrDefault( k => contentType.StartsWith( k, StringComparison.OrdinalIgnoreCase ) );
+
+		if ( key == null ) {
+			return new UnsupportedWebResponse( httpWebResponse.ResponseUri, contentType );
 		}
-
-		/// <summary>
-		/// Creates a <see cref="PlainTextWebResponse"/>.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The original <see cref="HttpWebResponse"/>.
-		/// </param>
-		/// <returns>
-		/// A new <see cref="PlainTextWebResponse"/>.
-		/// </returns>
-		public static WebResponse CreatePlainTextResponse( HttpWebResponse webResponse ) {
-			return new PlainTextWebResponse( true, webResponse );
-		}
-
-		/// <summary>
-		/// Creates a <see cref="PlainTextWebResponse"/>.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The original <see cref="HttpWebResponse"/>.
-		/// </param>
-		/// <returns>
-		/// A new <see cref="PlainTextWebResponse"/>.
-		/// </returns>
-		/// <remarks>
-		/// Deprecated; please use <see cref="CreatePlainTextResponse( HttpWebResponse )"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use CreatePlainTextResponse( HttpWebResponse ) instead." )]
-		public static WebResponse CreateTextResponse( HttpWebResponse webResponse ) {
-			return CreatePlainTextResponse( webResponse );
-		}
-
-		/// <summary>
-		/// Creates an <see cref="XmlWebResponse"/>.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The original <see cref="HttpWebResponse"/>.
-		/// </param>
-		/// <returns>
-		/// A new <see cref="XmlWebResponse"/>.
-		/// </returns>
-		public static WebResponse CreateXmlResponse( HttpWebResponse webResponse ) {
-			return new XmlWebResponse( true, webResponse );
-		}
-
-		/// <summary>
-		/// Creates a <see cref="BinaryWebResponse"/>.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The original <see cref="HttpWebResponse"/>.
-		/// </param>
-		/// <returns>
-		/// A new <see cref="BinaryWebResponse"/>.
-		/// </returns>
-		public static WebResponse CreateBinaryResponse( HttpWebResponse webResponse ) {
-			return new BinaryWebResponse( true, webResponse );
-		}
-
-		/// <summary>
-		/// Creates a <see cref="JavaScriptWebResponse"/>.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The original <see cref="HttpWebResponse"/>.
-		/// </param>
-		/// <returns>
-		/// A new <see cref="JavaScriptWebResponse"/>.
-		/// </returns>
-		public static WebResponse CreateJavaScriptResponse( HttpWebResponse webResponse ) {
-			return new JavaScriptWebResponse( true, webResponse );
-		}
-
-		/// <summary>
-		/// Creates a <see cref="JsonWebResponse"/>.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The original <see cref="HttpWebResponse"/>.
-		/// </param>
-		/// <returns>
-		/// A new <see cref="JsonWebResponse"/>.
-		/// </returns>
-		public static WebResponse CreateJsonResponse( HttpWebResponse webResponse ) {
-			return new JsonWebResponse( true, webResponse );
-		}
-
-		/// <summary>
-		/// Creates a <see cref="WebResponse"/> for an <see cref="HttpWebResponse"/>, based on its
-		/// content type.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The <see cref="HttpWebResponse"/> to parse.
-		/// </param>
-		/// <returns>
-		/// If the content type is registered with the <see cref="WebResponseFactory"/>, the corresponding
-		/// <see cref="WebResponse"/> object; otherwise, an <see cref="UnsupportedWebResponse"/> object.
-		/// </returns>
-		public static WebResponse CreateResponse( HttpWebResponse webResponse ) {
-			if ( !webResponse.Headers.AllKeys.Contains( CommonHeaders.ContentType ) ) {
-				// The response is missing a content type.
-				return new UnsupportedWebResponse( webResponse.ResponseUri, string.Empty );
-			}
-
-			var contentType = webResponse.Headers[CommonHeaders.ContentType];
-
-			// The keys in the SupportedContentTypes indicate the text the contentType
-			// must start with. Find that key
-			var key = SupportedContentTypes.Keys.SingleOrDefault( k => contentType.StartsWith( k, StringComparison.OrdinalIgnoreCase ) );
-
-			// We don't support this content type
-			if ( key == null ) {
-				return new UnsupportedWebResponse( webResponse.ResponseUri, contentType );
-			}
-
-			return SupportedContentTypes[key]( webResponse );
-		}
-
-		/// <summary>
-		/// Gets the encoding used by an <see cref="HttpWebResponse"/>.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The <see cref="HttpWebResponse"/> for which to determine the content type.
-		/// </param>
-		/// <returns>
-		/// The content type used by the <see cref="HttpWebResponse"/>.
-		/// </returns>
-		/// <remarks>
-		/// Deprecated; please use <see cref="NScrapeExtensions.GetEncoding( HttpWebResponse )"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use NScrapeExtensions.GetEncoding( HttpWebResponse ) instead." )]
-		public static Encoding GetEncoding( HttpWebResponse webResponse ) {
-			return webResponse.GetEncoding();
-		}
-
-		/// <summary>
-		/// Reads an <see cref="HttpWebResponse"/> as plain text.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The <see cref="HttpWebResponse"/> to read.
-		/// </param>
-		/// <returns>
-		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
-		/// </returns>
-		/// <remarks>
-		/// Deprecated; please use <see cref="NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding )"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use NScrapeExtensions.GetResponseText( HttpWebResponse ) instead." )]
-		public static string ReadResponseText( HttpWebResponse webResponse ) {
-			return webResponse.GetResponseText();
-		}
-
-		/// <summary>
-		/// Reads an <see cref="HttpWebResponse"/> as plain text.
-		/// </summary>
-		/// <param name="webResponse">
-		/// The <see cref="HttpWebResponse"/> to read.
-		/// </param>
-		/// <param name="encoding">
-		/// The encoding used.
-		/// </param>
-		/// <returns>
-		/// A <see cref="string"/> that represents the text of an <see cref="HttpWebResponse"/>.
-		/// </returns>
-		/// <remarks>
-		/// Deprecated; please use <see cref="NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding )"/> instead.
-		/// </remarks>
-		[Obsolete( "Please use NScrapeExtensions.GetResponseText( HttpWebResponse, Encoding ) instead." )]
-		public static string ReadResponseText( HttpWebResponse webResponse, Encoding encoding ) {
-			return webResponse.GetResponseText( encoding );
-		}
+		
+		return handlers[key].CreateResponse( httpWebResponse );
 	}
 }
