@@ -61,7 +61,7 @@ namespace NScrape.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  NScrape/{0} (+https://github.com/darrylwhitmore/NScrape).
+        ///   Looks up a localized string similar to NScrape/{0}.
         /// </summary>
         internal static string DefaultUserAgent {
             get {
