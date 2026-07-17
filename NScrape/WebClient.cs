@@ -60,7 +60,8 @@ public class WebClient : IWebClient {
 		// https://stackoverflow.com/a/2904963/83861
 		ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-		UserAgent = string.Format( CultureInfo.InvariantCulture, Properties.Resources.DefaultUserAgent, typeof(WebClient).GetTypeInfo().Assembly.GetName().Version );
+		var informationalVersion = typeof( WebClient ).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()!.InformationalVersion;
+		UserAgent = string.Format( CultureInfo.InvariantCulture, Properties.Resources.DefaultUserAgent, informationalVersion.Split( '+' )[0] );
 	}
 
 	private static void ConfigureHeader( HttpWebRequest webRequest, string headerName, string headerValue ) {

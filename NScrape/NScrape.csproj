@@ -16,7 +16,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/darrylwhitmore/NScrape</PackageProjectUrl>
     <PackageIcon>NScrape.png</PackageIcon>
-    <PackageTags>html scrape scraper scraping crawler crawling htmlagilitypack htmlagility agility</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>scrape scraper scraping web-scraping html http proxy htmlagilitypack data-extraction automation</PackageTags>
     <Product>NScrape Web Scraping Framework</Product>
     <PackageReleaseNotes>
       Version 1.0.0 — Breaking changes release. See full release notes at
@@ -34,6 +35,7 @@
 
   <ItemGroup>
     <None Include="..\Assets\NScrape.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
     <None Remove="nscrape.publickey" />
   </ItemGroup>
 
